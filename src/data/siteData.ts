@@ -749,3 +749,131 @@ export const CAREER_OPENINGS: JobOpening[] = [
     ],
   },
 ];
+
+
+// ============================================================================
+// NORMALIZED COMPONENT EXPORTS FOR ALL 6 PAGES & INTERACTIVE WIDGETS
+// ============================================================================
+
+export const NAV_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Why Choose Us", href: "/why-choose-us" },
+  { label: "Careers", href: "/careers" },
+  { label: "Contact Us", href: "/contact" },
+];
+
+export const COMPANY_INFO = {
+  name: BRAND_INFO.companyName,
+  shortName: BRAND_INFO.shortName,
+  tagline: BRAND_INFO.tagline,
+  introduction: [BRAND_INFO.companyIntroduction],
+  background: [BRAND_INFO.companyBackground],
+  mission: BRAND_INFO.mission,
+  vision: BRAND_INFO.vision,
+};
+
+export const CONTACT_INFO = {
+  address: BRAND_INFO.contactDetails.headOfficeAddress,
+  phone: BRAND_INFO.contactDetails.helplinePhone,
+  phoneRaw: "+924234511111",
+  generalEmail: BRAND_INFO.contactDetails.sourceGeneralEmail,
+  hrEmail: BRAND_INFO.contactDetails.sourceCareersEmail,
+  coverageZones: BRAND_INFO.contactDetails.coverageCorridors,
+  verificationNotice:
+    "The headquarters address (7/4, E-3 Main Boulevard, Gulberg-III, Lahore), helpline (+92 42 345 11 111), and email endpoints are extracted from the business reference source (Z COM Networks) and flagged for confirmation before production launch under EARTH I Broadband (Pvt.) Ltd.",
+};
+
+export const INFRASTRUCTURE_STATS = VERIFIED_INFRASTRUCTURE_STATS.map((s) => ({
+  id: s.id,
+  value: s.value,
+  unit: s.suffix ? s.suffix.replace("+", "").trim() : "SLA / NOC",
+  label: s.label,
+  description: s.detail,
+}));
+
+export const SERVICES = SERVICES_DATA.map((s) => ({
+  ...s,
+  technicalSpecs: s.specs,
+}));
+
+export const WHY_CHOOSE_US_POINTS = WHY_CHOOSE_US_ADVANTAGES.map((w) => ({
+  id: w.id,
+  title: w.title,
+  metricHighlight: w.highlightMetric,
+  description: w.description,
+}));
+
+export const INFRASTRUCTURE_SHOWCASE = [
+  {
+    id: "subterranean-armored-core",
+    category: "Outside Plant (OSP)",
+    title: "1,200+ km Subterranean Armored Fiber Ring",
+    description:
+      "Deep-trench underground armored optical fiber conduits engineered to eliminate aerial cuts, weather attenuation, and electromagnetic interference across metropolitan corridors.",
+    metrics: "1,200+ km Underground Ring • Zero Aerial Fragility",
+  },
+  {
+    id: "dwdm-core-routing",
+    category: "Core Optical Fabric",
+    title: "100 Gbps Multi-Ring Optical Backbone",
+    description:
+      "High-capacity multi-terabit optical transport and routing powered by carrier-grade Cisco, Juniper, and Huawei core hardware with Dual-Stack IPv4/IPv6.",
+    metrics: "100G Core Transport • < 50ms Ring Protection",
+  },
+  {
+    id: "proactive-noc-otdr",
+    category: "24/7/365 NOC Operations",
+    title: "Live NOC Telemetry & Automated OTDR",
+    description:
+      "Round-the-clock Network Operations Center monitoring optical attenuation, BGP sessions, and automated OTDR fault pinpointing with <15m incident response.",
+    metrics: "24/7/365 NOC • < 15m Incident Response SLA",
+  },
+];
+
+export const INDUSTRY_SECTORS = INDUSTRIES_AND_SECTORS.map((sec) => ({
+  id: sec.id,
+  name: sec.name,
+  useCase: sec.description,
+}));
+
+export const PROJECTS_PORTFOLIO = PORTFOLIO_PROJECTS.map((proj) => ({
+  id: proj.id,
+  title: proj.title,
+  category: proj.category,
+  corridor: proj.corridorOrZone,
+  summary: proj.summary,
+  highlights: proj.technicalScope,
+}));
+
+export const COMPANY_VALUES = [
+  {
+    title: "Pure Optical Integrity",
+    description:
+      "We deploy 100% subterranean armored optical fiber rather than compromising with shared wireless or legacy copper.",
+  },
+  {
+    title: "Deterministic SLA Reliability",
+    description:
+      "Every enterprise circuit is engineered with self-healing ring protection (<50ms failover) and contractual 99.9%–99.99% uptime SLAs.",
+  },
+  {
+    title: "Uncontended Transparency",
+    description:
+      "True 1:1 symmetrical upload and download bandwidth with zero Fair Usage Policy (FUP) caps or peak-hour throttling.",
+  },
+  {
+    title: "Proactive NOC Engineering",
+    description:
+      "Our 24/7/365 NOC resolves optical attenuation anomalies via real-time OTDR telemetry before operations are impacted.",
+  },
+];
+
+export const BROADBAND_COMPARISON = COMPARISON_TABLE_DATA.map((row) => ({
+  feature: row.feature,
+  conventionalBroadband: row.conventional,
+  earthIEnterpriseFiber: row.earthIBroadband,
+}));
+
+export const CAREER_TRACKS = CAREER_OPENINGS;

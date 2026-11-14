@@ -4,20 +4,20 @@
 
 @layer base {
   :root {
-    --brand-cyan: #2EC1D9;
-    --brand-blue: #008FFF;
-    --brand-navy: #050505;
+    --brand-cyan: #0FA4E8;
+    --brand-blue: #0284C7;
+    --brand-navy: #0F172A;
   }
 
   html {
     scroll-behavior: smooth;
-    color: #FFFFFF;
-    background-color: #020508;
+    color: #0F172A;
+    background-color: #FFFFFF;
   }
 
   body {
-    background-color: #020508;
-    color: #FFFFFF;
+    background-color: #FFFFFF;
+    color: #0F172A;
     overflow-x: hidden;
   }
 
@@ -36,43 +36,51 @@
   }
 }
 
-/* Exact HubexTech Dark Radial/Linear Background Gradient */
+/* Luminous Light ISP Background Gradient (Inspired by HubexTech's radial glow, adapted for Light Mode) */
 .bg-black-gradient {
   background: radial-gradient(
-      circle at 75% 18%,
-      rgba(0, 143, 255, 0.14) 0%,
-      rgba(46, 193, 217, 0.06) 28%,
-      rgba(0, 0, 0, 0) 55%
+      circle at 78% 14%,
+      rgba(15, 164, 232, 0.13) 0%,
+      rgba(56, 189, 248, 0.06) 30%,
+      rgba(255, 255, 255, 0) 60%
     ),
     radial-gradient(
-      circle at 18% 65%,
-      rgba(46, 193, 217, 0.1) 0%,
-      rgba(0, 0, 0, 0) 50%
+      circle at 12% 55%,
+      rgba(2, 132, 199, 0.08) 0%,
+      rgba(255, 255, 255, 0) 50%
     ),
-    linear-gradient(180deg, #03070e 0%, #050505 45%, #020408 100%);
+    linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 35%, #F0F9FF 75%, #FFFFFF 100%);
 }
 
 .bg-hubex-banner {
   background: linear-gradient(
-    98.63deg,
-    rgba(0, 0, 0, 0.72) 40.34%,
-    rgba(46, 193, 217, 0.58) 99.16%
-  );
-}
-
-.bg-hubex-modal {
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.82) 40.93%,
-    rgba(46, 193, 217, 0.55) 100%
+    102deg,
+    #0F172A 15%,
+    #0369A1 65%,
+    #0FA4E8 100%
   );
 }
 
 .bg-tech-grid {
-  background-size: 48px 48px;
+  background-size: 44px 44px;
   background-image: 
-    linear-gradient(to right, rgba(46, 193, 217, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(46, 193, 217, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(15, 164, 232, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 164, 232, 0.08) 1px, transparent 1px);
+}
+
+/* Animated Optical Fiber Signal Pulse Line */
+.fiber-pulse-line {
+  stroke-dasharray: 12 180;
+  animation: fiberSignal 3.2s linear infinite;
+}
+
+@keyframes fiberSignal {
+  0% {
+    stroke-dashoffset: 192;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
 }
 
 /* Custom scrollbar */
@@ -80,12 +88,12 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #F1F5F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1A545E;
+  background: #94A3B8;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2EC1D9;
+  background: #0FA4E8;
 }

@@ -2,249 +2,166 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  CheckCircle2,
-  Cpu,
+  Radio,
+  ShieldCheck,
   Activity,
   Network,
-  MapPin,
-  ShieldAlert,
-  ArrowUpRight,
+  CheckCircle2,
+  ChevronRight,
+  Target,
+  Eye,
+  Cpu,
   Layers,
+  MapPin,
 } from "lucide-react";
 import {
-  BRAND_INFO,
-  VERIFIED_INFRASTRUCTURE_STATS,
+  COMPANY_INFO,
+  INFRASTRUCTURE_STATS,
+  INFRASTRUCTURE_SHOWCASE,
+  COMPANY_VALUES,
+  CONTACT_INFO,
 } from "@/data/siteData";
 import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
-  title: "About Us — Corporate Profile & Optical Infrastructure",
+  title: "About Us | Optical Fiber Backbone & NOC Operations",
   description:
-    "Learn about EARTH I Broadband (Pvt.) Ltd., our 1,200+ km subterranean armored metro fiber network, 100G optical core ring, 24/7/365 NOC operations, mission, and vision.",
+    "Learn about EARTH I Broadband (Pvt.) Ltd. — operating a 1,200+ km subterranean armored metro fiber-optic network, 100 Gbps optical core ring, and 24/7/365 NOC.",
 };
-
-const CORE_VALUES = [
-  {
-    title: "Carrier-Grade Reliability",
-    description:
-      "We engineer every enterprise link for deterministic uptime—delivering 1:1 uncontended symmetrical bandwidth backed by dual-path self-healing optical rings.",
-  },
-  {
-    title: "Technical Rigor & Precision",
-    description:
-      "From deep-trench armored conduit deployment and precision fusion splicing to BGP core routing and automated OTDR telemetry, we never cut engineering corners.",
-  },
-  {
-    title: "24/7/365 Proactive Accountability",
-    description:
-      "Our Network Operations Center monitors optical light levels continuously, initiating incident response in under 15 minutes with transparent SLA governance.",
-  },
-  {
-    title: "Zero-Compromise Transparency",
-    description:
-      "No hidden Fair Usage Policies (FUP), no artificial peak-hour throttling, and clear end-to-end SLA demarcation for every corporate subscriber.",
-  },
-];
 
 export default function AboutPage() {
   return (
-    <div className="bg-black-gradient text-white overflow-hidden">
-      {/* Page Hero */}
-      <section className="relative py-16 lg:py-24 border-b border-[#1a1a1a]">
-        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
-          <div className="max-w-3xl space-y-5">
-            <div className="inline-flex items-center gap-2 bg-[#1591EE15] border border-[#1591EE33] rounded-full px-4 py-1.5">
-              <span className="text-brand_cyan text-xs font-semibold uppercase tracking-wide">
-                Corporate Profile · {BRAND_INFO.companyName}
-              </span>
+    <div className="pt-28 sm:pt-36 pb-10">
+      {/* HERO BANNER */}
+      <section className="px-4 sm:px-8 pb-14">
+        <div className="max-w-[1440px] mx-auto rounded-3xl bg-white border border-slate-200/90 p-8 sm:p-14 lg:p-16 relative overflow-hidden shadow-card-premium">
+          <div className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-brand_cyan/10 blur-[100px]" />
+
+          <div className="max-w-3xl space-y-5 relative z-10">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-xs font-bold uppercase tracking-wider text-brand_blue">
+              <Radio className="w-3.5 h-3.5 text-brand_cyan animate-pulse" />
+              <span>Corporate Profile &amp; Optical Engineering</span>
             </div>
-            <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight leading-snug">
-              Engineering the{" "}
-              <span className="text-brand_cyan">Subterranean Optical</span>{" "}
-              Backbone for Enterprise Growth
+
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 leading-tight">
+              Architecting Next-Generation{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand_cyan to-brand_blue">
+                Optical Fiber Infrastructure
+              </span>
             </h1>
-            <p className="text-base sm:text-lg text-[#D3D3D3] leading-relaxed">
-              {BRAND_INFO.companyIntroduction}
+
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+              <strong className="text-slate-900">{COMPANY_INFO.name}</strong> is a premier enterprise broadband and ICT infrastructure provider delivering pure subterranean optical fiber connectivity, symmetrical Dedicated Internet Access (DIA), and multi-site Layer-2/Layer-3 network architectures.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Alternating Section 1: Company Background */}
-      <section className="py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-brand_cyan">
-                01 // Company Background
-              </span>
-              <h2 className="text-2xl sm:text-4xl font-semibold text-white tracking-tight">
-                Built on Pure Optical Fiber —{" "}
-                <span className="text-brand_cyan">Zero Legacy Copper</span>
-              </h2>
-              <p className="text-[#D3D3D3] text-base leading-relaxed">
-                {BRAND_INFO.companyIntroduction}
-              </p>
-              <p className="text-[#9C9C9C] text-base leading-relaxed">
-                {BRAND_INFO.companyBackground}
-              </p>
-
-              <div className="space-y-3 pt-2">
-                {[
-                  "1,200+ km of subterranean armored metro core optical fiber conduits",
-                  "100G core optical transport ring with <50ms automatic protection switching",
-                  "Strict 1:1 (uncontended) symmetrical upload and download speeds",
-                  "Native Dual-Stack IPv4/IPv6 routing and automated OTDR fault telemetry",
-                ].map((point) => (
-                  <div
-                    key={point}
-                    className="flex items-start gap-3 text-sm text-[#D3D3D3]"
-                  >
-                    <CheckCircle2 className="w-5 h-5 text-brand_cyan shrink-0 mt-0.5" />
-                    <span>{point}</span>
-                  </div>
-                ))}
+      {/* VERIFIED INFRASTRUCTURE STATS */}
+      <section className="px-4 sm:px-8 pb-16">
+        <div className="max-w-[1440px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {INFRASTRUCTURE_STATS.map((stat) => (
+            <div
+              key={stat.id}
+              className="rounded-2xl bg-white border border-slate-200/90 hover:border-brand_cyan p-6 shadow-card-premium transition-all"
+            >
+              <div className="flex items-baseline justify-between">
+                <span className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand_cyan to-brand_blue">
+                  {stat.value}
+                </span>
+                <span className="text-xs font-bold uppercase px-2.5 py-1 rounded-full bg-sky-50 text-brand_blue border border-sky-200">
+                  {stat.unit}
+                </span>
               </div>
+              <h2 className="text-base font-bold text-slate-900 mt-3">{stat.label}</h2>
+              <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
+                {stat.description}
+              </p>
             </div>
-
-            <div className="lg:col-span-6">
-              <div className="relative rounded-2xl overflow-hidden border border-[#272727] bg-[#000000] p-3">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80"
-                  alt="Subterranean Optical Fiber Conduit & Splicing Infrastructure"
-                  className="w-full h-[360px] object-cover rounded-xl opacity-85"
-                />
-                <div className="mt-3 p-4 rounded-xl bg-[#0D0D0D] border border-[#272727]">
-                  <div className="text-xs font-mono text-brand_cyan uppercase">
-                    Subterranean Armored Architecture
-                  </div>
-                  <div className="text-sm text-[#D3D3D3] mt-1">
-                    Deep-trench optical conduits immune to overhead weather
-                    hazards and aerial cable disturbances.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Mission & Vision Cards */}
-      <section className="py-16 border-y border-[#1a1a1a]">
-        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-8 sm:p-10 rounded-2xl bg-[#000000] border border-[#272727] space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-[#0D0D0D] border border-[#1A545E] text-brand_cyan flex items-center justify-center">
-                <Network className="w-6 h-6" />
-              </div>
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-brand_cyan">
-                Corporate Mission
+      {/* ALTERNATING SECTION 1: COMPANY INTRODUCTION & BACKGROUND */}
+      <section className="px-4 sm:px-8 py-12 bg-white/70 border-y border-slate-200/80">
+        <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="lg:col-span-7 space-y-5">
+            <span className="text-xs font-bold uppercase tracking-wider text-brand_blue">
+              Our Foundation &amp; Telecom Heritage
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900">
+              Built From the Ground Up for{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand_cyan to-brand_blue">
+                Enterprise Resilience
               </span>
-              <h3 className="text-2xl font-semibold text-white">
-                Bridging Distances &amp; Fostering Dependable Communication
-              </h3>
-              <p className="text-[#9C9C9C] text-base leading-relaxed">
-                {BRAND_INFO.mission}
+            </h2>
+            {COMPANY_INFO.introduction.map((para, i) => (
+              <p key={i} className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                {para}
               </p>
-            </div>
-
-            <div className="p-8 sm:p-10 rounded-2xl bg-[#000000] border border-[#1A545E] space-y-4">
-              <div className="w-12 h-12 rounded-xl bg-[#0D0D0D] border border-[#1A545E] text-brand_cyan flex items-center justify-center">
-                <Cpu className="w-6 h-6" />
-              </div>
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-brand_cyan">
-                Corporate Vision
-              </span>
-              <h3 className="text-2xl font-semibold text-white">
-                Ubiquitous, Empowering High-Speed Optical Connectivity
-              </h3>
-              <p className="text-[#9C9C9C] text-base leading-relaxed">
-                {BRAND_INFO.vision}
+            ))}
+            {COMPANY_INFO.background.map((para, i) => (
+              <p key={i} className="text-sm sm:text-base text-slate-600 leading-relaxed">
+                {para}
               </p>
-            </div>
+            ))}
           </div>
-        </div>
-      </section>
 
-      {/* Alternating Section 2: NOC & Technical Capabilities */}
-      <section className="py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6 order-2 lg:order-1">
-              <div className="rounded-2xl border border-[#272727] bg-[#000000] p-6 space-y-6">
-                <div className="grid grid-cols-2 gap-4">
-                  {VERIFIED_INFRASTRUCTURE_STATS.map((stat) => (
-                    <div
-                      key={stat.id}
-                      className="p-5 rounded-xl bg-[#0D0D0D] border border-[#272727]"
-                    >
-                      <div className="text-3xl font-bold text-brand_cyan mb-1">
-                        {stat.value}
-                      </div>
-                      <div className="text-sm font-semibold text-white">
-                        {stat.label}
-                      </div>
-                      <p className="text-xs text-[#9C9C9C] mt-1">
-                        {stat.detail}
-                      </p>
-                    </div>
-                  ))}
+          <div className="lg:col-span-5">
+            <div className="rounded-3xl bg-white border border-slate-200 p-6 sm:p-8 space-y-5 shadow-card-premium">
+              <div className="flex items-center gap-3 pb-4 border-b border-slate-100">
+                <div className="w-11 h-11 rounded-xl bg-sky-50 border border-sky-200 flex items-center justify-center text-brand_cyan">
+                  <Network className="w-6 h-6" />
                 </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-6 order-1 lg:order-2 space-y-6">
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-brand_cyan">
-                02 // Network Operations &amp; Core Hardware
-              </span>
-              <h2 className="text-2xl sm:text-4xl font-semibold text-white tracking-tight">
-                100G Core Fabric, Multi-Vendor Silicon &amp;{" "}
-                <span className="text-brand_cyan">24/7 NOC Assurance</span>
-              </h2>
-              <p className="text-[#D3D3D3] text-base leading-relaxed">
-                Our core transport network is engineered around high-capacity
-                routing and switching architectures from enterprise leaders
-                including <strong className="text-white">Cisco, Juniper, and Huawei</strong>,
-                paired with precision fusion-spliced optical distribution frames
-                (ODFs).
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-4 rounded-xl bg-[#000000] border border-[#272727]">
-                  <Activity className="w-5 h-5 text-brand_cyan mb-2" />
-                  <h4 className="text-sm font-semibold text-white">
-                    Automated OTDR Telemetry
-                  </h4>
-                  <p className="text-xs text-[#9C9C9C] mt-1">
-                    Pinpoints physical fiber bend or splice anomalies along
-                    underground conduits in real time.
-                  </p>
-                </div>
-                <div className="p-4 rounded-xl bg-[#000000] border border-[#272727]">
-                  <Layers className="w-5 h-5 text-brand_cyan mb-2" />
-                  <h4 className="text-sm font-semibold text-white">
-                    Dual-Stack IPv4 / IPv6 &amp; BGP
-                  </h4>
-                  <p className="text-xs text-[#9C9C9C] mt-1">
-                    Full support for enterprise ASN peering, BGP multi-homing,
-                    and clean static subnet routing.
+                <div>
+                  <h3 className="text-base font-bold text-slate-900">
+                    Optical Backbone Architecture
+                  </h3>
+                  <p className="text-xs text-slate-500">
+                    Subterranean Armored Metro Ring
                   </p>
                 </div>
               </div>
 
-              <div className="p-5 rounded-xl bg-[#000000] border border-[#272727]">
-                <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase text-brand_cyan mb-3">
-                  <MapPin className="w-4 h-4" />
-                  <span>Active Metropolitan &amp; Regional Optical Corridors</span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {BRAND_INFO.contactDetails.coverageCorridors.map((c) => (
+              <ul className="space-y-3 text-xs sm:text-sm text-slate-700">
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-brand_cyan shrink-0 mt-0.5" />
+                  <span>
+                    <strong className="text-slate-900">1,200+ km</strong> underground armored optical fiber core across major commercial zones.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-brand_cyan shrink-0 mt-0.5" />
+                  <span>
+                    <strong className="text-slate-900">100 Gbps</strong> multi-ring optical core capacity with automated sub-50ms ring protection.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-brand_cyan shrink-0 mt-0.5" />
+                  <span>
+                    <strong className="text-slate-900">1:1 Uncontended</strong> symmetrical upload and download bandwidth guarantees.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 text-brand_cyan shrink-0 mt-0.5" />
+                  <span>
+                    <strong className="text-slate-900">24/7/365 NOC</strong> real-time optical attenuation and BGP routing telemetry.
+                  </span>
+                </li>
+              </ul>
+
+              <div className="pt-3 border-t border-slate-100">
+                <p className="text-xs font-bold uppercase tracking-wider text-brand_blue mb-2">
+                  Active Commercial Fiber Corridors
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {CONTACT_INFO.coverageZones.map((zone) => (
                     <span
-                      key={c}
-                      className="px-2.5 py-1 rounded-md bg-[#0D0D0D] border border-[#272727] text-xs text-[#D3D3D3]"
+                      key={zone}
+                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200 text-[11px] font-medium text-slate-700"
                     >
-                      {c}
+                      <MapPin className="w-3 h-3 text-brand_cyan" />
+                      {zone}
                     </span>
                   ))}
                 </div>
@@ -254,60 +171,101 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Core Values & Governance Flag */}
-      <section className="py-16 border-t border-[#1a1a1a]">
-        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
-          <h2 className="text-2xl sm:text-4xl font-semibold text-brand_cyan mb-10">
-            Core Corporate Values
-          </h2>
+      {/* MISSION & VISION CARDS */}
+      <section className="px-4 sm:px-8 py-14">
+        <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="rounded-3xl bg-white border border-slate-200/90 hover:border-brand_cyan p-8 space-y-4 shadow-card-premium transition-all">
+            <div className="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-200 flex items-center justify-center text-brand_cyan">
+              <Target className="w-6 h-6" />
+            </div>
+            <h2 className="text-2xl font-extrabold text-slate-900">Our Mission</h2>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              {COMPANY_INFO.mission}
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            {CORE_VALUES.map((val, idx) => (
+          <div className="rounded-3xl bg-white border border-slate-200/90 hover:border-brand_cyan p-8 space-y-4 shadow-card-premium transition-all">
+            <div className="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-200 flex items-center justify-center text-brand_cyan">
+              <Eye className="w-6 h-6" />
+            </div>
+            <h2 className="text-2xl font-extrabold text-slate-900">Our Vision</h2>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              {COMPANY_INFO.vision}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* INFRASTRUCTURE & NETWORK OPERATIONS SHOWCASE */}
+      <section className="px-4 sm:px-8 py-12">
+        <div className="max-w-[1440px] mx-auto">
+          <div className="max-w-3xl mb-10 space-y-2">
+            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand_blue">
+              <Layers className="w-4 h-4 text-brand_cyan" />
+              Technical Capabilities &amp; Network Operations
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900">
+              Inside Our{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand_cyan to-brand_blue">
+                Optical &amp; NOC Infrastructure
+              </span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {INFRASTRUCTURE_SHOWCASE.map((item) => (
               <div
-                key={val.title}
-                className="p-7 rounded-2xl bg-[#000000] border border-[#272727] flex items-start gap-4"
+                key={item.id}
+                className="rounded-2xl bg-white border border-slate-200/90 hover:border-brand_cyan p-6 flex flex-col justify-between shadow-card-premium hover:shadow-card-hover transition-all"
               >
-                <div className="w-10 h-10 rounded-lg bg-[#0D0D0D] border border-[#1A545E] text-brand_cyan font-mono font-bold text-sm flex items-center justify-center shrink-0">
-                  0{idx + 1}
-                </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-1.5">
-                    {val.title}
-                  </h3>
-                  <p className="text-sm text-[#9C9C9C] leading-relaxed">
-                    {val.description}
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-sky-50 text-brand_blue border border-sky-200">
+                      {item.category}
+                    </span>
+                    <Activity className="w-4 h-4 text-brand_cyan" />
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900">{item.title}</h3>
+                  <p className="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed">
+                    {item.description}
                   </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-slate-100 text-xs font-bold text-brand_blue">
+                  {item.metrics}
                 </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="p-6 rounded-2xl bg-[#0D0D0D] border border-amber-500/40 text-sm">
-            <div className="flex items-start gap-3">
-              <ShieldAlert className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
-              <div className="space-y-1.5">
-                <h4 className="font-semibold text-amber-300">
-                  Corporate Governance, Licensing &amp; Address Verification Flag
-                </h4>
-                <p className="text-[#9C9C9C] text-xs sm:text-sm leading-relaxed">
-                  Source entity registration numbers, APNIC ASN references, and
-                  physical headquarters coordinates (
-                  <span className="text-white font-mono">
-                    {BRAND_INFO.contactDetails.headOfficeAddress}
-                  </span>
-                  ) are explicitly flagged for executive confirmation by{" "}
-                  <strong className="text-white">{BRAND_INFO.companyName}</strong>{" "}
-                  rather than silently transferred.
+      {/* CORE ENGINEERING VALUES */}
+      <section className="px-4 sm:px-8 py-12">
+        <div className="max-w-[1440px] mx-auto rounded-3xl bg-white border border-slate-200/90 p-8 sm:p-12 shadow-card-premium">
+          <div className="max-w-2xl mb-8">
+            <span className="text-xs font-bold uppercase tracking-wider text-brand_blue">
+              Operating Principles
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
+              Our Core Engineering Values
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {COMPANY_VALUES.map((val, idx) => (
+              <div
+                key={idx}
+                className="p-5 rounded-2xl bg-slate-50 border border-slate-200 hover:border-brand_cyan/50 hover:bg-white transition-all"
+              >
+                <div className="w-9 h-9 rounded-xl bg-sky-50 border border-sky-200 flex items-center justify-center text-brand_cyan mb-3">
+                  <Cpu className="w-4 h-4" />
+                </div>
+                <h3 className="text-base font-bold text-slate-900">{val.title}</h3>
+                <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                  {val.description}
                 </p>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-1 text-xs font-bold text-brand_cyan hover:underline pt-1"
-                >
-                  <span>Review Contact &amp; Verification Details</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </Link>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

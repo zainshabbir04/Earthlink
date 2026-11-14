@@ -1,56 +1,48 @@
 import React from "react";
 import type { Metadata } from "next";
-import { BRAND_INFO, SERVICES_DATA } from "@/data/siteData";
+import { Network } from "lucide-react";
 import ServicesExplorer from "@/components/ServicesExplorer";
 import CTASection from "@/components/CTASection";
+import { COMPANY_INFO } from "@/data/siteData";
 
 export const metadata: Metadata = {
-  title: "Enterprise Connectivity, Optical Fiber, Cloud & Cybersecurity Services",
+  title: "Enterprise Services | Optical Fiber, DIA, MPLS, Cloud & Cybersecurity",
   description:
-    "Explore EARTH I Broadband's enterprise services: Corporate Internet, 1:1 Dedicated Internet Access (DIA), MPLS Connectivity, VPN Solutions, Point-to-Point Optical Fiber, Cloud & Hosting, Managed IT, Cybersecurity, and Digital Solutions.",
+    "Explore EARTH I Broadband (Pvt.) Ltd.'s 9 enterprise connectivity and ICT services: Corporate Fiber Internet, 1:1 Symmetrical DIA, MPLS VPN, Point-to-Point Optical Wave, Cloud, Managed IT, and Cybersecurity.",
 };
 
 export default function ServicesPage() {
   return (
-    <div className="bg-black-gradient text-white overflow-hidden">
-      {/* Services Hero */}
-      <section className="relative py-16 lg:py-24 border-b border-[#1a1a1a]">
-        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
-          <div className="max-w-3xl space-y-5">
-            <div className="inline-flex items-center gap-2 bg-[#1591EE15] border border-[#1591EE33] rounded-full px-4 py-1.5">
-              <span className="text-brand_cyan text-xs font-semibold uppercase tracking-wide">
-                {BRAND_INFO.companyName} · Service Portfolio
+    <div className="pt-28 sm:pt-36 pb-10">
+      {/* HERO HEADER */}
+      <section className="px-4 sm:px-8 pb-12">
+        <div className="max-w-[1440px] mx-auto rounded-3xl bg-white border border-slate-200/90 p-8 sm:p-14 lg:p-16 relative overflow-hidden shadow-card-premium">
+          <div className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-brand_cyan/10 blur-[100px]" />
+          <div className="max-w-3xl space-y-5 relative z-10">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-xs font-bold uppercase tracking-wider text-brand_blue">
+              <Network className="w-3.5 h-3.5 text-brand_cyan" />
+              <span>Enterprise Connectivity &amp; Managed ICT Portfolio</span>
+            </div>
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 leading-tight">
+              Comprehensive{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand_cyan to-brand_blue">
+                Optical Telecom &amp; ICT Solutions
               </span>
-            </div>
-            <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight leading-snug">
-              Carrier-Grade{" "}
-              <span className="text-brand_cyan">Optical Connectivity</span> &amp;
-              Managed Enterprise Solutions
             </h1>
-            <p className="text-base sm:text-lg text-[#D3D3D3] leading-relaxed">
-              Every circuit and managed solution is delivered over our
-              subterranean armored optical fiber network with contractual SLAs,
-              1:1 symmetrical bandwidth options, and 24/7/365 NOC engineering
-              support.
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+              From 1:1 uncontended Dedicated Internet Access (DIA) and Layer-2/3 MPLS interconnectivity to managed SOC cybersecurity and cloud infrastructure, <strong className="text-slate-900">{COMPANY_INFO.name}</strong> delivers end-to-end enterprise reliability.
             </p>
-
-            {/* Quick Jump Anchors */}
-            <div className="pt-3 flex flex-wrap gap-2">
-              {SERVICES_DATA.map((s) => (
-                <a
-                  key={s.id}
-                  href={`#${s.id}`}
-                  className="px-3.5 py-1.5 rounded-lg bg-[#000000] hover:bg-brand_cyan hover:text-black border border-[#272727] text-xs font-mono text-[#D3D3D3] transition-colors"
-                >
-                  {s.shortTitle}
-                </a>
-              ))}
-            </div>
           </div>
         </div>
       </section>
 
-      <ServicesExplorer />
+      {/* INTERACTIVE SERVICES EXPLORER */}
+      <section className="px-4 sm:px-8 pb-14">
+        <div className="max-w-[1440px] mx-auto">
+          <ServicesExplorer />
+        </div>
+      </section>
+
       <CTASection />
     </div>
   );

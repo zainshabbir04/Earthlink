@@ -8,15 +8,14 @@ function OpticalMetroCoreMesh({ reducedMotion }: { reducedMotion: boolean }) {
   const groupRef = useRef<THREE.Group>(null);
   const pulsesRef = useRef<THREE.Points>(null);
 
-  // Create nodes and connecting lines representing the 1,200+ km Metro Core Ring
   const { nodePositions, linePositions, pulseData } = useMemo(() => {
     const nodes: THREE.Vector3[] = [];
-    const nodeCount = 46;
+    const nodeCount = 52;
 
     for (let i = 0; i < nodeCount; i++) {
       const phi = Math.acos(-1 + (2 * i) / nodeCount);
       const theta = Math.sqrt(nodeCount * Math.PI) * phi;
-      const r = 2.15 + (i % 3) * 0.18;
+      const r = 2.15 + (i % 3) * 0.16;
       nodes.push(
         new THREE.Vector3(
           r * Math.cos(theta) * Math.sin(phi),
@@ -33,13 +32,12 @@ function OpticalMetroCoreMesh({ reducedMotion }: { reducedMotion: boolean }) {
       posArray[idx * 3 + 2] = n.z;
     });
 
-    // Connect nearby nodes to form redundant optical rings
     const segments: number[] = [];
     const pairs: [THREE.Vector3, THREE.Vector3][] = [];
     for (let i = 0; i < nodes.length; i++) {
       for (let j = i + 1; j < nodes.length; j++) {
         const dist = nodes[i].distanceTo(nodes[j]);
-        if (dist < 1.45) {
+        if (dist < 1.42) {
           segments.push(
             nodes[i].x,
             nodes[i].y,
@@ -64,15 +62,15 @@ function OpticalMetroCoreMesh({ reducedMotion }: { reducedMotion: boolean }) {
   useFrame(({ clock, pointer }) => {
     if (!groupRef.current || reducedMotion) return;
     const t = clock.getElapsedTime();
-    groupRef.current.rotation.y = t * 0.14 + pointer.x * 0.25;
-    groupRef.current.rotation.x = Math.sin(t * 0.2) * 0.12 + pointer.y * 0.15;
+    groupRef.current.rotation.y = t * 0.18 + pointer.x * 0.28;
+    groupRef.current.rotation.x = Math.sin(t * 0.25) * 0.14 + pointer.y * 0.18;
 
     if (pulsesRef.current) {
       const attr = pulsesRef.current.geometry.attributes
         .position as THREE.BufferAttribute;
       const arr = attr.array as Float32Array;
       pulseData.pairs.forEach(([a, b], idx) => {
-        const progress = (t * 0.65 + idx * 0.17) % 1;
+        const progress = (t * 0.75 + idx * 0.19) % 1;
         arr[idx * 3] = THREE.MathUtils.lerp(a.x, b.x, progress);
         arr[idx * 3 + 1] = THREE.MathUtils.lerp(a.y, b.y, progress);
         arr[idx * 3 + 2] = THREE.MathUtils.lerp(a.z, b.z, progress);
@@ -83,28 +81,28 @@ function OpticalMetroCoreMesh({ reducedMotion }: { reducedMotion: boolean }) {
 
   return (
     <group ref={groupRef}>
-      {/* Inner Core Sphere */}
+      {/* Inner Globe Wireframe */}
       <mesh>
-        <sphereGeometry args={[1.65, 32, 32]} />
+        <sphereGeometry args={[1.68, 28, 28]} />
         <meshBasicMaterial
-          color="#081C38"
+          color="#BAE6FD"
           wireframe
           transparent
-          opacity={0.28}
+          opacity={0.45}
         />
       </mesh>
 
-      {/* Outer Ring Orbit */}
-      <mesh rotation={[Math.PI / 2.4, 0.3, 0]}>
-        <torusGeometry args={[2.55, 0.012, 16, 100]} />
-        <meshBasicMaterial color="#0FA4E8" transparent opacity={0.55} />
+      {/* Outer Ring Orbits */}
+      <mesh rotation={[Math.PI / 2.3, 0.3, 0]}>
+        <torusGeometry args={[2.55, 0.016, 16, 100]} />
+        <meshBasicMaterial color="#0FA4E8" transparent opacity={0.75} />
       </mesh>
       <mesh rotation={[-Math.PI / 3, -0.4, 0.2]}>
-        <torusGeometry args={[2.75, 0.008, 16, 100]} />
-        <meshBasicMaterial color="#38BDF8" transparent opacity={0.3} />
+        <torusGeometry args={[2.75, 0.012, 16, 100]} />
+        <meshBasicMaterial color="#0284C7" transparent opacity={0.5} />
       </mesh>
 
-      {/* Optical Fiber Links */}
+      {/* Subterranean Fiber Links */}
       <lineSegments>
         <bufferGeometry>
           <bufferAttribute
@@ -114,7 +112,7 @@ function OpticalMetroCoreMesh({ reducedMotion }: { reducedMotion: boolean }) {
             itemSize={3}
           />
         </bufferGeometry>
-        <lineBasicMaterial color="#0FA4E8" transparent opacity={0.32} />
+        <lineBasicMaterial color="#0FA4E8" transparent opacity={0.42} />
       </lineSegments>
 
       {/* Metro POP Nodes */}
@@ -128,15 +126,15 @@ function OpticalMetroCoreMesh({ reducedMotion }: { reducedMotion: boolean }) {
           />
         </bufferGeometry>
         <pointsMaterial
-          color="#38BDF8"
-          size={0.08}
+          color="#0284C7"
+          size={0.095}
           sizeAttenuation
           transparent
-          opacity={0.9}
+          opacity={0.95}
         />
       </points>
 
-      {/* Travelling Optical Light Pulses */}
+      {/* Travelling Optical Data Packets */}
       <points ref={pulsesRef}>
         <bufferGeometry>
           <bufferAttribute
@@ -147,8 +145,8 @@ function OpticalMetroCoreMesh({ reducedMotion }: { reducedMotion: boolean }) {
           />
         </bufferGeometry>
         <pointsMaterial
-          color="#FFFFFF"
-          size={0.065}
+          color="#0F172A"
+          size={0.075}
           sizeAttenuation
           transparent
           opacity={0.95}
@@ -174,7 +172,7 @@ export default function FiberNetworkCanvas() {
   if (!mounted) {
     return (
       <div className="w-full h-full flex items-center justify-center">
-        <div className="w-64 h-64 rounded-full border border-brand-cyan/30 bg-brand-cyan/5 animate-pulse" />
+        <div className="w-64 h-64 rounded-full border-2 border-brand_cyan/30 bg-sky-50 animate-pulse" />
       </div>
     );
   }
@@ -186,7 +184,7 @@ export default function FiberNetworkCanvas() {
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       >
-        <ambientLight intensity={0.8} />
+        <ambientLight intensity={1} />
         <OpticalMetroCoreMesh reducedMotion={reducedMotion} />
       </Canvas>
     </div>

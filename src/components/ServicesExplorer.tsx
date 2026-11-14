@@ -3,190 +3,164 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import {
+  Radio,
+  Globe,
+  Network,
+  Lock,
+  Cpu,
+  Server,
+  Wrench,
+  ShieldAlert,
+  Code2,
   CheckCircle2,
-  ArrowUpRight,
-  Layers,
-  ShieldCheck,
-  Terminal,
+  ChevronRight,
+  Sliders,
+  Zap,
 } from "lucide-react";
-import { SERVICES_DATA, ServiceItem } from "@/data/siteData";
-import ServiceIcon from "./ServiceIcon";
+import { SERVICES } from "@/data/siteData";
 
-const SERVICE_CATEGORIES = [
-  "All Solutions",
-  "Corporate Connectivity",
-  "Optical Infrastructure",
-  "Cloud & Managed IT",
-  "Security & Digital",
-] as const;
+const iconMap: Record<string, React.ElementType> = {
+  Radio,
+  Globe,
+  Network,
+  Lock,
+  Cpu,
+  Server,
+  Wrench,
+  ShieldAlert,
+  Code2,
+};
 
 export default function ServicesExplorer() {
-  const [selectedCategory, setSelectedCategory] =
-    useState<string>("All Solutions");
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
-  const filteredServices: ServiceItem[] =
-    selectedCategory === "All Solutions"
-      ? SERVICES_DATA
-      : SERVICES_DATA.filter((s) => s.category === selectedCategory);
+  const categories = [
+    "All",
+    ...Array.from(new Set(SERVICES.map((s) => s.category))),
+  ];
+
+  const filteredServices =
+    selectedCategory === "All"
+      ? SERVICES
+      : SERVICES.filter((s) => s.category === selectedCategory);
 
   return (
-    <section className="py-16 lg:py-20">
-      <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
-        {/* Category Filter Bar */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 mb-12 border-b border-[#272727]">
-          <div>
-            <h2 className="text-2xl sm:text-3xl font-semibold text-brand_cyan">
-              Enterprise Service Catalog ({filteredServices.length})
-            </h2>
-            <p className="text-sm text-[#9C9C9C] mt-1">
-              Filter by architecture domain or jump directly to technical
-              specifications and SLA benefits.
-            </p>
-          </div>
-
-          <div
-            className="flex flex-wrap gap-2"
-            role="tablist"
-            aria-label="Filter services by category"
-          >
-            {SERVICE_CATEGORIES.map((category) => {
-              const active = selectedCategory === category;
-              return (
-                <button
-                  key={category}
-                  type="button"
-                  role="tab"
-                  aria-selected={active}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 ${
-                    active
-                      ? "bg-[#008FFF] text-white"
-                      : "bg-[#000000] text-[#D3D3D3] border border-[#272727] hover:border-brand_cyan hover:text-brand_cyan"
-                  }`}
-                >
-                  {category}
-                </button>
-              );
-            })}
-          </div>
+    <div className="space-y-10">
+      {/* Category Filter Bar */}
+      <div className="flex flex-wrap items-center justify-between gap-4 bg-white border border-slate-200/90 rounded-2xl p-4 shadow-sm">
+        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand_blue">
+          <Sliders className="w-4 h-4 text-brand_cyan" />
+          <span>Filter by Solution Category:</span>
         </div>
-
-        {/* Detailed Service Cards (Exact HubexTech Black Card Aesthetic) */}
-        <div className="space-y-8">
-          {filteredServices.map((service, index) => (
-            <article
-              key={service.id}
-              id={service.id}
-              className="scroll-mt-28 bg-[#000000] rounded-2xl border border-[#272727] hover:border-[#1A545E] transition-all duration-300 overflow-hidden"
+        <div className="flex flex-wrap gap-2">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              type="button"
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all ${
+                selectedCategory === cat
+                  ? "bg-gradient-to-r from-brand_cyan to-brand_blue text-white shadow-md"
+                  : "bg-slate-50 border border-slate-200 text-slate-700 hover:border-brand_cyan hover:bg-white"
+              }`}
             >
-              <div className="p-7 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8">
-                {/* Left Column */}
-                <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="w-12 h-12 rounded-xl bg-[#0D0D0D] border border-[#1A545E] text-brand_cyan flex items-center justify-center">
-                        <ServiceIcon
-                          name={service.iconName}
-                          className="w-6 h-6"
-                        />
-                      </div>
-                      <span className="text-xs font-mono font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-[#1591EE15] border border-[#1591EE33] text-brand_cyan">
-                        0{index + 1} · {service.category}
-                      </span>
-                    </div>
-
-                    <h3 className="text-2xl font-semibold text-white">
-                      {service.title}
-                    </h3>
-
-                    <p className="text-sm font-medium text-brand_cyan">
-                      {service.tagline}
-                    </p>
-
-                    <p className="text-sm text-[#9C9C9C] leading-relaxed">
-                      {service.detailedDescription}
-                    </p>
-                  </div>
-
-                  <div className="pt-4 border-t border-[#1a1a1a] flex flex-wrap items-center gap-3">
-                    <Link
-                      href={`/contact?service=${encodeURIComponent(
-                        service.title
-                      )}#inquiry-form`}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#008FFF] hover:bg-brand_cyan hover:text-black text-white font-semibold text-xs sm:text-sm transition-all"
-                    >
-                      <span>Inquire About {service.shortTitle}</span>
-                      <ArrowUpRight className="w-4 h-4" />
-                    </Link>
-                    <Link
-                      href="/contact#site-survey"
-                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-[#008FFF] hover:bg-brand_cyan hover:text-black text-white font-semibold text-xs sm:text-sm transition-all"
-                    >
-                      <span>Request Site Survey</span>
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Right Column */}
-                <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 bg-[#0D0D0D] rounded-xl p-6 border border-[#272727]">
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-brand_cyan">
-                      <Layers className="w-4 h-4" />
-                      <span>Technical Architecture</span>
-                    </div>
-                    <ul className="space-y-2.5">
-                      {service.specs.map((spec, i) => (
-                        <li
-                          key={i}
-                          className="flex items-start gap-2.5 text-xs sm:text-sm text-[#D3D3D3]"
-                        >
-                          <CheckCircle2 className="w-4 h-4 text-brand_cyan shrink-0 mt-0.5" />
-                          <span>{spec}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-brand_cyan">
-                      <ShieldCheck className="w-4 h-4" />
-                      <span>Key Enterprise Benefits</span>
-                    </div>
-                    <ul className="space-y-2.5">
-                      {service.keyBenefits.map((benefit, i) => (
-                        <li
-                          key={i}
-                          className="flex items-start gap-2.5 text-xs sm:text-sm text-[#9C9C9C]"
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-brand_cyan shrink-0 mt-2" />
-                          <span>{benefit}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="sm:col-span-2 pt-4 border-t border-[#272727]">
-                    <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#D3D3D3] mb-2.5">
-                      <Terminal className="w-4 h-4 text-brand_cyan" />
-                      <span>Primary Deployment Scenarios</span>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {service.useCases.map((useCase, i) => (
-                        <span
-                          key={i}
-                          className="px-3 py-1 rounded-md bg-[#000000] border border-[#272727] text-xs text-[#D3D3D3]"
-                        >
-                          {useCase}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </article>
+              {cat}
+            </button>
           ))}
         </div>
       </div>
-    </section>
+
+      {/* Detailed Service Cards */}
+      <div className="space-y-8">
+        {filteredServices.map((service) => {
+          const IconComp = iconMap[service.iconName] || Network;
+          return (
+            <div
+              key={service.id}
+              id={service.id}
+              className="scroll-mt-32 rounded-3xl bg-white border border-slate-200/90 hover:border-brand_cyan p-6 sm:p-10 transition-all duration-300 shadow-card-premium hover:shadow-card-hover"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                {/* Left 7 Cols: Title, Overview & Detailed Description */}
+                <div className="lg:col-span-7 space-y-4">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <div className="w-12 h-12 rounded-2xl bg-sky-50 border border-sky-200 flex items-center justify-center text-brand_cyan">
+                      <IconComp className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-sky-50 text-brand_blue border border-sky-200">
+                        {service.category}
+                      </span>
+                      <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1">
+                        {service.title}
+                      </h2>
+                    </div>
+                  </div>
+
+                  <p className="text-sm sm:text-base text-slate-800 font-semibold leading-relaxed">
+                    {service.shortDescription}
+                  </p>
+
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    {service.detailedDescription}
+                  </p>
+
+                  {/* Technical Specs Pills */}
+                  {service.technicalSpecs && (
+                    <div className="pt-2">
+                      <span className="block text-[11px] font-bold uppercase tracking-wider text-brand_blue mb-2">
+                        Technical Specifications &amp; Architecture:
+                      </span>
+                      <div className="flex flex-wrap gap-2">
+                        {service.technicalSpecs.map((spec, i) => (
+                          <span
+                            key={i}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 font-medium"
+                          >
+                            <Zap className="w-3.5 h-3.5 text-brand_cyan" />
+                            {spec}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Right 5 Cols: Key Benefits & Direct CTA */}
+                <div className="lg:col-span-5 rounded-2xl bg-slate-50 border border-slate-200 p-6 space-y-5">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-brand_blue">
+                    Key Enterprise Advantages
+                  </h3>
+
+                  <ul className="space-y-3">
+                    {service.keyBenefits.map((benefit, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700"
+                      >
+                        <CheckCircle2 className="w-4 h-4 text-brand_cyan shrink-0 mt-0.5" />
+                        <span>{benefit}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="pt-4 border-t border-slate-200">
+                    <Link
+                      href={`/contact?service=${encodeURIComponent(
+                        service.shortTitle
+                      )}`}
+                      className="w-full py-3 px-5 rounded-xl bg-gradient-to-r from-brand_cyan to-brand_blue hover:from-brand_blue hover:to-brand_cyan text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md transition-all"
+                    >
+                      <span>Request {service.shortTitle} Proposal</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }
