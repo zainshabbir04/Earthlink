@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-cyan: #2EC1D9;
+    --brand-blue: #008FFF;
+    --brand-navy: #050505;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color: #FFFFFF;
+    background-color: #020508;
+  }
+
+  body {
+    background-color: #020508;
+    color: #FFFFFF;
+    overflow-x: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Exact HubexTech Dark Radial/Linear Background Gradient */
+.bg-black-gradient {
+  background: radial-gradient(
+      circle at 75% 18%,
+      rgba(0, 143, 255, 0.14) 0%,
+      rgba(46, 193, 217, 0.06) 28%,
+      rgba(0, 0, 0, 0) 55%
+    ),
+    radial-gradient(
+      circle at 18% 65%,
+      rgba(46, 193, 217, 0.1) 0%,
+      rgba(0, 0, 0, 0) 50%
+    ),
+    linear-gradient(180deg, #03070e 0%, #050505 45%, #020408 100%);
+}
+
+.bg-hubex-banner {
+  background: linear-gradient(
+    98.63deg,
+    rgba(0, 0, 0, 0.72) 40.34%,
+    rgba(46, 193, 217, 0.58) 99.16%
+  );
+}
+
+.bg-hubex-modal {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.82) 40.93%,
+    rgba(46, 193, 217, 0.55) 100%
+  );
+}
+
+.bg-tech-grid {
+  background-size: 48px 48px;
+  background-image: 
+    linear-gradient(to right, rgba(46, 193, 217, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(46, 193, 217, 0.05) 1px, transparent 1px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #1A545E;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2EC1D9;
+}
