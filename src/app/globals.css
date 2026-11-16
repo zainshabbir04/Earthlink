@@ -4,127 +4,88 @@
 
 @layer base {
   :root {
-    --bg-primary: #eaedf2;
-    --bg-secondary: #f4f6f9;
-    --text-primary: #0b0d10;
-    --brand-cyan: #19a2e6;
-    --brand-blue: #0d84c4;
-    --brand-black: #0b0d10;
-    --brand-grey: #757679;
+    --brand-cyan: #2EC1D9;
+    --brand-blue: #008FFF;
+    --brand-navy: #050505;
   }
 
   html {
     scroll-behavior: smooth;
-    background-color: #eaedf2;
-    color: #0b0d10;
+    color: #FFFFFF;
+    background-color: #020508;
   }
 
   body {
+    background-color: #020508;
+    color: #FFFFFF;
     overflow-x: hidden;
-    background-color: #eaedf2;
-    color: #0b0d10;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-/* ============================================================================
-   OFFICIAL EARTHLINK LOGO-MATCHED THEME
-   1. Logo Cyan ("EARTH" & Signal Waves): #19A2E6
-   2. Logo Jet Black ("LINK", top bar of "E", & Swoosh): #0B0D10 / #14171D
-   3. Logo Neutral Grey ("Broadband (Pvt). Ltd."): #757679 / #EAEDF2
-   4. Crisp White Header/Cards: #FFFFFF
-============================================================================ */
-
-/* Main Page Canvas: Logo Platinum-Grey (#EAEDF2) with Subtle Cyan Signal Glows */
+/* Exact HubexTech Dark Radial/Linear Background Gradient */
 .bg-black-gradient {
-  background-color: #eaedf2;
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(25, 162, 230, 0.14) 0px, transparent 48%),
-    radial-gradient(at 100% 15%, rgba(11, 13, 16, 0.06) 0px, transparent 48%),
-    radial-gradient(at 50% 50%, rgba(25, 162, 230, 0.08) 0px, transparent 55%),
-    radial-gradient(at 90% 90%, rgba(25, 162, 230, 0.14) 0px, transparent 50%),
-    linear-gradient(180deg, #e4e7ed 0%, #f2f4f7 35%, #e8ebf0 70%, #e1e5eb 100%);
+  background: radial-gradient(
+      circle at 75% 18%,
+      rgba(0, 143, 255, 0.14) 0%,
+      rgba(46, 193, 217, 0.06) 28%,
+      rgba(0, 0, 0, 0) 55%
+    ),
+    radial-gradient(
+      circle at 18% 65%,
+      rgba(46, 193, 217, 0.1) 0%,
+      rgba(0, 0, 0, 0) 50%
+    ),
+    linear-gradient(180deg, #03070e 0%, #050505 45%, #020408 100%);
 }
 
-/* Hero & Featured Sections: Logo Jet-Carbon Black (#0B0D10) + Logo Cyan (#19A2E6) Signal Waves */
-.bg-sapphire-hero {
-  background:
-    radial-gradient(circle at 82% 24%, rgba(25, 162, 230, 0.28) 0%, transparent 48%),
-    radial-gradient(circle at 15% 80%, rgba(25, 162, 230, 0.18) 0%, transparent 50%),
-    linear-gradient(135deg, #090b0e 0%, #11151c 52%, #161c24 100%);
-}
-
-/* Dark Carbon Section for Radial Hub & Telemetry (Matches "LINK" Black + "EARTH" Cyan) */
-.bg-sapphire-section {
-  background:
-    radial-gradient(circle at 50% 50%, rgba(25, 162, 230, 0.2) 0%, transparent 60%),
-    linear-gradient(180deg, #0b0d10 0%, #13171e 50%, #0b0d10 100%);
-}
-
-/* CTA Banner: Jet Carbon Black sweeping into Logo Cyan (#19A2E6) */
 .bg-hubex-banner {
-  background:
-    radial-gradient(circle at 85% 20%, rgba(25, 162, 230, 0.45) 0%, transparent 52%),
-    radial-gradient(circle at 15% 85%, rgba(25, 162, 230, 0.25) 0%, transparent 52%),
-    linear-gradient(135deg, #090b0e 0%, #121720 48%, #0c5882 100%);
+  background: linear-gradient(
+    98.63deg,
+    rgba(0, 0, 0, 0.72) 40.34%,
+    rgba(46, 193, 217, 0.58) 99.16%
+  );
 }
 
-/* Logo-Inspired Card Surface: Crisp White/Platinum with Carbon-Grey border & Cyan Hover */
-.card-ice-slate {
-  background: linear-gradient(145deg, #ffffff 0%, #f5f7fa 100%);
-  border: 1px solid #d5d9e0;
-  box-shadow: 0 12px 32px -10px rgba(11, 13, 16, 0.08);
+.bg-hubex-modal {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.82) 40.93%,
+    rgba(46, 193, 217, 0.55) 100%
+  );
 }
 
-.card-ice-slate:hover {
-  border-color: #19a2e6;
-  box-shadow: 0 20px 42px -10px rgba(25, 162, 230, 0.22);
-}
-
-/* Subtle Architectural Fiber Grid Overlay */
 .bg-tech-grid {
-  background-size: 38px 38px;
+  background-size: 48px 48px;
   background-image: 
-    linear-gradient(to right, rgba(117, 118, 121, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(117, 118, 121, 0.1) 1px, transparent 1px);
+    linear-gradient(to right, rgba(46, 193, 217, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(46, 193, 217, 0.05) 1px, transparent 1px);
 }
 
-.bg-tech-grid-dark {
-  background-size: 38px 38px;
-  background-image: 
-    linear-gradient(to right, rgba(25, 162, 230, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(25, 162, 230, 0.08) 1px, transparent 1px);
-}
-
-/* Animated Optical Fiber Signal Line */
-@keyframes fiberSignal {
-  0% {
-    stroke-dashoffset: 240;
-  }
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-
-.fiber-pulse-line {
-  stroke-dasharray: 12 8;
-  animation: fiberSignal 5s linear infinite;
-}
-
-/* Custom Scrollbar — Jet Black & Logo Cyan */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 9px;
+  width: 8px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #0b0d10;
+  background: #050505;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #19a2e6, #757679);
-  border-radius: 9999px;
+  background: #1A545E;
+  border-radius: 4px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #19a2e6;
+  background: #2EC1D9;
 }

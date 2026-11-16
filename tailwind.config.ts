@@ -9,68 +9,63 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Exact colors extracted from logo-color.png:
-        // 1. "EARTH" & Signal Waves Cyan: #19A2E6
-        // 2. "LINK" & Swoosh Jet Black: #0B0D10 / #14171C
-        // 3. "Broadband (Pvt). Ltd." Grey: #757679
-        brand_cyan: "#19A2E6",
-        brand_blue: "#0D84C4",
-        brand_black: "#0B0D10",
-        brand_charcoal: "#15181F",
-        brand_grey: "#757679",
-        dimgray: "#ECEEF2",
-        zinc: "#D8DCE3",
-        lightwhite: "#111317",
-        skyblue: "#19A2E6",
-        blue: "#0D84C4",
-        purple: "#15181F",
+        brand_cyan: "#2EC1D9",
+        brand_blue: "#008FFF",
+        brand_blue_alt: "#1591EE",
+        dimgray: "#141414",
+        zinc: "#272727",
+        light_white: "#D3D3D3",
+        brand: {
+          cyan: "#2EC1D9",
+          cyanLight: "#38BDF8",
+          cyanDark: "#008FFF",
+          navy: "#050505",
+          navyLight: "#0D0D0D",
+          navyCard: "#000000",
+          charcoal: "#D3D3D3",
+          slate: "#9C9C9C",
+          surface: "#0A0A0A",
+          surfaceAlt: "#111111",
+        },
       },
       fontFamily: {
-        sans: ["var(--font-poppins)", "var(--font-inter)", "sans-serif"],
-        display: ["var(--font-poppins)", "sans-serif"],
+        sans: ["var(--font-jakarta)", "system-ui", "sans-serif"],
+        roboto: ["var(--font-jakarta)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
       },
       boxShadow: {
-        "cyan-glow": "0 10px 30px -5px rgba(25, 162, 230, 0.32)",
-        "cyan-glow-lg": "0 18px 45px -8px rgba(25, 162, 230, 0.42)",
-        "card-premium": "0 12px 34px -8px rgba(11, 13, 16, 0.08)",
-        "card-hover": "0 20px 44px -10px rgba(25, 162, 230, 0.22)",
+        "glow-cyan": "0 0 35px -5px rgba(46, 193, 217, 0.35)",
+        "glow-cyan-sm": "0 0 20px -4px rgba(0, 143, 255, 0.35)",
+        "card-premium": "0 10px 35px -10px rgba(0, 0, 0, 0.7)",
+        "card-hover": "0 20px 45px -12px rgba(46, 193, 217, 0.22)",
       },
       keyframes: {
         rotateImage: {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(360deg)" },
         },
-        rotateReverse: {
-          "0%": { transform: "rotate(360deg)" },
-          "100%": { transform: "rotate(0deg)" },
-        },
         breathe: {
-          "0%, 100%": { transform: "scale(1)", opacity: "0.85" },
+          "0%, 100%": { transform: "scale(0.94)", opacity: "0.9" },
           "50%": { transform: "scale(1.06)", opacity: "1" },
         },
         fadeInOutSmooth: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-7px)" },
+          "0%, 100%": { transform: "translateY(0px)", opacity: "0.88" },
+          "50%": { transform: "translateY(-6px)", opacity: "1" },
         },
         marquee: {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-50%)" },
         },
-        pulseDash: {
-          "0%": { strokeDashoffset: "100" },
-          "100%": { strokeDashoffset: "0" },
-        },
       },
       animation: {
         rotateImage: "rotateImage 28s linear infinite",
-        rotateReverse: "rotateReverse 34s linear infinite",
-        breathe: "breathe 5s ease-in-out infinite",
+        breathe: "breathe 4.5s ease-in-out infinite",
         fadeInOutSmooth: "fadeInOutSmooth 4s ease-in-out infinite",
         marquee: "marquee 28s linear infinite",
-        pulseDash: "pulseDash 3s linear infinite",
       },
     },
   },
   plugins: [],
 };
+
 export default config;

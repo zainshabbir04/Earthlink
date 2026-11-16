@@ -1,92 +1,83 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Users, Cpu, Radio, ShieldCheck } from "lucide-react";
+import { MapPin } from "lucide-react";
+import { BRAND_INFO, CAREERS_CULTURE } from "@/data/siteData";
+import ServiceIcon from "@/components/ServiceIcon";
 import CareersInteractive from "@/components/CareersInteractive";
-import { COMPANY_INFO } from "@/data/siteData";
 
 export const metadata: Metadata = {
-  title: "Careers | Join Our Optical Fiber & NOC Engineering Teams",
+  title: "Careers — Join Our NOC, Optical Engineering & Enterprise Teams",
   description:
-    "Explore career opportunities at EARTH I Broadband (Pvt.) Ltd. across Network Operations (NOC), Outside Plant (OSP) Fiber Engineering, Enterprise B2B Connectivity, and Managed IT.",
+    "Explore career opportunities at EARTH I Broadband (Pvt.) Ltd. Join our 24/7 Network Operations Center (NOC), optical fiber infrastructure teams, and B2B corporate sales division.",
 };
 
 export default function CareersPage() {
   return (
-    <div className="pt-28 sm:pt-36 pb-16">
-      {/* LOGO JET-BLACK & CYAN HERO BANNER */}
-      <section className="px-4 sm:px-8 pb-12">
-        <div className="max-w-[1440px] mx-auto rounded-3xl bg-sapphire-hero bg-tech-grid-dark border-2 border-[#19A2E6]/50 p-8 sm:p-14 lg:p-16 relative overflow-hidden shadow-2xl text-white">
-          <div className="absolute top-0 left-0 right-0 h-1.5 flex">
-            <div className="w-1/3 bg-[#0B0D10]" />
-            <div className="w-2/3 bg-[#19A2E6]" />
-          </div>
-          <div className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[#19A2E6]/25 blur-[110px]" />
-          <div className="max-w-3xl space-y-5 relative z-10">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#151921] border border-[#19A2E6]/50 text-xs font-bold uppercase tracking-wider text-[#19A2E6]">
-              <Users className="w-3.5 h-3.5 text-[#19A2E6]" />
-              <span>Careers at EARTH I Broadband</span>
-            </div>
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
-              Build the Future of{" "}
-              <span className="text-[#19A2E6]">
-                Enterprise Fiber Telecommunications
+    <div className="bg-black-gradient text-white overflow-hidden">
+      {/* Careers Hero Banner */}
+      <section className="relative py-16 lg:py-24 border-b border-[#1a1a1a]">
+        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
+          <div className="max-w-3xl space-y-5">
+            <div className="inline-flex items-center gap-2 bg-[#1591EE15] border border-[#1591EE33] rounded-full px-4 py-1.5">
+              <span className="text-brand_cyan text-xs font-semibold uppercase tracking-wide">
+                Careers at {BRAND_INFO.companyName}
               </span>
+            </div>
+            <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight leading-snug">
+              Build the{" "}
+              <span className="text-brand_cyan">Optical Backbone</span> Powering
+              Enterprise Innovation
             </h1>
-            <p className="text-neutral-300 text-base sm:text-lg leading-relaxed">
-              At <strong className="text-white">{COMPANY_INFO.name}</strong>, our network engineers, fiber splicing specialists, and enterprise solution architects design and maintain mission-critical optical infrastructure.
+            <p className="text-base sm:text-lg text-[#D3D3D3] leading-relaxed">
+              {CAREERS_CULTURE.subheadline}
             </p>
+            <div className="pt-2 flex items-center gap-2 text-xs font-mono text-brand_cyan">
+              <MapPin className="w-4 h-4" />
+              <span>
+                Primary Operations: {BRAND_INFO.contactDetails.headOfficeAddress}
+              </span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ENGINEERING CULTURE HIGHLIGHTS */}
-      <section className="px-4 sm:px-8 pb-14">
-        <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="rounded-2xl card-ice-slate p-6 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1.5 flex">
-              <div className="w-1/3 bg-[#0B0D10]" />
-              <div className="w-2/3 bg-[#19A2E6]" />
+      {/* Working at EARTH I Broadband & Company Culture */}
+      <section className="py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
+            <div className="lg:col-span-5 space-y-4">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-brand_cyan">
+                Working at {BRAND_INFO.shortName}
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-semibold text-white tracking-tight">
+                An Engineering-First Culture Focused on{" "}
+                <span className="text-brand_cyan">Optical Excellence</span>
+              </h2>
+              <p className="text-[#9C9C9C] text-base leading-relaxed">
+                {CAREERS_CULTURE.cultureParagraph}
+              </p>
             </div>
-            <Radio className="w-6 h-6 text-[#19A2E6] mb-3 mt-1" />
-            <h2 className="text-base font-bold text-[#0B0D10]">
-              Carrier-Grade Optical Engineering
-            </h2>
-            <p className="text-xs sm:text-sm text-[#757679] font-medium mt-1.5 leading-relaxed">
-              Work hands-on with 100 Gbps metro optical rings, multi-homed BGP routing, MPLS traffic engineering, and subterranean armored fiber networks.
-            </p>
-          </div>
-          <div className="rounded-2xl card-ice-slate p-6 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1.5 flex">
-              <div className="w-1/3 bg-[#0B0D10]" />
-              <div className="w-2/3 bg-[#19A2E6]" />
-            </div>
-            <Cpu className="w-6 h-6 text-[#19A2E6] mb-3 mt-1" />
-            <h2 className="text-base font-bold text-[#0B0D10]">
-              24/7/365 NOC &amp; SOC Excellence
-            </h2>
-            <p className="text-xs sm:text-sm text-[#757679] font-medium mt-1.5 leading-relaxed">
-              Collaborate inside a real-time telemetry environment monitoring optical attenuation, automated ring failovers, and enterprise firewall security.
-            </p>
-          </div>
-          <div className="rounded-2xl card-ice-slate p-6 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1.5 flex">
-              <div className="w-1/3 bg-[#0B0D10]" />
-              <div className="w-2/3 bg-[#19A2E6]" />
-            </div>
-            <ShieldCheck className="w-6 h-6 text-[#19A2E6] mb-3 mt-1" />
-            <h2 className="text-base font-bold text-[#0B0D10]">
-              Merit-Driven Technical Growth
-            </h2>
-            <p className="text-xs sm:text-sm text-[#757679] font-medium mt-1.5 leading-relaxed">
-              Advance your career across IP core routing, outside plant GIS planning, cloud virtualization, and B2B enterprise consulting.
-            </p>
-          </div>
-        </div>
-      </section>
 
-      {/* INTERACTIVE CAREER TRACKS & APPLICATION FORM */}
-      <section className="px-4 sm:px-8">
-        <div className="max-w-[1440px] mx-auto">
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {CAREERS_CULTURE.verifiedGrowthHighlights.map((item) => (
+                <div
+                  key={item.title}
+                  className="p-6 rounded-2xl bg-[#000000] border border-[#272727] space-y-3"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-[#0D0D0D] border border-[#1A545E] text-brand_cyan flex items-center justify-center">
+                    <ServiceIcon name={item.iconName} className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-base font-semibold text-white">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#9C9C9C] leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
           <CareersInteractive />
         </div>
       </section>

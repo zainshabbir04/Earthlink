@@ -6,309 +6,427 @@ import {
   MapPin,
   Clock,
   CheckCircle2,
+  ArrowUpRight,
   Send,
-  ChevronDown,
-  ChevronUp,
-  Info,
+  AlertCircle,
 } from "lucide-react";
-import { CAREER_TRACKS, CONTACT_INFO } from "@/data/siteData";
+import {
+  BRAND_INFO,
+  CAREER_OPENINGS,
+  JobOpening,
+} from "@/data/siteData";
 
 export default function CareersInteractive() {
-  const [expandedId, setExpandedId] = useState<string>(CAREER_TRACKS[0].id);
-  const [appForm, setAppForm] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    track: CAREER_TRACKS[0].title,
-    experienceYears: "",
-    linkedinOrPortfolio: "",
-    coverNote: "",
-  });
-  const [submittedNotice, setSubmittedNotice] = useState(false);
+  const [selectedRole, setSelectedRole] = useState<string>(
+    CAREER_OPENINGS[0].title
+  );
+  const [applicantName, setApplicantName] = useState("");
+  const [applicantEmail, setApplicantEmail] = useState("");
+  const [applicantPhone, setApplicantPhone] = useState("");
+  const [experienceYears, setExperienceYears] = useState("");
+  const [portfolioOrLinkedin, setPortfolioOrLinkedin] = useState("");
+  const [coverNote, setCoverNote] = useState("");
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [preparedMailto, setPreparedMailto] = useState<string | null>(null);
 
-  const handleApplySubmit = (e: React.FormEvent) => {
+  const handleSelectJob = (job: JobOpening) => {
+    setSelectedRole(job.title);
+    setPreparedMailto(null);
+    const el = document.getElementById("open-application");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const validateAndPrepare = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmittedNotice(true);
+    const newErrors: Record<string, string> = {};
+
+    if (!applicantName.trim() || applicantName.trim().length < 2) {
+      newErrors.applicantName = "Please enter your full name.";
+    }
+    if (
+      !applicantEmail.trim() ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(applicantEmail.trim())
+    ) {
+      newErrors.applicantEmail = "Please enter a valid email address.";
+    }
+    if (!applicantPhone.trim() || applicantPhone.trim().length < 7) {
+      newErrors.applicantPhone = "Please enter a valid contact phone number.";
+    }
+    if (!experienceYears.trim()) {
+      newErrors.experienceYears =
+        "Please specify your years of relevant ISP / technical experience.";
+    }
+    if (!coverNote.trim() || coverNote.trim().length < 20) {
+      newErrors.coverNote =
+        "Please include a brief summary of your qualifications (at least 20 characters).";
+    }
+
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) {
+      setPreparedMailto(null);
+      return;
+    }
+
     const subject = encodeURIComponent(
-      `[EARTH I Broadband Career Application] ${appForm.track} — ${appForm.fullName}`
+      `[Career Application - ${BRAND_INFO.companyName}] ${selectedRole} — ${applicantName}`
     );
     const body = encodeURIComponent(
-      `Candidate Name: ${appForm.fullName}\nEmail: ${appForm.email}\nPhone: ${appForm.phone}\nEngineering / Business Track: ${appForm.track}\nYears of Experience: ${appForm.experienceYears}\nLinkedIn / Portfolio: ${appForm.linkedinOrPortfolio}\n\nSummary / Cover Note:\n${appForm.coverNote}`
+      `Candidate Application for ${BRAND_INFO.companyName}\n` +
+        `==================================================\n` +
+        `Position Applied For: ${selectedRole}\n` +
+        `Full Name: ${applicantName}\n` +
+        `Email: ${applicantEmail}\n` +
+        `Phone: ${applicantPhone}\n` +
+        `Relevant Experience: ${experienceYears}\n` +
+        `LinkedIn / Portfolio: ${portfolioOrLinkedin || "N/A"}\n\n` +
+        `Technical Summary & Cover Note:\n${coverNote}\n\n` +
+        `(Please attach your updated CV / Resume PDF before sending this email.)`
     );
-    window.location.href = `mailto:${CONTACT_INFO.hrEmail}?subject=${subject}&body=${body}`;
+
+    const mailtoUrl = `mailto:${BRAND_INFO.contactDetails.sourceCareersEmail}?subject=${subject}&body=${body}`;
+    setPreparedMailto(mailtoUrl);
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      {/* Left 7 Cols: Career Tracks Accordion */}
-      <div className="lg:col-span-7 space-y-4">
-        <div className="p-4 rounded-2xl bg-[#0B0D10] border-2 border-[#19A2E6]/50 flex items-start gap-3 text-xs text-neutral-200 shadow-md">
-          <Info className="w-4 h-4 text-[#19A2E6] shrink-0 mt-0.5" />
-          <span>
-            Below are our ongoing talent acquisition tracks across Network Operations, OSP Fiber Engineering, Enterprise Solutions, and Cybersecurity. Select any track to view responsibilities and qualifications, or submit an open application.
+    <div className="space-y-20">
+      {/* Open Positions Listing */}
+      <div className="space-y-8">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#272727] pb-6">
+          <div>
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-brand_cyan">
+              Verified Career Opportunities
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-white mt-1">
+              Open Positions Across NOC, Optical Engineering &amp; B2B Sales
+            </h2>
+          </div>
+          <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1591EE15] border border-[#1591EE33] text-brand_cyan text-xs font-mono font-semibold">
+            {CAREER_OPENINGS.length} Active Recruitment Tracks
           </span>
         </div>
 
-        {CAREER_TRACKS.map((role) => {
-          const isOpen = expandedId === role.id;
-          return (
-            <div
-              key={role.id}
-              className="rounded-2xl card-ice-slate overflow-hidden transition-all relative"
+        <div className="space-y-8">
+          {CAREER_OPENINGS.map((job) => (
+            <article
+              key={job.id}
+              className="bg-[#000000] rounded-2xl border border-[#272727] hover:border-[#1A545E] p-7 sm:p-10 transition-all duration-300"
             >
-              <div className="absolute top-0 left-0 right-0 h-1.5 flex">
-                <div className="w-1/3 bg-[#0B0D10]" />
-                <div className="w-2/3 bg-[#19A2E6]" />
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-[#1a1a1a]">
+                <div className="space-y-2">
+                  <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono">
+                    <span className="px-3 py-1 rounded-full bg-[#1591EE15] border border-[#1591EE33] text-brand_cyan font-semibold">
+                      {job.department}
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-[#9C9C9C]">
+                      <MapPin className="w-3.5 h-3.5 text-brand_cyan" />
+                      {job.location}
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-[#9C9C9C]">
+                      <Clock className="w-3.5 h-3.5 text-brand_cyan" />
+                      {job.type}
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-[#9C9C9C]">
+                      <Briefcase className="w-3.5 h-3.5 text-brand_cyan" />
+                      {job.experience}
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-semibold text-white">
+                    {job.title}
+                  </h3>
+                  <p className="text-sm text-[#9C9C9C] max-w-3xl leading-relaxed">
+                    {job.summary}
+                  </p>
+                </div>
+
+                <div className="shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => handleSelectJob(job)}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#008FFF] hover:bg-brand_cyan hover:text-black text-white font-semibold text-sm transition-all"
+                  >
+                    <span>Apply Now</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6">
+                <div>
+                  <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-brand_cyan mb-3">
+                    Key Responsibilities
+                  </h4>
+                  <ul className="space-y-2.5">
+                    {job.responsibilities.map((resp, idx) => (
+                      <li
+                        key={idx}
+                        className="flex items-start gap-2.5 text-xs sm:text-sm text-[#D3D3D3]"
+                      >
+                        <CheckCircle2 className="w-4 h-4 text-brand_cyan shrink-0 mt-0.5" />
+                        <span>{resp}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-brand_cyan mb-3">
+                    Required Qualifications
+                  </h4>
+                  <ul className="space-y-2.5">
+                    {job.qualifications.map((qual, idx) => (
+                      <li
+                        key={idx}
+                        className="flex items-start gap-2.5 text-xs sm:text-sm text-[#9C9C9C]"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-brand_cyan shrink-0 mt-2" />
+                        <span>{qual}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      {/* Open Application Section (HubexTech Dark Modal/Form Style) */}
+      <div
+        id="open-application"
+        className="scroll-mt-28 bg-[#0D0D0D] rounded-2xl border border-[#272727] p-8 sm:p-12"
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          <div className="lg:col-span-5 space-y-5">
+            <div className="inline-flex items-center gap-2 bg-[#1591EE15] border border-[#1591EE33] rounded-full px-4 py-1.5">
+              <span className="text-brand_cyan text-xs font-semibold uppercase">
+                Talent Acquisition Desk
+              </span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-semibold text-white">
+              Submit Your Application or{" "}
+              <span className="text-brand_cyan">Open Profile</span>
+            </h3>
+            <p className="text-sm text-[#9C9C9C] leading-relaxed">
+              Select a published position or submit an open application for our
+              Network Operations Center (NOC), Outside-Plant (OSP) optical
+              engineering, or corporate B2B sales divisions.
+            </p>
+
+            <div className="p-5 rounded-xl bg-[#000000] border border-[#272727] space-y-2 text-xs">
+              <div className="font-bold text-white">
+                Direct HR Recruitment Email:
+              </div>
+              <a
+                href={`mailto:${BRAND_INFO.contactDetails.sourceCareersEmail}`}
+                className="font-mono text-brand_cyan hover:underline block text-sm"
+              >
+                {BRAND_INFO.contactDetails.sourceCareersEmail}
+              </a>
+              <p className="text-[11px] text-amber-400 font-mono">
+                Note: Source recruitment desk email shown above. Confirm
+                official @earthibroadband HR mailbox before live cutover.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-xl bg-[#000000] border border-amber-500/40 text-xs text-[#D3D3D3] flex items-start gap-2.5">
+              <AlertCircle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+              <div>
+                <strong className="text-amber-300">
+                  Frontend-Only Application Notice:
+                </strong>{" "}
+                This portal validates your application fields and prepares a
+                pre-addressed recruitment email package without fake submission
+                messages.
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-7">
+            <form onSubmit={validateAndPrepare} noValidate className="space-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label
+                    htmlFor="role-select"
+                    className="block text-xs font-semibold text-[#D3D3D3] mb-2"
+                  >
+                    Position / Track *
+                  </label>
+                  <select
+                    id="role-select"
+                    value={selectedRole}
+                    onChange={(e) => setSelectedRole(e.target.value)}
+                    className="w-full px-4 py-3 rounded-lg border border-[#272727] bg-[#111] text-sm text-white focus:outline-none focus:border-brand_cyan"
+                  >
+                    {CAREER_OPENINGS.map((job) => (
+                      <option key={job.id} value={job.title}>
+                        {job.title}
+                      </option>
+                    ))}
+                    <option value="Open Application — Optical / NOC / Corporate">
+                      Open Application — Optical / NOC / Corporate
+                    </option>
+                  </select>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="applicant-name"
+                    className="block text-xs font-semibold text-[#D3D3D3] mb-2"
+                  >
+                    Full Name *
+                  </label>
+                  <input
+                    id="applicant-name"
+                    type="text"
+                    value={applicantName}
+                    onChange={(e) => setApplicantName(e.target.value)}
+                    placeholder="e.g., Bilal Ahmed"
+                    className="w-full px-4 py-3 rounded-lg border border-[#272727] bg-[#111] text-sm text-white focus:outline-none focus:border-brand_cyan"
+                  />
+                  {errors.applicantName && (
+                    <p className="text-xs text-rose-500 mt-1">
+                      {errors.applicantName}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label
+                    htmlFor="applicant-email"
+                    className="block text-xs font-semibold text-[#D3D3D3] mb-2"
+                  >
+                    Email Address *
+                  </label>
+                  <input
+                    id="applicant-email"
+                    type="email"
+                    value={applicantEmail}
+                    onChange={(e) => setApplicantEmail(e.target.value)}
+                    placeholder="name@example.com"
+                    className="w-full px-4 py-3 rounded-lg border border-[#272727] bg-[#111] text-sm text-white focus:outline-none focus:border-brand_cyan"
+                  />
+                  {errors.applicantEmail && (
+                    <p className="text-xs text-rose-500 mt-1">
+                      {errors.applicantEmail}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="applicant-phone"
+                    className="block text-xs font-semibold text-[#D3D3D3] mb-2"
+                  >
+                    Phone / WhatsApp Number *
+                  </label>
+                  <input
+                    id="applicant-phone"
+                    type="tel"
+                    value={applicantPhone}
+                    onChange={(e) => setApplicantPhone(e.target.value)}
+                    placeholder="+92 300 0000000"
+                    className="w-full px-4 py-3 rounded-lg border border-[#272727] bg-[#111] text-sm text-white focus:outline-none focus:border-brand_cyan"
+                  />
+                  {errors.applicantPhone && (
+                    <p className="text-xs text-rose-500 mt-1">
+                      {errors.applicantPhone}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label
+                    htmlFor="applicant-exp"
+                    className="block text-xs font-semibold text-[#D3D3D3] mb-2"
+                  >
+                    Relevant Experience &amp; Certifications *
+                  </label>
+                  <input
+                    id="applicant-exp"
+                    type="text"
+                    value={experienceYears}
+                    onChange={(e) => setExperienceYears(e.target.value)}
+                    placeholder="e.g., 3 Years ISP Sales / CCNA, JNCIA"
+                    className="w-full px-4 py-3 rounded-lg border border-[#272727] bg-[#111] text-sm text-white focus:outline-none focus:border-brand_cyan"
+                  />
+                  {errors.experienceYears && (
+                    <p className="text-xs text-rose-500 mt-1">
+                      {errors.experienceYears}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="applicant-linkedin"
+                    className="block text-xs font-semibold text-[#D3D3D3] mb-2"
+                  >
+                    LinkedIn Profile URL (Optional)
+                  </label>
+                  <input
+                    id="applicant-linkedin"
+                    type="url"
+                    value={portfolioOrLinkedin}
+                    onChange={(e) => setPortfolioOrLinkedin(e.target.value)}
+                    placeholder="https://linkedin.com/in/..."
+                    className="w-full px-4 py-3 rounded-lg border border-[#272727] bg-[#111] text-sm text-white focus:outline-none focus:border-brand_cyan"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label
+                  htmlFor="applicant-note"
+                  className="block text-xs font-semibold text-[#D3D3D3] mb-2"
+                >
+                  Technical Summary / Cover Note *
+                </label>
+                <textarea
+                  id="applicant-note"
+                  rows={4}
+                  value={coverNote}
+                  onChange={(e) => setCoverNote(e.target.value)}
+                  placeholder="Briefly describe your experience with B2B telecom sales, NOC routing/switching, or underground optical fiber splicing..."
+                  className="w-full px-4 py-3 rounded-lg border border-[#272727] bg-[#111] text-sm text-white focus:outline-none focus:border-brand_cyan"
+                />
+                {errors.coverNote && (
+                  <p className="text-xs text-rose-500 mt-1">
+                    {errors.coverNote}
+                  </p>
+                )}
               </div>
 
               <button
-                type="button"
-                onClick={() => setExpandedId(isOpen ? "" : role.id)}
-                className="w-full p-6 text-left flex items-center justify-between gap-4 pt-7"
+                type="submit"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg bg-[#008FFF] hover:bg-brand_cyan hover:text-black text-white font-semibold text-sm transition-all"
               >
-                <div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#0B0D10] text-[#19A2E6]">
-                    {role.department}
-                  </span>
-                  <h3 className="text-lg font-bold text-[#0B0D10] mt-2">
-                    {role.title}
-                  </h3>
-                  <div className="flex flex-wrap items-center gap-4 mt-1.5 text-xs text-[#757679] font-semibold">
-                    <span className="inline-flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5 text-[#19A2E6]" />
-                      {role.location}
-                    </span>
-                    <span className="inline-flex items-center gap-1">
-                      <Clock className="w-3.5 h-3.5 text-[#19A2E6]" />
-                      {role.type}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-2 rounded-xl bg-[#0B0D10] text-white">
-                  {isOpen ? (
-                    <ChevronUp className="w-5 h-5 text-[#19A2E6]" />
-                  ) : (
-                    <ChevronDown className="w-5 h-5" />
-                  )}
-                </div>
+                <Send className="w-4 h-4" />
+                <span>Validate &amp; Prepare Application Email</span>
               </button>
 
-              {isOpen && (
-                <div className="px-6 pb-6 pt-2 border-t border-neutral-200 space-y-4 text-xs sm:text-sm text-[#757679] font-medium">
-                  <p className="leading-relaxed text-[#0B0D10]">{role.summary}</p>
-
-                  <div>
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#0B0D10] mb-2">
-                      Key Responsibilities:
-                    </h4>
-                    <ul className="space-y-2">
-                      {role.responsibilities.map((r, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-[#19A2E6] shrink-0 mt-0.5" />
-                          <span>{r}</span>
-                        </li>
-                      ))}
-                    </ul>
+              {preparedMailto && (
+                <div className="p-5 rounded-xl bg-[#000000] border border-brand_cyan space-y-3">
+                  <div className="text-xs font-mono text-brand_cyan uppercase">
+                    ✓ Application Validated — Ready to Dispatch via Email Client
                   </div>
-
-                  <div>
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#0B0D10] mb-2">
-                      Qualifications &amp; Background:
-                    </h4>
-                    <ul className="space-y-2">
-                      {role.qualifications.map((q, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-[#0B0D10] shrink-0 mt-0.5" />
-                          <span>{q}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="pt-3">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setAppForm({ ...appForm, track: role.title });
-                        document
-                          .getElementById("career-application-form")
-                          ?.scrollIntoView({ behavior: "smooth" });
-                      }}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#0B0D10] hover:bg-[#19A2E6] text-white font-bold text-xs shadow-md transition-colors"
-                    >
-                      <Briefcase className="w-3.5 h-3.5 text-[#19A2E6]" />
-                      <span>Apply for This Track</span>
-                    </button>
-                  </div>
+                  <a
+                    href={preparedMailto}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#008FFF] hover:bg-brand_cyan hover:text-black text-white text-xs font-bold transition-colors"
+                  >
+                    <span>Open Email Client to Send Application</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </a>
                 </div>
               )}
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Right 5 Cols: Open Talent Application Form (Logo Jet-Black & Cyan Panel) */}
-      <div
-        id="career-application-form"
-        className="lg:col-span-5 rounded-3xl bg-[#0B0D10] border-2 border-[#19A2E6] p-6 sm:p-8 shadow-2xl text-white"
-      >
-        <span className="text-xs font-bold uppercase tracking-wider text-[#19A2E6]">
-          Talent Acquisition Desk
-        </span>
-        <h3 className="text-xl font-extrabold text-white mt-1">
-          Submit Career Application
-        </h3>
-        <p className="text-xs text-neutral-400 mt-1 mb-5">
-          Send your engineering or commercial profile directly to{" "}
-          <span className="text-[#19A2E6] font-semibold">{CONTACT_INFO.hrEmail}</span>{" "}
-          (source HR address — verify for EARTH I Broadband).
-        </p>
-
-        <form onSubmit={handleApplySubmit} className="space-y-3.5">
-          <div>
-            <label className="block text-xs font-semibold text-neutral-300 mb-1">
-              Full Name *
-            </label>
-            <input
-              type="text"
-              required
-              value={appForm.fullName}
-              onChange={(e) =>
-                setAppForm({ ...appForm, fullName: e.target.value })
-              }
-              placeholder="e.g., Bilal Ahmed"
-              className="w-full px-4 py-2.5 rounded-xl bg-[#151921] border border-neutral-700 text-xs text-white placeholder:text-[#757679] focus:outline-none focus:border-[#19A2E6]"
-            />
+            </form>
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label className="block text-xs font-semibold text-neutral-300 mb-1">
-                Email Address *
-              </label>
-              <input
-                type="email"
-                required
-                value={appForm.email}
-                onChange={(e) =>
-                  setAppForm({ ...appForm, email: e.target.value })
-                }
-                placeholder="you@domain.com"
-                className="w-full px-4 py-2.5 rounded-xl bg-[#151921] border border-neutral-700 text-xs text-white placeholder:text-[#757679] focus:outline-none focus:border-[#19A2E6]"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-semibold text-neutral-300 mb-1">
-                Phone Number *
-              </label>
-              <input
-                type="tel"
-                required
-                value={appForm.phone}
-                onChange={(e) =>
-                  setAppForm({ ...appForm, phone: e.target.value })
-                }
-                placeholder="+92 300 0000000"
-                className="w-full px-4 py-2.5 rounded-xl bg-[#151921] border border-neutral-700 text-xs text-white placeholder:text-[#757679] focus:outline-none focus:border-[#19A2E6]"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-xs font-semibold text-neutral-300 mb-1">
-              Department / Talent Track *
-            </label>
-            <select
-              value={appForm.track}
-              onChange={(e) =>
-                setAppForm({ ...appForm, track: e.target.value })
-              }
-              className="w-full px-4 py-2.5 rounded-xl bg-[#151921] border border-neutral-700 text-xs text-white focus:outline-none focus:border-[#19A2E6]"
-            >
-              {CAREER_TRACKS.map((t) => (
-                <option
-                  key={t.id}
-                  value={t.title}
-                  className="bg-[#0B0D10] text-white"
-                >
-                  {t.title}
-                </option>
-              ))}
-              <option
-                value="Open Talent Pool Application"
-                className="bg-[#0B0D10] text-white"
-              >
-                Open Talent Pool Application
-              </option>
-            </select>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label className="block text-xs font-semibold text-neutral-300 mb-1">
-                Years of Relevant Experience *
-              </label>
-              <input
-                type="text"
-                required
-                value={appForm.experienceYears}
-                onChange={(e) =>
-                  setAppForm({ ...appForm, experienceYears: e.target.value })
-                }
-                placeholder="e.g., 4 Years in ISP NOC"
-                className="w-full px-4 py-2.5 rounded-xl bg-[#151921] border border-neutral-700 text-xs text-white placeholder:text-[#757679] focus:outline-none focus:border-[#19A2E6]"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-semibold text-neutral-300 mb-1">
-                LinkedIn / Portfolio URL
-              </label>
-              <input
-                type="url"
-                value={appForm.linkedinOrPortfolio}
-                onChange={(e) =>
-                  setAppForm({
-                    ...appForm,
-                    linkedinOrPortfolio: e.target.value,
-                  })
-                }
-                placeholder="https://linkedin.com/in/..."
-                className="w-full px-4 py-2.5 rounded-xl bg-[#151921] border border-neutral-700 text-xs text-white placeholder:text-[#757679] focus:outline-none focus:border-[#19A2E6]"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-xs font-semibold text-neutral-300 mb-1">
-              Technical Summary &amp; Certifications *
-            </label>
-            <textarea
-              rows={4}
-              required
-              value={appForm.coverNote}
-              onChange={(e) =>
-                setAppForm({ ...appForm, coverNote: e.target.value })
-              }
-              placeholder="Summarize your experience with BGP/MPLS, OTDR fiber splicing, B2B telecom sales, or SOC operations..."
-              className="w-full px-4 py-2.5 rounded-xl bg-[#151921] border border-neutral-700 text-xs text-white placeholder:text-[#757679] focus:outline-none focus:border-[#19A2E6]"
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="w-full py-3 rounded-xl bg-[#19A2E6] hover:bg-[#0D84C4] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition-all"
-          >
-            <Send className="w-4 h-4" />
-            <span>Prepare Career Application Email</span>
-          </button>
-        </form>
-
-        {submittedNotice && (
-          <div className="mt-4 p-3.5 rounded-xl bg-[#151921] border border-[#19A2E6] text-xs text-neutral-200">
-            <strong>Application Draft Prepared:</strong> Your default email client has been launched with your structured application addressed to{" "}
-            <span className="text-[#19A2E6] font-semibold">{CONTACT_INFO.hrEmail}</span>. Please attach your CV/Resume PDF before sending.
-          </div>
-        )}
+        </div>
       </div>
     </div>
   );

@@ -2,470 +2,385 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   Menu,
   X,
   ChevronDown,
-  ChevronRight,
-  Radio,
-  Globe,
-  Network,
-  Lock,
+  Calendar,
   Cpu,
-  Server,
-  Wrench,
-  ShieldAlert,
-  Code2,
-  Phone,
-  Mail,
-  MapPin,
-  Send,
-  Activity,
-  Wifi,
-  Zap,
-  ShieldCheck,
-  Building2,
 } from "lucide-react";
-import { NAV_LINKS, SERVICES, CONTACT_INFO } from "@/data/siteData";
+import { BRAND_INFO, SERVICES_DATA } from "@/data/siteData";
 
-const iconMap: Record<string, React.ElementType> = {
-  Radio,
-  Globe,
-  Network,
-  Lock,
-  Cpu,
-  Server,
-  Wrench,
-  ShieldAlert,
-  Code2,
-  Building2,
-  ShieldCheck,
-  Cable: Radio,
-  Cloud: Server,
-  ServerCog: Wrench,
-};
+const NAV_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Services", href: "/services", hasMegaMenu: true },
+  { label: "Why Choose Us", href: "/why-choose-us" },
+  { label: "Careers", href: "/careers" },
+  { label: "Contact Us", href: "/contact" },
+];
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [servicesHover, setServicesHover] = useState(false);
   const [quoteDrawerOpen, setQuoteDrawerOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  const [quoteForm, setQuoteForm] = useState({
-    name: "",
-    company: "",
-    email: "",
-    phone: "",
-    service: "Dedicated Internet Access (DIA)",
-    bandwidth: "100 Mbps Symmetrical",
-    location: "",
-  });
-  const [quoteNotice, setQuoteNotice] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    setMobileMenuOpen(false);
-    setServicesDropdownOpen(false);
+    setMobileOpen(false);
+    setServicesHover(false);
   }, [pathname]);
 
-  const handleQuoteSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setQuoteNotice(true);
-    const subject = encodeURIComponent(
-      `[EARTH I Broadband Optical Link Quote] ${quoteForm.service} (${quoteForm.bandwidth}) — ${quoteForm.company || quoteForm.name}`
-    );
-    const body = encodeURIComponent(
-      `Name: ${quoteForm.name}\nCompany: ${quoteForm.company}\nEmail: ${quoteForm.email}\nPhone: ${quoteForm.phone}\nService: ${quoteForm.service}\nBandwidth Tier: ${quoteForm.bandwidth}\nSite Coordinates / Corridor: ${quoteForm.location}`
-    );
-    window.location.href = `mailto:${CONTACT_INFO.generalEmail}?subject=${subject}&body=${body}`;
-  };
+  const corporateServices = SERVICES_DATA.filter(
+    (s) =>
+      s.category === "Corporate Connectivity" ||
+      s.category === "Optical Infrastructure"
+  );
+  const cloudSecurityServices = SERVICES_DATA.filter(
+    (s) =>
+      s.category === "Cloud & Managed IT" ||
+      s.category === "Security & Digital"
+  );
 
   return (
     <>
-      {/* TOP ISP NOC TELEMETRY STATUS BAR — LOGO JET BLACK (#0B0D10) & LOGO CYAN (#19A2E6) */}
-      <div className="hidden lg:block fixed top-0 left-0 right-0 z-50 bg-[#0B0D10] text-white border-b border-[#19A2E6]/35 h-9">
-        <div className="max-w-[1440px] mx-auto px-6 h-full flex items-center justify-between text-[11px] font-medium tracking-wide">
-          <div className="flex items-center gap-6">
-            <span className="inline-flex items-center gap-2 text-[#19A2E6] font-bold">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#19A2E6] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#19A2E6]"></span>
-              </span>
-              100G Metro Core Optical Ring: Operational
-            </span>
-            <span className="text-[#757679]">|</span>
-            <span className="inline-flex items-center gap-1.5 text-neutral-300">
-              <Zap className="w-3.5 h-3.5 text-[#19A2E6]" />
-              1,200+ km Subterranean Armored Fiber
-            </span>
-            <span className="text-[#757679]">|</span>
-            <span className="inline-flex items-center gap-1.5 text-neutral-300">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#19A2E6]" />
-              99.99% Enterprise SLA &bull; &lt;50ms Failover
-            </span>
-          </div>
-          <div className="flex items-center gap-5">
-            <a
-              href={`tel:${CONTACT_INFO.phoneRaw}`}
-              className="inline-flex items-center gap-1.5 text-neutral-300 hover:text-[#19A2E6] transition-colors"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#19A2E6]" />
-              24/7 NOC Support: <strong className="text-white">{CONTACT_INFO.phone}</strong>
-            </a>
-            <span className="text-[#757679]">|</span>
-            <Link
-              href="/contact#feasibility"
-              className="text-[#19A2E6] hover:text-white font-bold flex items-center gap-1 transition-colors"
-            >
-              Check Fiber Coverage <ChevronRight className="w-3 h-3" />
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* FLOATING CRISP WHITE NAVBAR WITH LOGO BLACK & CYAN ACCENTS */}
-      <header className="fixed top-2 lg:top-11 left-0 right-0 z-50 px-3 sm:px-6 transition-all duration-300">
-        <div
-          className={`max-w-[1440px] mx-auto rounded-2xl transition-all duration-300 border-b-2 border-b-[#19A2E6] border-x border-t ${
-            scrolled
-              ? "bg-white/98 backdrop-blur-xl border-neutral-200 shadow-[0_14px_38px_rgba(11,13,16,0.14)] py-2.5 px-4 sm:px-7"
-              : "bg-white/95 backdrop-blur-lg border-neutral-200/90 shadow-[0_10px_30px_rgba(11,13,16,0.1)] py-3 px-4 sm:px-7"
-          }`}
+      {/* HubexTech-Exact Boxed Dark Floating Navbar */}
+      <header className="sticky top-0 z-[998] pt-2 lg:pt-[1.4rem] px-3 sm:px-6 lg:px-[3.25rem] xl:px-[6.25rem]">
+        <nav
+          id="topnav"
+          className="bg-[#050505]/95 backdrop-blur-md rounded-lg border border-[#2A2A2A] text-white shadow-[0_10px_35px_rgba(0,0,0,0.85)] relative"
         >
-          <div className="flex items-center justify-between gap-4">
-            {/* Official EARTH I Broadband Logo — Seamless on Crisp White */}
-            <Link
-              href="/"
-              className="flex items-center gap-3 group focus:outline-none shrink-0"
-              aria-label="EARTH I Broadband (Pvt.) Ltd. Home"
-            >
-              <Image
-                src="/logo-color.png"
-                alt="EARTH I Broadband (Pvt.) Ltd."
-                width={168}
-                height={50}
-                priority
-                className="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
-              />
-            </Link>
-
-            {/* Desktop Navigation Links — Logo Black (#0B0D10), Grey (#757679), & Cyan (#19A2E6) */}
-            <nav
-              className="hidden lg:flex items-center gap-7 xl:gap-8 text-[15px] font-semibold"
-              aria-label="Primary Navigation"
-            >
-              {NAV_LINKS.map((link) => {
-                const isActive =
-                  pathname === link.href ||
-                  (link.href !== "/" && pathname.startsWith(link.href));
-
-                if (link.label === "Services") {
-                  return (
-                    <div
-                      key={link.href}
-                      className="relative"
-                      onMouseEnter={() => setServicesDropdownOpen(true)}
-                      onMouseLeave={() => setServicesDropdownOpen(false)}
-                    >
-                      <Link
-                        href={link.href}
-                        className={`inline-flex items-center gap-1.5 py-2 transition-colors duration-200 font-bold ${
-                          isActive
-                            ? "text-[#19A2E6]"
-                            : "text-[#0B0D10] hover:text-[#19A2E6]"
-                        }`}
-                      >
-                        <span>{link.label}</span>
-                        <ChevronDown
-                          className={`w-4 h-4 transition-transform duration-200 ${
-                            servicesDropdownOpen ? "rotate-180 text-[#19A2E6]" : "text-[#757679]"
-                          }`}
-                        />
-                      </Link>
-
-                      {/* Mega-Menu in Logo Black, White & Cyan */}
-                      {servicesDropdownOpen && (
-                        <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-[780px] z-50">
-                          <div className="bg-[#0B0D10] text-white border-2 border-[#19A2E6]/50 rounded-2xl p-6 shadow-[0_28px_70px_rgba(11,13,16,0.55)]">
-                            <div className="flex items-center justify-between pb-3 mb-4 border-b border-neutral-800">
-                              <div className="flex items-center gap-2">
-                                <Wifi className="w-4 h-4 text-[#19A2E6]" />
-                                <span className="text-xs font-bold uppercase tracking-wider text-neutral-300">
-                                  Enterprise Optical ISP &amp; ICT Solutions
-                                </span>
-                              </div>
-                              <Link
-                                href="/services"
-                                className="text-xs font-bold text-[#19A2E6] hover:text-white flex items-center gap-1"
-                              >
-                                View All 9 Solutions <ChevronRight className="w-3.5 h-3.5" />
-                              </Link>
-                            </div>
-                            <div className="grid grid-cols-3 gap-2.5">
-                              {SERVICES.map((srv) => {
-                                const IconComp = iconMap[srv.iconName] || Network;
-                                return (
-                                  <Link
-                                    key={srv.id}
-                                    href={`/services#${srv.id}`}
-                                    className="group flex items-start gap-3 p-3 rounded-xl hover:bg-[#161A22] border border-transparent hover:border-[#19A2E6]/50 transition-all"
-                                  >
-                                    <div className="w-9 h-9 rounded-lg bg-[#161A22] border border-[#19A2E6]/35 flex items-center justify-center shrink-0 group-hover:bg-[#19A2E6] group-hover:text-white text-[#19A2E6] transition-colors">
-                                      <IconComp className="w-4 h-4" />
-                                    </div>
-                                    <div>
-                                      <p className="text-xs font-bold text-white group-hover:text-[#19A2E6] transition-colors leading-snug">
-                                        {srv.shortTitle}
-                                      </p>
-                                      <p className="text-[11px] text-[#757679] mt-0.5 line-clamp-1">
-                                        {srv.category}
-                                      </p>
-                                    </div>
-                                  </Link>
-                                );
-                              })}
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  );
-                }
-
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`py-2 transition-colors duration-200 font-bold relative ${
-                      isActive
-                        ? "text-[#19A2E6] after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#19A2E6] after:rounded-full"
-                        : "text-[#0B0D10] hover:text-[#19A2E6]"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                );
-              })}
-            </nav>
-
-            {/* Right CTA Button — Logo Jet Black + Logo Cyan Accent */}
-            <div className="hidden lg:flex items-center gap-3">
+          <div className="px-[20px] py-2.5 lg:py-2.5 flex items-center justify-between">
+            {/* Logo Container (Original EARTH I Broadband Logo preserved intact) */}
+            <div className="flex items-center">
               <Link
-                href="/contact"
-                className="relative inline-flex items-center gap-2 bg-[#0B0D10] hover:bg-[#19A2E6] text-white font-bold text-sm px-6 py-2.5 rounded-xl border border-[#19A2E6]/50 shadow-[0_6px_20px_rgba(11,13,16,0.18)] hover:shadow-[0_10px_26px_rgba(25,162,230,0.4)] transition-all duration-300 group"
+                href="/"
+                className="inline-flex items-center bg-white px-3 py-1.5 rounded-md shadow-sm hover:opacity-95 transition-opacity"
+                aria-label="EARTH I Broadband (Pvt.) Ltd. Home"
               >
-                <Activity className="w-4 h-4 text-[#19A2E6] group-hover:text-white animate-pulse" />
-                <span>Get Connected</span>
-                <ChevronRight className="w-4 h-4 text-[#19A2E6] group-hover:text-white transition-transform duration-300 group-hover:translate-x-1" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/logo-color.png"
+                  alt="EARTH I Broadband (Pvt.) Ltd."
+                  className="h-9 sm:h-10 w-auto object-contain"
+                />
               </Link>
             </div>
 
-            {/* Mobile Hamburger Button */}
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2.5 rounded-xl bg-[#0B0D10] text-white hover:text-[#19A2E6] transition-colors"
-              aria-label="Toggle Menu"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </div>
+            {/* Desktop Navigation Menu (Exact HubexTech animated #008FFF underline) */}
+            <div className="hidden lg:flex items-center">
+              <ul className="flex items-center space-x-1 xl:space-x-2">
+                {NAV_LINKS.map((item) => {
+                  const isActive =
+                    item.href === "/"
+                      ? pathname === "/"
+                      : pathname.startsWith(item.href);
 
-        {/* Mobile Drawer */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden mt-2 rounded-2xl bg-[#0B0D10] border border-[#19A2E6]/40 p-5 shadow-2xl text-white">
-            <div className="flex items-center justify-between pb-3 mb-3 border-b border-neutral-800 text-xs text-[#19A2E6] font-bold">
-              <span className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#19A2E6] animate-ping" />
-                100G Metro Fiber Core Active
-              </span>
-              <span className="text-neutral-400">SLA 99.99%</span>
+                  if (item.hasMegaMenu) {
+                    return (
+                      <li
+                        key={item.href}
+                        className="relative"
+                        onMouseEnter={() => setServicesHover(true)}
+                        onMouseLeave={() => setServicesHover(false)}
+                      >
+                        <Link
+                          href={item.href}
+                          className="relative inline-flex items-center gap-1 text-white px-[12px] py-2 text-[15px] font-medium group"
+                        >
+                          <span
+                            className={`relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-[#008FFF] after:transition-all after:duration-500 ${
+                              isActive
+                                ? "after:w-full text-[#2EC1D9]"
+                                : "after:w-0 group-hover:after:w-full"
+                            }`}
+                          >
+                            {item.label}
+                          </span>
+                          <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#008FFF] transition-transform duration-300 group-hover:rotate-180" />
+                        </Link>
+
+                        {/* HubexTech Mega Menu Dropdown */}
+                        {servicesHover && (
+                          <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-[760px] z-[999]">
+                            <div className="bg-[#050505] border border-[#2A2A2A] rounded-xl p-8 shadow-2xl grid grid-cols-3 gap-8">
+                              {/* Col 1 */}
+                              <div>
+                                <p className="text-left mb-6 font-bold text-[15px] text-[#2EC1D9B2]">
+                                  Optical & Corporate
+                                </p>
+                                <ul className="flex flex-col gap-5">
+                                  {corporateServices.map((srv) => (
+                                    <li
+                                      key={srv.id}
+                                      className="flex items-center gap-3 group/item"
+                                    >
+                                      <svg
+                                        width="8"
+                                        height="2"
+                                        viewBox="0 0 8 2"
+                                        fill="none"
+                                        className="shrink-0"
+                                      >
+                                        <line
+                                          y1="1.25"
+                                          x2="8"
+                                          y2="1.25"
+                                          stroke="white"
+                                          strokeOpacity="0.5"
+                                          strokeWidth="1.5"
+                                          className="group-hover/item:stroke-[#008FFF]"
+                                        />
+                                      </svg>
+                                      <Link
+                                        href={`/services#${srv.id}`}
+                                        className="text-sm text-white group-hover/item:text-[#008FFF] transition-colors"
+                                      >
+                                        {srv.shortTitle}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+
+                              {/* Col 2 */}
+                              <div>
+                                <p className="text-left mb-6 font-bold text-[15px] text-[#2EC1D9B2]">
+                                  Cloud, IT & Security
+                                </p>
+                                <ul className="flex flex-col gap-5">
+                                  {cloudSecurityServices.map((srv) => (
+                                    <li
+                                      key={srv.id}
+                                      className="flex items-center gap-3 group/item"
+                                    >
+                                      <svg
+                                        width="8"
+                                        height="2"
+                                        viewBox="0 0 8 2"
+                                        fill="none"
+                                        className="shrink-0"
+                                      >
+                                        <line
+                                          y1="1.25"
+                                          x2="8"
+                                          y2="1.25"
+                                          stroke="white"
+                                          strokeOpacity="0.5"
+                                          strokeWidth="1.5"
+                                          className="group-hover/item:stroke-[#008FFF]"
+                                        />
+                                      </svg>
+                                      <Link
+                                        href={`/services#${srv.id}`}
+                                        className="text-sm text-white group-hover/item:text-[#008FFF] transition-colors"
+                                      >
+                                        {srv.shortTitle}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+
+                              {/* Col 3 */}
+                              <div className="border-l border-[#272727] pl-6 flex flex-col justify-between">
+                                <div>
+                                  <p className="text-left mb-3 font-bold text-[15px] text-[#2EC1D9B2]">
+                                    1,200+ km Metro Core
+                                  </p>
+                                  <p className="text-xs text-[#9C9C9C] leading-relaxed">
+                                    Subterranean armored optical fiber across
+                                    Gulberg, DHA, Mall Road, Canal Road &
+                                    industrial corridors with 99.99% SLA.
+                                  </p>
+                                </div>
+                                <Link
+                                  href="/contact#site-survey"
+                                  className="mt-4 inline-flex items-center justify-center bg-[#008FFF] hover:bg-brand_cyan text-white text-xs font-bold py-2.5 px-4 rounded-lg transition-colors"
+                                >
+                                  Request Site Survey →
+                                </Link>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </li>
+                    );
+                  }
+
+                  return (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        className="relative inline-block text-white px-[12px] py-2 text-[15px] font-medium group"
+                      >
+                        <span
+                          className={`relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-[#008FFF] after:transition-all after:duration-500 ${
+                            isActive
+                              ? "after:w-full text-[#2EC1D9]"
+                              : "after:w-0 group-hover:after:w-full"
+                          }`}
+                        >
+                          {item.label}
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
-            <nav className="flex flex-col space-y-1.5">
-              {NAV_LINKS.map((link) => {
-                const isActive = pathname === link.href;
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`px-4 py-3 rounded-xl text-sm font-bold transition-colors ${
-                      isActive
-                        ? "bg-[#19A2E6]/20 text-[#19A2E6] border border-[#19A2E6]/40"
-                        : "text-neutral-200 hover:bg-neutral-900 hover:text-[#19A2E6]"
-                    }`}
+
+            {/* Right: HubexTech Phone/WhatsApp Icon + "Let's Talk" / "Get in Touch" Button */}
+            <div className="hidden xl:flex items-center">
+              <a
+                href={`tel:${BRAND_INFO.contactDetails.helplinePhone.replace(
+                  /\s+/g,
+                  ""
+                )}`}
+                className="mr-5"
+                title="24/7 NOC Helpline (Flagged for EARTH I Broadband confirmation)"
+              >
+                <div className="flex items-center gap-2 text-[#D3D3D3] hover:text-white text-sm font-medium transition-colors">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
                   >
-                    {link.label}
-                  </Link>
-                );
-              })}
-              <div className="pt-3 mt-2 border-t border-neutral-800 flex flex-col gap-2.5">
+                    <path
+                      fill="#24D366"
+                      d="M19.05 4.91A9.816 9.816 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01zm-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18l-3.12.82l.83-3.04l-.2-.31a8.264 8.264 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24c2.2 0 4.27.86 5.82 2.42a8.183 8.183 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81c-.23-.08-.39-.12-.56.12c-.17.25-.64.81-.78.97c-.14.17-.29.19-.54.06c-.25-.12-1.05-.39-1.99-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.14-.25-.02-.38.11-.51c.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31c-.22.25-.86.85-.86 2.07c0 1.22.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74c.59.26 1.05.41 1.41.52c.59.19 1.13.16 1.56.1c.48-.07 1.47-.6 1.67-1.18c.21-.58.21-1.07.14-1.18s-.22-.16-.47-.28z"
+                    />
+                  </svg>
+                  <span>{BRAND_INFO.contactDetails.helplinePhone}</span>
+                </div>
+              </a>
+
+              <Link href="/contact">
+                <span className="bg-[#008FFF] hover:bg-brand_cyan text-[15px] font-bold text-white px-6 rounded-lg w-[10.563rem] h-[2.75rem] inline-flex items-center justify-center transition-colors">
+                  Get in Touch
+                </span>
+              </Link>
+            </div>
+
+            {/* Mobile Hamburger Toggle */}
+            <div className="lg:hidden">
+              <button
+                type="button"
+                onClick={() => setMobileOpen(!mobileOpen)}
+                className="p-2 rounded-lg text-white hover:text-brand_cyan focus:outline-none"
+                aria-label="Toggle Menu"
+              >
+                {mobileOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Drawer */}
+          {mobileOpen && (
+            <div className="lg:hidden bg-[#050505] border-t border-[#2A2A2A] px-5 py-6 space-y-4 rounded-b-lg">
+              <ul className="space-y-3">
+                {NAV_LINKS.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      onClick={() => setMobileOpen(false)}
+                      className={`block py-2 text-base font-bold uppercase tracking-[1px] ${
+                        pathname === item.href
+                          ? "text-brand_cyan"
+                          : "text-white hover:text-[#008FFF]"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="pt-4 border-t border-[#272727] flex flex-col items-center gap-4">
                 <Link
                   href="/contact"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-full py-3 rounded-xl bg-[#19A2E6] text-center text-white font-bold text-sm shadow-md"
+                  onClick={() => setMobileOpen(false)}
+                  className="bg-[#008FFF] hover:bg-brand_cyan text-[16px] font-bold text-white px-6 rounded-lg w-full h-[2.75rem] flex items-center justify-center"
                 >
-                  Request Fiber Feasibility
+                  Get in Touch
                 </Link>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                    setQuoteDrawerOpen(true);
-                  }}
-                  className="w-full py-2.5 rounded-xl bg-neutral-900 border border-neutral-700 text-neutral-200 text-xs font-semibold"
+                <a
+                  href={`tel:${BRAND_INFO.contactDetails.helplinePhone.replace(
+                    /\s+/g,
+                    ""
+                  )}`}
+                  className="text-white text-sm flex items-center gap-2"
                 >
-                  Get a Free Bandwidth Quote
-                </button>
+                  <span className="w-2 h-2 rounded-full bg-[#24D366]" />
+                  24/7 NOC: {BRAND_INFO.contactDetails.helplinePhone}
+                </a>
               </div>
-            </nav>
-          </div>
-        )}
+            </div>
+          )}
+        </nav>
       </header>
 
-      {/* Vertical Right-Edge "Get a Free Link Quote" Tab + Drawer in Logo Black & Cyan */}
-      <div
-        className={`fixed top-1/2 -translate-y-1/2 right-0 z-40 flex items-center transition-transform duration-500 ease-in-out ${
-          quoteDrawerOpen ? "translate-x-0" : "translate-x-[340px] sm:translate-x-[380px]"
-        }`}
-      >
+      {/* HubexTech-Exact Right-Side "Get a free quote" Rotated Button & Slide-Out Drawer */}
+      <div className="fixed top-[45%] right-0 z-50 flex items-center">
         <button
           type="button"
           onClick={() => setQuoteDrawerOpen(!quoteDrawerOpen)}
-          className="bg-[#0B0D10] hover:bg-[#19A2E6] border-l-2 border-y-2 border-[#19A2E6] text-white font-bold text-xs tracking-wider uppercase py-5 px-2.5 rounded-l-xl shadow-[-6px_0_24px_rgba(11,13,16,0.45)] transition-all flex items-center justify-center"
-          style={{ writingMode: "vertical-rl", textOrientation: "mixed" }}
-          aria-label="Get a free ISP bandwidth quote"
+          className="py-2 px-4 cursor-pointer rounded-b-md rotate-90 origin-bottom-right -translate-y-12 text-white bg-[#008FFF] hover:bg-brand_cyan shadow-lg font-bold text-sm tracking-wide transition-colors"
         >
-          Get a Free Link Quote
+          Get a free quote
         </button>
 
-        <div className="w-[340px] sm:w-[380px] bg-[#0B0D10] border-2 border-[#19A2E6]/50 rounded-l-2xl p-6 shadow-[-20px_0_50px_rgba(11,13,16,0.65)] max-h-[88vh] overflow-y-auto text-white">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#19A2E6] block">
-                Optical Feasibility Desk
+        {quoteDrawerOpen && (
+          <div className="fixed right-0 top-1/2 -translate-y-1/2 w-64 rounded-l-xl bg-[#141414] border border-[#272727] shadow-2xl p-5 z-[999]">
+            <div className="flex items-center justify-between pb-3 border-b border-[#272727]">
+              <span className="text-lg font-semibold text-white">
+                Get a Free Quote
               </span>
-              <h3 className="text-lg font-bold text-white">Get a Free ISP Quote</h3>
+              <button
+                type="button"
+                onClick={() => setQuoteDrawerOpen(false)}
+                className="bg-[#1591ee] hover:bg-brand_cyan text-white rounded p-1"
+                aria-label="Close quote drawer"
+              >
+                <X className="w-4 h-4" />
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={() => setQuoteDrawerOpen(false)}
-              className="p-1.5 rounded-lg bg-neutral-900 text-neutral-400 hover:text-white"
-              aria-label="Close Quote Panel"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-          <p className="text-xs text-neutral-400 mb-4">
-            Request enterprise DIA, MPLS, or Point-to-Point optical wave pricing from{" "}
-            <strong className="text-white">EARTH I Broadband (Pvt.) Ltd.</strong>
-          </p>
 
-          <form onSubmit={handleQuoteSubmit} className="space-y-3">
-            <input
-              type="text"
-              required
-              placeholder="Your Full Name *"
-              value={quoteForm.name}
-              onChange={(e) => setQuoteForm({ ...quoteForm, name: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#161920] border border-neutral-700 text-xs text-white placeholder:text-[#757679] focus:outline-none focus:border-[#19A2E6]"
-            />
-            <input
-              type="text"
-              placeholder="Company / Enterprise Name"
-              value={quoteForm.company}
-              onChange={(e) => setQuoteForm({ ...quoteForm, company: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#161920] border border-neutral-700 text-xs text-white placeholder:text-[#757679] focus:outline-none focus:border-[#19A2E6]"
-            />
-            <div className="grid grid-cols-2 gap-2">
-              <input
-                type="email"
-                required
-                placeholder="Work Email *"
-                value={quoteForm.email}
-                onChange={(e) => setQuoteForm({ ...quoteForm, email: e.target.value })}
-                className="w-full px-3 py-2.5 rounded-xl bg-[#161920] border border-neutral-700 text-xs text-white placeholder:text-[#757679] focus:outline-none focus:border-[#19A2E6]"
-              />
-              <input
-                type="tel"
-                required
-                placeholder="Phone *"
-                value={quoteForm.phone}
-                onChange={(e) => setQuoteForm({ ...quoteForm, phone: e.target.value })}
-                className="w-full px-3 py-2.5 rounded-xl bg-[#161920] border border-neutral-700 text-xs text-white placeholder:text-[#757679] focus:outline-none focus:border-[#19A2E6]"
-              />
-            </div>
-            <select
-              value={quoteForm.service}
-              onChange={(e) => setQuoteForm({ ...quoteForm, service: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#161920] border border-neutral-700 text-xs text-white focus:outline-none focus:border-[#19A2E6]"
-            >
-              {SERVICES.map((s) => (
-                <option key={s.id} value={s.title} className="bg-[#0B0D10] text-white">
-                  {s.shortTitle}
-                </option>
-              ))}
-            </select>
-            <select
-              value={quoteForm.bandwidth}
-              onChange={(e) => setQuoteForm({ ...quoteForm, bandwidth: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#161920] border border-neutral-700 text-xs text-white focus:outline-none focus:border-[#19A2E6]"
-            >
-              <option value="20 Mbps Symmetrical">20 Mbps Symmetrical (1:1)</option>
-              <option value="50 Mbps Symmetrical">50 Mbps Symmetrical (1:1)</option>
-              <option value="100 Mbps Symmetrical">100 Mbps Symmetrical (1:1)</option>
-              <option value="250 Mbps Symmetrical">250 Mbps Symmetrical (1:1)</option>
-              <option value="500 Mbps Symmetrical">500 Mbps Symmetrical (1:1)</option>
-              <option value="1 Gbps – 10 Gbps Optical Wave">1 Gbps – 10 Gbps Optical Wave</option>
-            </select>
-            <input
-              type="text"
-              placeholder="Site Location / Corridor (e.g., Gulberg-III, DHA)"
-              value={quoteForm.location}
-              onChange={(e) => setQuoteForm({ ...quoteForm, location: e.target.value })}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-[#161920] border border-neutral-700 text-xs text-white placeholder:text-[#757679] focus:outline-none focus:border-[#19A2E6]"
-            />
-            <button
-              type="submit"
-              className="w-full py-2.5 rounded-xl bg-[#19A2E6] hover:bg-[#0D84C4] text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-all"
-            >
-              <Send className="w-3.5 h-3.5" />
-              <span>Prepare Optical Inquiry</span>
-            </button>
-          </form>
+            <div className="flex flex-col items-center justify-center my-6 gap-6">
+              <Link
+                href="/contact#site-survey"
+                onClick={() => setQuoteDrawerOpen(false)}
+                className="flex flex-col items-center group"
+              >
+                <div className="bg-[#141414] shadow-md border border-[#272727] p-4 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:bg-[#2EC1D9] text-[#2EC1D9] group-hover:text-black">
+                  <Calendar className="w-6 h-6" />
+                </div>
+                <span className="my-2 text-sm font-semibold text-white group-hover:text-brand_cyan">
+                  Request Site Survey
+                </span>
+              </Link>
 
-          {quoteNotice && (
-            <div className="mt-3 p-3 rounded-xl bg-[#161920] border border-[#19A2E6]/50 text-[11px] text-neutral-200">
-              Your email client has been opened with your formatted optical link quote parameters.
-            </div>
-          )}
-
-          <div className="mt-4 pt-3 border-t border-neutral-800 space-y-1.5 text-[11px] text-neutral-400">
-            <div className="flex items-center gap-2">
-              <Phone className="w-3.5 h-3.5 text-[#19A2E6] shrink-0" />
-              <span>{CONTACT_INFO.phone} (Verify for EARTH I)</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Mail className="w-3.5 h-3.5 text-[#19A2E6] shrink-0" />
-              <span>{CONTACT_INFO.generalEmail}</span>
-            </div>
-            <div className="flex items-start gap-2">
-              <MapPin className="w-3.5 h-3.5 text-[#19A2E6] shrink-0 mt-0.5" />
-              <span>{CONTACT_INFO.address}</span>
+              <Link
+                href="/#bandwidth-estimator"
+                onClick={() => setQuoteDrawerOpen(false)}
+                className="flex flex-col items-center group"
+              >
+                <div className="bg-[#141414] shadow-md border border-[#272727] p-4 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:bg-[#2EC1D9] text-[#2EC1D9] group-hover:text-black">
+                  <Cpu className="w-6 h-6" />
+                </div>
+                <span className="my-2 text-sm font-semibold text-white group-hover:text-brand_cyan">
+                  Configure Bandwidth
+                </span>
+              </Link>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );

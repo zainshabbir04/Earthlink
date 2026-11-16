@@ -19,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: `${BRAND_INFO.companyName} | Carrier-Grade Optical Fiber & Enterprise ISP`,
+    default: `${BRAND_INFO.companyName} | Carrier-Grade Optical Fiber & Enterprise Connectivity`,
     template: `%s | ${BRAND_INFO.companyName}`,
   },
   description:
@@ -51,9 +51,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`light scroll-smooth ${jakarta.variable} ${jetbrainsMono.variable}`}
+      className={`dark scroll-smooth ${jakarta.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="bg-black-gradient font-sans antialiased text-slate-900 min-h-screen flex flex-col selection:bg-brand_cyan selection:text-white overflow-x-hidden">
+      <body className="bg-black-gradient font-sans antialiased text-white min-h-screen flex flex-col selection:bg-brand_cyan selection:text-black overflow-x-hidden">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
