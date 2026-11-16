@@ -63,7 +63,7 @@ export default function Navbar() {
                 <img
                   src="/logo-dark.png"
                   alt="EARTH I Broadband (Pvt.) Ltd."
-                  className="h-11 sm:h-12 lg:h-[54px] w-auto object-contain drop-shadow-[0_2px_10px_rgba(46,193,217,0.2)]"
+                  className="h-14 sm:h-16 lg:h-[72px] w-auto object-contain drop-shadow-[0_2px_12px_rgba(46,193,217,0.25)]"
                 />
               </Link>
             </div>
