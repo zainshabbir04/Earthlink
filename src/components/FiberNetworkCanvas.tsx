@@ -1,191 +1,90 @@
 "use client";
 
-import React, { useRef, useMemo, useEffect, useState } from "react";
+import React, { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
+import { Points, PointMaterial } from "@react-three/drei";
 import * as THREE from "three";
 
-function OpticalMetroCoreMesh({ reducedMotion }: { reducedMotion: boolean }) {
+function FiberSphere() {
   const groupRef = useRef<THREE.Group>(null);
-  const pulsesRef = useRef<THREE.Points>(null);
+  const pointsRef = useRef<THREE.Points>(null);
 
-  const { nodePositions, linePositions, pulseData } = useMemo(() => {
-    const nodes: THREE.Vector3[] = [];
-    const nodeCount = 52;
-
-    for (let i = 0; i < nodeCount; i++) {
-      const phi = Math.acos(-1 + (2 * i) / nodeCount);
-      const theta = Math.sqrt(nodeCount * Math.PI) * phi;
-      const r = 2.15 + (i % 3) * 0.16;
-      nodes.push(
-        new THREE.Vector3(
-          r * Math.cos(theta) * Math.sin(phi),
-          r * Math.sin(theta) * Math.sin(phi),
-          r * Math.cos(phi)
-        )
-      );
+  const particlePositions = useMemo(() => {
+    const count = 420;
+    const positions = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      const phi = Math.acos(-1 + (2 * i) / count);
+      const theta = Math.sqrt(count * Math.PI) * phi;
+      const r = 1.85 + (i % 5) * 0.08;
+      positions[i * 3] = r * Math.cos(theta) * Math.sin(phi);
+      positions[i * 3 + 1] = r * Math.sin(theta) * Math.sin(phi);
+      positions[i * 3 + 2] = r * Math.cos(phi);
     }
-
-    const posArray = new Float32Array(nodes.length * 3);
-    nodes.forEach((n, idx) => {
-      posArray[idx * 3] = n.x;
-      posArray[idx * 3 + 1] = n.y;
-      posArray[idx * 3 + 2] = n.z;
-    });
-
-    const segments: number[] = [];
-    const pairs: [THREE.Vector3, THREE.Vector3][] = [];
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const dist = nodes[i].distanceTo(nodes[j]);
-        if (dist < 1.42) {
-          segments.push(
-            nodes[i].x,
-            nodes[i].y,
-            nodes[i].z,
-            nodes[j].x,
-            nodes[j].y,
-            nodes[j].z
-          );
-          pairs.push([nodes[i], nodes[j]]);
-        }
-      }
-    }
-
-    const pulsePositions = new Float32Array(pairs.length * 3);
-    return {
-      nodePositions: posArray,
-      linePositions: new Float32Array(segments),
-      pulseData: { pairs, pulsePositions },
-    };
+    return positions;
   }, []);
 
-  useFrame(({ clock, pointer }) => {
-    if (!groupRef.current || reducedMotion) return;
-    const t = clock.getElapsedTime();
-    groupRef.current.rotation.y = t * 0.18 + pointer.x * 0.28;
-    groupRef.current.rotation.x = Math.sin(t * 0.25) * 0.14 + pointer.y * 0.18;
-
-    if (pulsesRef.current) {
-      const attr = pulsesRef.current.geometry.attributes
-        .position as THREE.BufferAttribute;
-      const arr = attr.array as Float32Array;
-      pulseData.pairs.forEach(([a, b], idx) => {
-        const progress = (t * 0.75 + idx * 0.19) % 1;
-        arr[idx * 3] = THREE.MathUtils.lerp(a.x, b.x, progress);
-        arr[idx * 3 + 1] = THREE.MathUtils.lerp(a.y, b.y, progress);
-        arr[idx * 3 + 2] = THREE.MathUtils.lerp(a.z, b.z, progress);
-      });
-      attr.needsUpdate = true;
+  useFrame((state, delta) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y += delta * 0.22;
+      groupRef.current.rotation.x =
+        Math.sin(state.clock.elapsedTime * 0.35) * 0.15;
     }
   });
 
   return (
     <group ref={groupRef}>
-      {/* Inner Globe Wireframe */}
+      {/* Wireframe Optical Core Sphere in Logo Cyan (#19A2E6) */}
       <mesh>
-        <sphereGeometry args={[1.68, 28, 28]} />
+        <icosahedronGeometry args={[1.65, 2]} />
         <meshBasicMaterial
-          color="#BAE6FD"
+          color="#19A2E6"
           wireframe
           transparent
-          opacity={0.45}
+          opacity={0.35}
         />
       </mesh>
 
-      {/* Outer Ring Orbits */}
-      <mesh rotation={[Math.PI / 2.3, 0.3, 0]}>
-        <torusGeometry args={[2.55, 0.016, 16, 100]} />
-        <meshBasicMaterial color="#0FA4E8" transparent opacity={0.75} />
-      </mesh>
-      <mesh rotation={[-Math.PI / 3, -0.4, 0.2]}>
-        <torusGeometry args={[2.75, 0.012, 16, 100]} />
-        <meshBasicMaterial color="#0284C7" transparent opacity={0.5} />
-      </mesh>
-
-      {/* Subterranean Fiber Links */}
-      <lineSegments>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            count={linePositions.length / 3}
-            array={linePositions}
-            itemSize={3}
-          />
-        </bufferGeometry>
-        <lineBasicMaterial color="#0FA4E8" transparent opacity={0.42} />
-      </lineSegments>
-
-      {/* Metro POP Nodes */}
-      <points>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            count={nodePositions.length / 3}
-            array={nodePositions}
-            itemSize={3}
-          />
-        </bufferGeometry>
-        <pointsMaterial
-          color="#0284C7"
-          size={0.095}
-          sizeAttenuation
+      {/* Inner Dark Carbon Core Sphere (#14171D) */}
+      <mesh>
+        <sphereGeometry args={[1.15, 24, 24]} />
+        <meshBasicMaterial
+          color="#757679"
+          wireframe
           transparent
+          opacity={0.22}
+        />
+      </mesh>
+
+      {/* Glowing Optical Data Nodes in Logo Cyan */}
+      <Points
+        ref={pointsRef}
+        positions={particlePositions}
+        stride={3}
+        frustumCulled={false}
+      >
+        <PointMaterial
+          transparent
+          color="#19A2E6"
+          size={0.07}
+          sizeAttenuation
+          depthWrite={false}
           opacity={0.95}
         />
-      </points>
-
-      {/* Travelling Optical Data Packets */}
-      <points ref={pulsesRef}>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            count={pulseData.pulsePositions.length / 3}
-            array={pulseData.pulsePositions}
-            itemSize={3}
-          />
-        </bufferGeometry>
-        <pointsMaterial
-          color="#0F172A"
-          size={0.075}
-          sizeAttenuation
-          transparent
-          opacity={0.95}
-        />
-      </points>
+      </Points>
     </group>
   );
 }
 
 export default function FiberNetworkCanvas() {
-  const [mounted, setMounted] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <div className="w-full h-full flex items-center justify-center">
-        <div className="w-64 h-64 rounded-full border-2 border-brand_cyan/30 bg-sky-50 animate-pulse" />
-      </div>
-    );
-  }
-
   return (
-    <div className="w-full h-full relative" aria-hidden="true">
+    <div className="w-full h-full pointer-events-none" aria-hidden="true">
       <Canvas
-        camera={{ position: [0, 0, 5.8], fov: 45 }}
+        camera={{ position: [0, 0, 4.6], fov: 45 }}
         dpr={[1, 1.5]}
-        gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+        gl={{ antialias: true, alpha: true }}
       >
-        <ambientLight intensity={1} />
-        <OpticalMetroCoreMesh reducedMotion={reducedMotion} />
+        <ambientLight intensity={1.1} />
+        <FiberSphere />
       </Canvas>
     </div>
   );

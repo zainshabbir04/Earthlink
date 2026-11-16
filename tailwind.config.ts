@@ -9,35 +9,31 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        brand_cyan: "#0FA4E8",
-        brand_blue: "#0284C7",
-        brand_blue_alt: "#0369A1",
-        dimgray: "#F8FAFC",
-        zinc: "#E2E8F0",
-        light_white: "#334155",
-        brand: {
-          cyan: "#0FA4E8",
-          cyanLight: "#38BDF8",
-          cyanDark: "#0284C7",
-          navy: "#0F172A",
-          navyLight: "#1E293B",
-          navyCard: "#FFFFFF",
-          charcoal: "#0F172A",
-          slate: "#475569",
-          surface: "#F8FAFC",
-          surfaceAlt: "#F0F9FF",
-        },
+        // Exact colors extracted from logo-color.png:
+        // 1. "EARTH" & Signal Waves Cyan: #19A2E6
+        // 2. "LINK" & Swoosh Jet Black: #0B0D10 / #14171C
+        // 3. "Broadband (Pvt). Ltd." Grey: #757679
+        brand_cyan: "#19A2E6",
+        brand_blue: "#0D84C4",
+        brand_black: "#0B0D10",
+        brand_charcoal: "#15181F",
+        brand_grey: "#757679",
+        dimgray: "#ECEEF2",
+        zinc: "#D8DCE3",
+        lightwhite: "#111317",
+        skyblue: "#19A2E6",
+        blue: "#0D84C4",
+        purple: "#15181F",
       },
       fontFamily: {
-        sans: ["var(--font-jakarta)", "system-ui", "sans-serif"],
-        roboto: ["var(--font-jakarta)", "system-ui", "sans-serif"],
-        mono: ["var(--font-mono)", "monospace"],
+        sans: ["var(--font-poppins)", "var(--font-inter)", "sans-serif"],
+        display: ["var(--font-poppins)", "sans-serif"],
       },
       boxShadow: {
-        "glow-cyan": "0 12px 35px -6px rgba(15, 164, 232, 0.35)",
-        "glow-cyan-sm": "0 6px 20px -4px rgba(15, 164, 232, 0.25)",
-        "card-premium": "0 10px 30px -8px rgba(15, 23, 42, 0.06)",
-        "card-hover": "0 20px 45px -10px rgba(15, 164, 232, 0.18)",
+        "cyan-glow": "0 10px 30px -5px rgba(25, 162, 230, 0.32)",
+        "cyan-glow-lg": "0 18px 45px -8px rgba(25, 162, 230, 0.42)",
+        "card-premium": "0 12px 34px -8px rgba(11, 13, 16, 0.08)",
+        "card-hover": "0 20px 44px -10px rgba(25, 162, 230, 0.22)",
       },
       keyframes: {
         rotateImage: {
@@ -49,33 +45,32 @@ const config: Config = {
           "100%": { transform: "rotate(0deg)" },
         },
         breathe: {
-          "0%, 100%": { transform: "scale(0.95)" },
-          "50%": { transform: "scale(1.05)" },
+          "0%, 100%": { transform: "scale(1)", opacity: "0.85" },
+          "50%": { transform: "scale(1.06)", opacity: "1" },
         },
         fadeInOutSmooth: {
           "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-8px)" },
+          "50%": { transform: "translateY(-7px)" },
         },
         marquee: {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-50%)" },
         },
         pulseDash: {
-          "0%": { strokeDashoffset: "240" },
+          "0%": { strokeDashoffset: "100" },
           "100%": { strokeDashoffset: "0" },
         },
       },
       animation: {
-        rotateImage: "rotateImage 26s linear infinite",
+        rotateImage: "rotateImage 28s linear infinite",
         rotateReverse: "rotateReverse 34s linear infinite",
-        breathe: "breathe 4s ease-in-out infinite",
-        fadeInOutSmooth: "fadeInOutSmooth 3.8s ease-in-out infinite",
-        marquee: "marquee 26s linear infinite",
-        pulseDash: "pulseDash 3.5s linear infinite",
+        breathe: "breathe 5s ease-in-out infinite",
+        fadeInOutSmooth: "fadeInOutSmooth 4s ease-in-out infinite",
+        marquee: "marquee 28s linear infinite",
+        pulseDash: "pulseDash 3s linear infinite",
       },
     },
   },
   plugins: [],
 };
-
 export default config;
