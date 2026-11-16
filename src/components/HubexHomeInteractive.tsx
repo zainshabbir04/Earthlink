@@ -451,7 +451,7 @@ export default function HubexHomeInteractive() {
           </div>
 
           {/* Mobile / Tablet List (Exact HubexTech Mobile Layout) */}
-          <div className="block lg:hidden space-y-6 text-gray-300 mb-14">
+          <div className="block lg:hidden space-y-6 text-gray-300">
             {SERVICES_DATA.map((srv) => (
               <div
                 key={srv.id}
@@ -470,39 +470,6 @@ export default function HubexHomeInteractive() {
                     {srv.shortDescription}
                   </p>
                 </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Complete 9-Service Interactive Cards Grid (for full access to all 9 services) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {SERVICES_DATA.map((srv) => (
-              <div
-                key={srv.id}
-                className="bg-[#000000] border border-[#272727] hover:border-[#1A545E] rounded-xl p-6 transition-all duration-300 flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-3 mb-4">
-                    <div className="w-11 h-11 rounded-lg bg-[#0D0D0D] border border-[#1A545E] flex items-center justify-center text-brand_cyan group-hover:bg-brand_cyan group-hover:text-black transition-colors">
-                      <ServiceIcon name={srv.iconName} className="w-5 h-5" />
-                    </div>
-                    <span className="text-[11px] font-mono text-brand_cyan bg-[#1591EE15] border border-[#1591EE33] px-2.5 py-1 rounded-full">
-                      {srv.category}
-                    </span>
-                  </div>
-                  <h3 className="text-white text-lg font-semibold group-hover:text-brand_cyan transition-colors mb-2">
-                    {srv.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[#9C9C9C] leading-relaxed mb-4">
-                    {srv.shortDescription}
-                  </p>
-                </div>
-                <Link
-                  href={`/services#${srv.id}`}
-                  className="relative text-[#008FFF] text-sm font-bold inline-block self-start after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-brand_cyan after:transition-all after:duration-500 hover:after:w-full hover:text-brand_cyan"
-                >
-                  Learn More →
-                </Link>
               </div>
             ))}
           </div>
