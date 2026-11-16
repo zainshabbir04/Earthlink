@@ -42,7 +42,7 @@ export default function CareersInteractive() {
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
       {/* Left 7 Cols: Career Tracks Accordion */}
       <div className="lg:col-span-7 space-y-4">
-        <div className="p-4 rounded-2xl bg-sky-50 border border-sky-200 flex items-start gap-3 text-xs text-slate-700">
+        <div className="p-4 rounded-2xl bg-[#0C223D] border border-brand_cyan/40 flex items-start gap-3 text-xs text-sky-100 shadow-md">
           <Info className="w-4 h-4 text-brand_cyan shrink-0 mt-0.5" />
           <span>
             Below are our ongoing talent acquisition tracks across Network Operations, OSP Fiber Engineering, Enterprise Solutions, and Cybersecurity. Select any track to view responsibilities and qualifications, or submit an open application.
@@ -54,7 +54,7 @@ export default function CareersInteractive() {
           return (
             <div
               key={role.id}
-              className="rounded-2xl bg-white border border-slate-200/90 hover:border-brand_cyan overflow-hidden transition-all shadow-card-premium"
+              className="rounded-2xl card-ice-slate overflow-hidden transition-all"
             >
               <button
                 type="button"
@@ -62,13 +62,13 @@ export default function CareersInteractive() {
                 className="w-full p-6 text-left flex items-center justify-between gap-4"
               >
                 <div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-sky-50 text-brand_blue border border-sky-200">
+                  <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#0C223D] text-sky-200 border border-brand_cyan/40">
                     {role.department}
                   </span>
                   <h3 className="text-lg font-bold text-slate-900 mt-2">
                     {role.title}
                   </h3>
-                  <div className="flex flex-wrap items-center gap-4 mt-1.5 text-xs text-slate-500 font-medium">
+                  <div className="flex flex-wrap items-center gap-4 mt-1.5 text-xs text-slate-700 font-medium">
                     <span className="inline-flex items-center gap-1">
                       <MapPin className="w-3.5 h-3.5 text-brand_cyan" />
                       {role.location}
@@ -79,7 +79,7 @@ export default function CareersInteractive() {
                     </span>
                   </div>
                 </div>
-                <div className="p-2 rounded-xl bg-slate-100 text-slate-600">
+                <div className="p-2 rounded-xl bg-[#0C223D] text-sky-200">
                   {isOpen ? (
                     <ChevronUp className="w-5 h-5 text-brand_cyan" />
                   ) : (
@@ -89,7 +89,7 @@ export default function CareersInteractive() {
               </button>
 
               {isOpen && (
-                <div className="px-6 pb-6 pt-2 border-t border-slate-100 space-y-4 text-xs sm:text-sm text-slate-600">
+                <div className="px-6 pb-6 pt-2 border-t border-sky-900/15 space-y-4 text-xs sm:text-sm text-slate-700">
                   <p className="leading-relaxed">{role.summary}</p>
 
                   <div>
@@ -113,7 +113,7 @@ export default function CareersInteractive() {
                     <ul className="space-y-2">
                       {role.qualifications.map((q, i) => (
                         <li key={i} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                           <span>{q}</span>
                         </li>
                       ))}
@@ -142,26 +142,26 @@ export default function CareersInteractive() {
         })}
       </div>
 
-      {/* Right 5 Cols: Open Talent Application Form */}
+      {/* Right 5 Cols: Open Talent Application Form (Sapphire Panel) */}
       <div
         id="career-application-form"
-        className="lg:col-span-5 rounded-3xl bg-white border border-slate-200/90 p-6 sm:p-8 shadow-card-premium"
+        className="lg:col-span-5 rounded-3xl bg-gradient-to-b from-[#091A30] via-[#0E2747] to-[#08172B] border border-brand_cyan/45 p-6 sm:p-8 shadow-2xl text-white"
       >
-        <span className="text-xs font-bold uppercase tracking-wider text-brand_blue">
+        <span className="text-xs font-bold uppercase tracking-wider text-brand_cyan">
           Talent Acquisition Desk
         </span>
-        <h3 className="text-xl font-extrabold text-slate-900 mt-1">
+        <h3 className="text-xl font-extrabold text-white mt-1">
           Submit Career Application
         </h3>
-        <p className="text-xs text-slate-600 mt-1 mb-5">
+        <p className="text-xs text-sky-100/80 mt-1 mb-5">
           Send your engineering or commercial profile directly to{" "}
-          <span className="text-brand_blue font-semibold">{CONTACT_INFO.hrEmail}</span>{" "}
+          <span className="text-brand_cyan font-semibold">{CONTACT_INFO.hrEmail}</span>{" "}
           (source HR address — verify for EARTH I Broadband).
         </p>
 
         <form onSubmit={handleApplySubmit} className="space-y-3.5">
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1">
+            <label className="block text-xs font-semibold text-sky-200 mb-1">
               Full Name *
             </label>
             <input
@@ -172,13 +172,13 @@ export default function CareersInteractive() {
                 setAppForm({ ...appForm, fullName: e.target.value })
               }
               placeholder="e.g., Bilal Ahmed"
-              className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand_cyan focus:bg-white"
+              className="w-full px-4 py-2.5 rounded-xl bg-[#122A4B] border border-sky-400/35 text-xs text-white placeholder:text-sky-200/50 focus:outline-none focus:border-brand_cyan"
             />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
+              <label className="block text-xs font-semibold text-sky-200 mb-1">
                 Email Address *
               </label>
               <input
@@ -189,11 +189,11 @@ export default function CareersInteractive() {
                   setAppForm({ ...appForm, email: e.target.value })
                 }
                 placeholder="you@domain.com"
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand_cyan focus:bg-white"
+                className="w-full px-4 py-2.5 rounded-xl bg-[#122A4B] border border-sky-400/35 text-xs text-white placeholder:text-sky-200/50 focus:outline-none focus:border-brand_cyan"
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
+              <label className="block text-xs font-semibold text-sky-200 mb-1">
                 Phone Number *
               </label>
               <input
@@ -204,13 +204,13 @@ export default function CareersInteractive() {
                   setAppForm({ ...appForm, phone: e.target.value })
                 }
                 placeholder="+92 300 0000000"
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand_cyan focus:bg-white"
+                className="w-full px-4 py-2.5 rounded-xl bg-[#122A4B] border border-sky-400/35 text-xs text-white placeholder:text-sky-200/50 focus:outline-none focus:border-brand_cyan"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1">
+            <label className="block text-xs font-semibold text-sky-200 mb-1">
               Department / Talent Track *
             </label>
             <select
@@ -218,20 +218,20 @@ export default function CareersInteractive() {
               onChange={(e) =>
                 setAppForm({ ...appForm, track: e.target.value })
               }
-              className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand_cyan focus:bg-white"
+              className="w-full px-4 py-2.5 rounded-xl bg-[#122A4B] border border-sky-400/35 text-xs text-white focus:outline-none focus:border-brand_cyan"
             >
               {CAREER_TRACKS.map((t) => (
                 <option
                   key={t.id}
                   value={t.title}
-                  className="bg-white text-slate-900"
+                  className="bg-[#0B1D35] text-white"
                 >
                   {t.title}
                 </option>
               ))}
               <option
                 value="Open Talent Pool Application"
-                className="bg-white text-slate-900"
+                className="bg-[#0B1D35] text-white"
               >
                 Open Talent Pool Application
               </option>
@@ -240,7 +240,7 @@ export default function CareersInteractive() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
+              <label className="block text-xs font-semibold text-sky-200 mb-1">
                 Years of Relevant Experience *
               </label>
               <input
@@ -251,11 +251,11 @@ export default function CareersInteractive() {
                   setAppForm({ ...appForm, experienceYears: e.target.value })
                 }
                 placeholder="e.g., 4 Years in ISP NOC"
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand_cyan focus:bg-white"
+                className="w-full px-4 py-2.5 rounded-xl bg-[#122A4B] border border-sky-400/35 text-xs text-white placeholder:text-sky-200/50 focus:outline-none focus:border-brand_cyan"
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
+              <label className="block text-xs font-semibold text-sky-200 mb-1">
                 LinkedIn / Portfolio URL
               </label>
               <input
@@ -268,13 +268,13 @@ export default function CareersInteractive() {
                   })
                 }
                 placeholder="https://linkedin.com/in/..."
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand_cyan focus:bg-white"
+                className="w-full px-4 py-2.5 rounded-xl bg-[#122A4B] border border-sky-400/35 text-xs text-white placeholder:text-sky-200/50 focus:outline-none focus:border-brand_cyan"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1">
+            <label className="block text-xs font-semibold text-sky-200 mb-1">
               Technical Summary &amp; Certifications *
             </label>
             <textarea
@@ -285,13 +285,13 @@ export default function CareersInteractive() {
                 setAppForm({ ...appForm, coverNote: e.target.value })
               }
               placeholder="Summarize your experience with BGP/MPLS, OTDR fiber splicing, B2B telecom sales, or SOC operations..."
-              className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-brand_cyan focus:bg-white"
+              className="w-full px-4 py-2.5 rounded-xl bg-[#122A4B] border border-sky-400/35 text-xs text-white placeholder:text-sky-200/50 focus:outline-none focus:border-brand_cyan"
             />
           </div>
 
           <button
             type="submit"
-            className="w-full py-3 rounded-xl bg-gradient-to-r from-brand_cyan to-brand_blue hover:from-brand_blue hover:to-brand_cyan text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md transition-all"
+            className="w-full py-3 rounded-xl bg-gradient-to-r from-brand_cyan to-brand_blue hover:from-brand_blue hover:to-brand_cyan text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition-all"
           >
             <Send className="w-4 h-4" />
             <span>Prepare Career Application Email</span>
@@ -299,9 +299,9 @@ export default function CareersInteractive() {
         </form>
 
         {submittedNotice && (
-          <div className="mt-4 p-3.5 rounded-xl bg-sky-50 border border-brand_cyan/40 text-xs text-slate-700">
+          <div className="mt-4 p-3.5 rounded-xl bg-sky-500/15 border border-brand_cyan/45 text-xs text-sky-100">
             <strong>Application Draft Prepared:</strong> Your default email client has been launched with your structured application addressed to{" "}
-            <span className="text-brand_blue font-semibold">{CONTACT_INFO.hrEmail}</span>. Please attach your CV/Resume PDF before sending. (Frontend-only build: integrate an ATS or SMTP backend endpoint for direct server uploads).
+            <span className="text-brand_cyan font-semibold">{CONTACT_INFO.hrEmail}</span>. Please attach your CV/Resume PDF before sending.
           </div>
         )}
       </div>

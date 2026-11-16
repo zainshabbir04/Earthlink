@@ -13,23 +13,23 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="pt-28 sm:pt-36 pb-16">
-      {/* HERO BANNER */}
+      {/* SAPPHIRE TWILIGHT HERO BANNER */}
       <section className="px-4 sm:px-8 pb-12">
-        <div className="max-w-[1440px] mx-auto rounded-3xl bg-white border border-slate-200/90 p-8 sm:p-14 lg:p-16 relative overflow-hidden shadow-card-premium">
-          <div className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-brand_cyan/10 blur-[100px]" />
+        <div className="max-w-[1440px] mx-auto rounded-3xl bg-sapphire-hero bg-tech-grid-dark border border-brand_cyan/40 p-8 sm:p-14 lg:p-16 relative overflow-hidden shadow-2xl text-white">
+          <div className="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-brand_cyan/25 blur-[110px]" />
           <div className="max-w-3xl space-y-5 relative z-10">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-200 text-xs font-bold uppercase tracking-wider text-brand_blue">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-500/15 border border-brand_cyan/45 text-xs font-bold uppercase tracking-wider text-sky-200">
               <PhoneCall className="w-3.5 h-3.5 text-brand_cyan" />
               <span>Enterprise Feasibility &amp; 24/7 NOC Desk</span>
             </div>
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 leading-tight">
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
               Get Connected With{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand_cyan to-brand_blue">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-brand_cyan to-sky-400">
                 EARTH I Broadband
               </span>
             </h1>
-            <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-              Request an underground optical fiber feasibility survey, configure a dedicated 1:1 symmetrical internet circuit, or reach our 24/7/365 Network Operations Center at <strong className="text-slate-900">{COMPANY_INFO.name}</strong>.
+            <p className="text-sky-100/85 text-base sm:text-lg leading-relaxed">
+              Request an underground optical fiber feasibility survey, configure a dedicated 1:1 symmetrical internet circuit, or reach our 24/7/365 Network Operations Center at <strong className="text-white">{COMPANY_INFO.name}</strong>.
             </p>
           </div>
         </div>
