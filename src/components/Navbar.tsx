@@ -45,13 +45,15 @@ export default function Navbar() {
 
   return (
     <>
-      {/* HubexTech-Exact Boxed Dark Floating Navbar */}
+      {/* Oval / Pill-Shaped Dark Floating Navbar */}
       <header className="sticky top-0 z-[998] pt-2 lg:pt-[1.4rem] px-3 sm:px-6 lg:px-[3.25rem] xl:px-[6.25rem]">
         <nav
           id="topnav"
-          className="bg-[#050505]/95 backdrop-blur-md rounded-lg border border-[#2A2A2A] text-white shadow-[0_10px_35px_rgba(0,0,0,0.85)] relative"
+          className={`bg-[#050505]/95 backdrop-blur-md ${
+            mobileOpen ? "rounded-3xl" : "rounded-full"
+          } border border-[#2A2A2A] text-white shadow-[0_10px_35px_rgba(0,0,0,0.85)] relative transition-all duration-300`}
         >
-          <div className="px-[20px] py-2.5 lg:py-2.5 flex items-center justify-between">
+          <div className="px-6 sm:px-8 lg:px-10 py-2 lg:py-2.5 flex items-center justify-between">
             {/* Logo Container (Transparent & Clearly Visible on Dark Navbar, Increased Size) */}
             <div className="flex items-center">
               <Link
@@ -231,10 +233,10 @@ export default function Navbar() {
               </ul>
             </div>
 
-            {/* Right: "Get in Touch" Button (WhatsApp button removed as requested) */}
+            {/* Right: "Get in Touch" Button (Oval / Pill-Shaped to match Navbar) */}
             <div className="hidden lg:flex items-center">
               <Link href="/contact">
-                <span className="bg-[#008FFF] hover:bg-brand_cyan text-[15px] font-bold text-white px-6 rounded-lg w-[10.563rem] h-[2.75rem] inline-flex items-center justify-center transition-colors">
+                <span className="bg-[#008FFF] hover:bg-brand_cyan text-[15px] font-bold text-white px-7 rounded-full w-[10.563rem] h-[2.75rem] inline-flex items-center justify-center transition-colors shadow-[0_4px_18px_rgba(0,143,255,0.35)]">
                   Get in Touch
                 </span>
               </Link>
