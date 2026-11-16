@@ -34,12 +34,12 @@ export default function Footer() {
             <div className="lg:col-span-4 md:col-span-12 text-center lg:text-left">
               <Link
                 href="/"
-                className="inline-block bg-white px-4 py-2 rounded-lg shadow-md"
+                className="inline-block py-1"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/logo-color.png"
-                  className="h-11 lg:h-12 w-auto object-contain"
+                  src="/logo-dark.png"
+                  className="h-12 lg:h-14 w-auto object-contain drop-shadow-[0_2px_10px_rgba(46,193,217,0.2)]"
                   alt="EARTH I Broadband (Pvt.) Ltd. Logo"
                 />
               </Link>

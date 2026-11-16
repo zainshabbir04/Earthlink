@@ -221,17 +221,15 @@ export default function HubexHomeInteractive() {
                   />
                 </svg>
 
-                {/* Center Breathing Core Emblem with Official EARTH I Broadband Logo */}
+                {/* Center Breathing Core Emblem with Official Transparent EARTH I Broadband Logo */}
                 <div className="absolute z-10 flex items-center justify-center">
-                  <div className="w-[175px] md:w-[215px] h-[175px] md:h-[215px] rounded-full bg-gradient-to-br from-[#008FFF]/30 via-[#050505]/90 to-[#2EC1D9]/30 border-2 border-brand_cyan/60 shadow-[0_0_55px_rgba(46,193,217,0.4)] animate-breathe flex items-center justify-center p-4 backdrop-blur-md">
-                    <div className="w-full h-full rounded-full bg-white/95 border border-brand_cyan/40 shadow-[inset_0_0_20px_rgba(0,143,255,0.2)] flex items-center justify-center p-5">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src="/logo-color.png"
-                        alt="EARTH I Broadband (Pvt.) Ltd."
-                        className="w-full h-auto object-contain"
-                      />
-                    </div>
+                  <div className="w-[175px] md:w-[215px] h-[175px] md:h-[215px] rounded-full bg-gradient-to-br from-[#008FFF]/25 via-[#050505]/95 to-[#2EC1D9]/25 border border-brand_cyan/50 shadow-[0_0_50px_rgba(46,193,217,0.35)] animate-breathe flex items-center justify-center p-6 backdrop-blur-md">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/logo-dark.png"
+                      alt="EARTH I Broadband (Pvt.) Ltd."
+                      className="w-full h-auto object-contain drop-shadow-[0_2px_12px_rgba(46,193,217,0.3)]"
+                    />
                   </div>
                 </div>
 
