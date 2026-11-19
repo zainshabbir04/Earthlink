@@ -7,7 +7,7 @@ import CTASection from "@/components/CTASection";
 export const metadata: Metadata = {
   title: "Enterprise Connectivity, Optical Fiber, Cloud & Cybersecurity Services",
   description:
-    "Explore EARTH I Broadband's enterprise services: Corporate Internet, 1:1 Dedicated Internet Access (DIA), MPLS Connectivity, VPN Solutions, Point-to-Point Optical Fiber, Cloud & Hosting, Managed IT, Cybersecurity, and Digital Solutions.",
+    "Explore EARTHLINK Broadband's enterprise services: Corporate Internet, 1:1 Dedicated Internet Access (DIA), MPLS Connectivity, VPN Solutions, Point-to-Point Optical Fiber, Cloud & Hosting, Managed IT, Cybersecurity, and Digital Solutions.",
 };
 
 export default function ServicesPage() {

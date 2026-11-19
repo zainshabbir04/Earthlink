@@ -64,13 +64,13 @@ export interface JobOpening {
 }
 
 export const BRAND_INFO = {
-  companyName: "EARTH I Broadband (Pvt.) Ltd.",
-  shortName: "EARTH I Broadband",
+  companyName: "EARTHLINK Broadband (Pvt.) Ltd.",
+  shortName: "EARTHLINK Broadband",
   tagline: "Connecting Businesses. Empowering Possibilities.",
   heroSubtitle:
     "Carrier-grade subterranean optical fiber, 1:1 symmetrical DIA, MPLS rings, and 24/7 NOC infrastructure.",
   companyIntroduction:
-    "EARTH I Broadband (Pvt.) Ltd. delivers enterprise optical fiber connectivity, 1:1 Dedicated Internet Access (DIA), MPLS VPNs, and managed cloud & security solutions.",
+    "EARTHLINK Broadband (Pvt.) Ltd. delivers enterprise optical fiber connectivity, 1:1 Dedicated Internet Access (DIA), MPLS VPNs, and managed cloud & security solutions.",
   companyBackground:
     "Built on 1,200+ km of subterranean armored optical fiber rather than legacy copper, we power banks, hospitals, universities, IT parks, and industrial hubs.",
   mission:
@@ -80,16 +80,16 @@ export const BRAND_INFO = {
   contactDetails: {
     headOfficeAddress: "7/4, E-3 Main Boulevard, Gulberg-III, Lahore, Pakistan",
     addressConfirmationFlag:
-      "Flagged: Confirm registered office address for EARTH I Broadband (Pvt.) Ltd.",
+      "Flagged: Confirm registered office address for EARTHLINK Broadband (Pvt.) Ltd.",
     helplinePhone: "+92 42 345 11 111",
     phoneConfirmationFlag:
-      "Flagged: Confirm official corporate helpline for EARTH I Broadband (Pvt.) Ltd.",
+      "Flagged: Confirm official corporate helpline for EARTHLINK Broadband (Pvt.) Ltd.",
     generalEmail: "info@earthibroadband.com.pk",
     sourceGeneralEmail: "info@zcomnetworks.com.pk",
     careersEmail: "hr@earthibroadband.com.pk",
     sourceCareersEmail: "hr@zcomnetworks.com.pk",
     emailConfirmationFlag:
-      "Flagged: Confirm official domain email routing for EARTH I Broadband.",
+      "Flagged: Confirm official domain email routing for EARTHLINK Broadband.",
     operatingHours: "24/7/365 NOC & Field Dispatch",
     coverageCorridors: [
       "Main Boulevard Gulberg (I, II, III)",
@@ -593,7 +593,7 @@ export const CAREERS_CULTURE = {
   subheadline:
     "Join our 24/7 NOC, optical infrastructure engineering, and B2B enterprise divisions.",
   cultureParagraph:
-    "At EARTH I Broadband (Pvt.) Ltd., our engineers and specialists design, splice, route, and safeguard mission-critical 100G optical networks.",
+    "At EARTHLINK Broadband (Pvt.) Ltd., our engineers and specialists design, splice, route, and safeguard mission-critical 100G optical networks.",
   verifiedGrowthHighlights: [
     {
       title: "Certification Sponsorship",

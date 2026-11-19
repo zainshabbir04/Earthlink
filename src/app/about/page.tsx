@@ -15,7 +15,7 @@ import CTASection from "@/components/CTASection";
 export const metadata: Metadata = {
   title: "About Us — Corporate Profile & Optical Infrastructure",
   description:
-    "Learn about EARTH I Broadband (Pvt.) Ltd., our 1,200+ km subterranean armored metro fiber network, 100G optical core ring, and 24/7/365 NOC operations.",
+    "Learn about EARTHLINK Broadband (Pvt.) Ltd., our 1,200+ km subterranean armored metro fiber network, 100G optical core ring, and 24/7/365 NOC operations.",
 };
 
 const CORE_VALUES = [

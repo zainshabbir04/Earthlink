@@ -10,9 +10,9 @@ import ServiceIcon from "@/components/ServiceIcon";
 import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
-  title: "Why Choose Us — The EARTH I Broadband Optical Advantage",
+  title: "Why Choose Us — The EARTHLINK Broadband Optical Advantage",
   description:
-    "Discover why enterprises choose EARTH I Broadband: 100% subterranean optical fiber, 1:1 symmetrical speeds, <50ms ring failover, zero FUP, and 24/7 NOC support.",
+    "Discover why enterprises choose EARTHLINK Broadband: 100% subterranean optical fiber, 1:1 symmetrical speeds, <50ms ring failover, zero FUP, and 24/7 NOC support.",
 };
 
 export default function WhyChooseUsPage() {

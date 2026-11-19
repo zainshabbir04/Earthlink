@@ -13,7 +13,7 @@ import ContactInteractive from "@/components/ContactInteractive";
 export const metadata: Metadata = {
   title: "Contact Us — Enterprise Inquiries, 24/7 NOC & Optical Site Survey",
   description:
-    "Contact EARTH I Broadband (Pvt.) Ltd. for Dedicated Internet Access (DIA), Point-to-Point optical links, MPLS VPNs, and on-site optical feasibility surveys.",
+    "Contact EARTHLINK Broadband (Pvt.) Ltd. for Dedicated Internet Access (DIA), Point-to-Point optical links, MPLS VPNs, and on-site optical feasibility surveys.",
 };
 
 export default function ContactPage() {

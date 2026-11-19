@@ -21,7 +21,7 @@ export default function Footer() {
     }?subject=${encodeURIComponent(
       `[${BRAND_INFO.companyName}] Enterprise Connectivity Subscription`
     )}&body=${encodeURIComponent(
-      `Please subscribe ${emailInput} to EARTH I Broadband enterprise network updates and SLA advisories.`
+      `Please subscribe ${emailInput} to EARTHLINK Broadband enterprise network updates and SLA advisories.`
     )}`;
   };
 
@@ -40,7 +40,7 @@ export default function Footer() {
                 <img
                   src="/logo-color.png"
                   className="h-12 lg:h-14 w-auto object-contain"
-                  alt="EARTH I Broadband (Pvt.) Ltd. Logo"
+                  alt="EARTHLINK Broadband (Pvt.) Ltd. Logo"
                 />
               </Link>
               <p className="mt-4 text-left text-sm font-normal leading-relaxed text-[#9C9C9C]">
@@ -171,7 +171,7 @@ export default function Footer() {
                 <p className="text-[11px] text-amber-400/90 flex items-center gap-1.5 pt-1">
                   <ShieldAlert className="w-3.5 h-3.5 shrink-0" />
                   <span>
-                    Source address/helpline flagged for EARTH I Broadband
+                    Source address/helpline flagged for EARTHLINK Broadband
                     confirmation.
                   </span>
                 </p>

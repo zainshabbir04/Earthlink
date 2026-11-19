@@ -179,7 +179,7 @@ export default function HubexHomeInteractive() {
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src="/logo-color.png"
-                      alt="EARTH I Broadband (Pvt.) Ltd."
+                      alt="EARTHLINK Broadband (Pvt.) Ltd."
                       className="w-full h-auto object-contain"
                     />
                   </div>
@@ -370,7 +370,7 @@ export default function HubexHomeInteractive() {
               {/* Center Hub Emblem */}
               <div className="relative z-10 w-36 h-36 rounded-2xl bg-[#050505] border-2 border-brand_cyan shadow-[0_0_45px_rgba(46,193,217,0.3)] flex flex-col items-center justify-center text-center p-3">
                 <span className="text-xs font-mono uppercase tracking-widest text-brand_cyan">
-                  EARTH I
+                  EARTHLINK
                 </span>
                 <span className="text-lg font-bold text-white mt-0.5">
                   Services

@@ -23,9 +23,9 @@ export const metadata: Metadata = {
     template: `%s | ${BRAND_INFO.companyName}`,
   },
   description:
-    "EARTH I Broadband (Pvt.) Ltd. delivers 1:1 symmetrical Dedicated Internet Access (DIA), Point-to-Point optical connectivity, MPLS VPNs, Cloud & Managed IT over a 1,200+ km subterranean armored metro fiber network.",
+    "EARTHLINK Broadband (Pvt.) Ltd. delivers 1:1 symmetrical Dedicated Internet Access (DIA), Point-to-Point optical connectivity, MPLS VPNs, Cloud & Managed IT over a 1,200+ km subterranean armored metro fiber network.",
   keywords: [
-    "EARTH I Broadband",
+    "EARTHLINK Broadband",
     "Enterprise Fiber Internet Pakistan",
     "Dedicated Internet Access DIA Lahore",
     "MPLS VPN Connectivity",

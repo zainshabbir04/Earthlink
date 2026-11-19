@@ -59,12 +59,12 @@ export default function Navbar() {
               <Link
                 href="/"
                 className="inline-flex items-center py-0.5 hover:opacity-95 transition-opacity"
-                aria-label="EARTH I Broadband (Pvt.) Ltd. Home"
+                aria-label="EARTHLINK Broadband (Pvt.) Ltd. Home"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/logo-color.png"
-                  alt="EARTH I Broadband (Pvt.) Ltd."
+                  alt="EARTHLINK Broadband (Pvt.) Ltd."
                   className="h-14 sm:h-16 lg:h-[72px] w-auto object-contain"
                 />
               </Link>

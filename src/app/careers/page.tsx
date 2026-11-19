@@ -8,7 +8,7 @@ import CareersInteractive from "@/components/CareersInteractive";
 export const metadata: Metadata = {
   title: "Careers — Join Our NOC, Optical Engineering & Enterprise Teams",
   description:
-    "Explore career opportunities at EARTH I Broadband (Pvt.) Ltd. Join our 24/7 Network Operations Center (NOC), optical fiber infrastructure teams, and B2B corporate sales division.",
+    "Explore career opportunities at EARTHLINK Broadband (Pvt.) Ltd. Join our 24/7 Network Operations Center (NOC), optical fiber infrastructure teams, and B2B corporate sales division.",
 };
 
 export default function CareersPage() {
