@@ -631,66 +631,6 @@ export default function HubexHomeInteractive() {
       </section>
 
       {/* =====================================================================
-          SECTION 8: ENTERPRISE SECTORS & CLIENTS (Exact HubexTech Speech-Bubble Cards with Cyan Quotes & Bottom Triangle Pointer)
-         ===================================================================== */}
-      <section className="py-[50px] lg:py-[70px]">
-        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
-          <div>
-            <h2 className="text-[24px] lg:text-[36px] mb-2 font-semibold text-brand_cyan">
-              Industries &amp; Enterprise Sectors
-            </h2>
-            <p className="text-[16px] lg:text-[1.125rem] mb-[2.625rem] font-normal text-[#D3D3D3]">
-              Trusted by organizations, hospitals, banks, universities, and
-              commercial hubs across metropolitan corridors.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {INDUSTRIES_AND_SECTORS.map((sector) => (
-              <div key={sector.id} className="relative flex flex-col justify-between">
-                {/* HubexTech Speech Bubble Box */}
-                <div className="mt-6 bg-[#000000] border border-[#272727] px-[24px] py-[32px] text-[#9C9C9C] rounded-xl relative flex-1">
-                  {/* Double Cyan Quote / Sector Icon Badge at Top-Left (Matching HubexTech comma.png) */}
-                  <div className="absolute left-6 -top-5 flex items-center gap-1 bg-[#050505] px-2 py-1 rounded-md border border-[#1A545E] text-brand_cyan font-serif text-3xl leading-none select-none">
-                    “
-                  </div>
-
-                  <p className="text-[14px] leading-[1.55rem] text-[#9C9C9C] mb-4">
-                    {sector.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[#1a1a1a]">
-                    {sector.typicalDeployments.map((dep) => (
-                      <span
-                        key={dep}
-                        className="text-[11px] font-mono text-brand_cyan bg-[#1591EE15] px-2 py-0.5 rounded"
-                      >
-                        {dep}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Exact HubexTech Bottom Speech-Bubble Triangle Pointer */}
-                  <div className="absolute -bottom-[16px] left-[28px] w-0 h-0 border-l-[16px] border-r-[16px] border-t-[16px] border-l-transparent border-r-transparent border-t-[#272727]" />
-                  <div className="absolute -bottom-[14px] left-[29px] w-0 h-0 border-l-[15px] border-r-[15px] border-t-[15px] border-l-transparent border-r-transparent border-t-[#000000]" />
-                </div>
-
-                {/* Avatar + Sector Name Below Bubble */}
-                <div className="flex items-center gap-3 mt-6 ml-[24px]">
-                  <div className="w-9 h-9 rounded-full border border-cyan-400 bg-[#0A0A0A] flex items-center justify-center text-brand_cyan shrink-0">
-                    <ServiceIcon name={sector.iconName} className="w-4 h-4" />
-                  </div>
-                  <span className="font-medium text-[15px] lg:text-[1.15rem] text-white">
-                    {sector.name}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================================
           SECTION 9: TRUST & SLA RECOGNITION BANNER (Exact HubexTech Gradient Banner)
          ===================================================================== */}
       <section className="py-[30px] md:py-[60px]">
