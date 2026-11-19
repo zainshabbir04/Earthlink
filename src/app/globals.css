@@ -97,9 +97,6 @@
 }
 
 /* Keep White Text on Blue/Cyan Buttons & Gradient Banners */
-#topnav .cta-btn-white,
-.cta-btn-white,
-.bg-gradient-to-r.from-\[\#008FFF\],
 .bg-\[\#008FFF\],
 .bg-\[\#008FFF\] .text-white,
 .bg-\[\#1591EE\],
