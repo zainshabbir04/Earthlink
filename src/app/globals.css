@@ -6,17 +6,17 @@
   :root {
     --brand-cyan: #2EC1D9;
     --brand-blue: #008FFF;
-    --brand-navy: #050505;
+    --brand-navy: #0D2136;
   }
 
   html {
     scroll-behavior: smooth;
     color: #FFFFFF;
-    background-color: #020508;
+    background-color: #0B1B2D;
   }
 
   body {
-    background-color: #020508;
+    background-color: #0B1B2D;
     color: #FFFFFF;
     overflow-x: hidden;
   }
@@ -36,43 +36,81 @@
   }
 }
 
-/* Exact HubexTech Dark Radial/Linear Background Gradient */
+/* Lighter, Luminous HubexTech Ocean-Teal & Slate-Blue Background Gradient */
 .bg-black-gradient {
   background: radial-gradient(
-      circle at 75% 18%,
-      rgba(0, 143, 255, 0.14) 0%,
-      rgba(46, 193, 217, 0.06) 28%,
-      rgba(0, 0, 0, 0) 55%
+      circle at 75% 16%,
+      rgba(0, 143, 255, 0.28) 0%,
+      rgba(46, 193, 217, 0.16) 32%,
+      rgba(13, 33, 54, 0) 60%
     ),
     radial-gradient(
-      circle at 18% 65%,
-      rgba(46, 193, 217, 0.1) 0%,
-      rgba(0, 0, 0, 0) 50%
+      circle at 18% 62%,
+      rgba(46, 193, 217, 0.22) 0%,
+      rgba(0, 143, 255, 0.1) 35%,
+      rgba(13, 33, 54, 0) 60%
     ),
-    linear-gradient(180deg, #03070e 0%, #050505 45%, #020408 100%);
+    linear-gradient(180deg, #0E2338 0%, #122B44 48%, #0D2034 100%);
+}
+
+/* Softly Lifted Card & Surface Overrides (Lighter than pitch black #000 / #050505) */
+.bg-\[\#000000\] {
+  background-color: rgba(17, 42, 66, 0.85) !important;
+  backdrop-filter: blur(12px);
+}
+
+.bg-\[\#050505\],
+.bg-\[\#050505\]\/95,
+.bg-\[\#030508\],
+.bg-\[\#05080F\] {
+  background-color: rgba(13, 33, 53, 0.92) !important;
+  backdrop-filter: blur(14px);
+}
+
+.bg-\[\#0D0D0D\],
+.bg-\[\#0A0A0A\],
+.bg-\[\#080808\],
+.bg-\[\#111\],
+.bg-\[\#141414\] {
+  background-color: rgba(23, 54, 82, 0.88) !important;
+}
+
+.border-\[\#272727\],
+.border-\[\#2A2A2A\],
+.border-\[\#1a1a1a\],
+.border-\[\#141414\] {
+  border-color: rgba(46, 193, 217, 0.26) !important;
+}
+
+.text-\[\#9C9C9C\] {
+  color: #B8D0E6 !important;
+}
+
+.text-\[\#D3D3D3\] {
+  color: #E2F0FC !important;
 }
 
 .bg-hubex-banner {
   background: linear-gradient(
     98.63deg,
-    rgba(0, 0, 0, 0.72) 40.34%,
-    rgba(46, 193, 217, 0.58) 99.16%
+    rgba(15, 38, 62, 0.9) 35%,
+    rgba(46, 193, 217, 0.72) 100%
   );
 }
 
 .bg-hubex-modal {
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.82) 40.93%,
-    rgba(46, 193, 217, 0.55) 100%
+    rgba(15, 38, 62, 0.92) 40%,
+    rgba(46, 193, 217, 0.65) 100%
   );
 }
 
 .bg-tech-grid {
   background-size: 48px 48px;
   background-image: 
-    linear-gradient(to right, rgba(46, 193, 217, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(46, 193, 217, 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(46, 193, 217, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(46, 193, 217, 0.09) 1px, transparent 1px);
 }
 
 /* Custom scrollbar */
@@ -80,10 +118,10 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #0D2034;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1A545E;
+  background: #1E5D74;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {

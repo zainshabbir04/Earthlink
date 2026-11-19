@@ -89,17 +89,11 @@ export default function HubexHomeInteractive() {
                   Nationwide
                 </h1>
 
-                <p className="text-[16px] lg:text-[20px] text-[#D3D3D3] mt-4 md:mt-5 font-normal leading-relaxed">
-                  We engineer, deploy, and manage carrier-grade subterranean
-                  optical fiber for enterprises and commercial hubs — from 1:1
-                  symmetrical Dedicated Internet Access (DIA) and MPLS rings to
-                  Cloud, Managed IT, and 24/7 NOC support.{" "}
-                  <strong className="text-white">
-                    1,200+ km armored metro core.
-                  </strong>{" "}
-                  <strong className="text-white">
-                    99.99% contractual uptime SLA.
-                  </strong>
+                <p className="text-[16px] lg:text-[18px] text-[#D3D3D3] mt-4 md:mt-5 font-normal leading-relaxed max-w-xl">
+                  Carrier-grade subterranean optical fiber for enterprises — 1:1
+                  symmetrical DIA, MPLS VPNs, Cloud, and 24/7 NOC support across
+                  a <strong className="text-white">1,200+ km armored metro core</strong> with{" "}
+                  <strong className="text-white">99.99% uptime SLA.</strong>
                 </p>
 
                 {/* Exact HubexTech Dual Buttons */}
@@ -331,14 +325,13 @@ export default function HubexHomeInteractive() {
          ===================================================================== */}
       <section className="py-[50px] lg:py-[90px]">
         <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
-          <div className="w-full text-start mb-12 lg:mb-20">
-            <h2 className="text-[1.5rem] lg:text-[2.25rem] font-semibold mb-2 text-brand_cyan">
+          <div className="w-full text-start mb-10 lg:mb-16">
+            <h2 className="text-[1.5rem] lg:text-[2.25rem] font-semibold mb-1.5 text-brand_cyan">
               Our Services
             </h2>
-            <p className="text-[#D3D3D3] font-normal text-[1rem] lg:text-[1.125rem] max-w-2xl">
-              Comprehensive carrier-grade optical connectivity, cloud, and
-              cybersecurity solutions tailored to drive enterprise uptime,
-              efficiency, and scalability.
+            <p className="text-[#D3D3D3] font-normal text-[1rem] max-w-xl">
+              Carrier-grade optical connectivity, cloud, and cybersecurity
+              engineered for enterprise uptime.
             </p>
           </div>
 
@@ -547,14 +540,13 @@ export default function HubexHomeInteractive() {
               />
             </svg>
 
-            <div className="relative z-10 max-w-xl space-y-3">
+            <div className="relative z-10 max-w-xl space-y-2">
               <h2 className="text-[1.75rem] xl:text-[2.25rem] text-brand_cyan font-semibold leading-10">
                 Where Optical Technology Connects
               </h2>
               <p className="text-[1rem] text-[#D3D3D3]">
-                Everything your enterprise needs, all in one place. Uncontended
-                1:1 optical connectivity — from Dedicated Internet Access (DIA)
-                and MPLS to Cloud and Cybersecurity.
+                Uncontended 1:1 optical connectivity — from DIA and MPLS to
+                Cloud and Cybersecurity.
               </p>
             </div>
 
@@ -782,17 +774,15 @@ export default function HubexHomeInteractive() {
                 <br />
                 <span className="text-brand_cyan">Eliminate Contention.</span>
               </h2>
-              <p className="text-[#D3D3D3] text-base mb-8 max-w-md">
-                Provision unshared 1:1 subterranean optical fiber directly from
-                our 100G metro ring to your server room — with zero FUP caps and
-                sub-50ms ring protection.
+              <p className="text-[#D3D3D3] text-base mb-6 max-w-md">
+                Unshared 1:1 subterranean optical fiber from our 100G metro ring
+                with zero FUP and &lt;50ms protection.
               </p>
-              <ul className="space-y-3 mb-8">
+              <ul className="space-y-2.5 mb-6">
                 {[
-                  "Dedicated 1:1 to your enterprise only — zero shared contention",
-                  "24/7/365 NOC in Gulberg-III, Lahore — <15m incident response",
-                  "Dual-path self-healing metro optical ring (<50ms auto-failover)",
-                  "DIA, Point-to-Point Wave, MPLS VPN, Cloud & Managed Security",
+                  "Dedicated 1:1 bandwidth — zero shared contention",
+                  "24/7/365 NOC Desk — <15m incident response",
+                  "Self-healing metro optical ring (<50ms failover)",
                 ].map((point) => (
                   <li
                     key={point}

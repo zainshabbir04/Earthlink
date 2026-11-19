@@ -43,12 +43,10 @@ export default function Footer() {
                   alt="EARTH I Broadband (Pvt.) Ltd. Logo"
                 />
               </Link>
-              <p className="mt-[1.6rem] text-left text-[14px] lg:text-[16px] font-normal leading-[26px] text-[#9C9C9C]">
-                {BRAND_INFO.companyName} is a premier carrier-grade optical
-                Internet Service Provider delivering 1:1 symmetrical Dedicated
-                Internet Access (DIA), Point-to-Point fiber waves, MPLS VPNs,
-                and 24/7/365 NOC-managed infrastructure across 1,200+ km of
-                armored underground conduits.
+              <p className="mt-4 text-left text-sm font-normal leading-relaxed text-[#9C9C9C]">
+                {BRAND_INFO.companyName} delivers 1:1 symmetrical DIA, MPLS
+                VPNs, and 24/7 NOC-managed connectivity across 1,200+ km of
+                subterranean armored optical fiber.
               </p>
             </div>
 

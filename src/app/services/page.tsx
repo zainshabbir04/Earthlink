@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { BRAND_INFO, SERVICES_DATA } from "@/data/siteData";
+import { BRAND_INFO } from "@/data/siteData";
 import ServicesExplorer from "@/components/ServicesExplorer";
 import CTASection from "@/components/CTASection";
 
@@ -13,39 +13,24 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <div className="bg-black-gradient text-white overflow-hidden">
-      {/* Services Hero */}
-      <section className="relative py-16 lg:py-24 border-b border-[#1a1a1a]">
+      {/* Compact Services Hero */}
+      <section className="relative py-12 lg:py-16 border-b border-[#1a1a1a]">
         <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
-          <div className="max-w-3xl space-y-5">
-            <div className="inline-flex items-center gap-2 bg-[#1591EE15] border border-[#1591EE33] rounded-full px-4 py-1.5">
+          <div className="max-w-2xl space-y-4">
+            <div className="inline-flex items-center gap-2 bg-[#1591EE15] border border-[#1591EE33] rounded-full px-3.5 py-1">
               <span className="text-brand_cyan text-xs font-semibold uppercase tracking-wide">
-                {BRAND_INFO.companyName} · Service Portfolio
+                {BRAND_INFO.companyName} · Solutions
               </span>
             </div>
-            <h1 className="text-3xl sm:text-5xl font-semibold tracking-tight leading-snug">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-snug">
               Carrier-Grade{" "}
-              <span className="text-brand_cyan">Optical Connectivity</span> &amp;
-              Managed Enterprise Solutions
+              <span className="text-brand_cyan">Optical &amp; ICT</span>{" "}
+              Solutions
             </h1>
-            <p className="text-base sm:text-lg text-[#D3D3D3] leading-relaxed">
-              Every circuit and managed solution is delivered over our
-              subterranean armored optical fiber network with contractual SLAs,
-              1:1 symmetrical bandwidth options, and 24/7/365 NOC engineering
-              support.
+            <p className="text-base text-[#D3D3D3] leading-relaxed">
+              Subterranean armored optical fiber circuits with 1:1 symmetrical
+              bandwidth, contractual SLAs, and 24/7/365 NOC support.
             </p>
-
-            {/* Quick Jump Anchors */}
-            <div className="pt-3 flex flex-wrap gap-2">
-              {SERVICES_DATA.map((s) => (
-                <a
-                  key={s.id}
-                  href={`#${s.id}`}
-                  className="px-3.5 py-1.5 rounded-lg bg-[#000000] hover:bg-brand_cyan hover:text-black border border-[#272727] text-xs font-mono text-[#D3D3D3] transition-colors"
-                >
-                  {s.shortTitle}
-                </a>
-              ))}
-            </div>
           </div>
         </div>
       </section>
