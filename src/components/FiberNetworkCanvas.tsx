@@ -10,12 +10,12 @@ function FiberSphere() {
   const pointsRef = useRef<THREE.Points>(null);
 
   const particlePositions = useMemo(() => {
-    const count = 450;
+    const count = 420;
     const positions = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
       const phi = Math.acos(-1 + (2 * i) / count);
       const theta = Math.sqrt(count * Math.PI) * phi;
-      const r = 2.05 + (i % 5) * 0.11;
+      const r = 1.85 + (i % 5) * 0.08;
       positions[i * 3] = r * Math.cos(theta) * Math.sin(phi);
       positions[i * 3 + 1] = r * Math.sin(theta) * Math.sin(phi);
       positions[i * 3 + 2] = r * Math.cos(phi);
@@ -35,7 +35,7 @@ function FiberSphere() {
     <group ref={groupRef}>
       {/* Wireframe Optical Core Sphere in Cyan/Blue for Light Background */}
       <mesh>
-        <icosahedronGeometry args={[1.88, 2]} />
+        <icosahedronGeometry args={[1.65, 2]} />
         <meshBasicMaterial
           color="#0284C7"
           wireframe
@@ -46,7 +46,7 @@ function FiberSphere() {
 
       {/* Inner Core Sphere */}
       <mesh>
-        <sphereGeometry args={[1.32, 24, 24]} />
+        <sphereGeometry args={[1.15, 24, 24]} />
         <meshBasicMaterial
           color="#0FA4E8"
           wireframe
@@ -79,7 +79,7 @@ export default function FiberNetworkCanvas() {
   return (
     <div className="w-full h-full pointer-events-none" aria-hidden="true">
       <Canvas
-        camera={{ position: [0, 0, 6.2], fov: 45 }}
+        camera={{ position: [0, 0, 4.6], fov: 45 }}
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true }}
       >
