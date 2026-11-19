@@ -286,33 +286,82 @@ export default function HubexHomeInteractive() {
       </section>
 
       {/* =====================================================================
-          SECTION 3: MARQUEE STRIP ("Powering the next generation of companies")
+          SECTION 3: PUNJAB OPTICAL GRID MARQUEE STRIP (Eye-Catching Heading + Main Cities of Punjab, Pakistan)
          ===================================================================== */}
-      <section className="py-[30px] md:py-[60px] border-t border-b border-[#141414]">
+      <section className="py-[40px] md:py-[65px] border-t border-b border-[#141414] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 lg:px-[50px]">
-          <div className="flex justify-center">
-            <p className="text-brand_cyan text-[20px] lg:text-[28px] leading-[32px] font-normal text-center mb-8 md:mb-[50px]">
-              Powering mission-critical enterprises &amp; metropolitan optical
-              corridors
+          <div className="flex flex-col items-center text-center mb-8 md:mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#008FFF]/10 border border-[#008FFF]/30 mb-3">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#008FFF]" />
+              </span>
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-[#0284C7]">
+                Punjab Regional Optical Backbone
+              </span>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-extrabold tracking-tight text-slate-900 leading-tight max-w-3xl">
+              Illuminating{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#0284C7]">
+                Punjab&apos;s Digital Horizon
+              </span>{" "}
+              With Pure Optical Fiber
+            </h2>
+
+            <p className="text-sm sm:text-base text-[#D3D3D3] mt-2.5 max-w-2xl">
+              Connecting major commercial, industrial, and metropolitan hubs across Punjab, Pakistan with 100G carrier-grade speed.
             </p>
           </div>
 
           <div className="overflow-hidden relative">
-            <div className="flex gap-6 animate-marquee whitespace-nowrap">
+            <div className="flex gap-4 sm:gap-5 animate-marquee whitespace-nowrap py-1">
               {[
-                ... BRAND_INFO.contactDetails.coverageCorridors,
-                "Tertiary Hospitals & Diagnostic Hubs",
-                "Banking & FinTech Clearing Houses",
-                "Software Export Parks & BPOs",
-                "Multi-Campus Research Universities",
-                ...BRAND_INFO.contactDetails.coverageCorridors,
-              ].map((item, idx) => (
+                "Lahore",
+                "Faisalabad",
+                "Rawalpindi",
+                "Multan",
+                "Gujranwala",
+                "Sialkot",
+                "Bahawalpur",
+                "Sargodha",
+                "Gujrat",
+                "Sheikhupura",
+                "Rahim Yar Khan",
+                "Sahiwal",
+                "Jhelum",
+                "Kasur",
+                "Okara",
+                "Dera Ghazi Khan",
+                "Lahore",
+                "Faisalabad",
+                "Rawalpindi",
+                "Multan",
+                "Gujranwala",
+                "Sialkot",
+                "Bahawalpur",
+                "Sargodha",
+                "Gujrat",
+                "Sheikhupura",
+                "Rahim Yar Khan",
+                "Sahiwal",
+                "Jhelum",
+                "Kasur",
+                "Okara",
+                "Dera Ghazi Khan",
+              ].map((city, idx) => (
                 <div
                   key={idx}
-                  className="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-[#080808] border border-[#272727] text-[#D3D3D3] text-sm font-medium shrink-0"
+                  className="inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-[#000000] border border-[#272727] hover:border-[#008FFF] shadow-sm hover:shadow-md transition-all text-sm sm:text-[15px] font-bold text-slate-800 shrink-0 group"
                 >
-                  <span className="w-2 h-2 rounded-full bg-brand_cyan" />
-                  <span>{item}</span>
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand_cyan opacity-60" />
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#008FFF]" />
+                  </span>
+                  <span>{city}</span>
+                  <span className="text-[10px] font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#008FFF]/10 text-[#0284C7]">
+                    Punjab
+                  </span>
                 </div>
               ))}
             </div>
