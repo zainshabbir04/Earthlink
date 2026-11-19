@@ -45,8 +45,8 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Oval / Pill-Shaped Dark Floating Navbar */}
-      <header className="sticky top-0 z-[998] pt-2 lg:pt-[1.4rem] px-3 sm:px-6 lg:px-[3.25rem] xl:px-[6.25rem]">
+      {/* Oval / Pill-Shaped Navbar Fixed in One Place at Top of Page */}
+      <header className="relative z-[998] pt-2 lg:pt-4 px-3 sm:px-6 lg:px-[3.25rem] xl:px-[6.25rem]">
         <nav
           id="topnav"
           className={`bg-[#050505]/95 backdrop-blur-md ${

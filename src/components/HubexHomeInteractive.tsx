@@ -62,15 +62,15 @@ export default function HubexHomeInteractive() {
   return (
     <div className="bg-black-gradient text-white">
       {/* =====================================================================
-          SECTION 2: HERO SECTION (Exact HubexTech 2-Column Layout + Rotating Ring + 5 Floating Pills)
+          SECTION 2: HERO SECTION (Moved Higher Up Closer to Navbar)
          ===================================================================== */}
-      <section className="relative lg:min-h-[88vh] flex items-center justify-center overflow-hidden">
+      <section className="relative flex items-start justify-center overflow-hidden">
         {/* Subtle Background Tech Grid & Cyan Glow */}
         <div className="absolute inset-0 bg-tech-grid opacity-50 pointer-events-none" />
         <div className="absolute top-1/4 right-1/4 w-[480px] h-[480px] rounded-full bg-[#008FFF]/15 blur-[130px] pointer-events-none" />
 
-        <div className="relative flex items-center justify-center w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-[40px] pb-[60px] lg:py-[70px]">
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 w-full items-center">
+        <div className="relative flex items-start justify-center w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-3 pb-10 lg:pt-4 lg:pb-14">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 w-full items-center">
             {/* Left Column: Minimal, Eye-Catching Hero Content with "GET THE SPEED, YOU NEED!" */}
             <div className="relative flex flex-col justify-center items-start w-full">
               <div className="relative z-10 text-white space-y-5">
@@ -119,8 +119,8 @@ export default function HubexHomeInteractive() {
             </div>
 
             {/* Right Column: Stationary Center Logo + 5 Points Orbiting Smoothly in a 360° Circle */}
-            <div className="relative flex items-center justify-center w-full py-6">
-              <div className="relative flex items-center justify-center w-[345px] md:w-[440px] h-[430px] md:h-[510px]">
+            <div className="relative flex items-center justify-center w-full pt-0 pb-2">
+              <div className="relative flex items-center justify-center w-[345px] md:w-[440px] h-[390px] md:h-[450px]">
                 {/* 3D React Three Fiber Canvas inside the Orbital Ring */}
                 <div className="absolute inset-0 z-0 opacity-85">
                   <FiberNetworkCanvas />
