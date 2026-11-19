@@ -217,12 +217,12 @@ export default function HubexHomeInteractive() {
 
                 {/* Center Breathing Core Emblem with Official Transparent EARTH I Broadband Logo */}
                 <div className="absolute z-10 flex items-center justify-center">
-                  <div className="w-[175px] md:w-[215px] h-[175px] md:h-[215px] rounded-full bg-gradient-to-br from-[#008FFF]/25 via-[#050505]/95 to-[#2EC1D9]/25 border border-brand_cyan/50 shadow-[0_0_50px_rgba(46,193,217,0.35)] animate-breathe flex items-center justify-center p-6 backdrop-blur-md">
+                  <div className="w-[175px] md:w-[215px] h-[175px] md:h-[215px] rounded-full bg-white/95 border-2 border-brand_cyan/60 shadow-[0_12px_45px_rgba(14,165,233,0.28)] animate-breathe flex items-center justify-center p-6 backdrop-blur-md">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="/logo-dark.png"
+                      src="/logo-color.png"
                       alt="EARTH I Broadband (Pvt.) Ltd."
-                      className="w-full h-auto object-contain drop-shadow-[0_2px_12px_rgba(46,193,217,0.3)]"
+                      className="w-full h-auto object-contain"
                     />
                   </div>
                 </div>

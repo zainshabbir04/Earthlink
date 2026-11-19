@@ -4,20 +4,20 @@
 
 @layer base {
   :root {
-    --brand-cyan: #2EC1D9;
+    --brand-cyan: #0FA4E8;
     --brand-blue: #008FFF;
-    --brand-navy: #0D2136;
+    --brand-navy: #0F172A;
   }
 
   html {
     scroll-behavior: smooth;
-    color: #FFFFFF;
-    background-color: #0B1B2D;
+    color: #0F172A;
+    background-color: #F8FAFC;
   }
 
   body {
-    background-color: #0B1B2D;
-    color: #FFFFFF;
+    background-color: #F8FAFC;
+    color: #0F172A;
     overflow-x: hidden;
   }
 
@@ -36,35 +36,40 @@
   }
 }
 
-/* Lighter, Luminous HubexTech Ocean-Teal & Slate-Blue Background Gradient */
+/* ============================================================================
+   CRISP WHITE & SKY-CYAN LIGHT THEME
+   Clean white cards, soft sky/slate canvas, deep slate text, cyan accents
+============================================================================ */
 .bg-black-gradient {
-  background: radial-gradient(
-      circle at 75% 16%,
-      rgba(0, 143, 255, 0.28) 0%,
-      rgba(46, 193, 217, 0.16) 32%,
-      rgba(13, 33, 54, 0) 60%
+  background-color: #F8FAFC;
+  background-image: 
+    radial-gradient(
+      circle at 78% 15%,
+      rgba(15, 164, 232, 0.14) 0%,
+      rgba(0, 143, 255, 0.06) 32%,
+      rgba(255, 255, 255, 0) 60%
     ),
     radial-gradient(
-      circle at 18% 62%,
-      rgba(46, 193, 217, 0.22) 0%,
-      rgba(0, 143, 255, 0.1) 35%,
-      rgba(13, 33, 54, 0) 60%
+      circle at 15% 65%,
+      rgba(14, 165, 233, 0.12) 0%,
+      rgba(255, 255, 255, 0) 55%
     ),
-    linear-gradient(180deg, #0E2338 0%, #122B44 48%, #0D2034 100%);
+    linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 38%, #F0F9FF 72%, #F8FAFC 100%);
+  color: #0F172A !important;
 }
 
-/* Softly Lifted Card & Surface Overrides (Lighter than pitch black #000 / #050505) */
-.bg-\[\#000000\] {
-  background-color: rgba(17, 42, 66, 0.85) !important;
-  backdrop-filter: blur(12px);
-}
-
+/* White & Frosted Light Card Surfaces */
+.bg-\[\#000000\],
 .bg-\[\#050505\],
 .bg-\[\#050505\]\/95,
+.bg-\[\#050505\]\/90,
+.bg-\[\#050505CC\],
 .bg-\[\#030508\],
-.bg-\[\#05080F\] {
-  background-color: rgba(13, 33, 53, 0.92) !important;
+.bg-\[\#05080F\],
+.bg-black\/85 {
+  background-color: rgba(255, 255, 255, 0.96) !important;
   backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px -8px rgba(15, 23, 42, 0.07);
 }
 
 .bg-\[\#0D0D0D\],
@@ -72,45 +77,81 @@
 .bg-\[\#080808\],
 .bg-\[\#111\],
 .bg-\[\#141414\] {
-  background-color: rgba(23, 54, 82, 0.88) !important;
+  background-color: #F1F5F9 !important;
 }
 
+/* Light Borders */
 .border-\[\#272727\],
 .border-\[\#2A2A2A\],
 .border-\[\#1a1a1a\],
-.border-\[\#141414\] {
-  border-color: rgba(46, 193, 217, 0.26) !important;
+.border-\[\#141414\],
+.border-\[\#EEF0F31F\] {
+  border-color: #E2E8F0 !important;
 }
 
-.text-\[\#9C9C9C\] {
-  color: #B8D0E6 !important;
+/* High-Contrast Dark Slate Typography on White/Light Surfaces */
+.bg-black-gradient .text-white,
+.footer .text-white,
+#topnav .text-white {
+  color: #0F172A !important;
+}
+
+/* Keep White Text on Blue/Cyan Buttons & Gradient Banners */
+.bg-\[\#008FFF\],
+.bg-\[\#008FFF\] .text-white,
+.bg-\[\#1591EE\],
+.bg-\[\#1591EE\] .text-white,
+.bg-\[\#1591ee\],
+.bg-\[\#2E86DF\],
+.bg-brand_cyan,
+.bg-hubex-banner .text-white,
+.bg-hubex-banner h2 {
+  color: #FFFFFF !important;
 }
 
 .text-\[\#D3D3D3\] {
-  color: #E2F0FC !important;
+  color: #334155 !important;
 }
 
+.text-\[\#9C9C9C\],
+.text-\[\#888\],
+.text-\[\#777\],
+.text-gray-300 {
+  color: #475569 !important;
+}
+
+/* Vibrant Royal-to-Cyan Banner */
 .bg-hubex-banner {
   background: linear-gradient(
-    98.63deg,
-    rgba(15, 38, 62, 0.9) 35%,
-    rgba(46, 193, 217, 0.72) 100%
-  );
+    105deg,
+    #0F172A 0%,
+    #0369A1 55%,
+    #0FA4E8 100%
+  ) !important;
+  box-shadow: 0 20px 45px -12px rgba(2, 132, 199, 0.28);
 }
 
 .bg-hubex-modal {
   background: linear-gradient(
     180deg,
-    rgba(15, 38, 62, 0.92) 40%,
-    rgba(46, 193, 217, 0.65) 100%
+    #FFFFFF 30%,
+    #E0F2FE 100%
   );
 }
 
 .bg-tech-grid {
-  background-size: 48px 48px;
+  background-size: 44px 44px;
   background-image: 
-    linear-gradient(to right, rgba(46, 193, 217, 0.09) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(46, 193, 217, 0.09) 1px, transparent 1px);
+    linear-gradient(to right, rgba(14, 165, 233, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14, 165, 233, 0.09) 1px, transparent 1px);
+}
+
+/* Speech bubble bottom triangle pointer for Light Theme */
+.border-t-\[\#000000\] {
+  border-top-color: #FFFFFF !important;
+}
+.border-t-\[\#272727\] {
+  border-top-color: #E2E8F0 !important;
 }
 
 /* Custom scrollbar */
@@ -118,12 +159,12 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0D2034;
+  background: #F1F5F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1E5D74;
+  background: #0FA4E8;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2EC1D9;
+  background: #0284C7;
 }

@@ -54,7 +54,7 @@ export default function Navbar() {
           } border border-[#2A2A2A] text-white shadow-[0_10px_35px_rgba(0,0,0,0.85)] relative transition-all duration-300`}
         >
           <div className="px-6 sm:px-8 lg:px-10 py-2 lg:py-2.5 flex items-center justify-between">
-            {/* Logo Container (Transparent & Clearly Visible on Dark Navbar, Increased Size) */}
+            {/* Logo Container (Transparent & Clearly Visible on Light Oval Navbar, Increased Size) */}
             <div className="flex items-center">
               <Link
                 href="/"
@@ -63,9 +63,9 @@ export default function Navbar() {
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/logo-dark.png"
+                  src="/logo-color.png"
                   alt="EARTH I Broadband (Pvt.) Ltd."
-                  className="h-14 sm:h-16 lg:h-[72px] w-auto object-contain drop-shadow-[0_2px_12px_rgba(46,193,217,0.25)]"
+                  className="h-14 sm:h-16 lg:h-[72px] w-auto object-contain"
                 />
               </Link>
             </div>

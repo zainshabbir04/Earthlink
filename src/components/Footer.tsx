@@ -38,8 +38,8 @@ export default function Footer() {
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/logo-dark.png"
-                  className="h-12 lg:h-14 w-auto object-contain drop-shadow-[0_2px_10px_rgba(46,193,217,0.2)]"
+                  src="/logo-color.png"
+                  className="h-12 lg:h-14 w-auto object-contain"
                   alt="EARTH I Broadband (Pvt.) Ltd. Logo"
                 />
               </Link>
