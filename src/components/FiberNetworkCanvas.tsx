@@ -79,7 +79,7 @@ export default function FiberNetworkCanvas() {
   return (
     <div className="w-full h-full pointer-events-none" aria-hidden="true">
       <Canvas
-        camera={{ position: [0, 0, 4.6], fov: 45 }}
+        camera={{ position: [0, 0, 6.2], fov: 45 }}
         dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true }}
       >
