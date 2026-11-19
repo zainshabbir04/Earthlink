@@ -71,51 +71,76 @@ export default function HubexHomeInteractive() {
 
         <div className="relative flex items-center justify-center w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-[40px] pb-[60px] lg:py-[70px]">
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 w-full items-center">
-            {/* Left Column: Headline, Z COM Context & Dual Buttons */}
+            {/* Left Column: Redesigned Eye-Catching Hero Content */}
             <div className="relative flex flex-col justify-center items-start w-full">
-              <div className="relative z-10 text-white">
-                <div className="inline-flex items-center gap-2 bg-[#1591EE15] border border-[#1591EE44] rounded-full px-3.5 py-1 mb-4">
-                  <span className="w-2 h-2 rounded-full bg-brand_cyan animate-pulse" />
-                  <span className="text-brand_cyan text-xs font-semibold uppercase tracking-wide">
+              <div className="relative z-10 text-white space-y-5">
+                {/* Eye-Catching Live Network Badge */}
+                <div className="inline-flex items-center gap-2.5 bg-white/90 border border-[#008FFF]/35 shadow-[0_6px_20px_rgba(0,143,255,0.12)] rounded-full px-4 py-1.5">
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#008FFF]" />
+                  </span>
+                  <span className="text-[#0284C7] text-xs font-extrabold uppercase tracking-wider">
                     {BRAND_INFO.companyName}
+                  </span>
+                  <span className="px-2 py-0.5 rounded-full bg-[#008FFF] text-white text-[10px] font-bold uppercase">
+                    100G Core
                   </span>
                 </div>
 
-                <h1 className="text-[28px] md:text-4xl xl:text-[2.75rem] leading-snug font-semibold">
-                  Connecting Businesses. <br />
-                  <span className="text-brand_cyan">
-                    Empowering Possibilities
+                {/* High-Impact Eye-Catching Headline */}
+                <h1 className="text-[32px] sm:text-5xl xl:text-[3.35rem] leading-[1.12] font-extrabold tracking-tight text-slate-900">
+                  Hyper-Fast Optical Fiber. <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#0284C7]">
+                    Empowering Unstoppable
                   </span>{" "}
-                  Nationwide
+                  Enterprises.
                 </h1>
 
-                <p className="text-[16px] lg:text-[18px] text-[#D3D3D3] mt-4 md:mt-5 font-normal leading-relaxed max-w-xl">
-                  Carrier-grade subterranean optical fiber for enterprises — 1:1
-                  symmetrical DIA, MPLS VPNs, Cloud, and 24/7 NOC support across
-                  a <strong className="text-white">1,200+ km armored metro core</strong> with{" "}
-                  <strong className="text-white">99.99% uptime SLA.</strong>
+                {/* Concise Executive Value Proposition */}
+                <p className="text-[15px] lg:text-[17px] text-[#D3D3D3] font-normal leading-relaxed max-w-xl">
+                  Experience zero-congestion <strong className="text-slate-900">1:1 Symmetrical DIA</strong>, private MPLS rings, and sub-millisecond optical transport across our{" "}
+                  <strong className="text-slate-900">1,200+ km subterranean armored fiber</strong> backbone.
                 </p>
 
-                {/* Exact HubexTech Dual Buttons */}
-                <div className="mt-6 md:mt-10 flex flex-wrap gap-4 sm:gap-5">
+                {/* 3 Eye-Catching Telemetry Feature Chips */}
+                <div className="flex flex-wrap items-center gap-2.5 pt-1">
+                  {[
+                    { label: "1:1 Symmetrical Speed", dot: "bg-[#008FFF]" },
+                    { label: "< 50ms Ring Failover", dot: "bg-emerald-500" },
+                    { label: "99.99% Uptime SLA", dot: "bg-[#0FA4E8]" },
+                  ].map((chip) => (
+                    <span
+                      key={chip.label}
+                      className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-slate-200/90 shadow-sm text-xs font-bold text-slate-800"
+                    >
+                      <span className={`w-2 h-2 rounded-full ${chip.dot}`} />
+                      {chip.label}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Redesigned Single-Line Dual CTA Buttons */}
+                <div className="pt-3 flex flex-wrap items-center gap-4">
                   <Link
-                    href="/services"
-                    className="text-white text-[16px] border border-[#008FFF] rounded-lg font-semibold hover:bg-brand_cyan hover:border-brand_cyan hover:text-black transition-all h-[44px] px-6 sm:w-[11.375rem] flex items-center justify-center"
+                    href="/contact"
+                    className="bg-gradient-to-r from-[#008FFF] to-[#0FA4E8] hover:from-[#0284C7] hover:to-[#008FFF] text-white text-[15px] font-bold rounded-full h-[48px] px-8 inline-flex items-center justify-center gap-2 shadow-[0_10px_25px_rgba(0,143,255,0.32)] transition-all whitespace-nowrap"
                   >
-                    Explore Services
+                    <span>Get Connected Now</span>
+                    <span>→</span>
                   </Link>
 
                   <Link
-                    href="/contact"
-                    className="bg-[#008FFF] text-white text-[16px] hover:bg-brand_cyan hover:text-black transition-all rounded-lg font-semibold h-[44px] px-6 sm:w-[11.375rem] flex items-center justify-center"
+                    href="/services"
+                    className="bg-white/90 text-slate-900 text-[15px] border-2 border-[#008FFF]/40 hover:border-[#008FFF] rounded-full font-bold hover:bg-[#008FFF] hover:text-white transition-all h-[48px] px-7 inline-flex items-center justify-center shadow-sm whitespace-nowrap"
                   >
-                    Contact Our Team
+                    Explore Solutions
                   </Link>
                 </div>
 
-                {/* Exact HubexTech 5 Gold Stars Rating Row */}
-                <div className="mt-6 flex items-center gap-3 flex-wrap">
-                  <div className="flex items-center gap-1">
+                {/* 5 Gold Stars SLA Assurance Row */}
+                <div className="pt-2 flex items-center gap-3 flex-wrap">
+                  <div className="flex items-center gap-1 bg-white/80 border border-slate-200/80 px-3.5 py-1.5 rounded-full shadow-sm">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <svg
                         key={star}
@@ -128,26 +153,26 @@ export default function HubexHomeInteractive() {
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                       </svg>
                     ))}
-                    <span className="text-white text-[13px] font-semibold ml-1.5">
-                      99.99% Contractual SLA · 24/7/365 NOC
+                    <span className="text-slate-800 text-[12px] font-bold ml-1.5">
+                      99.99% Contractual SLA · 24/7/365 NOC Support
                     </span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Exact HubexTech Rotating Cybernetic Ring + Breathing Center + 5 Floating Pills */}
+            {/* Right Column: Stationary Center Logo + 5 Points Orbiting Smoothly in a 360° Circle */}
             <div className="relative flex items-center justify-center w-full py-6">
-              <div className="relative flex items-center justify-center w-[345px] md:w-[430px] h-[430px] md:h-[510px]">
+              <div className="relative flex items-center justify-center w-[345px] md:w-[440px] h-[430px] md:h-[510px]">
                 {/* 3D React Three Fiber Canvas inside the Orbital Ring */}
                 <div className="absolute inset-0 z-0 opacity-85">
                   <FiberNetworkCanvas />
                 </div>
 
-                {/* Rotating Outer Cybernetic HUD Ring (matching HubexTech Rotate.png) */}
+                {/* Rotating Outer Cybernetic HUD Ring */}
                 <svg
                   viewBox="0 0 400 400"
-                  className="w-[330px] md:w-[410px] h-[330px] md:h-[410px] animate-rotateImage pointer-events-none z-10"
+                  className="w-[310px] md:w-[390px] h-[310px] md:h-[390px] animate-rotateImage pointer-events-none z-10"
                 >
                   <defs>
                     <linearGradient
@@ -161,7 +186,7 @@ export default function HubexHomeInteractive() {
                       <stop
                         offset="50%"
                         stopColor="#2EC1D9"
-                        stopOpacity="0.3"
+                        stopOpacity="0.35"
                       />
                       <stop
                         offset="100%"
@@ -176,7 +201,7 @@ export default function HubexHomeInteractive() {
                     r="182"
                     fill="none"
                     stroke="url(#hubexRingGrad)"
-                    strokeWidth="2"
+                    strokeWidth="2.2"
                     strokeDasharray="28 14 8 14"
                   />
                   <circle
@@ -185,39 +210,15 @@ export default function HubexHomeInteractive() {
                     r="154"
                     fill="none"
                     stroke="#2EC1D9"
-                    strokeWidth="1.2"
+                    strokeWidth="1.4"
                     strokeDasharray="6 12"
-                    strokeOpacity="0.55"
-                  />
-                  <circle
-                    cx="200"
-                    cy="18"
-                    r="5"
-                    fill="#2EC1D9"
-                  />
-                  <circle
-                    cx="382"
-                    cy="200"
-                    r="5"
-                    fill="#008FFF"
-                  />
-                  <circle
-                    cx="200"
-                    cy="382"
-                    r="5"
-                    fill="#2EC1D9"
-                  />
-                  <circle
-                    cx="18"
-                    cy="200"
-                    r="5"
-                    fill="#008FFF"
+                    strokeOpacity="0.65"
                   />
                 </svg>
 
-                {/* Center Breathing Core Emblem with Official Transparent EARTH I Broadband Logo */}
+                {/* Stationary Center Logo Emblem (Logo stays fixed in the center) */}
                 <div className="absolute z-10 flex items-center justify-center">
-                  <div className="w-[175px] md:w-[215px] h-[175px] md:h-[215px] rounded-full bg-white/95 border-2 border-brand_cyan/60 shadow-[0_12px_45px_rgba(14,165,233,0.28)] animate-breathe flex items-center justify-center p-6 backdrop-blur-md">
+                  <div className="w-[165px] md:w-[205px] h-[165px] md:h-[205px] rounded-full bg-white/95 border-2 border-brand_cyan/60 shadow-[0_12px_45px_rgba(14,165,233,0.28)] animate-breathe flex items-center justify-center p-6 backdrop-blur-md">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src="/logo-color.png"
@@ -227,57 +228,54 @@ export default function HubexHomeInteractive() {
                   </div>
                 </div>
 
-                {/* 5 Floating Cyan-Bordered Pills (Exact HubexTech Positions & Styling) */}
-                {/* Pill 1: Top-Left */}
-                <div className="absolute left-0 sm:left-[-12px] top-[78px] bg-[#050505CC] backdrop-blur-md border border-cyan-500 text-[10px] xl:text-[13px] px-2.5 py-1.5 rounded-md animate-fadeInOutSmooth z-20">
-                  <span className="flex items-center gap-1.5 text-white font-medium">
-                    <span className="w-2 h-2 rounded-full bg-brand_cyan shadow-[0_0_8px_#2EC1D9]" />
-                    Dedicated Internet (1:1 DIA)
-                  </span>
-                </div>
-
-                {/* Pill 2: Mid-Left */}
-                <div
-                  className="absolute bottom-[165px] left-0 sm:left-[-35px] xl:left-[-75px] bg-[#050505CC] backdrop-blur-md text-white border border-cyan-500 text-[10px] xl:text-[13px] px-2.5 py-1.5 rounded-md animate-fadeInOutSmooth z-20"
-                  style={{ animationDelay: "0.8s" }}
-                >
-                  <span className="flex items-center gap-1.5 font-medium">
-                    <span className="w-2 h-2 rounded-full bg-[#008FFF] shadow-[0_0_8px_#008FFF]" />
-                    MPLS &amp; Multi-Branch VPN
-                  </span>
-                </div>
-
-                {/* Pill 3: Bottom-Left */}
-                <div
-                  className="absolute bottom-[55px] left-[16px] xl:left-[5px] text-white bg-[#050505CC] backdrop-blur-md border border-cyan-500 text-[10px] xl:text-[13px] px-2.5 py-1.5 rounded-md animate-fadeInOutSmooth z-20"
-                  style={{ animationDelay: "1.6s" }}
-                >
-                  <span className="flex items-center gap-1.5 font-medium">
-                    <span className="w-2 h-2 rounded-full bg-brand_cyan shadow-[0_0_8px_#2EC1D9]" />
-                    Point-to-Point Optical (&lt;1ms)
-                  </span>
-                </div>
-
-                {/* Pill 4: Top-Right */}
-                <div
-                  className="absolute top-[60px] right-0 xl:right-[-28px] bg-[#050505CC] backdrop-blur-md text-white border border-cyan-500 text-[10px] xl:text-[13px] px-2.5 py-1.5 rounded-md animate-fadeInOutSmooth z-20"
-                  style={{ animationDelay: "1.2s" }}
-                >
-                  <span className="flex items-center gap-1.5 font-medium">
-                    <span className="w-2 h-2 rounded-full bg-brand_cyan shadow-[0_0_8px_#2EC1D9]" />
-                    Cloud &amp; Managed IT
-                  </span>
-                </div>
-
-                {/* Pill 5: Bottom-Right */}
-                <div
-                  className="absolute bottom-[130px] right-0 sm:right-[-30px] xl:right-[-85px] bg-[#050505CC] backdrop-blur-md text-white border border-cyan-500 text-[10px] xl:text-[13px] px-2.5 py-1.5 rounded-md animate-fadeInOutSmooth z-20"
-                  style={{ animationDelay: "2.1s" }}
-                >
-                  <span className="flex items-center gap-1.5 font-medium">
-                    <span className="w-2 h-2 rounded-full bg-[#008FFF] shadow-[0_0_8px_#008FFF]" />
-                    Cybersecurity &amp; 24/7 NOC
-                  </span>
+                {/* 5 Service Points Revolving Smoothly in a 360° Circle Around the Center Logo */}
+                <div className="absolute w-[290px] md:w-[370px] h-[290px] md:h-[370px] rounded-full animate-[spin_24s_linear_infinite] z-20 pointer-events-none">
+                  {[
+                    {
+                      label: "Dedicated Internet (1:1 DIA)",
+                      top: "0%",
+                      left: "50%",
+                      dotColor: "bg-brand_cyan shadow-[0_0_8px_#2EC1D9]",
+                    },
+                    {
+                      label: "Cloud & Managed IT",
+                      top: "34.5%",
+                      left: "97.5%",
+                      dotColor: "bg-[#008FFF] shadow-[0_0_8px_#008FFF]",
+                    },
+                    {
+                      label: "Cybersecurity & 24/7 NOC",
+                      top: "90.5%",
+                      left: "79.4%",
+                      dotColor: "bg-brand_cyan shadow-[0_0_8px_#2EC1D9]",
+                    },
+                    {
+                      label: "Point-to-Point Optical (<1ms)",
+                      top: "90.5%",
+                      left: "20.6%",
+                      dotColor: "bg-[#008FFF] shadow-[0_0_8px_#008FFF]",
+                    },
+                    {
+                      label: "MPLS & Multi-Branch VPN",
+                      top: "34.5%",
+                      left: "2.5%",
+                      dotColor: "bg-brand_cyan shadow-[0_0_8px_#2EC1D9]",
+                    },
+                  ].map((item) => (
+                    <div
+                      key={item.label}
+                      style={{ top: item.top, left: item.left }}
+                      className="absolute -translate-x-1/2 -translate-y-1/2"
+                    >
+                      {/* Counter-rotating wrapper keeps the pill upright while orbiting the circle */}
+                      <div className="animate-[spin_24s_linear_infinite_reverse] bg-white/95 backdrop-blur-md border border-cyan-500 shadow-[0_8px_24px_rgba(14,165,233,0.2)] text-[10px] xl:text-[12.5px] px-3 py-1.5 rounded-full whitespace-nowrap">
+                        <span className="flex items-center gap-1.5 text-slate-900 font-bold">
+                          <span className={`w-2 h-2 rounded-full ${item.dotColor}`} />
+                          {item.label}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
