@@ -71,10 +71,10 @@ export default function HubexHomeInteractive() {
 
         <div className="relative flex items-center justify-center w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-[40px] pb-[60px] lg:py-[70px]">
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 w-full items-center">
-            {/* Left Column: Redesigned Eye-Catching Hero Content */}
+            {/* Left Column: Minimal, Eye-Catching Hero Content with "GET THE SPEED, YOU NEED!" */}
             <div className="relative flex flex-col justify-center items-start w-full">
               <div className="relative z-10 text-white space-y-5">
-                {/* Eye-Catching Live Network Badge */}
+                {/* Slim Live Network Badge */}
                 <div className="inline-flex items-center gap-2.5 bg-white/90 border border-[#008FFF]/35 shadow-[0_6px_20px_rgba(0,143,255,0.12)] rounded-full px-4 py-1.5">
                   <span className="relative flex h-2.5 w-2.5">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
@@ -83,50 +83,28 @@ export default function HubexHomeInteractive() {
                   <span className="text-[#0284C7] text-xs font-extrabold uppercase tracking-wider">
                     {BRAND_INFO.companyName}
                   </span>
-                  <span className="px-2 py-0.5 rounded-full bg-[#008FFF] text-white text-[10px] font-bold uppercase">
-                    100G Core
-                  </span>
                 </div>
 
-                {/* High-Impact Eye-Catching Headline */}
-                <h1 className="text-[32px] sm:text-5xl xl:text-[3.35rem] leading-[1.12] font-extrabold tracking-tight text-slate-900">
-                  Hyper-Fast Optical Fiber. <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#0284C7]">
-                    Empowering Unstoppable
-                  </span>{" "}
-                  Enterprises.
+                {/* Unique Hero Heading: "GET THE SPEED, YOU NEED!" */}
+                <h1 className="text-4xl sm:text-6xl xl:text-[4.25rem] leading-[1.06] font-black tracking-tight uppercase text-slate-900">
+                  GET THE SPEED, <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#0284C7] drop-shadow-sm">
+                    YOU NEED!
+                  </span>
                 </h1>
 
-                {/* Concise Executive Value Proposition */}
-                <p className="text-[15px] lg:text-[17px] text-[#D3D3D3] font-normal leading-relaxed max-w-xl">
-                  Experience zero-congestion <strong className="text-slate-900">1:1 Symmetrical DIA</strong>, private MPLS rings, and sub-millisecond optical transport across our{" "}
-                  <strong className="text-slate-900">1,200+ km subterranean armored fiber</strong> backbone.
+                {/* Minimal 1-Line Subtitle */}
+                <p className="text-[15px] lg:text-[17px] text-[#D3D3D3] font-medium leading-relaxed max-w-md">
+                  Pure 1:1 symmetrical optical fiber with 99.99% uptime SLA &amp; 24/7 NOC support.
                 </p>
 
-                {/* 3 Eye-Catching Telemetry Feature Chips */}
-                <div className="flex flex-wrap items-center gap-2.5 pt-1">
-                  {[
-                    { label: "1:1 Symmetrical Speed", dot: "bg-[#008FFF]" },
-                    { label: "< 50ms Ring Failover", dot: "bg-emerald-500" },
-                    { label: "99.99% Uptime SLA", dot: "bg-[#0FA4E8]" },
-                  ].map((chip) => (
-                    <span
-                      key={chip.label}
-                      className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-slate-200/90 shadow-sm text-xs font-bold text-slate-800"
-                    >
-                      <span className={`w-2 h-2 rounded-full ${chip.dot}`} />
-                      {chip.label}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Redesigned Single-Line Dual CTA Buttons */}
-                <div className="pt-3 flex flex-wrap items-center gap-4">
+                {/* Dual CTA Buttons */}
+                <div className="pt-2 flex flex-wrap items-center gap-4">
                   <Link
                     href="/contact"
                     className="bg-gradient-to-r from-[#008FFF] to-[#0FA4E8] hover:from-[#0284C7] hover:to-[#008FFF] text-white text-[15px] font-bold rounded-full h-[48px] px-8 inline-flex items-center justify-center gap-2 shadow-[0_10px_25px_rgba(0,143,255,0.32)] transition-all whitespace-nowrap"
                   >
-                    <span>Get Connected Now</span>
+                    <span>Get Connected</span>
                     <span>→</span>
                   </Link>
 
@@ -134,29 +112,8 @@ export default function HubexHomeInteractive() {
                     href="/services"
                     className="bg-white/90 text-slate-900 text-[15px] border-2 border-[#008FFF]/40 hover:border-[#008FFF] rounded-full font-bold hover:bg-[#008FFF] hover:text-white transition-all h-[48px] px-7 inline-flex items-center justify-center shadow-sm whitespace-nowrap"
                   >
-                    Explore Solutions
+                    Explore Services
                   </Link>
-                </div>
-
-                {/* 5 Gold Stars SLA Assurance Row */}
-                <div className="pt-2 flex items-center gap-3 flex-wrap">
-                  <div className="flex items-center gap-1 bg-white/80 border border-slate-200/80 px-3.5 py-1.5 rounded-full shadow-sm">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <svg
-                        key={star}
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="#FFB800"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                      </svg>
-                    ))}
-                    <span className="text-slate-800 text-[12px] font-bold ml-1.5">
-                      99.99% Contractual SLA · 24/7/365 NOC Support
-                    </span>
-                  </div>
                 </div>
               </div>
             </div>
