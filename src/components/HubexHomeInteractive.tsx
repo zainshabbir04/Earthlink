@@ -286,7 +286,7 @@ export default function HubexHomeInteractive() {
       </section>
 
       {/* =====================================================================
-          SECTION 3: PUNJAB OPTICAL GRID MARQUEE STRIP (Eye-Catching Heading + Main Cities of Punjab, Pakistan)
+          SECTION 3: REGIONAL OPTICAL GRID MARQUEE STRIP (Fast Slider + Specific Cities)
          ===================================================================== */}
       <section className="py-[40px] md:py-[65px] border-t border-b border-[#141414] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 lg:px-[50px]">
@@ -297,20 +297,20 @@ export default function HubexHomeInteractive() {
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#008FFF]" />
               </span>
               <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-[#0284C7]">
-                Punjab Regional Optical Backbone
+                Regional Optical Fiber Backbone
               </span>
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-extrabold tracking-tight text-slate-900 leading-tight max-w-3xl">
               Illuminating{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#0284C7]">
-                Punjab&apos;s Digital Horizon
+                The Digital Horizon
               </span>{" "}
               With Pure Optical Fiber
             </h2>
 
             <p className="text-sm sm:text-base text-[#D3D3D3] mt-2.5 max-w-2xl">
-              Connecting major commercial, industrial, and metropolitan hubs across Punjab, Pakistan with 100G carrier-grade speed.
+              Connecting major commercial, industrial, and metropolitan hubs with 100G carrier-grade speed.
             </p>
           </div>
 
@@ -318,37 +318,29 @@ export default function HubexHomeInteractive() {
             <div className="flex gap-4 sm:gap-5 animate-marquee whitespace-nowrap py-1">
               {[
                 "Lahore",
-                "Faisalabad",
-                "Rawalpindi",
-                "Multan",
-                "Gujranwala",
-                "Sialkot",
-                "Bahawalpur",
-                "Sargodha",
-                "Gujrat",
                 "Sheikhupura",
-                "Rahim Yar Khan",
-                "Sahiwal",
-                "Jhelum",
+                "Kala Shah Kaku",
+                "Gujrat",
                 "Kasur",
-                "Okara",
-                "Dera Ghazi Khan",
+                "Narowal",
                 "Lahore",
-                "Faisalabad",
-                "Rawalpindi",
-                "Multan",
-                "Gujranwala",
-                "Sialkot",
-                "Bahawalpur",
-                "Sargodha",
-                "Gujrat",
                 "Sheikhupura",
-                "Rahim Yar Khan",
-                "Sahiwal",
-                "Jhelum",
+                "Kala Shah Kaku",
+                "Gujrat",
                 "Kasur",
-                "Okara",
-                "Dera Ghazi Khan",
+                "Narowal",
+                "Lahore",
+                "Sheikhupura",
+                "Kala Shah Kaku",
+                "Gujrat",
+                "Kasur",
+                "Narowal",
+                "Lahore",
+                "Sheikhupura",
+                "Kala Shah Kaku",
+                "Gujrat",
+                "Kasur",
+                "Narowal",
               ].map((city, idx) => (
                 <div
                   key={idx}
@@ -359,9 +351,6 @@ export default function HubexHomeInteractive() {
                     <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#008FFF]" />
                   </span>
                   <span>{city}</span>
-                  <span className="text-[10px] font-mono font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#008FFF]/10 text-[#0284C7]">
-                    Punjab
-                  </span>
                 </div>
               ))}
             </div>

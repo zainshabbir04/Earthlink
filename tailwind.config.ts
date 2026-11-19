@@ -61,7 +61,7 @@ const config: Config = {
         rotateImage: "rotateImage 28s linear infinite",
         breathe: "breathe 4.5s ease-in-out infinite",
         fadeInOutSmooth: "fadeInOutSmooth 4s ease-in-out infinite",
-        marquee: "marquee 28s linear infinite",
+        marquee: "marquee 14s linear infinite",
       },
     },
   },
