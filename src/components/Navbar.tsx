@@ -233,10 +233,10 @@ export default function Navbar() {
               </ul>
             </div>
 
-            {/* Right: "Get in Touch" Button (Oval / Pill-Shaped to match Navbar) */}
+            {/* Right: "Get in Touch" Button (Matching Primary Gradient & White Text) */}
             <div className="hidden lg:flex items-center">
               <Link href="/contact">
-                <span className="bg-[#008FFF] hover:bg-brand_cyan text-[15px] font-bold text-white px-7 rounded-full w-[10.563rem] h-[2.75rem] inline-flex items-center justify-center transition-colors shadow-[0_4px_18px_rgba(0,143,255,0.35)]">
+                <span className="cta-btn-white bg-gradient-to-r from-[#008FFF] to-[#0FA4E8] hover:from-[#0284C7] hover:to-[#008FFF] text-[15px] font-bold text-white px-7 rounded-full w-[10.563rem] h-[2.75rem] inline-flex items-center justify-center transition-all shadow-[0_10px_25px_rgba(0,143,255,0.32)]">
                   Get in Touch
                 </span>
               </Link>
@@ -284,7 +284,7 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   onClick={() => setMobileOpen(false)}
-                  className="bg-[#008FFF] hover:bg-brand_cyan text-[16px] font-bold text-white px-6 rounded-lg w-full h-[2.75rem] flex items-center justify-center"
+                  className="cta-btn-white bg-gradient-to-r from-[#008FFF] to-[#0FA4E8] hover:from-[#0284C7] hover:to-[#008FFF] text-[16px] font-bold text-white px-6 rounded-full w-full h-[2.75rem] flex items-center justify-center shadow-[0_10px_25px_rgba(0,143,255,0.32)]"
                 >
                   Get in Touch
                 </Link>
