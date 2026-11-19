@@ -35,7 +35,7 @@ function FiberSphere() {
     <group ref={groupRef}>
       {/* Wireframe Optical Core Sphere in Cyan/Blue for Light Background */}
       <mesh>
-        <icosahedronGeometry args={[1.65, 2]} />
+        <icosahedronGeometry args={[1.8, 2]} />
         <meshBasicMaterial
           color="#0284C7"
           wireframe
@@ -46,7 +46,7 @@ function FiberSphere() {
 
       {/* Inner Core Sphere */}
       <mesh>
-        <sphereGeometry args={[1.15, 24, 24]} />
+        <sphereGeometry args={[1.26, 24, 24]} />
         <meshBasicMaterial
           color="#0FA4E8"
           wireframe
