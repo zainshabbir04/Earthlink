@@ -121,8 +121,8 @@ export default function HubexHomeInteractive() {
             {/* Right Column: Stationary Center Logo + 5 Points Orbiting Smoothly in a 360° Circle */}
             <div className="relative flex items-center justify-center w-full pt-0 pb-2">
               <div className="relative flex items-center justify-center w-[345px] md:w-[440px] h-[390px] md:h-[450px]">
-                {/* 3D React Three Fiber Canvas inside the Orbital Ring */}
-                <div className="absolute inset-0 z-0 opacity-85">
+                {/* 3D React Three Fiber Canvas inside the Orbital Ring (Expanded Size & Spread) */}
+                <div className="absolute -inset-14 md:-inset-24 z-0 opacity-90 pointer-events-none">
                   <FiberNetworkCanvas />
                 </div>
 
