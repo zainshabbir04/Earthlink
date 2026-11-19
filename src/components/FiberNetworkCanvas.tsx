@@ -10,12 +10,12 @@ function FiberSphere() {
   const pointsRef = useRef<THREE.Points>(null);
 
   const particlePositions = useMemo(() => {
-    const count = 480;
+    const count = 450;
     const positions = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
       const phi = Math.acos(-1 + (2 * i) / count);
       const theta = Math.sqrt(count * Math.PI) * phi;
-      const r = 2.25 + (i % 6) * 0.14;
+      const r = 2.05 + (i % 5) * 0.11;
       positions[i * 3] = r * Math.cos(theta) * Math.sin(phi);
       positions[i * 3 + 1] = r * Math.sin(theta) * Math.sin(phi);
       positions[i * 3 + 2] = r * Math.cos(phi);
@@ -35,7 +35,7 @@ function FiberSphere() {
     <group ref={groupRef}>
       {/* Wireframe Optical Core Sphere in Cyan/Blue for Light Background */}
       <mesh>
-        <icosahedronGeometry args={[2.05, 2]} />
+        <icosahedronGeometry args={[1.88, 2]} />
         <meshBasicMaterial
           color="#0284C7"
           wireframe
@@ -46,7 +46,7 @@ function FiberSphere() {
 
       {/* Inner Core Sphere */}
       <mesh>
-        <sphereGeometry args={[1.45, 24, 24]} />
+        <sphereGeometry args={[1.32, 24, 24]} />
         <meshBasicMaterial
           color="#0FA4E8"
           wireframe
