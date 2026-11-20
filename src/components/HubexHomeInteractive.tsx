@@ -800,60 +800,100 @@ export default function HubexHomeInteractive() {
       </section>
 
       {/* =====================================================================
-          SECTION 9: TRUST & SLA RECOGNITION BANNER (Exact HubexTech Gradient Banner)
+          SECTION 9: TRUST & SLA RECOGNITION BANNER (Redesigned Interior, Same bg-hubex-banner Color)
          ===================================================================== */}
-      <section className="py-[30px] md:py-[60px]">
+      <section className="py-[35px] md:py-[55px]">
         <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] flex items-center justify-center">
-          <div className="w-full rounded-[16px] border border-[#272727] overflow-hidden bg-hubex-banner px-6 md:px-[5rem] py-10 md:py-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-8">
-                <h2 className="text-white text-center lg:text-start text-[24px] lg:text-[2.5rem] font-semibold mb-4">
+          <div className="w-full rounded-3xl border border-sky-300/35 overflow-hidden bg-hubex-banner px-6 sm:px-10 lg:px-14 py-10 md:py-12 relative shadow-[0_24px_55px_rgba(2,132,199,0.28)]">
+            {/* Subtle Decorative Rotating Rings */}
+            <div className="pointer-events-none absolute -top-24 -right-20 w-72 h-72 rounded-full border border-white/15 animate-rotateImage" />
+            <div className="pointer-events-none absolute -bottom-24 -left-16 w-64 h-64 rounded-full border border-dashed border-sky-200/25 animate-rotateImage" />
+
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+              {/* Left 7 Cols: Redesigned Headline, Guarantee Chips & Dual Pill CTAs */}
+              <div className="lg:col-span-7 text-center lg:text-start space-y-4">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/15 border border-white/25 backdrop-blur-md">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                  <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-sky-100">
+                    Contractual Enterprise Guarantee
+                  </span>
+                </div>
+
+                <h2 className="text-white text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight">
                   SLA &amp; Carrier Assurance
                 </h2>
-                <div className="text-center lg:text-start">
-                  <p className="text-[#FFFFFFE5] text-[16px] lg:text-[1.4rem] leading-8 max-w-xl">
-                    Backed by a contractual 99.99% uptime SLA, &lt;50ms
-                    self-healing optical ring failover, and 24/7/365 NOC
-                    telemetry.
-                  </p>
+
+                <p className="text-sky-100/90 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
+                  Backed by a contractual <strong className="text-white">99.99% uptime SLA</strong>, sub-50ms self-healing optical ring failover, and 24/7/365 live NOC telemetry.
+                </p>
+
+                {/* 3 Sleek Frosted Guarantee Chips */}
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 pt-1">
+                  {[
+                    "< 50ms Ring Failover",
+                    "< 15m NOC Response",
+                    "Zero FUP Throttling",
+                  ].map((item) => (
+                    <span
+                      key={item}
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/25 text-xs font-semibold text-white backdrop-blur-sm"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-sky-300" />
+                      {item}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3.5">
                   <Link
                     href="/why-choose-us"
-                    className="mt-5 inline-flex items-center justify-center bg-white text-[#000C0C] text-sm lg:text-[16px] font-semibold px-[24px] py-[10px] h-[44px] rounded-lg hover:text-white hover:bg-brand_cyan transition"
+                    className="inline-flex items-center justify-center gap-2 bg-white text-[#0F172A] hover:bg-[#0F172A] hover:text-white text-sm font-bold px-7 h-[46px] rounded-full shadow-lg transition-all duration-300"
                   >
-                    Explore SLA Standards
+                    <span>Explore SLA Standards</span>
+                    <span>→</span>
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/35 text-white text-sm font-bold px-6 h-[46px] rounded-full backdrop-blur-md transition-all duration-300"
+                  >
+                    Contact 24/7 NOC
                   </Link>
                 </div>
               </div>
 
-              <div className="flex flex-col items-center text-center lg:items-end lg:col-span-4 relative">
-                <div className="w-32 h-32 rounded-2xl bg-[#050505]/90 border-2 border-brand_cyan flex flex-col items-center justify-center p-4 shadow-2xl">
-                  <span className="text-xs font-mono text-brand_cyan uppercase">
-                    UPTIME SLA
-                  </span>
-                  <span className="text-2xl font-extrabold text-white mt-1">
-                    99.99%
-                  </span>
-                  <span className="text-[10px] text-[#D3D3D3] mt-1">
-                    1:1 Pure Fiber
-                  </span>
-                </div>
+              {/* Right 5 Cols: Redesigned Frosted Glass SLA Gauge Card (100% High-Contrast Readable) */}
+              <div className="lg:col-span-5 flex justify-center lg:justify-end">
+                <div className="w-full max-w-[300px] rounded-3xl bg-white/15 backdrop-blur-xl border border-white/30 p-6 shadow-2xl flex flex-col items-center text-center">
+                  {/* Glowing Circular Uptime Ring */}
+                  <div className="relative w-32 h-32 rounded-full border-4 border-sky-200/40 bg-[#0F172A]/45 flex flex-col items-center justify-center shadow-[0_0_30px_rgba(56,189,248,0.35)]">
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-sky-200">
+                      UPTIME SLA
+                    </span>
+                    <span className="text-3xl font-black text-white tracking-tight mt-0.5">
+                      99.99%
+                    </span>
+                    <span className="text-[10px] font-semibold text-sky-200 mt-0.5">
+                      1:1 Pure Fiber
+                    </span>
+                  </div>
 
-                <div className="flex flex-col items-center mt-3">
-                  <span className="text-white font-semibold text-[18px]">
-                    5.0 Carrier Grade
-                  </span>
-                  <div className="flex justify-center items-center gap-1 mt-1">
-                    {[1, 2, 3, 4, 5].map((s) => (
-                      <svg
-                        key={s}
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="#FFB800"
-                      >
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                      </svg>
-                    ))}
+                  <div className="mt-4 pt-4 border-t border-white/20 w-full">
+                    <span className="text-white font-bold text-base block">
+                      5.0 Carrier-Grade Rating
+                    </span>
+                    <div className="flex justify-center items-center gap-1 mt-1.5">
+                      {[1, 2, 3, 4, 5].map((s) => (
+                        <svg
+                          key={s}
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="#FFB800"
+                        >
+                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
