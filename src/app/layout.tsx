@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import WifiCursor from "@/components/WifiCursor";
 import { BRAND_INFO } from "@/data/siteData";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -54,6 +55,7 @@ export default function RootLayout({
       className={`dark scroll-smooth ${jakarta.variable} ${jetbrainsMono.variable}`}
     >
       <body className="bg-black-gradient font-sans antialiased text-white min-h-screen flex flex-col selection:bg-brand_cyan selection:text-black overflow-x-hidden">
+        <WifiCursor />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

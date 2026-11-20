@@ -183,3 +183,48 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #0284C7;
 }
+
+/* Custom WiFi Signal Cursor (Desktop Fine Pointer Only) */
+@media (hover: hover) and (pointer: fine) {
+  html.wifi-cursor-active,
+  html.wifi-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+@keyframes wifiArcPulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.wifi-cursor-arc {
+  animation: wifiArcPulse 1.5s ease-in-out infinite;
+}
+.wifi-cursor-arc-1 {
+  animation-delay: 0s;
+}
+.wifi-cursor-arc-2 {
+  animation-delay: 0.22s;
+}
+.wifi-cursor-arc-3 {
+  animation-delay: 0.44s;
+}
+
+@keyframes wifiClickRipple {
+  0% {
+    transform: translate(-50%, -50%) scale(0.25);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.65);
+    opacity: 0;
+  }
+}
+
+.animate-wifiClickRipple {
+  animation: wifiClickRipple 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
