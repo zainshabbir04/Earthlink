@@ -17,6 +17,10 @@ const FiberNetworkCanvas = dynamic(() => import("./FiberNetworkCanvas"), {
   ssr: false,
 });
 
+const Services3DCanvas = dynamic(() => import("./Services3DCanvas"), {
+  ssr: false,
+});
+
 const TIER_SPECS: Record<
   string,
   {
@@ -320,149 +324,214 @@ export default function HubexHomeInteractive() {
       </section>
 
       {/* =====================================================================
-          SECTION 4: OUR SERVICES (Exact HubexTech Radial Hub-and-Spoke Diagram + Mobile List + Full Grid)
+          SECTION 4: OUR SERVICES (3D Gyroscopic Effect + Animated Optical Fiber Pulses + Eye-Catching Interactive Nodes)
          ===================================================================== */}
-      <section className="py-[50px] lg:py-[90px]">
-        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
-          <div className="w-full text-start mb-10 lg:mb-16">
-            <h2 className="text-[1.5rem] lg:text-[2.25rem] font-semibold mb-1.5 text-brand_cyan">
-              Our Services
+      <section className="py-[55px] lg:py-[90px] relative overflow-hidden">
+        {/* Soft Ambient 3D Stage Glow */}
+        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-full bg-[#008FFF]/10 blur-[130px]" />
+
+        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] relative z-10">
+          {/* Eye-Catching Centered Header */}
+          <div className="flex flex-col items-center text-center mb-10 lg:mb-14">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#008FFF]/10 border border-[#008FFF]/30 mb-3">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#008FFF]" />
+              </span>
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-[#0284C7]">
+                3D Optical Service Ecosystem
+              </span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-slate-900">
+              Our{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#0284C7]">
+                Enterprise Services
+              </span>
             </h2>
-            <p className="text-[#D3D3D3] font-normal text-[1rem] max-w-xl">
-              Carrier-grade optical connectivity, cloud, and cybersecurity
-              engineered for enterprise uptime.
+            <p className="text-[#D3D3D3] font-medium text-sm sm:text-base max-w-xl mt-2">
+              Carrier-grade optical connectivity, cloud, and cybersecurity engineered for zero-downtime enterprise operations.
             </p>
           </div>
 
-          {/* Desktop Radial Hub-and-Spoke Diagram (Exact HubexTech Design) */}
-          <div className="hidden lg:block relative py-28 mb-20">
-            <div className="relative max-w-5xl mx-auto h-[460px] flex items-center justify-center">
-              {/* SVG Connector Lines from Center Hub to 8 Service Nodes */}
-              <svg
-                viewBox="0 0 1000 460"
-                className="absolute inset-0 w-full h-full pointer-events-none"
-              >
-                <g
-                  stroke="#1A545E"
-                  strokeWidth="1.8"
-                  fill="none"
-                  strokeDasharray="5 5"
-                >
-                  {/* Top Center */}
-                  <path d="M500 230 L500 55" />
-                  {/* Bottom Center */}
-                  <path d="M500 230 L500 405" />
-                  {/* Left Top */}
-                  <path d="M500 230 L340 110 L210 110" />
-                  {/* Left Middle */}
-                  <path d="M500 230 L175 230" />
-                  {/* Left Bottom */}
-                  <path d="M500 230 L340 350 L210 350" />
-                  {/* Right Top */}
-                  <path d="M500 230 L660 110 L790 110" />
-                  {/* Right Middle */}
-                  <path d="M500 230 L825 230" />
-                  {/* Right Bottom */}
-                  <path d="M500 230 L660 350 L790 350" />
-                </g>
-              </svg>
-
-              {/* Center Hub Emblem */}
-              <div className="relative z-10 w-36 h-36 rounded-2xl bg-[#050505] border-2 border-brand_cyan shadow-[0_0_45px_rgba(46,193,217,0.3)] flex flex-col items-center justify-center text-center p-3">
-                <span className="text-xs font-mono uppercase tracking-widest text-brand_cyan">
-                  EARTHLINK
-                </span>
-                <span className="text-lg font-bold text-white mt-0.5">
-                  Services
-                </span>
-                <span className="text-[10px] text-[#9C9C9C] mt-0.5">
-                  Hover Node
-                </span>
+          {/* Desktop 3D Animated Radial Hub-and-Spoke Diagram */}
+          <div className="hidden lg:block relative py-14 mb-6">
+            <div className="relative max-w-5xl mx-auto h-[500px] flex items-center justify-center">
+              {/* Live 3D Gyroscopic Rings & Optical Particles Canvas */}
+              <div className="absolute inset-0 z-0 opacity-90 pointer-events-none">
+                <Services3DCanvas />
               </div>
 
-              {/* 8 Radial Nodes with HubexTech Hover Tooltips (bg-[#000000] border-[#1A545E]) */}
+              {/* Animated SVG Optical Fiber Connector Lines + Traveling Signal Light Dots */}
+              <svg
+                viewBox="0 0 1000 500"
+                className="absolute inset-0 w-full h-full pointer-events-none z-10"
+              >
+                <defs>
+                  <linearGradient id="srvFiberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#008FFF" />
+                    <stop offset="50%" stopColor="#2EC1D9" />
+                    <stop offset="100%" stopColor="#0284C7" />
+                  </linearGradient>
+                  <filter id="glowDot" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="2.5" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+
+                {[
+                  "M500 250 L500 58",
+                  "M500 250 L500 442",
+                  "M500 250 L340 120 L205 120",
+                  "M500 250 L170 250",
+                  "M500 250 L340 380 L205 380",
+                  "M500 250 L660 120 L795 120",
+                  "M500 250 L830 250",
+                  "M500 250 L660 380 L795 380",
+                ].map((pathD, i) => (
+                  <g key={i}>
+                    {/* Base Track */}
+                    <path
+                      d={pathD}
+                      stroke="#0FA4E8"
+                      strokeOpacity="0.22"
+                      strokeWidth="2.5"
+                      fill="none"
+                    />
+                    {/* Animated Flowing Optical Pulse */}
+                    <path
+                      d={pathD}
+                      stroke="url(#srvFiberGrad)"
+                      strokeWidth="2.4"
+                      fill="none"
+                      className="service-fiber-pulse"
+                    />
+                    {/* Traveling Glowing Signal Orb */}
+                    <circle r="4.5" fill="#008FFF" filter="url(#glowDot)">
+                      <animateMotion
+                        dur={`${2.6 + (i % 3) * 0.45}s`}
+                        repeatCount="indefinite"
+                        path={pathD}
+                      />
+                    </circle>
+                  </g>
+                ))}
+              </svg>
+
+              {/* Center 3D Glowing Core Hub Emblem */}
+              <div className="relative z-20 flex items-center justify-center">
+                <div className="absolute w-48 h-48 rounded-full border-2 border-dashed border-[#0FA4E8]/45 animate-rotateImage pointer-events-none" />
+                <div className="w-40 h-40 rounded-3xl bg-white/95 border-2 border-[#008FFF] shadow-[0_20px_50px_rgba(0,143,255,0.28)] animate-breathe flex flex-col items-center justify-center text-center p-4 backdrop-blur-xl">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/logo-color.png"
+                    alt="EARTHLINK Broadband"
+                    className="w-28 h-auto object-contain mb-1.5"
+                  />
+                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#0284C7] bg-[#008FFF]/10 px-2.5 py-0.5 rounded-full">
+                    Services Hub
+                  </span>
+                </div>
+              </div>
+
+              {/* 8 Elevated 3D Animated Service Nodes with Glass Hover Tooltips */}
               {[
                 {
                   srv: hubServices[0],
                   pos: "top-[10px] left-1/2 -translate-x-1/2 flex-col",
+                  delay: "0s",
                 },
                 {
                   srv: hubServices[1],
-                  pos: "top-[82px] left-[30px] flex-row",
+                  pos: "top-[92px] left-[20px] flex-row",
+                  delay: "0.4s",
                 },
                 {
                   srv: hubServices[2],
-                  pos: "top-1/2 -translate-y-1/2 left-[10px] flex-row",
+                  pos: "top-1/2 -translate-y-1/2 left-[0px] flex-row",
+                  delay: "0.8s",
                 },
                 {
                   srv: hubServices[3],
-                  pos: "bottom-[82px] left-[30px] flex-row",
+                  pos: "bottom-[92px] left-[20px] flex-row",
+                  delay: "1.2s",
                 },
                 {
                   srv: hubServices[4],
                   pos: "bottom-[10px] left-1/2 -translate-x-1/2 flex-col-reverse",
+                  delay: "1.6s",
                 },
                 {
                   srv: hubServices[5],
-                  pos: "top-[82px] right-[30px] flex-row-reverse",
+                  pos: "top-[92px] right-[20px] flex-row-reverse",
+                  delay: "0.6s",
                 },
                 {
                   srv: hubServices[6],
-                  pos: "top-1/2 -translate-y-1/2 right-[10px] flex-row-reverse",
+                  pos: "top-1/2 -translate-y-1/2 right-[0px] flex-row-reverse",
+                  delay: "1.0s",
                 },
                 {
                   srv: hubServices[7],
-                  pos: "bottom-[82px] right-[30px] flex-row-reverse",
+                  pos: "bottom-[92px] right-[20px] flex-row-reverse",
+                  delay: "1.4s",
                 },
-              ].map(({ srv, pos }) => (
-                <div
+              ].map(({ srv, pos, delay }) => (
+                <Link
                   key={srv.id}
-                  className={`absolute ${pos} flex items-center gap-3 group cursor-pointer z-20`}
+                  href={`/services#${srv.id}`}
+                  style={{ animationDelay: delay }}
+                  className={`absolute ${pos} flex items-center gap-3 group cursor-pointer z-20 animate-fadeInOutSmooth`}
                 >
-                  <span className="font-semibold text-base text-white group-hover:text-brand_cyan transition-colors">
+                  <span className="font-bold text-sm xl:text-[15px] text-slate-900 bg-white/90 px-3.5 py-1.5 rounded-full border border-slate-200/90 shadow-sm group-hover:border-[#008FFF] group-hover:text-[#008FFF] group-hover:shadow-md transition-all">
                     {srv.shortTitle}
                   </span>
-                  <div className="w-12 h-12 rounded-xl bg-[#0A0A0A] border border-brand_cyan/50 group-hover:border-brand_cyan group-hover:bg-brand_cyan/15 flex items-center justify-center text-brand_cyan transition-all shadow-glow-cyan-sm">
+                  <div className="w-13 h-13 p-3 rounded-2xl bg-gradient-to-br from-white to-[#F0F9FF] border-2 border-[#008FFF]/45 group-hover:border-[#008FFF] group-hover:from-[#008FFF] group-hover:to-[#0FA4E8] group-hover:scale-110 group-hover:-translate-y-1 flex items-center justify-center text-[#008FFF] group-hover:text-white transition-all duration-300 shadow-[0_10px_24px_rgba(0,143,255,0.2)]">
                     <ServiceIcon name={srv.iconName} className="w-6 h-6" />
                   </div>
 
-                  {/* Exact HubexTech Tooltip Popup Box */}
-                  <div className="absolute bottom-full mb-4 left-1/2 -translate-x-1/2 w-[360px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30 pointer-events-none">
-                    <div className="relative bg-[#000000] border border-[#1A545E] p-[1.25rem] text-[#9C9C9C] rounded-xl shadow-2xl">
-                      <p className="text-white font-semibold text-sm mb-1">
+                  {/* Elevated 3D Glass Tooltip Popup */}
+                  <div className="absolute bottom-full mb-4 left-1/2 -translate-x-1/2 w-[310px] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-30 pointer-events-none">
+                    <div className="relative bg-white/98 backdrop-blur-xl border-2 border-[#008FFF]/50 p-4 rounded-2xl shadow-[0_20px_50px_rgba(15,23,42,0.16)]">
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#008FFF]">
+                        {srv.category}
+                      </span>
+                      <p className="text-slate-900 font-bold text-sm mt-0.5 mb-1">
                         {srv.title}
                       </p>
-                      <p className="text-[13px] leading-[20px] text-left font-normal text-[#9C9C9C]">
+                      <p className="text-xs leading-relaxed text-slate-600">
                         {srv.shortDescription}
                       </p>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
 
-          {/* Mobile / Tablet List (Exact HubexTech Mobile Layout) */}
-          <div className="block lg:hidden space-y-6 text-gray-300">
+          {/* Mobile / Tablet Animated 3D Cards List */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:hidden">
             {SERVICES_DATA.map((srv) => (
-              <div
+              <Link
                 key={srv.id}
-                className="flex items-start gap-3.5 border-b-[0.5px] border-[#EEF0F31F] pb-5"
+                href={`/services#${srv.id}`}
+                className="flex items-start gap-3.5 p-4 rounded-2xl bg-white/95 border border-slate-200 hover:border-[#008FFF] shadow-sm hover:shadow-md transition-all"
               >
-                <div className="w-11 h-11 rounded-xl bg-[#0D0D0D] border border-[#1A545E] flex items-center justify-center text-brand_cyan shrink-0">
+                <div className="w-11 h-11 rounded-xl bg-[#008FFF]/10 border border-[#008FFF]/30 flex items-center justify-center text-[#008FFF] shrink-0">
                   <ServiceIcon name={srv.iconName} className="w-5 h-5" />
                 </div>
                 <div>
-                  <Link href={`/services#${srv.id}`}>
-                    <h3 className="text-white text-[1.125rem] font-semibold hover:text-brand_cyan">
-                      {srv.title}
-                    </h3>
-                  </Link>
-                  <p className="text-[0.875rem] text-[#9C9C9C] font-normal mt-1">
+                  <h3 className="text-slate-900 text-base font-bold">
+                    {srv.title}
+                  </h3>
+                  <p className="text-xs text-slate-600 mt-1">
                     {srv.shortDescription}
                   </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

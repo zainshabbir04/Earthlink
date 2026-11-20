@@ -154,6 +154,21 @@
   border-top-color: #E2E8F0 !important;
 }
 
+/* Animated Optical Fiber Pulse for Services Radial Lines */
+@keyframes serviceFiberFlow {
+  0% {
+    stroke-dashoffset: 160;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.service-fiber-pulse {
+  stroke-dasharray: 10 8;
+  animation: serviceFiberFlow 3.5s linear infinite;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
