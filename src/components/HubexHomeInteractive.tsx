@@ -326,7 +326,7 @@ export default function HubexHomeInteractive() {
       {/* =====================================================================
           SECTION 4: OUR SERVICES (3D Gyroscopic Effect + Animated Optical Fiber Pulses + Eye-Catching Interactive Nodes)
          ===================================================================== */}
-      <section className="py-[55px] lg:py-[90px] relative overflow-hidden">
+      <section className="pt-[50px] pb-6 lg:pt-[80px] lg:pb-8 relative overflow-hidden">
         {/* Soft Ambient 3D Stage Glow */}
         <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-full bg-[#008FFF]/10 blur-[130px]" />
 
@@ -355,7 +355,7 @@ export default function HubexHomeInteractive() {
           </div>
 
           {/* Desktop 3D Animated Radial Hub-and-Spoke Diagram */}
-          <div className="hidden lg:block relative py-14 mb-6">
+          <div className="hidden lg:block relative pt-6 pb-4">
             <div className="relative max-w-5xl mx-auto h-[500px] flex items-center justify-center">
               {/* Live 3D Gyroscopic Rings & Optical Particles Canvas */}
               <div className="absolute inset-0 z-0 opacity-90 pointer-events-none">
@@ -540,7 +540,7 @@ export default function HubexHomeInteractive() {
       {/* =====================================================================
           SECTION 6: "WHERE OPTICAL TECHNOLOGY CONNECTS" (Redesigned Eye-Catching Gradient Card matching Bottom SLA Banner)
          ===================================================================== */}
-      <section className="py-[50px] lg:py-[75px]">
+      <section className="pt-4 pb-12 lg:pt-6 lg:pb-16">
         <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] relative">
           <div className="mx-auto w-full max-w-[74rem] py-14 md:py-20 px-6 sm:px-10 lg:px-14 rounded-3xl border border-sky-300/35 bg-hubex-banner relative overflow-hidden flex flex-col justify-between items-center text-center shadow-[0_24px_60px_rgba(2,132,199,0.28)]">
             {/* Animated Optical Rings & Ambient Glows */}
