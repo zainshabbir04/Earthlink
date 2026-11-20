@@ -610,7 +610,7 @@ export default function HubexHomeInteractive() {
       {/* =====================================================================
           SECTION 6: "WHERE OPTICAL TECHNOLOGY CONNECTS" (Redesigned Eye-Catching Gradient Card matching Bottom SLA Banner)
          ===================================================================== */}
-      <section className="pt-4 pb-12 lg:pt-6 lg:pb-16">
+      <section className="pt-14 pb-12 lg:pt-20 lg:pb-16">
         <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] relative">
           <div className="mx-auto w-full max-w-[74rem] py-14 md:py-20 px-6 sm:px-10 lg:px-14 rounded-3xl border border-sky-300/35 bg-hubex-banner relative overflow-hidden flex flex-col justify-between items-center text-center shadow-[0_24px_60px_rgba(2,132,199,0.28)]">
             {/* Animated Optical Rings & Ambient Glows */}
