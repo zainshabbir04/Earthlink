@@ -786,8 +786,8 @@ export default function HubexHomeInteractive() {
                 <div
                   key={`client-r1-${idx}`}
                   title={client.name}
-                  className={`group relative w-[132px] h-[132px] sm:w-[148px] sm:h-[148px] rounded-full bg-gradient-to-b from-white via-[#F8FBFF] to-[#EAF5FF] border-2 border-[#008FFF]/25 hover:border-[#008FFF] shadow-[0_12px_30px_rgba(0,143,255,0.12)] hover:shadow-[0_20px_42px_rgba(0,143,255,0.28)] flex items-center justify-center p-5 shrink-0 transition-all duration-300 hover:scale-110 ${
-                    idx % 2 === 0 ? "-translate-y-2.5" : "translate-y-2.5"
+                  className={`group relative w-[106px] h-[106px] sm:w-[118px] sm:h-[118px] rounded-full bg-gradient-to-b from-white via-[#F8FBFF] to-[#EAF5FF] border-2 border-[#008FFF]/25 hover:border-[#008FFF] shadow-[0_10px_24px_rgba(0,143,255,0.12)] hover:shadow-[0_16px_36px_rgba(0,143,255,0.26)] flex items-center justify-center p-4 shrink-0 transition-all duration-300 hover:scale-110 ${
+                    idx % 2 === 0 ? "-translate-y-2" : "translate-y-2"
                   }`}
                 >
                   <div className="absolute inset-1.5 rounded-full border border-dashed border-[#0FA4E8]/30 group-hover:border-[#008FFF]/60 transition-colors pointer-events-none" />
@@ -796,7 +796,7 @@ export default function HubexHomeInteractive() {
                     src={client.src}
                     alt={client.name}
                     loading="lazy"
-                    className="max-h-[76px] max-w-[100px] sm:max-h-[86px] sm:max-w-[112px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-110"
+                    className="max-h-[56px] max-w-[74px] sm:max-h-[64px] sm:max-w-[84px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
               ))}
@@ -836,8 +836,8 @@ export default function HubexHomeInteractive() {
                 <div
                   key={`client-r2-${idx}`}
                   title={client.name}
-                  className={`group relative w-[132px] h-[132px] sm:w-[148px] sm:h-[148px] rounded-full bg-gradient-to-b from-white via-[#F8FBFF] to-[#EAF5FF] border-2 border-[#008FFF]/25 hover:border-[#008FFF] shadow-[0_12px_30px_rgba(0,143,255,0.12)] hover:shadow-[0_20px_42px_rgba(0,143,255,0.28)] flex items-center justify-center p-5 shrink-0 transition-all duration-300 hover:scale-110 ${
-                    idx % 2 === 0 ? "translate-y-2.5" : "-translate-y-2.5"
+                  className={`group relative w-[106px] h-[106px] sm:w-[118px] sm:h-[118px] rounded-full bg-gradient-to-b from-white via-[#F8FBFF] to-[#EAF5FF] border-2 border-[#008FFF]/25 hover:border-[#008FFF] shadow-[0_10px_24px_rgba(0,143,255,0.12)] hover:shadow-[0_16px_36px_rgba(0,143,255,0.26)] flex items-center justify-center p-4 shrink-0 transition-all duration-300 hover:scale-110 ${
+                    idx % 2 === 0 ? "translate-y-2" : "-translate-y-2"
                   }`}
                 >
                   <div className="absolute inset-1.5 rounded-full border border-dashed border-[#0FA4E8]/30 group-hover:border-[#008FFF]/60 transition-colors pointer-events-none" />
@@ -846,7 +846,7 @@ export default function HubexHomeInteractive() {
                     src={client.src}
                     alt={client.name}
                     loading="lazy"
-                    className="max-h-[76px] max-w-[100px] sm:max-h-[86px] sm:max-w-[112px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-110"
+                    className="max-h-[56px] max-w-[74px] sm:max-h-[64px] sm:max-w-[84px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
               ))}
