@@ -56,12 +56,18 @@ const config: Config = {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-50%)" },
         },
+        marqueeReverse: {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0%)" },
+        },
       },
       animation: {
         rotateImage: "rotateImage 28s linear infinite",
         breathe: "breathe 4.5s ease-in-out infinite",
         fadeInOutSmooth: "fadeInOutSmooth 4s ease-in-out infinite",
         marquee: "marquee 14s linear infinite",
+        marqueeMedium: "marquee 22s linear infinite",
+        marqueeReverse: "marqueeReverse 26s linear infinite",
       },
     },
   },

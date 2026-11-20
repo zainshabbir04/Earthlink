@@ -6,9 +6,6 @@ import dynamic from "next/dynamic";
 import {
   BRAND_INFO,
   SERVICES_DATA,
-  WHY_CHOOSE_US_ADVANTAGES,
-  PORTFOLIO_PROJECTS,
-  INDUSTRIES_AND_SECTORS,
   VERIFIED_INFRASTRUCTURE_STATS,
 } from "@/data/siteData";
 import ServiceIcon from "./ServiceIcon";
@@ -607,51 +604,206 @@ export default function HubexHomeInteractive() {
       </section>
 
       {/* =====================================================================
-          SECTION 7: CASE STUDIES / INFRASTRUCTURE PORTFOLIO (Exact HubexTech Black Cards)
+          SECTION 7A: HARDWARE & TECHNOLOGY PARTNERS (Eye-Catching Frosted Logo Slider)
          ===================================================================== */}
-      <section className="py-[50px] lg:py-[70px] relative">
+      <section className="py-[45px] lg:py-[65px] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
-          <h2 className="text-[22px] lg:text-[28px] font-bold mb-12 text-brand_cyan">
-            Explore how our optical fiber infrastructure powers real-world
-            enterprise operations and corridors.
-          </h2>
+          <div className="flex flex-col items-center text-center mb-10">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#008FFF]/10 border border-[#008FFF]/30 mb-3">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#008FFF]" />
+              </span>
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-[#0284C7]">
+                Global Hardware Ecosystem
+              </span>
+            </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {PORTFOLIO_PROJECTS.map((project) => (
-              <div
-                key={project.id}
-                className="bg-[#000000] rounded-xl border border-[#272727] hover:border-brand_cyan/60 hover:shadow-xl transition-all w-full flex flex-col justify-between overflow-hidden group"
-              >
-                <div>
+            <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-extrabold tracking-tight text-slate-900">
+              Hardware &amp; Technology{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#0284C7]">
+                Partners
+              </span>
+            </h2>
+            <p className="text-sm sm:text-base text-[#D3D3D3] mt-2 max-w-xl">
+              Powered by carrier-grade optical routing, switching, and enterprise infrastructure leaders.
+            </p>
+          </div>
+
+          <div className="relative overflow-hidden py-3">
+            {/* Soft Left & Right Edge Fade Masks */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 bg-gradient-to-r from-[#F4F9FF] to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-[#F4F9FF] to-transparent z-10" />
+
+            <div className="flex gap-5 animate-marqueeMedium hover:[animation-play-state:paused] w-max">
+              {[
+                { name: "Juniper Networks", src: "/partners/juniper-networks.png" },
+                { name: "Cisco", src: "/partners/cisco.png" },
+                { name: "Huawei", src: "/partners/huawei.png" },
+                { name: "Dell", src: "/partners/dell.png" },
+                { name: "HP", src: "/partners/hp.png" },
+                { name: "UltraTech", src: "/partners/ultratech.png" },
+                { name: "Redtag", src: "/partners/redtag.png" },
+                { name: "Microtech", src: "/partners/microtech-inc.png" },
+                { name: "ADMA Tech", src: "/partners/adma-tech.png" },
+                { name: "ABC Communication", src: "/partners/abc-communication-network.png" },
+                { name: "Juniper Networks", src: "/partners/juniper-networks.png" },
+                { name: "Cisco", src: "/partners/cisco.png" },
+                { name: "Huawei", src: "/partners/huawei.png" },
+                { name: "Dell", src: "/partners/dell.png" },
+                { name: "HP", src: "/partners/hp.png" },
+                { name: "UltraTech", src: "/partners/ultratech.png" },
+                { name: "Redtag", src: "/partners/redtag.png" },
+                { name: "Microtech", src: "/partners/microtech-inc.png" },
+                { name: "ADMA Tech", src: "/partners/adma-tech.png" },
+                { name: "ABC Communication", src: "/partners/abc-communication-network.png" },
+              ].map((partner, idx) => (
+                <div
+                  key={`partner-${idx}`}
+                  className="group relative w-[185px] sm:w-[210px] h-[104px] rounded-2xl bg-white border border-slate-200/90 hover:border-[#008FFF] shadow-[0_8px_24px_rgba(15,23,42,0.06)] hover:shadow-[0_14px_34px_rgba(0,143,255,0.2)] hover:-translate-y-1.5 transition-all duration-300 flex items-center justify-center p-5 shrink-0"
+                >
+                  <div className="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-[#008FFF] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={project.image}
-                    className="w-full h-[11.063rem] object-cover border-b border-[#272727] rounded-t-xl group-hover:scale-105 transition-transform duration-500"
-                    alt={project.title}
+                    src={partner.src}
+                    alt={partner.name}
+                    loading="lazy"
+                    className="max-h-[54px] max-w-[140px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-105"
                   />
-                  <div className="px-[1.063rem] pt-[1.063rem] pb-4">
-                    <span className="text-[11px] font-mono text-brand_cyan block mb-1">
-                      {project.category}
-                    </span>
-                    <h4 className="font-medium text-white text-[15px] lg:text-[16px] leading-snug mb-2">
-                      {project.title}
-                    </h4>
-                    <p className="text-xs text-[#9C9C9C] line-clamp-3">
-                      {project.summary}
-                    </p>
-                  </div>
                 </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
-                <div className="px-[1.063rem] pb-5">
-                  <Link
-                    href="/contact#site-survey"
-                    className="relative text-[#008FFF] text-[15px] font-bold inline-block after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-current after:transition-all after:duration-500 hover:after:w-full hover:text-brand_cyan"
-                  >
-                    Learn More →
-                  </Link>
+      {/* =====================================================================
+          SECTION 7B: TRUSTED BY LEADING ORGANIZATIONS (Dual Opposite-Direction Eye-Catching Logo Sliders)
+         ===================================================================== */}
+      <section className="py-[40px] lg:py-[65px] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
+          <div className="flex flex-col items-center text-center mb-10">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#008FFF]/10 border border-[#008FFF]/30 mb-3">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+              </span>
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-[#0284C7]">
+                Enterprise Clientele
+              </span>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-extrabold tracking-tight text-slate-900">
+              Trusted by{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#0284C7]">
+                Leading Organizations
+              </span>
+            </h2>
+            <p className="text-sm sm:text-base text-[#D3D3D3] mt-2 max-w-xl">
+              Delivering 99.99% SLA optical connectivity to premier hospitals, universities, hotels, and enterprises.
+            </p>
+          </div>
+
+          {/* Row 1: Scrolling Left */}
+          <div className="relative overflow-hidden py-2.5">
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 bg-gradient-to-r from-[#F4F9FF] to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-[#F4F9FF] to-transparent z-10" />
+
+            <div className="flex gap-4 sm:gap-5 animate-marqueeMedium hover:[animation-play-state:paused] w-max">
+              {[
+                { name: "Ghurki Trust Hospital", src: "/clients/ghurki-trust-hospital.png" },
+                { name: "Ramada Hotel & Suites", src: "/clients/ramada.png" },
+                { name: "Hotel One", src: "/clients/hotel-one.png" },
+                { name: "Zameen.com", src: "/clients/zameen-com.png" },
+                { name: "The Trust School", src: "/clients/the-trust-school.png" },
+                { name: "Cheezious", src: "/clients/cheezious.png" },
+                { name: "Lahore Leads University", src: "/clients/lahore-leads-university.png" },
+                { name: "Parkview City", src: "/clients/parkview-city.png" },
+                { name: "Askari Guards", src: "/clients/askari-guards.png" },
+                { name: "WebSols Pakistan", src: "/clients/websols-pakistan.png" },
+                { name: "Medix Medical Billing", src: "/clients/medix-medical-billing.png" },
+                { name: "Ghurki Trust Hospital", src: "/clients/ghurki-trust-hospital.png" },
+                { name: "Ramada Hotel & Suites", src: "/clients/ramada.png" },
+                { name: "Hotel One", src: "/clients/hotel-one.png" },
+                { name: "Zameen.com", src: "/clients/zameen-com.png" },
+                { name: "The Trust School", src: "/clients/the-trust-school.png" },
+                { name: "Cheezious", src: "/clients/cheezious.png" },
+                { name: "Lahore Leads University", src: "/clients/lahore-leads-university.png" },
+                { name: "Parkview City", src: "/clients/parkview-city.png" },
+                { name: "Askari Guards", src: "/clients/askari-guards.png" },
+                { name: "WebSols Pakistan", src: "/clients/websols-pakistan.png" },
+                { name: "Medix Medical Billing", src: "/clients/medix-medical-billing.png" },
+              ].map((client, idx) => (
+                <div
+                  key={`client-r1-${idx}`}
+                  className="group relative flex items-center gap-3.5 px-5 py-3.5 h-[82px] rounded-2xl bg-white border border-slate-200/90 hover:border-[#008FFF] shadow-[0_6px_20px_rgba(15,23,42,0.05)] hover:shadow-[0_12px_28px_rgba(0,143,255,0.18)] hover:-translate-y-1 transition-all duration-300 shrink-0"
+                >
+                  <div className="w-14 h-12 flex items-center justify-center shrink-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={client.src}
+                      alt={client.name}
+                      loading="lazy"
+                      className="max-h-11 max-w-[54px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-110"
+                    />
+                  </div>
+                  <span className="text-xs sm:text-sm font-bold text-slate-800 group-hover:text-[#008FFF] transition-colors whitespace-nowrap pr-1">
+                    {client.name}
+                  </span>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+          </div>
+
+          {/* Row 2: Scrolling Right (Opposite Direction for Dynamic Motion) */}
+          <div className="relative overflow-hidden py-2.5 mt-3">
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 bg-gradient-to-r from-[#F4F9FF] to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-[#F4F9FF] to-transparent z-10" />
+
+            <div className="flex gap-4 sm:gap-5 animate-marqueeReverse hover:[animation-play-state:paused] w-max">
+              {[
+                { name: "Swiss Pro", src: "/clients/swiss-pro.png" },
+                { name: "Meraki Matrix", src: "/clients/meraki-matrix.png" },
+                { name: "Munir Industry", src: "/clients/munir-industry.png" },
+                { name: "Hayyat Luxury Apartments", src: "/clients/hayyat-luxury-apartments.png" },
+                { name: "Tariq Electric", src: "/clients/tariq-electric.png" },
+                { name: "4S Security", src: "/clients/4s.png" },
+                { name: "Madina Collar", src: "/clients/madina-collar.png" },
+                { name: "OriginNet", src: "/clients/originnet.png" },
+                { name: "FMP", src: "/clients/fmp.png" },
+                { name: "Naimat Khana", src: "/clients/naimat-khana.png" },
+                { name: "MC Group", src: "/clients/mc.png" },
+                { name: "Swiss Pro", src: "/clients/swiss-pro.png" },
+                { name: "Meraki Matrix", src: "/clients/meraki-matrix.png" },
+                { name: "Munir Industry", src: "/clients/munir-industry.png" },
+                { name: "Hayyat Luxury Apartments", src: "/clients/hayyat-luxury-apartments.png" },
+                { name: "Tariq Electric", src: "/clients/tariq-electric.png" },
+                { name: "4S Security", src: "/clients/4s.png" },
+                { name: "Madina Collar", src: "/clients/madina-collar.png" },
+                { name: "OriginNet", src: "/clients/originnet.png" },
+                { name: "FMP", src: "/clients/fmp.png" },
+                { name: "Naimat Khana", src: "/clients/naimat-khana.png" },
+                { name: "MC Group", src: "/clients/mc.png" },
+              ].map((client, idx) => (
+                <div
+                  key={`client-r2-${idx}`}
+                  className="group relative flex items-center gap-3.5 px-5 py-3.5 h-[82px] rounded-2xl bg-white border border-slate-200/90 hover:border-[#008FFF] shadow-[0_6px_20px_rgba(15,23,42,0.05)] hover:shadow-[0_12px_28px_rgba(0,143,255,0.18)] hover:-translate-y-1 transition-all duration-300 shrink-0"
+                >
+                  <div className="w-14 h-12 flex items-center justify-center shrink-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={client.src}
+                      alt={client.name}
+                      loading="lazy"
+                      className="max-h-11 max-w-[54px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-110"
+                    />
+                  </div>
+                  <span className="text-xs sm:text-sm font-bold text-slate-800 group-hover:text-[#008FFF] transition-colors whitespace-nowrap pr-1">
+                    {client.name}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
