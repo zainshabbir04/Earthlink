@@ -753,12 +753,12 @@ export default function HubexHomeInteractive() {
             </p>
           </div>
 
-          {/* Row 1: Scrolling Left */}
-          <div className="relative overflow-hidden py-2.5">
+          {/* Row 1: Unique Floating Circular Medallion Wave (Logos Only, Larger Size, Scrolling Left) */}
+          <div className="relative overflow-hidden py-6">
             <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 bg-gradient-to-r from-[#F4F9FF] to-transparent z-10" />
             <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-[#F4F9FF] to-transparent z-10" />
 
-            <div className="flex gap-4 sm:gap-5 animate-marqueeMedium hover:[animation-play-state:paused] w-max">
+            <div className="flex items-center gap-6 sm:gap-8 animate-marqueeMedium hover:[animation-play-state:paused] w-max">
               {[
                 { name: "Ghurki Trust Hospital", src: "/clients/ghurki-trust-hospital.png" },
                 { name: "Ramada Hotel & Suites", src: "/clients/ramada.png" },
@@ -785,31 +785,30 @@ export default function HubexHomeInteractive() {
               ].map((client, idx) => (
                 <div
                   key={`client-r1-${idx}`}
-                  className="group relative flex items-center gap-3.5 px-5 py-3.5 h-[82px] rounded-2xl bg-white border border-slate-200/90 hover:border-[#008FFF] shadow-[0_6px_20px_rgba(15,23,42,0.05)] hover:shadow-[0_12px_28px_rgba(0,143,255,0.18)] hover:-translate-y-1 transition-all duration-300 shrink-0"
+                  title={client.name}
+                  className={`group relative w-[132px] h-[132px] sm:w-[148px] sm:h-[148px] rounded-full bg-gradient-to-b from-white via-[#F8FBFF] to-[#EAF5FF] border-2 border-[#008FFF]/25 hover:border-[#008FFF] shadow-[0_12px_30px_rgba(0,143,255,0.12)] hover:shadow-[0_20px_42px_rgba(0,143,255,0.28)] flex items-center justify-center p-5 shrink-0 transition-all duration-300 hover:scale-110 ${
+                    idx % 2 === 0 ? "-translate-y-2.5" : "translate-y-2.5"
+                  }`}
                 >
-                  <div className="w-14 h-12 flex items-center justify-center shrink-0">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={client.src}
-                      alt={client.name}
-                      loading="lazy"
-                      className="max-h-11 max-w-[54px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-110"
-                    />
-                  </div>
-                  <span className="text-xs sm:text-sm font-bold text-slate-800 group-hover:text-[#008FFF] transition-colors whitespace-nowrap pr-1">
-                    {client.name}
-                  </span>
+                  <div className="absolute inset-1.5 rounded-full border border-dashed border-[#0FA4E8]/30 group-hover:border-[#008FFF]/60 transition-colors pointer-events-none" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={client.src}
+                    alt={client.name}
+                    loading="lazy"
+                    className="max-h-[76px] max-w-[100px] sm:max-h-[86px] sm:max-w-[112px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-110"
+                  />
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Row 2: Scrolling Right (Opposite Direction for Dynamic Motion) */}
-          <div className="relative overflow-hidden py-2.5 mt-3">
+          {/* Row 2: Opposite-Direction Floating Circular Medallion Wave (Logos Only, Larger Size, Scrolling Right) */}
+          <div className="relative overflow-hidden py-6">
             <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 bg-gradient-to-r from-[#F4F9FF] to-transparent z-10" />
             <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-[#F4F9FF] to-transparent z-10" />
 
-            <div className="flex gap-4 sm:gap-5 animate-marqueeReverse hover:[animation-play-state:paused] w-max">
+            <div className="flex items-center gap-6 sm:gap-8 animate-marqueeReverse hover:[animation-play-state:paused] w-max">
               {[
                 { name: "Swiss Pro", src: "/clients/swiss-pro.png" },
                 { name: "Meraki Matrix", src: "/clients/meraki-matrix.png" },
@@ -836,20 +835,19 @@ export default function HubexHomeInteractive() {
               ].map((client, idx) => (
                 <div
                   key={`client-r2-${idx}`}
-                  className="group relative flex items-center gap-3.5 px-5 py-3.5 h-[82px] rounded-2xl bg-white border border-slate-200/90 hover:border-[#008FFF] shadow-[0_6px_20px_rgba(15,23,42,0.05)] hover:shadow-[0_12px_28px_rgba(0,143,255,0.18)] hover:-translate-y-1 transition-all duration-300 shrink-0"
+                  title={client.name}
+                  className={`group relative w-[132px] h-[132px] sm:w-[148px] sm:h-[148px] rounded-full bg-gradient-to-b from-white via-[#F8FBFF] to-[#EAF5FF] border-2 border-[#008FFF]/25 hover:border-[#008FFF] shadow-[0_12px_30px_rgba(0,143,255,0.12)] hover:shadow-[0_20px_42px_rgba(0,143,255,0.28)] flex items-center justify-center p-5 shrink-0 transition-all duration-300 hover:scale-110 ${
+                    idx % 2 === 0 ? "translate-y-2.5" : "-translate-y-2.5"
+                  }`}
                 >
-                  <div className="w-14 h-12 flex items-center justify-center shrink-0">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={client.src}
-                      alt={client.name}
-                      loading="lazy"
-                      className="max-h-11 max-w-[54px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-110"
-                    />
-                  </div>
-                  <span className="text-xs sm:text-sm font-bold text-slate-800 group-hover:text-[#008FFF] transition-colors whitespace-nowrap pr-1">
-                    {client.name}
-                  </span>
+                  <div className="absolute inset-1.5 rounded-full border border-dashed border-[#0FA4E8]/30 group-hover:border-[#008FFF]/60 transition-colors pointer-events-none" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={client.src}
+                    alt={client.name}
+                    loading="lazy"
+                    className="max-h-[76px] max-w-[100px] sm:max-h-[86px] sm:max-w-[112px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-110"
+                  />
                 </div>
               ))}
             </div>
