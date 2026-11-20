@@ -25,6 +25,11 @@ export const metadata: Metadata = {
   },
   description:
     "EARTHLINK Broadband (Pvt.) Ltd. delivers 1:1 symmetrical Dedicated Internet Access (DIA), Point-to-Point optical connectivity, MPLS VPNs, Cloud & Managed IT over a 1,200+ km subterranean armored metro fiber network.",
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   keywords: [
     "EARTHLINK Broadband",
     "Enterprise Fiber Internet Pakistan",
