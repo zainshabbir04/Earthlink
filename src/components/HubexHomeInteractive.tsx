@@ -484,25 +484,25 @@ export default function HubexHomeInteractive() {
                   key={srv.id}
                   href={`/services#${srv.id}`}
                   style={{ animationDelay: delay }}
-                  className={`absolute ${pos} flex items-center gap-3 group cursor-pointer z-20 animate-fadeInOutSmooth`}
+                  className={`absolute ${pos} flex items-center gap-3 group cursor-pointer z-20 hover:z-50 animate-fadeInOutSmooth`}
                 >
-                  <span className="font-bold text-sm xl:text-[15px] text-slate-900 bg-white/90 px-3.5 py-1.5 rounded-full border border-slate-200/90 shadow-sm group-hover:border-[#008FFF] group-hover:text-[#008FFF] group-hover:shadow-md transition-all">
+                  <span className="font-bold text-sm xl:text-[15px] text-slate-900 bg-white px-3.5 py-1.5 rounded-full border border-slate-200 shadow-sm group-hover:border-[#008FFF] group-hover:text-[#008FFF] group-hover:shadow-md transition-all">
                     {srv.shortTitle}
                   </span>
                   <div className="w-13 h-13 p-3 rounded-2xl bg-gradient-to-br from-white to-[#F0F9FF] border-2 border-[#008FFF]/45 group-hover:border-[#008FFF] group-hover:from-[#008FFF] group-hover:to-[#0FA4E8] group-hover:scale-110 group-hover:-translate-y-1 flex items-center justify-center text-[#008FFF] group-hover:text-white transition-all duration-300 shadow-[0_10px_24px_rgba(0,143,255,0.2)]">
                     <ServiceIcon name={srv.iconName} className="w-6 h-6" />
                   </div>
 
-                  {/* Elevated 3D Glass Tooltip Popup */}
-                  <div className="absolute bottom-full mb-4 left-1/2 -translate-x-1/2 w-[310px] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-30 pointer-events-none">
-                    <div className="relative bg-white/98 backdrop-blur-xl border-2 border-[#008FFF]/50 p-4 rounded-2xl shadow-[0_20px_50px_rgba(15,23,42,0.16)]">
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#008FFF]">
+                  {/* Solid Crisp White 3D Tooltip Popup (100% Opaque & Always On Top) */}
+                  <div className="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 w-[310px] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-[90] pointer-events-none">
+                    <div className="relative bg-white border-2 border-[#008FFF] p-4 rounded-2xl shadow-[0_24px_60px_rgba(15,23,42,0.22)]">
+                      <span className="inline-block text-[10px] font-mono font-bold uppercase tracking-wider text-[#008FFF] bg-[#008FFF]/10 px-2 py-0.5 rounded-full mb-1.5">
                         {srv.category}
                       </span>
-                      <p className="text-slate-900 font-bold text-sm mt-0.5 mb-1">
+                      <p className="text-slate-900 font-extrabold text-sm mb-1 leading-snug">
                         {srv.title}
                       </p>
-                      <p className="text-xs leading-relaxed text-slate-600">
+                      <p className="text-xs leading-relaxed text-slate-700 font-medium">
                         {srv.shortDescription}
                       </p>
                     </div>
