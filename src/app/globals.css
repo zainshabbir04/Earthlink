@@ -184,34 +184,22 @@
   background: #0284C7;
 }
 
-/* Custom WiFi Signal Cursor (Desktop Fine Pointer Only) */
-@media (hover: hover) and (pointer: fine) {
-  html.wifi-cursor-active,
-  html.wifi-cursor-active * {
-    cursor: none !important;
-  }
+/* Custom Native WiFi Signal Cursor (Works on all Desktop & Touch-Laptop Browsers) */
+html,
+body {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'%3E%3Ccircle cx='6' cy='6' r='4.6' fill='%23ffffff'/%3E%3Ccircle cx='6' cy='6' r='3.1' fill='%23008FFF'/%3E%3Cpath d='M13.5 7.2 A8 8 0 0 1 7.2 13.5' stroke='%23ffffff' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M13.5 7.2 A8 8 0 0 1 7.2 13.5' stroke='%23008FFF' stroke-width='2.8' stroke-linecap='round'/%3E%3Cpath d='M20 8.2 A14.2 14.2 0 0 1 8.2 20' stroke='%23ffffff' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M20 8.2 A14.2 14.2 0 0 1 8.2 20' stroke='%230FA4E8' stroke-width='2.7' stroke-linecap='round'/%3E%3Cpath d='M26.5 9.2 A20.5 20.5 0 0 1 9.2 26.5' stroke='%23ffffff' stroke-width='4.8' stroke-linecap='round'/%3E%3Cpath d='M26.5 9.2 A20.5 20.5 0 0 1 9.2 26.5' stroke='%2306B6D4' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E") 6 6, auto;
 }
 
-@keyframes wifiArcPulse {
-  0%, 100% {
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-.wifi-cursor-arc {
-  animation: wifiArcPulse 1.5s ease-in-out infinite;
-}
-.wifi-cursor-arc-1 {
-  animation-delay: 0s;
-}
-.wifi-cursor-arc-2 {
-  animation-delay: 0.22s;
-}
-.wifi-cursor-arc-3 {
-  animation-delay: 0.44s;
+a,
+button,
+[role="button"],
+select,
+summary,
+label[for],
+input[type="submit"],
+input[type="button"],
+.cursor-pointer {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' fill='none'%3E%3Ccircle cx='6' cy='6' r='5.2' fill='%23ffffff'/%3E%3Ccircle cx='6' cy='6' r='3.6' fill='%230284C7'/%3E%3Cpath d='M13.8 7.2 A8.2 8.2 0 0 1 7.2 13.8' stroke='%23ffffff' stroke-width='5.2' stroke-linecap='round'/%3E%3Cpath d='M13.8 7.2 A8.2 8.2 0 0 1 7.2 13.8' stroke='%230284C7' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M20.5 8.2 A14.8 14.8 0 0 1 8.2 20.5' stroke='%23ffffff' stroke-width='5.2' stroke-linecap='round'/%3E%3Cpath d='M20.5 8.2 A14.8 14.8 0 0 1 8.2 20.5' stroke='%23008FFF' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M27.2 9.2 A21.2 21.2 0 0 1 9.2 27.2' stroke='%23ffffff' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M27.2 9.2 A21.2 21.2 0 0 1 9.2 27.2' stroke='%2306B6D4' stroke-width='2.9' stroke-linecap='round'/%3E%3C/svg%3E") 6 6, pointer !important;
 }
 
 @keyframes wifiClickRipple {
