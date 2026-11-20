@@ -378,8 +378,8 @@ export default function HubexHomeInteractive() {
 
         <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] relative z-10">
           {/* Eye-Catching Centered Header */}
-          <div className="flex flex-col items-center text-center mb-10 lg:mb-14">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#008FFF]/10 border border-[#008FFF]/30 mb-3">
+          <div className="flex flex-col items-center text-center mb-6 lg:mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#008FFF]/10 border border-[#008FFF]/30 mb-2.5">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#008FFF]" />
@@ -395,22 +395,23 @@ export default function HubexHomeInteractive() {
                 Enterprise Services
               </span>
             </h2>
-            <p className="text-[#D3D3D3] font-medium text-sm sm:text-base max-w-xl mt-2">
+            <p className="text-slate-600 font-medium text-sm sm:text-base max-w-xl mt-2">
               Carrier-grade optical connectivity, cloud, and cybersecurity engineered for zero-downtime enterprise operations.
             </p>
           </div>
 
           {/* Desktop 3D Animated Radial Hub-and-Spoke Diagram */}
-          <div className="hidden lg:block relative pt-6 pb-4">
+          <div className="hidden lg:block relative pt-2 pb-2">
             <div className="relative max-w-5xl mx-auto h-[500px] flex items-center justify-center">
-              {/* Live 3D Gyroscopic Rings & Optical Particles Canvas */}
-              <div className="absolute inset-0 z-0 opacity-90 pointer-events-none">
+              {/* Live 3D WiFi Signal Waves Canvas */}
+              <div className="absolute inset-0 z-0 opacity-95 pointer-events-none">
                 <Services3DCanvas />
               </div>
 
               {/* Animated SVG Optical Fiber Connector Lines + Traveling Signal Light Dots */}
               <svg
                 viewBox="0 0 1000 500"
+                preserveAspectRatio="none"
                 className="absolute inset-0 w-full h-full pointer-events-none z-10"
               >
                 <defs>
@@ -429,21 +430,21 @@ export default function HubexHomeInteractive() {
                 </defs>
 
                 {[
-                  "M500 250 L500 58",
-                  "M500 250 L500 442",
-                  "M500 250 L340 120 L205 120",
-                  "M500 250 L170 250",
-                  "M500 250 L340 380 L205 380",
-                  "M500 250 L660 120 L795 120",
-                  "M500 250 L830 250",
-                  "M500 250 L660 380 L795 380",
+                  "M500 250 L500 92",
+                  "M500 250 L500 408",
+                  "M500 250 L370 120 L270 120",
+                  "M500 250 L235 250",
+                  "M500 250 L370 380 L270 380",
+                  "M500 250 L630 120 L730 120",
+                  "M500 250 L765 250",
+                  "M500 250 L630 380 L730 380",
                 ].map((pathD, i) => (
                   <g key={i}>
                     {/* Base Track */}
                     <path
                       d={pathD}
                       stroke="#0FA4E8"
-                      strokeOpacity="0.22"
+                      strokeOpacity="0.24"
                       strokeWidth="2.5"
                       fill="none"
                     />
@@ -483,64 +484,87 @@ export default function HubexHomeInteractive() {
                 </div>
               </div>
 
-              {/* 8 Elevated 3D Animated Service Nodes with Glass Hover Tooltips */}
+              {/* 8 Pixel-Aligned Service Nodes Anchored Exactly on SVG Line Endpoints */}
               {[
                 {
                   srv: hubServices[0],
-                  pos: "top-[10px] left-1/2 -translate-x-1/2 flex-col",
-                  delay: "0s",
+                  left: "50%",
+                  top: "18.4%",
+                  labelPos: "bottom-full mb-2.5 left-1/2 -translate-x-1/2",
+                  tooltipPos: "top-full mt-3 left-1/2 -translate-x-1/2",
                 },
                 {
                   srv: hubServices[1],
-                  pos: "top-[92px] left-[20px] flex-row",
-                  delay: "0.4s",
+                  left: "27%",
+                  top: "24%",
+                  labelPos: "right-full mr-3.5 top-1/2 -translate-y-1/2",
+                  tooltipPos: "bottom-full mb-3 left-1/2 -translate-x-1/2",
                 },
                 {
                   srv: hubServices[2],
-                  pos: "top-1/2 -translate-y-1/2 left-[0px] flex-row",
-                  delay: "0.8s",
+                  left: "23.5%",
+                  top: "50%",
+                  labelPos: "right-full mr-3.5 top-1/2 -translate-y-1/2",
+                  tooltipPos: "bottom-full mb-3 left-1/2 -translate-x-1/2",
                 },
                 {
                   srv: hubServices[3],
-                  pos: "bottom-[92px] left-[20px] flex-row",
-                  delay: "1.2s",
+                  left: "27%",
+                  top: "76%",
+                  labelPos: "right-full mr-3.5 top-1/2 -translate-y-1/2",
+                  tooltipPos: "bottom-full mb-3 left-1/2 -translate-x-1/2",
                 },
                 {
                   srv: hubServices[4],
-                  pos: "bottom-[10px] left-1/2 -translate-x-1/2 flex-col-reverse",
-                  delay: "1.6s",
+                  left: "50%",
+                  top: "81.6%",
+                  labelPos: "top-full mt-2.5 left-1/2 -translate-x-1/2",
+                  tooltipPos: "bottom-full mb-3 left-1/2 -translate-x-1/2",
                 },
                 {
                   srv: hubServices[5],
-                  pos: "top-[92px] right-[20px] flex-row-reverse",
-                  delay: "0.6s",
+                  left: "73%",
+                  top: "24%",
+                  labelPos: "left-full ml-3.5 top-1/2 -translate-y-1/2",
+                  tooltipPos: "bottom-full mb-3 left-1/2 -translate-x-1/2",
                 },
                 {
                   srv: hubServices[6],
-                  pos: "top-1/2 -translate-y-1/2 right-[0px] flex-row-reverse",
-                  delay: "1.0s",
+                  left: "76.5%",
+                  top: "50%",
+                  labelPos: "left-full ml-3.5 top-1/2 -translate-y-1/2",
+                  tooltipPos: "bottom-full mb-3 left-1/2 -translate-x-1/2",
                 },
                 {
                   srv: hubServices[7],
-                  pos: "bottom-[92px] right-[20px] flex-row-reverse",
-                  delay: "1.4s",
+                  left: "73%",
+                  top: "76%",
+                  labelPos: "left-full ml-3.5 top-1/2 -translate-y-1/2",
+                  tooltipPos: "bottom-full mb-3 left-1/2 -translate-x-1/2",
                 },
-              ].map(({ srv, pos, delay }) => (
+              ].map(({ srv, left, top, labelPos, tooltipPos }) => (
                 <Link
                   key={srv.id}
                   href={`/services#${srv.id}`}
-                  style={{ animationDelay: delay }}
-                  className={`absolute ${pos} flex items-center gap-3 group cursor-pointer z-20 hover:z-50 animate-fadeInOutSmooth`}
+                  style={{ left, top }}
+                  className="absolute -translate-x-1/2 -translate-y-1/2 group cursor-pointer z-20 hover:z-50"
                 >
-                  <span className="font-bold text-sm xl:text-[15px] text-slate-900 bg-white px-3.5 py-1.5 rounded-full border border-slate-200 shadow-sm group-hover:border-[#008FFF] group-hover:text-[#008FFF] group-hover:shadow-md transition-all">
+                  {/* Service Heading Pill */}
+                  <span
+                    className={`absolute ${labelPos} whitespace-nowrap font-bold text-sm xl:text-[15px] text-slate-900 bg-white px-4 py-1.5 rounded-full border border-slate-200/90 shadow-[0_6px_18px_rgba(15,23,42,0.08)] group-hover:border-[#008FFF] group-hover:text-[#008FFF] group-hover:shadow-[0_10px_24px_rgba(0,143,255,0.18)] transition-all duration-300`}
+                  >
                     {srv.shortTitle}
                   </span>
-                  <div className="w-13 h-13 p-3 rounded-2xl bg-gradient-to-br from-white to-[#F0F9FF] border-2 border-[#008FFF]/45 group-hover:border-[#008FFF] group-hover:from-[#008FFF] group-hover:to-[#0FA4E8] group-hover:scale-110 group-hover:-translate-y-1 flex items-center justify-center text-[#008FFF] group-hover:text-white transition-all duration-300 shadow-[0_10px_24px_rgba(0,143,255,0.2)]">
+
+                  {/* Centered Icon Node (Exact SVG Endpoint Anchor) */}
+                  <div className="w-[52px] h-[52px] rounded-2xl bg-gradient-to-br from-white to-[#F0F9FF] border-2 border-[#008FFF]/50 group-hover:border-[#008FFF] group-hover:from-[#008FFF] group-hover:to-[#0FA4E8] group-hover:scale-110 flex items-center justify-center text-[#008FFF] group-hover:text-white transition-all duration-300 shadow-[0_10px_24px_rgba(0,143,255,0.22)]">
                     <ServiceIcon name={srv.iconName} className="w-6 h-6" />
                   </div>
 
                   {/* Solid Crisp White 3D Tooltip Popup (100% Opaque & Always On Top) */}
-                  <div className="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 w-[310px] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-[90] pointer-events-none">
+                  <div
+                    className={`absolute ${tooltipPos} w-[310px] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-[90] pointer-events-none`}
+                  >
                     <div className="relative bg-white border-2 border-[#008FFF] p-4 rounded-2xl shadow-[0_24px_60px_rgba(15,23,42,0.22)]">
                       <span className="inline-block text-[10px] font-mono font-bold uppercase tracking-wider text-[#008FFF] bg-[#008FFF]/10 px-2 py-0.5 rounded-full mb-1.5">
                         {srv.category}
