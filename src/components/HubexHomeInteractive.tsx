@@ -18,44 +18,35 @@ const Services3DCanvas = dynamic(() => import("./Services3DCanvas"), {
   ssr: false,
 });
 
-const TIER_SPECS: Record<
-  string,
+const HOME_FAQS = [
   {
-    headline: string;
-    subline: string;
-    conventional: string;
-    earthI: string;
-  }
-> = {
-  corporate: {
-    headline: "100 Mbps – 250 Mbps",
-    subline: "99.9% SLA · Pure Subterranean Fiber · Zero FUP",
-    conventional: "Shared 1:8 Aerial / FUP Caps",
-    earthI: "Dedicated Optical / Static IPs",
+    q: "What makes EARTHLINK Broadband different from conventional broadband?",
+    a: "We deliver 100% subterranean armored optical fiber with strict 1:1 symmetrical upload and download speeds, zero Fair Usage Policy (FUP) caps, and zero peak-hour throttling.",
   },
-  dia: {
-    headline: "500 Mbps – 1 Gbps",
-    subline: "99.99% SLA · 1:1 Symmetrical DIA · <50ms Failover",
-    conventional: "Asymmetrical / Peak Throttling",
-    earthI: "1:1 Uncontended / BGP Ready",
+  {
+    q: "What uptime SLA and automatic failover protection do you provide?",
+    a: "Our enterprise links carry a contractual 99.9% to 99.99% uptime SLA backed by dual-path self-healing 100G metro optical rings with automated sub-50ms protection switching.",
   },
-  p2p: {
-    headline: "1 Gbps – 10 Gbps",
-    subline: "< 1ms Intra-Metro Latency · Layer-2 Optical Wave",
-    conventional: "Public Internet Hop Routing",
-    earthI: "Air-Gapped Subterranean Ring",
+  {
+    q: "How does your 24/7/365 NOC support handle network faults?",
+    a: "Our live Network Operations Center monitors optical light levels continuously using automated OTDR telemetry, delivering under-15-minute incident response and rapid field dispatch.",
   },
-  dwdm: {
-    headline: "10 Gbps – 100 Gbps",
-    subline: "100G Core Ring · Multi-Branch MPLS & Colocation",
-    conventional: "Best-Effort Ticket Queue",
-    earthI: "24/7 NOC · <15m MTTR Dispatch",
+  {
+    q: "Do you support static IPv4/IPv6, BGP peering, and multi-branch MPLS?",
+    a: "Yes. Our Dedicated Internet Access (DIA) and MPLS circuits support native Dual-Stack IPv4/IPv6, enterprise ASN BGP multi-homing, and isolated Layer-2/Layer-3 private branch interconnectivity.",
   },
-};
+  {
+    q: "Which cities and commercial corridors are covered?",
+    a: "Our optical network serves major business and industrial hubs including Lahore, Sheikhupura, Kala Shah Kaku, Gujrat, Kasur, Narowal, Faisalabad, Rawalpindi, Multan, Gujranwala, Sialkot, and surrounding corridors.",
+  },
+  {
+    q: "How do I request an optical fiber feasibility survey for my office?",
+    a: "Click 'Get in Touch' or 'Request Site Survey' on our Contact page with your building address and target bandwidth tier; our OSP engineering team will verify underground splice proximity promptly.",
+  },
+];
 
 export default function HubexHomeInteractive() {
-  const [selectedTier, setSelectedTier] = useState<string>("dia");
-  const currentTier = TIER_SPECS[selectedTier] || TIER_SPECS.dia;
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   // Radial hub-and-spoke nodes (8 nodes around the center hub, matching HubexTech)
   const hubServices = SERVICES_DATA.slice(0, 8);
@@ -872,145 +863,98 @@ export default function HubexHomeInteractive() {
       </section>
 
       {/* =====================================================================
-          SECTION 10: ENTERPRISE BANDWIDTH & SLA CONFIGURATOR (Exact HubexTech "Scale Your Team / Quick Savings Estimate" Section)
+          SECTION 10: FREQUENTLY ASKED QUESTIONS (Interactive Eye-Catching FAQs Accordion)
          ===================================================================== */}
       <section
-        id="bandwidth-estimator"
-        className="relative md:py-24 py-16 border-t border-[#1a1a1a]"
+        id="faqs"
+        className="relative py-14 lg:py-20 border-t border-[#1a1a1a]"
       >
-        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
-          <div className="grid lg:grid-cols-2 grid-cols-1 gap-12 items-center">
-            {/* Left: Value Proposition */}
-            <div>
-              <div className="inline-flex items-center gap-2 bg-[#1591EE15] border border-[#1591EE33] rounded-full px-4 py-1.5 mb-6">
-                <span className="text-brand_cyan text-xs font-semibold uppercase tracking-wide">
-                  Dedicated Optical Provisioning
-                </span>
-              </div>
-              <h2 className="text-white text-[1.75rem] lg:text-[2.25rem] font-semibold leading-tight mb-4">
-                Scale Your Bandwidth.
-                <br />
-                <span className="text-brand_cyan">Eliminate Contention.</span>
-              </h2>
-              <p className="text-[#D3D3D3] text-base mb-6 max-w-md">
-                Unshared 1:1 subterranean optical fiber from our 100G metro ring
-                with zero FUP and &lt;50ms protection.
-              </p>
-              <ul className="space-y-2.5 mb-6">
-                {[
-                  "Dedicated 1:1 bandwidth — zero shared contention",
-                  "24/7/365 NOC Desk — <15m incident response",
-                  "Self-healing metro optical ring (<50ms failover)",
-                ].map((point) => (
-                  <li
-                    key={point}
-                    className="flex items-center gap-3 text-[#D3D3D3] text-sm"
+        <div className="max-w-5xl mx-auto px-[20px] lg:px-[50px]">
+          <div className="flex flex-col items-center text-center mb-10 lg:mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#008FFF]/10 border border-[#008FFF]/30 mb-3">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#008FFF]" />
+              </span>
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-[#0284C7]">
+                Quick Answers
+              </span>
+            </div>
+
+            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+              Frequently Asked{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#0284C7]">
+                Questions
+              </span>
+            </h2>
+            <p className="text-sm sm:text-base text-[#D3D3D3] mt-2 max-w-xl">
+              Everything you need to know about our subterranean optical fiber, 1:1 DIA speeds, SLAs, and 24/7 NOC support.
+            </p>
+          </div>
+
+          <div className="space-y-3.5">
+            {HOME_FAQS.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div
+                  key={idx}
+                  className={`rounded-2xl bg-white border transition-all duration-300 overflow-hidden ${
+                    isOpen
+                      ? "border-[#008FFF] shadow-[0_14px_34px_rgba(0,143,255,0.14)]"
+                      : "border-slate-200/90 hover:border-[#008FFF]/50 shadow-sm"
+                  }`}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : idx)}
+                    aria-expanded={isOpen}
+                    className="w-full px-6 py-5 text-left flex items-center justify-between gap-4"
                   >
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      className="shrink-0"
+                    <div className="flex items-center gap-3.5">
+                      <span
+                        className={`w-7 h-7 rounded-full text-xs font-mono font-bold flex items-center justify-center shrink-0 transition-colors ${
+                          isOpen
+                            ? "bg-[#008FFF] text-white"
+                            : "bg-[#008FFF]/10 text-[#0284C7]"
+                        }`}
+                      >
+                        0{idx + 1}
+                      </span>
+                      <span className="text-sm sm:text-base font-bold text-slate-900">
+                        {faq.q}
+                      </span>
+                    </div>
+
+                    <span
+                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+                        isOpen
+                          ? "bg-[#008FFF] text-white rotate-180"
+                          : "bg-slate-100 text-slate-600"
+                      }`}
                     >
-                      <circle cx="12" cy="12" r="12" fill="#1591EE22" />
-                      <path
-                        d="M7 12.5l3.5 3.5 6.5-7"
-                        stroke="#2EC1D9"
-                        strokeWidth="2"
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                      />
-                    </svg>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="/why-choose-us"
-                className="text-brand_cyan text-sm font-medium inline-flex items-center gap-2 hover:gap-3 transition-all"
-              >
-                <span>See full technical comparison</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M5 12h14M13 6l6 6-6 6"
-                    stroke="#2EC1D9"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </Link>
-            </div>
+                      >
+                        <path d="M6 9l6 6 6-6" />
+                      </svg>
+                    </span>
+                  </button>
 
-            {/* Right: Exact HubexTech Interactive Widget Card (bg-[#0D0D0D] border-[#272727] rounded-2xl p-8) */}
-            <div className="bg-[#0D0D0D] border border-[#272727] rounded-2xl p-8">
-              <div className="text-[#888] text-xs font-semibold uppercase tracking-widest mb-6">
-                Quick Architecture &amp; SLA Configurator
-              </div>
-
-              <div className="mb-6">
-                <label
-                  htmlFor="tier-select"
-                  className="text-[#D3D3D3] text-sm font-medium block mb-2"
-                >
-                  Enterprise Circuit Tier
-                </label>
-                <select
-                  id="tier-select"
-                  value={selectedTier}
-                  onChange={(e) => setSelectedTier(e.target.value)}
-                  className="w-full bg-[#111] border border-[#272727] text-white rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-brand_cyan"
-                >
-                  <option value="corporate">
-                    Corporate Internet Solutions (Subterranean Fiber)
-                  </option>
-                  <option value="dia">
-                    Dedicated Internet Access — 1:1 Symmetrical DIA
-                  </option>
-                  <option value="p2p">
-                    Point-to-Point Layer-2 Metro Optical Wave
-                  </option>
-                  <option value="dwdm">
-                    100G DWDM Core / Multi-Branch MPLS Ring
-                  </option>
-                </select>
-              </div>
-
-              <div className="text-center py-6 border-y border-[#1a1a1a] mb-6">
-                <div className="text-[#888] text-xs mb-2">
-                  Dedicated Symmetrical Line Rate Capacity
+                  {isOpen && (
+                    <div className="px-6 pb-5 pt-0 pl-[4.125rem] text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      {faq.a}
+                    </div>
+                  )}
                 </div>
-                <div className="text-3xl sm:text-4xl font-bold text-white mb-1">
-                  {currentTier.headline}
-                </div>
-                <div className="text-brand_cyan text-sm font-medium">
-                  {currentTier.subline}
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3 mb-6 text-center text-xs">
-                <div className="bg-[#111] rounded-lg p-3">
-                  <div className="text-[#777] mb-1">Conventional ISP</div>
-                  <div className="text-white font-semibold">
-                    {currentTier.conventional}
-                  </div>
-                </div>
-                <div className="bg-[#111] rounded-lg p-3">
-                  <div className="text-[#777] mb-1">{BRAND_INFO.shortName}</div>
-                  <div className="text-brand_cyan font-semibold">
-                    {currentTier.earthI}
-                  </div>
-                </div>
-              </div>
-
-              <Link
-                href="/contact#site-survey"
-                className="w-full bg-[#1591EE] hover:bg-brand_cyan hover:text-black text-white text-center font-semibold py-3.5 rounded-xl transition-all duration-300 text-sm block"
-              >
-                Request Free Site Survey &amp; Quote
-              </Link>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
