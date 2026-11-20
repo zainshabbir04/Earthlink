@@ -679,12 +679,12 @@ export default function HubexHomeInteractive() {
             </p>
           </div>
 
-          <div className="relative overflow-hidden py-3">
+          <div className="relative overflow-hidden py-6">
             {/* Soft Left & Right Edge Fade Masks */}
             <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-28 bg-gradient-to-r from-[#F4F9FF] to-transparent z-10" />
             <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-[#F4F9FF] to-transparent z-10" />
 
-            <div className="flex gap-5 animate-marqueeMedium hover:[animation-play-state:paused] w-max">
+            <div className="flex items-center gap-6 sm:gap-8 animate-marqueeMedium hover:[animation-play-state:paused] w-max">
               {[
                 { name: "Juniper Networks", src: "/partners/juniper-networks.png" },
                 { name: "Cisco", src: "/partners/cisco.png" },
@@ -709,15 +709,18 @@ export default function HubexHomeInteractive() {
               ].map((partner, idx) => (
                 <div
                   key={`partner-${idx}`}
-                  className="group relative w-[185px] sm:w-[210px] h-[104px] rounded-2xl bg-white border border-slate-200/90 hover:border-[#008FFF] shadow-[0_8px_24px_rgba(15,23,42,0.06)] hover:shadow-[0_14px_34px_rgba(0,143,255,0.2)] hover:-translate-y-1.5 transition-all duration-300 flex items-center justify-center p-5 shrink-0"
+                  title={partner.name}
+                  className={`group relative w-[106px] h-[106px] sm:w-[118px] sm:h-[118px] rounded-full bg-gradient-to-b from-white via-[#F8FBFF] to-[#EAF5FF] border-2 border-[#008FFF]/25 hover:border-[#008FFF] shadow-[0_10px_24px_rgba(0,143,255,0.12)] hover:shadow-[0_16px_36px_rgba(0,143,255,0.26)] flex items-center justify-center p-4 shrink-0 transition-all duration-300 hover:scale-110 ${
+                    idx % 2 === 0 ? "-translate-y-2" : "translate-y-2"
+                  }`}
                 >
-                  <div className="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-[#008FFF] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-1.5 rounded-full border border-dashed border-[#0FA4E8]/30 group-hover:border-[#008FFF]/60 transition-colors pointer-events-none" />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={partner.src}
                     alt={partner.name}
                     loading="lazy"
-                    className="max-h-[54px] max-w-[140px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                    className="max-h-[56px] max-w-[74px] sm:max-h-[64px] sm:max-w-[84px] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
               ))}
