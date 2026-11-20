@@ -11,6 +11,7 @@ import {
   VERIFIED_INFRASTRUCTURE_STATS,
 } from "@/data/siteData";
 import CTASection from "@/components/CTASection";
+import AnimatedCounter from "@/components/AnimatedCounter";
 
 export const metadata: Metadata = {
   title: "About Us — Corporate Profile & Optical Infrastructure",
@@ -114,7 +115,7 @@ export default function AboutPage() {
                   className="p-5 rounded-2xl bg-[#000000] border border-[#272727]"
                 >
                   <div className="text-3xl font-bold text-brand_cyan mb-1">
-                    {stat.value}
+                    <AnimatedCounter value={stat.value} />
                   </div>
                   <div className="text-sm font-semibold text-white">
                     {stat.label}

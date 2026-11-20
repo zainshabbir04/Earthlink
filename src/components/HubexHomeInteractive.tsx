@@ -9,6 +9,7 @@ import {
   VERIFIED_INFRASTRUCTURE_STATS,
 } from "@/data/siteData";
 import ServiceIcon from "./ServiceIcon";
+import AnimatedCounter from "./AnimatedCounter";
 
 const FiberNetworkCanvas = dynamic(() => import("./FiberNetworkCanvas"), {
   ssr: false,
@@ -312,6 +313,63 @@ export default function HubexHomeInteractive() {
       </section>
 
       {/* =====================================================================
+          SECTION 3B: ANIMATED INFRASTRUCTURE COUNTERS STRIP (Verified Optical Metrics)
+         ===================================================================== */}
+      <section className="py-10 lg:py-12 relative">
+        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {[
+              {
+                value: "1,200+",
+                unit: "KM",
+                label: "Armored Metro Core",
+                sub: "Subterranean optical fiber",
+              },
+              {
+                value: "100G",
+                unit: "RING",
+                label: "Optical Backbone",
+                sub: "Multi-terabit core fabric",
+              },
+              {
+                value: "99.99%",
+                unit: "SLA",
+                label: "Contractual Uptime",
+                sub: "< 50ms auto-failover",
+              },
+              {
+                value: "< 15m",
+                unit: "NOC",
+                label: "Incident Response",
+                sub: "24/7/365 live telemetry",
+              },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="group relative rounded-2xl bg-white border border-slate-200/90 hover:border-[#008FFF] p-5 sm:p-6 shadow-[0_10px_30px_rgba(15,23,42,0.06)] hover:shadow-[0_18px_40px_rgba(0,143,255,0.16)] hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#008FFF] to-[#2EC1D9] opacity-80 group-hover:opacity-100" />
+                <div className="flex items-baseline justify-between gap-2">
+                  <span className="text-3xl sm:text-4xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#0F172A] via-[#0284C7] to-[#008FFF]">
+                    <AnimatedCounter value={item.value} duration={1700} />
+                  </span>
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#008FFF]/10 text-[#0284C7]">
+                    {item.unit}
+                  </span>
+                </div>
+                <h3 className="text-sm sm:text-base font-bold text-slate-900 mt-2.5">
+                  {item.label}
+                </h3>
+                <p className="text-xs text-slate-500 mt-0.5 font-medium">
+                  {item.sub}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================================
           SECTION 4: OUR SERVICES (3D Gyroscopic Effect + Animated Optical Fiber Pulses + Eye-Catching Interactive Nodes)
          ===================================================================== */}
       <section className="pt-[50px] pb-6 lg:pt-[80px] lg:pb-8 relative overflow-hidden">
@@ -557,7 +615,7 @@ export default function HubexHomeInteractive() {
               </p>
             </div>
 
-            {/* Redesigned 4-Column Frosted Glass Stat Cards */}
+            {/* Redesigned 4-Column Frosted Glass Animated Counter Cards */}
             <div className="relative z-10 w-full max-w-4xl grid grid-cols-2 lg:grid-cols-4 gap-4 my-10">
               {VERIFIED_INFRASTRUCTURE_STATS.map((st) => (
                 <div
@@ -565,7 +623,7 @@ export default function HubexHomeInteractive() {
                   className="group p-5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/25 hover:border-sky-200/70 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 shadow-lg"
                 >
                   <div className="text-2xl sm:text-3xl font-black text-white font-mono tracking-tight">
-                    {st.value}
+                    <AnimatedCounter value={st.value} />
                   </div>
                   <div className="text-xs font-bold uppercase tracking-wider text-sky-200 mt-1.5">
                     {st.label}
@@ -870,7 +928,7 @@ export default function HubexHomeInteractive() {
                       UPTIME SLA
                     </span>
                     <span className="text-3xl font-black text-white tracking-tight mt-0.5">
-                      99.99%
+                      <AnimatedCounter value="99.99%" duration={1800} />
                     </span>
                     <span className="text-[10px] font-semibold text-sky-200 mt-0.5">
                       1:1 Pure Fiber
