@@ -538,110 +538,68 @@ export default function HubexHomeInteractive() {
       </section>
 
       {/* =====================================================================
-          SECTION 6: "WHERE TECHNOLOGY CONNECTS" (Exact HubexTech Centered Circuit Graphic Banner)
+          SECTION 6: "WHERE OPTICAL TECHNOLOGY CONNECTS" (Redesigned Eye-Catching Gradient Card matching Bottom SLA Banner)
          ===================================================================== */}
-      <section className="py-[50px] lg:py-[80px]">
-        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] text-white relative">
-          <div className="mx-auto w-full max-w-[72.813rem] py-16 md:py-24 px-6 rounded-3xl border border-[#1A545E]/50 bg-[#05080F] relative overflow-hidden flex flex-col justify-between items-center text-center min-h-[420px]">
-            {/* Radial Network Background SVG (Matching Group-digtail.png) */}
-            <svg
-              viewBox="0 0 800 400"
-              className="absolute inset-0 w-full h-full opacity-35 pointer-events-none"
-            >
-              <circle
-                cx="400"
-                cy="200"
-                r="90"
-                stroke="#2EC1D9"
-                strokeWidth="1.5"
-                fill="none"
-              />
-              <circle
-                cx="400"
-                cy="200"
-                r="155"
-                stroke="#008FFF"
-                strokeWidth="1"
-                strokeDasharray="8 8"
-                fill="none"
-              />
-              <circle
-                cx="400"
-                cy="200"
-                r="225"
-                stroke="#2EC1D9"
-                strokeWidth="1"
-                strokeOpacity="0.5"
-                fill="none"
-              />
-              <line
-                x1="100"
-                y1="200"
-                x2="700"
-                y2="200"
-                stroke="#008FFF"
-                strokeOpacity="0.4"
-              />
-              <line
-                x1="400"
-                y1="20"
-                x2="400"
-                y2="380"
-                stroke="#2EC1D9"
-                strokeOpacity="0.4"
-              />
-              <line
-                x1="180"
-                y1="60"
-                x2="620"
-                y2="340"
-                stroke="#2EC1D9"
-                strokeOpacity="0.3"
-              />
-              <line
-                x1="180"
-                y1="340"
-                x2="620"
-                y2="60"
-                stroke="#008FFF"
-                strokeOpacity="0.3"
-              />
-            </svg>
+      <section className="py-[50px] lg:py-[75px]">
+        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] relative">
+          <div className="mx-auto w-full max-w-[74rem] py-14 md:py-20 px-6 sm:px-10 lg:px-14 rounded-3xl border border-sky-300/35 bg-hubex-banner relative overflow-hidden flex flex-col justify-between items-center text-center shadow-[0_24px_60px_rgba(2,132,199,0.28)]">
+            {/* Animated Optical Rings & Ambient Glows */}
+            <div className="pointer-events-none absolute -top-28 -left-24 w-80 h-80 rounded-full border border-white/15 animate-rotateImage" />
+            <div className="pointer-events-none absolute -bottom-32 -right-24 w-96 h-96 rounded-full border-2 border-dashed border-sky-300/30 animate-rotateImage" />
+            <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] rounded-full bg-sky-400/15 blur-[110px]" />
 
-            <div className="relative z-10 max-w-xl space-y-2">
-              <h2 className="text-[1.75rem] xl:text-[2.25rem] text-brand_cyan font-semibold leading-10">
+            {/* Top Live Badge & Headline */}
+            <div className="relative z-10 max-w-2xl space-y-4">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-md">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-300 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-300" />
+                </span>
+                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-sky-100">
+                  Carrier-Grade Fiber Infrastructure
+                </span>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-white leading-tight">
                 Where Optical Technology Connects
               </h2>
-              <p className="text-[1rem] text-[#D3D3D3]">
-                Uncontended 1:1 optical connectivity — from DIA and MPLS to
-                Cloud and Cybersecurity.
+
+              <p className="text-sm sm:text-base text-sky-100/90 max-w-xl mx-auto leading-relaxed">
+                Uncontended 1:1 optical connectivity — uniting Dedicated Internet Access (DIA), MPLS rings, Cloud, and Cybersecurity under one 24/7 NOC.
               </p>
             </div>
 
-            {/* Center Node Badges */}
-            <div className="relative z-10 my-10 flex flex-wrap items-center justify-center gap-3">
+            {/* Redesigned 4-Column Frosted Glass Stat Cards */}
+            <div className="relative z-10 w-full max-w-4xl grid grid-cols-2 lg:grid-cols-4 gap-4 my-10">
               {VERIFIED_INFRASTRUCTURE_STATS.map((st) => (
                 <div
                   key={st.id}
-                  className="px-4 py-2.5 rounded-xl bg-black/85 border border-[#1A545E] text-center"
+                  className="group p-5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/25 hover:border-sky-200/70 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 shadow-lg"
                 >
-                  <div className="text-lg font-bold text-brand_cyan font-mono">
+                  <div className="text-2xl sm:text-3xl font-black text-white font-mono tracking-tight">
                     {st.value}
                   </div>
-                  <div className="text-[11px] text-[#D3D3D3]">{st.label}</div>
+                  <div className="text-xs font-bold uppercase tracking-wider text-sky-200 mt-1.5">
+                    {st.label}
+                  </div>
                 </div>
               ))}
             </div>
 
-            <div className="relative z-10 space-y-4">
-              <p className="text-[15px] xl:text-[1.125rem] font-medium text-white">
-                Start Your Enterprise Optical Upgrade Today
-              </p>
+            {/* Bottom Action Bar */}
+            <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/contact"
-                className="inline-block border rounded-lg text-white text-[1.05rem] px-7 py-2.5 h-[44px] font-semibold border-[#008FFF] hover:bg-brand_cyan hover:border-brand_cyan hover:text-black transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-[#0F172A] text-[#0F172A] hover:text-white text-[15px] font-bold px-8 h-[48px] rounded-full shadow-[0_12px_28px_rgba(0,0,0,0.22)] transition-all duration-300"
               >
-                Get in Touch
+                <span>Start Your Optical Upgrade</span>
+                <span>→</span>
+              </Link>
+              <Link
+                href="/contact#site-survey"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/35 text-white text-[15px] font-bold px-7 h-[48px] rounded-full backdrop-blur-md transition-all duration-300"
+              >
+                <span>Request Site Survey</span>
               </Link>
             </div>
           </div>
