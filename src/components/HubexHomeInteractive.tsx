@@ -11,10 +11,6 @@ import {
 import ServiceIcon from "./ServiceIcon";
 import AnimatedCounter from "./AnimatedCounter";
 
-const FiberNetworkCanvas = dynamic(() => import("./FiberNetworkCanvas"), {
-  ssr: false,
-});
-
 const Services3DCanvas = dynamic(() => import("./Services3DCanvas"), {
   ssr: false,
 });
@@ -111,18 +107,28 @@ export default function HubexHomeInteractive() {
               </div>
             </div>
 
-            {/* Right Column: Stationary Center Logo + 5 Points Orbiting Smoothly in a 360° Circle */}
+            {/* Right Column: Hero Video Visual with Centered EARTHLINK Logo & Orbiting Service Headings */}
             <div className="relative flex items-center justify-center w-full pt-0 pb-2">
-              <div className="relative flex items-center justify-center w-[345px] md:w-[440px] h-[390px] md:h-[450px]">
-                {/* 3D React Three Fiber Canvas inside the Orbital Ring (Slightly Larger, Never Clipped) */}
-                <div className="absolute -inset-3 md:-inset-5 z-0 opacity-85">
-                  <FiberNetworkCanvas />
+              <div className="relative flex items-center justify-center w-full max-w-[540px] h-[360px] sm:h-[410px] md:h-[440px]">
+                {/* Sleek Website-Themed Video Showcase Frame */}
+                <div className="relative w-full h-full rounded-[28px] overflow-hidden border-2 border-[#008FFF]/45 bg-[#F0F9FF] shadow-[0_24px_65px_rgba(0,143,255,0.22)]">
+                  <video
+                    src="/hero-banner.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Subtle Sky-Cyan Website Theme Overlay Tint */}
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[#008FFF]/20 via-transparent to-[#2EC1D9]/20" />
+                  <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/40 rounded-[28px]" />
                 </div>
 
-                {/* Rotating Outer Cybernetic HUD Ring */}
+                {/* Rotating Subtle Cyan HUD Ring Centered Over Video */}
                 <svg
                   viewBox="0 0 400 400"
-                  className="w-[310px] md:w-[390px] h-[310px] md:h-[390px] animate-rotateImage pointer-events-none z-10"
+                  className="absolute w-[230px] sm:w-[270px] md:w-[300px] h-[230px] sm:h-[270px] md:h-[300px] animate-rotateImage pointer-events-none z-10"
                 >
                   <defs>
                     <linearGradient
@@ -136,7 +142,7 @@ export default function HubexHomeInteractive() {
                       <stop
                         offset="50%"
                         stopColor="#2EC1D9"
-                        stopOpacity="0.35"
+                        stopOpacity="0.45"
                       />
                       <stop
                         offset="100%"
@@ -151,7 +157,7 @@ export default function HubexHomeInteractive() {
                     r="182"
                     fill="none"
                     stroke="url(#hubexRingGrad)"
-                    strokeWidth="2.2"
+                    strokeWidth="2.5"
                     strokeDasharray="28 14 8 14"
                   />
                   <circle
@@ -159,16 +165,16 @@ export default function HubexHomeInteractive() {
                     cy="200"
                     r="154"
                     fill="none"
-                    stroke="#2EC1D9"
-                    strokeWidth="1.4"
+                    stroke="#FFFFFF"
+                    strokeWidth="1.6"
                     strokeDasharray="6 12"
-                    strokeOpacity="0.65"
+                    strokeOpacity="0.7"
                   />
                 </svg>
 
-                {/* Stationary Center Logo Emblem (Logo stays fixed in the center) */}
-                <div className="absolute z-10 flex items-center justify-center">
-                  <div className="w-[165px] md:w-[205px] h-[165px] md:h-[205px] rounded-full bg-white/95 border-2 border-brand_cyan/60 shadow-[0_12px_45px_rgba(14,165,233,0.28)] animate-breathe flex items-center justify-center p-6 backdrop-blur-md">
+                {/* Official EARTHLINK Logo Right in the Center of the Video */}
+                <div className="absolute z-20 flex items-center justify-center">
+                  <div className="w-[138px] sm:w-[162px] md:w-[178px] h-[138px] sm:h-[162px] md:h-[178px] rounded-full bg-white/95 border-2 border-[#008FFF]/70 shadow-[0_14px_45px_rgba(0,143,255,0.35)] animate-breathe flex items-center justify-center p-5 backdrop-blur-md">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src="/logo-color.png"
@@ -178,8 +184,8 @@ export default function HubexHomeInteractive() {
                   </div>
                 </div>
 
-                {/* 5 Service Points Revolving Smoothly in a 360° Circle Around the Center Logo */}
-                <div className="absolute w-[290px] md:w-[370px] h-[290px] md:h-[370px] rounded-full animate-[spin_24s_linear_infinite] z-20 pointer-events-none">
+                {/* 5 Service Headings Revolving Smoothly in a 360° Circle Around the Center Logo */}
+                <div className="absolute w-[255px] sm:w-[310px] md:w-[345px] h-[255px] sm:h-[310px] md:h-[345px] rounded-full animate-[spin_24s_linear_infinite] z-20 pointer-events-none">
                   {[
                     {
                       label: "Dedicated Internet (1:1 DIA)",
@@ -217,8 +223,7 @@ export default function HubexHomeInteractive() {
                       style={{ top: item.top, left: item.left }}
                       className="absolute -translate-x-1/2 -translate-y-1/2"
                     >
-                      {/* Counter-rotating wrapper keeps the pill upright while orbiting the circle */}
-                      <div className="animate-[spin_24s_linear_infinite_reverse] bg-white/95 backdrop-blur-md border border-cyan-500 shadow-[0_8px_24px_rgba(14,165,233,0.2)] text-[10px] xl:text-[12.5px] px-3 py-1.5 rounded-full whitespace-nowrap">
+                      <div className="animate-[spin_24s_linear_infinite_reverse] bg-white/95 backdrop-blur-md border border-[#008FFF]/55 shadow-[0_8px_24px_rgba(14,165,233,0.28)] text-[10px] xl:text-[12px] px-3 py-1.5 rounded-full whitespace-nowrap">
                         <span className="flex items-center gap-1.5 text-slate-900 font-bold">
                           <span className={`w-2 h-2 rounded-full ${item.dotColor}`} />
                           {item.label}
