@@ -11,10 +11,9 @@ import {
 import ServiceIcon from "./ServiceIcon";
 import AnimatedCounter from "./AnimatedCounter";
 
-const Hero3DBannerScene = dynamic(
-  () => import("./Hero3DBannerScene"),
-  { ssr: false }
-);
+const FiberNetworkCanvas = dynamic(() => import("./FiberNetworkCanvas"), {
+  ssr: false,
+});
 
 const Services3DCanvas = dynamic(() => import("./Services3DCanvas"), {
   ssr: false,
@@ -56,55 +55,47 @@ export default function HubexHomeInteractive() {
   return (
     <div className="bg-black-gradient text-white">
       {/* =====================================================================
-          SECTION 2: NEW CINEMATIC HERO BANNER (3D Fiber Cables -> EARTHLINK Logo -> 3D WiFi Signal Waves)
+          SECTION 2: HERO SECTION (Moved Higher Up Closer to Navbar)
          ===================================================================== */}
-      <section className="relative pt-2 pb-8 lg:pt-3 lg:pb-12">
-        <div className="max-w-7xl mx-auto px-[16px] sm:px-[24px] lg:px-[44px]">
-          <div className="relative overflow-hidden rounded-[28px] lg:rounded-[34px] bg-[linear-gradient(125deg,#071324_0%,#0A2540_44%,#0369A1_84%,#008FFF_100%)] border border-sky-300/25 shadow-[0_28px_75px_rgba(2,132,199,0.28)]">
-            {/* Ambient Cinematic Optical Grid & Cyan Aurora Glows */}
-            <div
-              className="pointer-events-none absolute inset-0 opacity-[0.14]"
-              style={{
-                backgroundImage:
-                  "linear-gradient(to right, rgba(125,211,252,0.28) 1px, transparent 1px), linear-gradient(to bottom, rgba(125,211,252,0.28) 1px, transparent 1px)",
-                backgroundSize: "48px 48px",
-              }}
-            />
-            <div className="pointer-events-none absolute -top-28 -left-24 w-[420px] h-[420px] rounded-full bg-[#008FFF]/25 blur-[130px]" />
-            <div className="pointer-events-none absolute -bottom-32 right-12 w-[480px] h-[480px] rounded-full bg-[#22D3EE]/25 blur-[140px]" />
+      <section className="relative flex items-start justify-center overflow-hidden">
+        {/* Subtle Background Tech Grid & Cyan Glow */}
+        <div className="absolute inset-0 bg-tech-grid opacity-50 pointer-events-none" />
+        <div className="absolute top-1/4 right-1/4 w-[480px] h-[480px] rounded-full bg-[#008FFF]/15 blur-[130px] pointer-events-none" />
 
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-4 items-center px-6 sm:px-10 lg:px-12 py-8 sm:py-10 lg:py-8">
-              {/* Left Column: High-Contrast Enterprise Messaging */}
-              <div className="lg:col-span-6 flex flex-col items-start space-y-5">
-                {/* Live Carrier Pill */}
-                <div className="inline-flex items-center gap-2.5 bg-white/10 border border-sky-300/30 backdrop-blur-md rounded-full px-4 py-1.5">
+        <div className="relative flex items-start justify-center w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-3 pb-10 lg:pt-4 lg:pb-14">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 w-full items-center">
+            {/* Left Column: Minimal, Eye-Catching Hero Content with "GET THE SPEED, YOU NEED!" */}
+            <div className="relative flex flex-col justify-center items-start w-full">
+              <div className="relative z-10 text-white space-y-5">
+                {/* Slim Live Network Badge */}
+                <div className="inline-flex items-center gap-2.5 bg-white/90 border border-[#008FFF]/35 shadow-[0_6px_20px_rgba(0,143,255,0.12)] rounded-full px-4 py-1.5">
                   <span className="relative flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-300 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-300" />
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#008FFF]" />
                   </span>
-                  <span className="text-sky-100 text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.14em]">
+                  <span className="text-[#0284C7] text-xs font-extrabold uppercase tracking-wider">
                     {BRAND_INFO.companyName}
                   </span>
                 </div>
 
-                {/* Bold Hero Headline */}
-                <h1 className="text-4xl sm:text-5xl xl:text-[4rem] leading-[1.05] font-black tracking-tight uppercase !text-white">
+                {/* Unique Hero Heading: "GET THE SPEED, YOU NEED!" */}
+                <h1 className="text-4xl sm:text-6xl xl:text-[4.25rem] leading-[1.06] font-black tracking-tight uppercase text-slate-900">
                   GET THE SPEED, <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] via-[#67E8F9] to-white">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#0284C7] drop-shadow-sm">
                     YOU NEED!
                   </span>
                 </h1>
 
-                {/* Crisp Value Proposition */}
-                <p className="text-[15px] lg:text-[16.5px] !text-sky-100/90 font-medium leading-relaxed max-w-md">
-                  Pure 1:1 symmetrical optical fiber connecting directly to enterprise-grade WiFi &amp; carrier infrastructure with 99.99% uptime SLA.
+                {/* Minimal 1-Line Subtitle */}
+                <p className="text-[15px] lg:text-[17px] text-[#D3D3D3] font-medium leading-relaxed max-w-md">
+                  Pure 1:1 symmetrical optical fiber with 99.99% uptime SLA &amp; 24/7 NOC support.
                 </p>
 
-                {/* High-Contrast Dual CTA Buttons */}
-                <div className="pt-1 flex flex-wrap items-center gap-3.5">
+                {/* Dual CTA Buttons */}
+                <div className="pt-2 flex flex-wrap items-center gap-4">
                   <Link
                     href="/contact"
-                    className="bg-white hover:bg-sky-50 !text-slate-950 text-[15px] font-extrabold rounded-full h-[48px] px-8 inline-flex items-center justify-center gap-2 shadow-[0_12px_30px_rgba(0,0,0,0.22)] hover:-translate-y-0.5 transition-all whitespace-nowrap"
+                    className="bg-gradient-to-r from-[#008FFF] to-[#0FA4E8] hover:from-[#0284C7] hover:to-[#008FFF] text-white text-[15px] font-bold rounded-full h-[48px] px-8 inline-flex items-center justify-center gap-2 shadow-[0_10px_25px_rgba(0,143,255,0.32)] transition-all whitespace-nowrap"
                   >
                     <span>Get Connected</span>
                     <span>→</span>
@@ -112,33 +103,130 @@ export default function HubexHomeInteractive() {
 
                   <Link
                     href="/services"
-                    className="bg-white/10 hover:bg-white/20 !text-white text-[15px] border border-white/30 hover:border-cyan-300/70 backdrop-blur-md rounded-full font-bold transition-all h-[48px] px-7 inline-flex items-center justify-center whitespace-nowrap"
+                    className="bg-white/90 text-slate-900 text-[15px] border-2 border-[#008FFF]/40 hover:border-[#008FFF] rounded-full font-bold hover:bg-[#008FFF] hover:text-white transition-all h-[48px] px-7 inline-flex items-center justify-center shadow-sm whitespace-nowrap"
                   >
                     Explore Services
                   </Link>
                 </div>
+              </div>
+            </div>
 
-                {/* Clean Glass Metric Bar */}
-                <div className="pt-3 flex flex-wrap items-center gap-2.5">
-                  {[
-                    "100G Optical Core",
-                    "1:1 Symmetrical Fiber",
-                    "99.99% Uptime SLA",
-                  ].map((spec) => (
-                    <span
-                      key={spec}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold !text-sky-100 bg-white/10 border border-white/15 backdrop-blur-md rounded-full px-3.5 py-1.5"
+            {/* Right Column: Stationary Center Logo + 5 Points Orbiting Smoothly in a 360° Circle */}
+            <div className="relative flex items-center justify-center w-full pt-0 pb-2">
+              <div className="relative flex items-center justify-center w-[345px] md:w-[440px] h-[390px] md:h-[450px]">
+                {/* 3D React Three Fiber Canvas inside the Orbital Ring (Slightly Larger, Never Clipped) */}
+                <div className="absolute -inset-3 md:-inset-5 z-0 opacity-85">
+                  <FiberNetworkCanvas />
+                </div>
+
+                {/* Rotating Outer Cybernetic HUD Ring */}
+                <svg
+                  viewBox="0 0 400 400"
+                  className="w-[310px] md:w-[390px] h-[310px] md:h-[390px] animate-rotateImage pointer-events-none z-10"
+                >
+                  <defs>
+                    <linearGradient
+                      id="hubexRingGrad"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-300 shadow-[0_0_8px_#67E8F9]" />
-                      {spec}
-                    </span>
+                      <stop offset="0%" stopColor="#008FFF" stopOpacity="0.9" />
+                      <stop
+                        offset="50%"
+                        stopColor="#2EC1D9"
+                        stopOpacity="0.35"
+                      />
+                      <stop
+                        offset="100%"
+                        stopColor="#008FFF"
+                        stopOpacity="0.85"
+                      />
+                    </linearGradient>
+                  </defs>
+                  <circle
+                    cx="200"
+                    cy="200"
+                    r="182"
+                    fill="none"
+                    stroke="url(#hubexRingGrad)"
+                    strokeWidth="2.2"
+                    strokeDasharray="28 14 8 14"
+                  />
+                  <circle
+                    cx="200"
+                    cy="200"
+                    r="154"
+                    fill="none"
+                    stroke="#2EC1D9"
+                    strokeWidth="1.4"
+                    strokeDasharray="6 12"
+                    strokeOpacity="0.65"
+                  />
+                </svg>
+
+                {/* Stationary Center Logo Emblem (Logo stays fixed in the center) */}
+                <div className="absolute z-10 flex items-center justify-center">
+                  <div className="w-[165px] md:w-[205px] h-[165px] md:h-[205px] rounded-full bg-white/95 border-2 border-brand_cyan/60 shadow-[0_12px_45px_rgba(14,165,233,0.28)] animate-breathe flex items-center justify-center p-6 backdrop-blur-md">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/logo-color.png"
+                      alt="EARTHLINK Broadband (Pvt.) Ltd."
+                      className="w-full h-auto object-contain"
+                    />
+                  </div>
+                </div>
+
+                {/* 5 Service Points Revolving Smoothly in a 360° Circle Around the Center Logo */}
+                <div className="absolute w-[290px] md:w-[370px] h-[290px] md:h-[370px] rounded-full animate-[spin_24s_linear_infinite] z-20 pointer-events-none">
+                  {[
+                    {
+                      label: "Dedicated Internet (1:1 DIA)",
+                      top: "0%",
+                      left: "50%",
+                      dotColor: "bg-brand_cyan shadow-[0_0_8px_#2EC1D9]",
+                    },
+                    {
+                      label: "Cloud & Managed IT",
+                      top: "34.5%",
+                      left: "97.5%",
+                      dotColor: "bg-[#008FFF] shadow-[0_0_8px_#008FFF]",
+                    },
+                    {
+                      label: "Cybersecurity & 24/7 NOC",
+                      top: "90.5%",
+                      left: "79.4%",
+                      dotColor: "bg-brand_cyan shadow-[0_0_8px_#2EC1D9]",
+                    },
+                    {
+                      label: "Point-to-Point Optical (<1ms)",
+                      top: "90.5%",
+                      left: "20.6%",
+                      dotColor: "bg-[#008FFF] shadow-[0_0_8px_#008FFF]",
+                    },
+                    {
+                      label: "MPLS & Multi-Branch VPN",
+                      top: "34.5%",
+                      left: "2.5%",
+                      dotColor: "bg-brand_cyan shadow-[0_0_8px_#2EC1D9]",
+                    },
+                  ].map((item) => (
+                    <div
+                      key={item.label}
+                      style={{ top: item.top, left: item.left }}
+                      className="absolute -translate-x-1/2 -translate-y-1/2"
+                    >
+                      {/* Counter-rotating wrapper keeps the pill upright while orbiting the circle */}
+                      <div className="animate-[spin_24s_linear_infinite_reverse] bg-white/95 backdrop-blur-md border border-cyan-500 shadow-[0_8px_24px_rgba(14,165,233,0.2)] text-[10px] xl:text-[12.5px] px-3 py-1.5 rounded-full whitespace-nowrap">
+                        <span className="flex items-center gap-1.5 text-slate-900 font-bold">
+                          <span className={`w-2 h-2 rounded-full ${item.dotColor}`} />
+                          {item.label}
+                        </span>
+                      </div>
+                    </div>
                   ))}
                 </div>
-              </div>
-
-              {/* Right Column: Clean 3D Sequenced Optical Fiber Cables -> EARTHLINK Logo -> 3D WiFi Signal Waves */}
-              <div className="lg:col-span-6 relative flex items-center justify-center w-full">
-                <Hero3DBannerScene />
               </div>
             </div>
           </div>
