@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import {
@@ -10,10 +10,7 @@ import {
 } from "@/data/siteData";
 import ServiceIcon from "./ServiceIcon";
 import AnimatedCounter from "./AnimatedCounter";
-
-const FiberNetworkCanvas = dynamic(() => import("./FiberNetworkCanvas"), {
-  ssr: false,
-});
+import HeroFiberToWifiBackdrop from "./HeroFiberToWifiBackdrop";
 
 const Services3DCanvas = dynamic(() => import("./Services3DCanvas"), {
   ssr: false,
@@ -48,6 +45,9 @@ const HOME_FAQS = [
 
 export default function HubexHomeInteractive() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const heroSectionRef = useRef<HTMLElement>(null);
+  const heroTextRef = useRef<HTMLDivElement>(null);
+  const heroLogoRef = useRef<HTMLDivElement>(null);
 
   // Radial hub-and-spoke nodes (8 nodes around the center hub, matching HubexTech)
   const hubServices = SERVICES_DATA.slice(0, 8);
@@ -55,17 +55,30 @@ export default function HubexHomeInteractive() {
   return (
     <div className="bg-black-gradient text-white">
       {/* =====================================================================
-          SECTION 2: HERO SECTION (Moved Higher Up Closer to Navbar)
+          SECTION 2: HERO SECTION (Real-Time Fiber Cables from Text Background -> EARTHLINK Logo -> Radiating WiFi Logos)
          ===================================================================== */}
-      <section className="relative flex items-start justify-center overflow-hidden">
+      <section
+        ref={heroSectionRef}
+        className="relative flex items-start justify-center overflow-hidden"
+      >
         {/* Subtle Background Tech Grid & Cyan Glow */}
         <div className="absolute inset-0 bg-tech-grid opacity-50 pointer-events-none" />
         <div className="absolute top-1/4 right-1/4 w-[480px] h-[480px] rounded-full bg-[#008FFF]/15 blur-[130px] pointer-events-none" />
 
+        {/* Real-Time Full-Banner Canvas: Fiber Cables From Text Background -> EARTHLINK Logo -> WiFi Logos Emitting Outward */}
+        <HeroFiberToWifiBackdrop
+          sectionRef={heroSectionRef}
+          textRef={heroTextRef}
+          logoRef={heroLogoRef}
+        />
+
         <div className="relative flex items-start justify-center w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-3 pb-10 lg:pt-4 lg:pb-14">
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 w-full items-center">
             {/* Left Column: Minimal, Eye-Catching Hero Content with "GET THE SPEED, YOU NEED!" */}
-            <div className="relative flex flex-col justify-center items-start w-full">
+            <div
+              ref={heroTextRef}
+              className="relative flex flex-col justify-center items-start w-full"
+            >
               <div className="relative z-10 text-white space-y-5">
                 {/* Slim Live Network Badge */}
                 <div className="inline-flex items-center gap-2.5 bg-white/90 border border-[#008FFF]/35 shadow-[0_6px_20px_rgba(0,143,255,0.12)] rounded-full px-4 py-1.5">
@@ -114,11 +127,6 @@ export default function HubexHomeInteractive() {
             {/* Right Column: Stationary Center Logo + 5 Points Orbiting Smoothly in a 360° Circle */}
             <div className="relative flex items-center justify-center w-full pt-0 pb-2">
               <div className="relative flex items-center justify-center w-[345px] md:w-[440px] h-[390px] md:h-[450px]">
-                {/* 3D React Three Fiber Canvas inside the Orbital Ring (Slightly Larger, Never Clipped) */}
-                <div className="absolute -inset-3 md:-inset-5 z-0 opacity-85">
-                  <FiberNetworkCanvas />
-                </div>
-
                 {/* Rotating Outer Cybernetic HUD Ring */}
                 <svg
                   viewBox="0 0 400 400"
@@ -166,8 +174,11 @@ export default function HubexHomeInteractive() {
                   />
                 </svg>
 
-                {/* Stationary Center Logo Emblem (Logo stays fixed in the center) */}
-                <div className="absolute z-10 flex items-center justify-center">
+                {/* Stationary Center Logo Emblem (Fiber Cables Connect Behind Here & WiFi Logos Radiate Out) */}
+                <div
+                  ref={heroLogoRef}
+                  className="absolute z-10 flex items-center justify-center"
+                >
                   <div className="w-[165px] md:w-[205px] h-[165px] md:h-[205px] rounded-full bg-white/95 border-2 border-brand_cyan/60 shadow-[0_12px_45px_rgba(14,165,233,0.28)] animate-breathe flex items-center justify-center p-6 backdrop-blur-md">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
