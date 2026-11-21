@@ -51,60 +51,37 @@ export default function HubexHomeInteractive() {
   return (
     <div className="bg-black-gradient text-white">
       {/* =====================================================================
-          SECTION 2: HERO SECTION (Moved Higher Up Closer to Navbar)
+          SECTION 2: HERO SECTION (Balanced Layout + Seamlessly Blended Brand-Cyan Video + Centered Logo & Orbiting Headings)
          ===================================================================== */}
-      <section className="relative flex items-start justify-center overflow-hidden">
-        {/* Precision SVG Color-Grading Filter: Maps Dark Video Background -> Transparent & Glowing Rings -> Exact EARTHLINK #008FFF Sky-Cyan */}
+      <section className="relative flex items-center justify-center overflow-hidden min-h-[540px] lg:min-h-[600px]">
+        {/* Subtle Background Tech Grid & Soft Cyan Glow */}
+        <div className="absolute inset-0 bg-tech-grid opacity-45 pointer-events-none" />
+        <div className="absolute top-1/4 right-1/4 w-[480px] h-[480px] rounded-full bg-[#008FFF]/12 blur-[130px] pointer-events-none" />
+
+        {/* Precision SVG Color-Grading Filter: Dark Video BG -> Pure White (Transparent in Multiply) & Glowing Rings -> Exact #008FFF Sky-Cyan */}
         <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
           <defs>
             <filter id="earthlinkCyanGrade" colorInterpolationFilters="sRGB">
               <feColorMatrix
                 type="matrix"
                 values="
-                  -0.255 -0.858 -0.087 0 1.06
-                  -0.108 -0.365 -0.037 0 1.06
-                  -0.011 -0.036 -0.004 0 1.06
-                   0      0      0     1 0
+                  -0.28 -0.92 -0.10 0 1.12
+                  -0.12 -0.40 -0.04 0 1.10
+                  -0.01 -0.04 -0.01 0 1.08
+                   0     0     0    1 0
                 "
               />
             </filter>
           </defs>
         </svg>
 
-        {/* Full-Width Seamless Hero Video Effect Across Entire Hero Section */}
-        <div
-          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
-          style={{
-            WebkitMaskImage:
-              "linear-gradient(to bottom, #000 0%, #000 82%, transparent 100%)",
-            maskImage:
-              "linear-gradient(to bottom, #000 0%, #000 82%, transparent 100%)",
-          }}
-        >
-          <video
-            src="/hero-banner.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover object-center mix-blend-multiply opacity-90"
-            style={{
-              filter: "url(#earthlinkCyanGrade) contrast(1.08)",
-            }}
-          />
-        </div>
-
-        {/* Subtle Background Tech Grid & Cyan Glow */}
-        <div className="absolute inset-0 bg-tech-grid opacity-35 pointer-events-none z-0" />
-        <div className="absolute top-1/4 right-1/4 w-[480px] h-[480px] rounded-full bg-[#008FFF]/12 blur-[130px] pointer-events-none z-0" />
-
-        <div className="relative flex items-start justify-center w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-3 pb-10 lg:pt-4 lg:pb-14">
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 w-full items-center">
-            {/* Left Column: Minimal, Eye-Catching Hero Content with "GET THE SPEED, YOU NEED!" */}
+        <div className="relative flex items-center justify-center w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] py-8 lg:py-12">
+          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 w-full items-center">
+            {/* Left Column: Crisp Enterprise Hero Copy */}
             <div className="relative flex flex-col justify-center items-start w-full">
-              <div className="relative z-10 text-white space-y-5">
-                {/* Slim Live Network Badge */}
-                <div className="inline-flex items-center gap-2.5 bg-white/90 border border-[#008FFF]/35 shadow-[0_6px_20px_rgba(0,143,255,0.12)] rounded-full px-4 py-1.5">
+              <div className="relative space-y-5">
+                {/* Live Network Badge */}
+                <div className="inline-flex items-center gap-2.5 bg-white/95 border border-[#008FFF]/35 shadow-[0_6px_20px_rgba(0,143,255,0.12)] rounded-full px-4 py-1.5">
                   <span className="relative flex h-2.5 w-2.5">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
                     <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#008FFF]" />
@@ -114,7 +91,7 @@ export default function HubexHomeInteractive() {
                   </span>
                 </div>
 
-                {/* Unique Hero Heading: "GET THE SPEED, YOU NEED!" */}
+                {/* Bold Hero Heading */}
                 <h1 className="text-4xl sm:text-6xl xl:text-[4.25rem] leading-[1.06] font-black tracking-tight uppercase text-slate-900">
                   GET THE SPEED, <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#0284C7] drop-shadow-sm">
@@ -122,8 +99,8 @@ export default function HubexHomeInteractive() {
                   </span>
                 </h1>
 
-                {/* Minimal 1-Line Subtitle */}
-                <p className="text-[15px] lg:text-[17px] text-[#D3D3D3] font-medium leading-relaxed max-w-md">
+                {/* Crisp Readable Subtitle */}
+                <p className="text-[15px] lg:text-[17px] text-slate-600 font-medium leading-relaxed max-w-md">
                   Pure 1:1 symmetrical optical fiber with 99.99% uptime SLA &amp; 24/7 NOC support.
                 </p>
 
@@ -139,7 +116,7 @@ export default function HubexHomeInteractive() {
 
                   <Link
                     href="/services"
-                    className="bg-white/90 text-slate-900 text-[15px] border-2 border-[#008FFF]/40 hover:border-[#008FFF] rounded-full font-bold hover:bg-[#008FFF] hover:text-white transition-all h-[48px] px-7 inline-flex items-center justify-center shadow-sm whitespace-nowrap"
+                    className="bg-white/95 text-slate-900 text-[15px] border-2 border-[#008FFF]/40 hover:border-[#008FFF] rounded-full font-bold hover:bg-[#008FFF] hover:text-white transition-all h-[48px] px-7 inline-flex items-center justify-center shadow-sm whitespace-nowrap"
                   >
                     Explore Services
                   </Link>
@@ -147,13 +124,30 @@ export default function HubexHomeInteractive() {
               </div>
             </div>
 
-            {/* Right Column: Center EARTHLINK Logo + Rotating HUD Ring & 5 Orbiting Headings Over Full-Hero Video */}
-            <div className="relative flex items-center justify-center w-full pt-0 pb-2">
-              <div className="relative flex items-center justify-center w-full max-w-[540px] h-[380px] sm:h-[430px] md:h-[470px]">
+            {/* Right Column: Seamless Blended Video Visual + Centered EARTHLINK Logo & Orbiting Service Headings */}
+            <div className="relative flex items-center justify-center w-full">
+              <div className="relative flex items-center justify-center w-[340px] sm:w-[440px] md:w-[500px] h-[360px] sm:h-[440px] md:h-[480px]">
+                {/* Seamlessly Blended Video (Direct mix-blend-multiply with NO isolated stacking wrapper so background merges 100% invisibly!) */}
+                <video
+                  src="/hero-banner.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="pointer-events-none absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-95"
+                  style={{
+                    filter: "url(#earthlinkCyanGrade) contrast(1.12)",
+                    WebkitMaskImage:
+                      "radial-gradient(circle at 50% 50%, #000 48%, transparent 74%)",
+                    maskImage:
+                      "radial-gradient(circle at 50% 50%, #000 48%, transparent 74%)",
+                  }}
+                />
+
                 {/* Rotating Subtle Cyan HUD Ring Centered Over Video */}
                 <svg
                   viewBox="0 0 400 400"
-                  className="absolute w-[250px] sm:w-[295px] md:w-[330px] h-[250px] sm:h-[295px] md:h-[330px] animate-rotateImage pointer-events-none z-10"
+                  className="absolute w-[250px] sm:w-[300px] md:w-[335px] h-[250px] sm:h-[300px] md:h-[335px] animate-rotateImage pointer-events-none"
                 >
                   <defs>
                     <linearGradient
@@ -182,7 +176,7 @@ export default function HubexHomeInteractive() {
                     r="182"
                     fill="none"
                     stroke="url(#hubexRingGrad)"
-                    strokeWidth="2.4"
+                    strokeWidth="2.2"
                     strokeDasharray="28 14 8 14"
                   />
                   <circle
@@ -198,8 +192,8 @@ export default function HubexHomeInteractive() {
                 </svg>
 
                 {/* Official EARTHLINK Logo Right in the Center */}
-                <div className="absolute z-20 flex items-center justify-center">
-                  <div className="w-[146px] sm:w-[172px] md:w-[190px] h-[146px] sm:h-[172px] md:h-[190px] rounded-full bg-white/95 border-2 border-[#008FFF]/65 shadow-[0_14px_45px_rgba(0,143,255,0.28)] animate-breathe flex items-center justify-center p-5 backdrop-blur-md">
+                <div className="relative z-10 flex items-center justify-center">
+                  <div className="w-[144px] sm:w-[172px] md:w-[192px] h-[144px] sm:h-[172px] md:h-[192px] rounded-full bg-white/95 border-2 border-[#008FFF]/65 shadow-[0_14px_45px_rgba(0,143,255,0.28)] animate-breathe flex items-center justify-center p-5 backdrop-blur-md">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src="/logo-color.png"
@@ -210,7 +204,7 @@ export default function HubexHomeInteractive() {
                 </div>
 
                 {/* 5 Service Headings Revolving Smoothly in a 360° Circle Around the Center Logo */}
-                <div className="absolute w-[270px] sm:w-[330px] md:w-[365px] h-[270px] sm:h-[330px] md:h-[365px] rounded-full animate-[spin_24s_linear_infinite] z-20 pointer-events-none">
+                <div className="absolute w-[275px] sm:w-[340px] md:w-[375px] h-[275px] sm:h-[340px] md:h-[375px] rounded-full animate-[spin_24s_linear_infinite] z-20 pointer-events-none">
                   {[
                     {
                       label: "Dedicated Internet (1:1 DIA)",
