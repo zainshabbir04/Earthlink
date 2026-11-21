@@ -19,27 +19,38 @@ interface Random3DFiber {
   p1: Vec3;
   p2: Vec3;
   p3: Vec3;
-  color: string;
-  highlight: string;
+  colorStart: string;
+  colorEnd: string;
+  glowColor: string;
   baseWidth: number;
   delay: number;
   speed: number;
   wobblePhase: number;
 }
 
-interface Wifi3DParticle {
-  vx: number;
-  vy: number;
-  vz: number;
+interface WifiMedallion3D {
   x: number;
   y: number;
   z: number;
+  vx: number;
+  vy: number;
+  vz: number;
   age: number;
   life: number;
   baseSize: number;
-  color: string;
-  tiltX: number;
-  tiltY: number;
+  accent: string;
+  accentLight: string;
+  spinPhase: number;
+}
+
+interface SparkleGlint {
+  x: number;
+  y: number;
+  z: number;
+  vy: number;
+  age: number;
+  life: number;
+  size: number;
 }
 
 function cubicBezier3D(t: number, p0: Vec3, p1: Vec3, p2: Vec3, p3: Vec3): Vec3 {
@@ -55,82 +66,108 @@ function cubicBezier3D(t: number, p0: Vec3, p1: Vec3, p2: Vec3, p3: Vec3): Vec3 
   };
 }
 
-function draw3DWifiLogo(
+/**
+ * Draws an ultra-crisp 3D Frosted-Crystal Medallion containing a glowing 3D WiFi Logo
+ */
+function drawCrystalWifiMedallion(
   ctx: CanvasRenderingContext2D,
   x: number,
   y: number,
-  size: number,
+  radius: number,
   alpha: number,
-  color: string,
+  accent: string,
+  accentLight: string,
   scaleX: number,
   depthScale: number
 ) {
-  if (alpha <= 0.01) return;
+  if (alpha <= 0.015 || radius < 4) return;
   ctx.save();
   ctx.translate(x, y);
-  // Subtle 3D perspective foreshortening
   ctx.scale(scaleX, 1);
   ctx.globalAlpha = alpha;
 
-  const dotY = size * 0.34;
-  const arcs = [
-    { r: size * 0.34, lw: Math.max(1.8, size * 0.105) },
-    { r: size * 0.62, lw: Math.max(1.7, size * 0.1) },
-    { r: size * 0.9, lw: Math.max(1.6, size * 0.095) },
-  ];
-
-  // 1. 3D Extruded Depth Shadow Layer (gives thick 3D embossed look)
-  const depthOffset = Math.max(1.4, size * 0.075 * depthScale);
+  // 1. Soft 3D Elevated Drop Shadow
   ctx.save();
-  ctx.translate(depthOffset * 0.6, depthOffset);
   ctx.beginPath();
-  ctx.arc(0, dotY, Math.max(2, size * 0.115), 0, Math.PI * 2);
-  ctx.fillStyle = "rgba(3, 105, 161, 0.38)";
+  ctx.arc(radius * 0.08, radius * 0.22, radius * 0.96, 0, Math.PI * 2);
+  ctx.fillStyle = "rgba(2, 132, 199, 0.16)";
+  ctx.shadowColor = "rgba(0, 143, 255, 0.28)";
+  ctx.shadowBlur = 16 * depthScale;
+  ctx.fill();
+  ctx.restore();
+
+  // 2. Frosted Crystal 3D Sphere / Medallion Body
+  const bodyGrad = ctx.createRadialGradient(
+    -radius * 0.3,
+    -radius * 0.35,
+    radius * 0.1,
+    0,
+    0,
+    radius
+  );
+  bodyGrad.addColorStop(0, "rgba(255, 255, 255, 0.98)");
+  bodyGrad.addColorStop(0.62, "rgba(240, 249, 255, 0.92)");
+  bodyGrad.addColorStop(1, "rgba(186, 230, 253, 0.78)");
+
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, Math.PI * 2);
+  ctx.fillStyle = bodyGrad;
   ctx.fill();
 
+  // 3. Luminous Prism Rim Border
+  const rimGrad = ctx.createLinearGradient(-radius, -radius, radius, radius);
+  rimGrad.addColorStop(0, "#FFFFFF");
+  rimGrad.addColorStop(0.45, accent);
+  rimGrad.addColorStop(1, accentLight);
+
+  ctx.lineWidth = Math.max(1.3, radius * 0.095);
+  ctx.strokeStyle = rimGrad;
+  ctx.stroke();
+
+  // 4. Upper Curved Glass Sheen Reflection
+  ctx.beginPath();
+  ctx.ellipse(
+    0,
+    -radius * 0.44,
+    radius * 0.56,
+    radius * 0.26,
+    0,
+    0,
+    Math.PI * 2
+  );
+  ctx.fillStyle = "rgba(255, 255, 255, 0.72)";
+  ctx.fill();
+
+  // 5. Crisp Glowing WiFi Icon Nested Inside the Crystal Medallion
+  const iconSize = radius * 0.78;
+  const dotY = iconSize * 0.42;
+
+  ctx.save();
+  ctx.shadowColor = accent;
+  ctx.shadowBlur = 8 * depthScale;
+
+  // WiFi Emitter Dot
+  ctx.beginPath();
+  ctx.arc(0, dotY, Math.max(1.8, iconSize * 0.145), 0, Math.PI * 2);
+  ctx.fillStyle = accent;
+  ctx.fill();
+
+  // 3 Bold Upward WiFi Signal Arcs
   ctx.lineCap = "round";
-  ctx.strokeStyle = "rgba(3, 105, 161, 0.34)";
+  const arcs = [
+    { r: iconSize * 0.42, lw: Math.max(1.6, iconSize * 0.135), c: accent },
+    { r: iconSize * 0.74, lw: Math.max(1.5, iconSize * 0.125), c: accent },
+    { r: iconSize * 1.05, lw: Math.max(1.4, iconSize * 0.115), c: accentLight },
+  ];
+
   arcs.forEach((arc) => {
     ctx.beginPath();
     ctx.lineWidth = arc.lw;
+    ctx.strokeStyle = arc.c;
     ctx.arc(0, dotY, arc.r, -Math.PI * 0.76, -Math.PI * 0.24);
     ctx.stroke();
   });
   ctx.restore();
-
-  // 2. Main Glowing 3D WiFi Face
-  ctx.shadowColor = color;
-  ctx.shadowBlur = 12 * depthScale;
-
-  ctx.beginPath();
-  ctx.arc(0, dotY, Math.max(2, size * 0.115), 0, Math.PI * 2);
-  ctx.fillStyle = color;
-  ctx.fill();
-
-  ctx.lineCap = "round";
-  ctx.strokeStyle = color;
-  arcs.forEach((arc) => {
-    ctx.beginPath();
-    ctx.lineWidth = arc.lw;
-    ctx.arc(0, dotY, arc.r, -Math.PI * 0.76, -Math.PI * 0.24);
-    ctx.stroke();
-  });
-
-  // 3. Crisp 3D Top Specular Glass Highlight
-  ctx.shadowBlur = 0;
-  ctx.translate(-0.5, -0.7);
-  ctx.strokeStyle = "rgba(255, 255, 255, 0.78)";
-  arcs.forEach((arc) => {
-    ctx.beginPath();
-    ctx.lineWidth = Math.max(0.8, arc.lw * 0.34);
-    ctx.arc(0, dotY, arc.r, -Math.PI * 0.73, -Math.PI * 0.27);
-    ctx.stroke();
-  });
-
-  ctx.beginPath();
-  ctx.arc(0, dotY - 0.5, Math.max(1, size * 0.048), 0, Math.PI * 2);
-  ctx.fillStyle = "rgba(255, 255, 255, 0.85)";
-  ctx.fill();
 
   ctx.restore();
 }
@@ -162,18 +199,17 @@ export default function HeroFiberToWifiBackdrop({
     let logoY = height * 0.5;
     let logoRadius = 90;
 
-    // Smooth mouse 3D camera parallax
+    // Smooth interactive 3D camera parallax
     let mouseTargetX = 0;
     let mouseTargetY = 0;
     let camX = 0;
     let camY = 0;
 
-    const FOCAL = 620;
+    const FOCAL = 600;
 
     const project = (pt: Vec3) => {
-      // Shift relative to logo center so perspective radiates cleanly in 3D
-      const dx = pt.x - logoX + camX * (pt.z * 0.0022);
-      const dy = pt.y - logoY + camY * (pt.z * 0.0022);
+      const dx = pt.x - logoX + camX * (pt.z * 0.0024);
+      const dy = pt.y - logoY + camY * (pt.z * 0.0024);
       const scale = FOCAL / Math.max(140, FOCAL + pt.z);
       return {
         x: logoX + dx * scale,
@@ -182,11 +218,12 @@ export default function HeroFiberToWifiBackdrop({
       };
     };
 
-    const palette = [
-      { color: "#008FFF", highlight: "#E0F2FE" },
-      { color: "#0FA4E8", highlight: "#BAE6FD" },
-      { color: "#06B6D4", highlight: "#CFFAFE" },
-      { color: "#0284C7", highlight: "#7DD3FC" },
+    // High-contrast prism-optical telecom palette
+    const fiberPalettes = [
+      { start: "#38BDF8", end: "#0066FF", glow: "#008FFF" },
+      { start: "#22D3EE", end: "#0284C7", glow: "#06B6D4" },
+      { start: "#60A5FA", end: "#008FFF", glow: "#38BDF8" },
+      { start: "#06B6D4", end: "#1D4ED8", glow: "#0FA4E8" },
     ];
 
     let fibers: Random3DFiber[] = [];
@@ -198,14 +235,14 @@ export default function HeroFiberToWifiBackdrop({
       for (let i = 0; i < total; i++) {
         let sx = 0;
         let sy = 0;
-        let sz = (Math.random() - 0.5) * 340; // deep 3D z spread (-170 foreground to +170 background)
+        const sz = (Math.random() - 0.5) * 340;
 
         if (i < 4) {
-          // 4 fiber cables always originate from behind the Hero Text background (randomized spread)
-          sx = textCenterX - 180 + Math.random() * 160;
+          // 4 optical conduits emerge from behind the Hero text background
+          sx = textCenterX - 180 + Math.random() * 170;
           sy = textCenterY - 150 + Math.random() * 300;
         } else {
-          // 6 fiber cables shoot in from completely random 360° directions around the banner edges!
+          // 6 optical conduits sweep in from random 360° directions across the banner
           const angle =
             ((i - 4) / 6) * Math.PI * 2 + (Math.random() - 0.5) * 0.85;
           const dist = Math.max(width, height) * (0.42 + Math.random() * 0.25);
@@ -216,14 +253,13 @@ export default function HeroFiberToWifiBackdrop({
         const p0: Vec3 = { x: sx, y: sy, z: sz };
         const p3: Vec3 = { x: logoX, y: logoY, z: 0 };
 
-        // Organic 3D sweeping S-curve control points
         const perpX = -(p3.y - p0.y);
         const perpY = p3.x - p0.x;
         const len = Math.hypot(perpX, perpY) || 1;
         const nx = perpX / len;
         const ny = perpY / len;
         const bend1 = (Math.random() - 0.5) * 210;
-        const bend2 = (Math.random() - 0.5) * 160;
+        const bend2 = (Math.random() - 0.5) * 165;
 
         const p1: Vec3 = {
           x: p0.x + (p3.x - p0.x) * 0.34 + nx * bend1,
@@ -236,22 +272,22 @@ export default function HeroFiberToWifiBackdrop({
           z: sz * 0.25 + (Math.random() - 0.5) * 130,
         };
 
-        const pal = palette[i % palette.length];
+        const pal = fiberPalettes[i % fiberPalettes.length];
         list.push({
           p0,
           p1,
           p2,
           p3,
-          color: pal.color,
-          highlight: pal.highlight,
-          baseWidth: 2.8 + Math.random() * 1.8,
+          colorStart: pal.start,
+          colorEnd: pal.end,
+          glowColor: pal.glow,
+          baseWidth: 3.0 + Math.random() * 1.9,
           delay: i * 0.08 + Math.random() * 0.12,
-          speed: 0.48 + Math.random() * 0.28,
+          speed: 0.52 + Math.random() * 0.28,
           wobblePhase: Math.random() * Math.PI * 2,
         });
       }
 
-      // Sort back-to-front by average Z so foreground 3D cables naturally pass in front of background ones
       list.sort((a, b) => b.p0.z - a.p0.z);
       fibers = list;
     };
@@ -297,37 +333,47 @@ export default function HeroFiberToWifiBackdrop({
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = section.getBoundingClientRect();
-      mouseTargetX = ((e.clientX - rect.left) / Math.max(1, rect.width) - 0.5) * 90;
-      mouseTargetY = ((e.clientY - rect.top) / Math.max(1, rect.height) - 0.5) * 70;
+      mouseTargetX =
+        ((e.clientX - rect.left) / Math.max(1, rect.width) - 0.5) * 95;
+      mouseTargetY =
+        ((e.clientY - rect.top) / Math.max(1, rect.height) - 0.5) * 75;
     };
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
-    // 3D WiFi Logo Particles
-    const wifiParticles: Wifi3DParticle[] = [];
-    const wifiColors = ["#008FFF", "#0FA4E8", "#06B6D4", "#0284C7"];
+    // 3D Crystal WiFi Medallions & Micro Photonic Sparkles
+    const wifiMedallions: WifiMedallion3D[] = [];
+    const sparkles: SparkleGlint[] = [];
+    const medallionAccents = [
+      { accent: "#008FFF", light: "#06B6D4" },
+      { accent: "#0284C7", light: "#38BDF8" },
+      { accent: "#06B6D4", light: "#008FFF" },
+    ];
     let lastSpawn = 0;
 
-    const spawn3DWifiLogo = (burstIdx?: number) => {
+    const spawnCrystalWifi = (burstIdx?: number) => {
       const angle =
         burstIdx !== undefined
-          ? (burstIdx / 9) * Math.PI * 2 + (Math.random() - 0.5) * 0.3
+          ? (burstIdx / 8) * Math.PI * 2 + (Math.random() - 0.5) * 0.28
           : Math.random() * Math.PI * 2;
-      const speed = 58 + Math.random() * 44;
-      const zVel = (Math.random() - 0.58) * 140; // slightly biased toward viewer for pop-out 3D depth!
-      const startR = logoRadius * 0.45;
-      wifiParticles.push({
+      const speed = 56 + Math.random() * 42;
+      const zVel = (Math.random() - 0.58) * 145;
+      const startR = logoRadius * 0.48;
+      const pal =
+        medallionAccents[Math.floor(Math.random() * medallionAccents.length)];
+
+      wifiMedallions.push({
         x: logoX + Math.cos(angle) * startR,
         y: logoY + Math.sin(angle) * startR,
-        z: (Math.random() - 0.5) * 40,
+        z: (Math.random() - 0.5) * 45,
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed,
         vz: zVel,
         age: 0,
-        life: 2.3 + Math.random() * 1.1,
-        baseSize: 17 + Math.random() * 10,
-        color: wifiColors[Math.floor(Math.random() * wifiColors.length)],
-        tiltX: (Math.random() - 0.5) * 0.35,
-        tiltY: Math.random() * Math.PI * 2,
+        life: 2.5 + Math.random() * 1.1,
+        baseSize: 16 + Math.random() * 7.5,
+        accent: pal.accent,
+        accentLight: pal.light,
+        spinPhase: Math.random() * Math.PI * 2,
       });
     };
 
@@ -344,13 +390,11 @@ export default function HeroFiberToWifiBackdrop({
       const cycleIndex = Math.floor(elapsed / CYCLE_DURATION);
       const cycleT = elapsed % CYCLE_DURATION;
 
-      // Re-randomize 3D incoming fiber directions on every new cycle!
       if (cycleIndex !== lastCycleIndex) {
         lastCycleIndex = cycleIndex;
         generateRandom3DFibers();
       }
 
-      // Smooth 3D camera parallax
       camX += (mouseTargetX - camX) * 0.05;
       camY += (mouseTargetY - camY) * 0.05;
 
@@ -364,7 +408,7 @@ export default function HeroFiberToWifiBackdrop({
           : 1;
 
       // ------------------------------------------------------------------
-      // STAGE 1: Real 3D Perspective Fiber Wires From Random Directions -> Logo
+      // STAGE 1: Prism-Core 3D Optical Fiber Conduits & Laser Comet Streams
       // ------------------------------------------------------------------
       const growDuration = 1.45;
 
@@ -374,28 +418,42 @@ export default function HeroFiberToWifiBackdrop({
         const eased = 1 - Math.pow(1 - prog, 3);
         if (eased <= 0.005) return;
 
-        // Subtle organic 3D wave sway
         const swayY = Math.sin(elapsed * 1.2 + fiber.wobblePhase) * 12;
         const swayZ = Math.cos(elapsed * 0.9 + fiber.wobblePhase) * 18;
-        const p1Anim: Vec3 = { x: fiber.p1.x, y: fiber.p1.y + swayY, z: fiber.p1.z + swayZ };
-        const p2Anim: Vec3 = { x: fiber.p2.x, y: fiber.p2.y - swayY * 0.6, z: fiber.p2.z - swayZ * 0.6 };
+        const p1Anim: Vec3 = {
+          x: fiber.p1.x,
+          y: fiber.p1.y + swayY,
+          z: fiber.p1.z + swayZ,
+        };
+        const p2Anim: Vec3 = {
+          x: fiber.p2.x,
+          y: fiber.p2.y - swayY * 0.6,
+          z: fiber.p2.z - swayZ * 0.6,
+        };
 
-        const segments = 38;
+        const segments = 40;
         const activeSegs = Math.max(2, Math.floor(eased * segments));
 
-        // Sample projected 3D points along the cable
         const pts: Array<{ x: number; y: number; scale: number }> = [];
         for (let s = 0; s <= activeSegs; s++) {
           const u = s === activeSegs ? eased : Math.min(eased, s / segments);
-          const pt3 = cubicBezier3D(u, fiber.p0, p1Anim, p2Anim, fiber.p3);
-          pts.push(project(pt3));
+          pts.push(project(cubicBezier3D(u, fiber.p0, p1Anim, p2Anim, fiber.p3)));
         }
 
-        // Depth-aware alpha (foreground cables crisper, background cables softer)
         const avgScale = (pts[0].scale + pts[pts.length - 1].scale) * 0.5;
-        const depthAlpha = Math.max(0.32, Math.min(0.95, avgScale * 0.72)) * fadeReset;
+        const depthAlpha =
+          Math.max(0.32, Math.min(0.95, avgScale * 0.74)) * fadeReset;
 
-        // Draw segmented 3D cylindrical fiber cable (thickness scales smoothly with real 3D Z-depth!)
+        const cableGrad = ctx.createLinearGradient(
+          pts[0].x,
+          pts[0].y,
+          pts[pts.length - 1].x,
+          pts[pts.length - 1].y
+        );
+        cableGrad.addColorStop(0, fiber.colorStart);
+        cableGrad.addColorStop(0.55, fiber.glowColor);
+        cableGrad.addColorStop(1, fiber.colorEnd);
+
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
 
@@ -404,139 +462,197 @@ export default function HeroFiberToWifiBackdrop({
           const b = pts[s + 1];
           const segScale = (a.scale + b.scale) * 0.5;
           const w = fiber.baseWidth * segScale;
-          // Fade in gently right at the outer start point
           const segFrac = s / Math.max(1, segments);
-          const entryFade = Math.min(1, segFrac * 5.5);
+          const entryFade = Math.min(1, segFrac * 5.2);
 
-          // 3D cast depth shadow underneath cable
+          // Soft 3D ambient shadow beneath optical conduit
           ctx.beginPath();
-          ctx.moveTo(a.x + 2 * segScale, a.y + 4 * segScale);
-          ctx.lineTo(b.x + 2 * segScale, b.y + 4 * segScale);
-          ctx.strokeStyle = "rgba(15, 23, 42, 0.08)";
-          ctx.lineWidth = w + 2.2 * segScale;
+          ctx.moveTo(a.x + 2.2 * segScale, a.y + 4.4 * segScale);
+          ctx.lineTo(b.x + 2.2 * segScale, b.y + 4.4 * segScale);
+          ctx.strokeStyle = "rgba(15, 23, 42, 0.075)";
+          ctx.lineWidth = w + 2.4 * segScale;
           ctx.globalAlpha = depthAlpha * entryFade;
           ctx.stroke();
 
-          // Outer glowing optical aura
+          // Luminous outer prism halo
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(b.x, b.y);
-          ctx.strokeStyle = fiber.color;
-          ctx.lineWidth = w + 3.2 * segScale;
-          ctx.globalAlpha = depthAlpha * 0.2 * entryFade;
+          ctx.strokeStyle = fiber.glowColor;
+          ctx.lineWidth = w + 4.2 * segScale;
+          ctx.globalAlpha = depthAlpha * 0.16 * entryFade;
           ctx.stroke();
 
-          // Main 3D cylindrical fiber body
+          // Translucent crystal-glass jacket
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(b.x, b.y);
-          ctx.strokeStyle = fiber.color;
+          ctx.strokeStyle = cableGrad;
           ctx.lineWidth = w;
-          ctx.globalAlpha = depthAlpha * 0.75 * entryFade;
+          ctx.globalAlpha = depthAlpha * 0.72 * entryFade;
           ctx.stroke();
 
-          // Top specular 3D glass-core highlight
+          // Ultra-crisp gleaming white optical core filament
           ctx.beginPath();
-          ctx.moveTo(a.x - 0.4 * segScale, a.y - 0.6 * segScale);
-          ctx.lineTo(b.x - 0.4 * segScale, b.y - 0.6 * segScale);
-          ctx.strokeStyle = fiber.highlight;
-          ctx.lineWidth = Math.max(0.8, w * 0.34);
+          ctx.moveTo(a.x - 0.45 * segScale, a.y - 0.65 * segScale);
+          ctx.lineTo(b.x - 0.45 * segScale, b.y - 0.65 * segScale);
+          ctx.strokeStyle = "rgba(255, 255, 255, 0.92)";
+          ctx.lineWidth = Math.max(0.85, w * 0.32);
           ctx.globalAlpha = depthAlpha * 0.9 * entryFade;
           ctx.stroke();
         }
 
-        // Bright 3D Laser Tip while extending toward the EARTHLINK logo
-        if (prog > 0.01 && prog < 0.99) {
-          const tip = pts[pts.length - 1];
-          const r = 6.5 * tip.scale;
+        // Helper to draw a sleek tapered 3D Laser Comet along the curve
+        const drawLaserComet = (headU: number, tailLen: number, alphaMul: number) => {
+          const tailSteps = 8;
+          for (let k = 0; k < tailSteps; k++) {
+            const u0 = Math.max(0, headU - (k / tailSteps) * tailLen);
+            const u1 = Math.max(0, headU - ((k + 1) / tailSteps) * tailLen);
+            if (u0 <= 0.002) continue;
+            const pA = project(cubicBezier3D(u0, fiber.p0, p1Anim, p2Anim, fiber.p3));
+            const pB = project(cubicBezier3D(u1, fiber.p0, p1Anim, p2Anim, fiber.p3));
+            const frac = 1 - k / tailSteps;
+
+            ctx.beginPath();
+            ctx.moveTo(pA.x, pA.y);
+            ctx.lineTo(pB.x, pB.y);
+            ctx.strokeStyle = k < 2 ? "#FFFFFF" : fiber.glowColor;
+            ctx.lineWidth = Math.max(1.2, 5.2 * frac * pA.scale);
+            ctx.globalAlpha = frac * frac * 0.85 * alphaMul;
+            ctx.stroke();
+          }
+
+          // White-hot photonic head orb
+          const headPt3 = cubicBezier3D(headU, fiber.p0, p1Anim, p2Anim, fiber.p3);
+          const head = project(headPt3);
+          const r = 5.4 * head.scale;
           ctx.save();
           ctx.beginPath();
-          ctx.arc(tip.x, tip.y, r, 0, Math.PI * 2);
-          ctx.fillStyle = "#008FFF";
-          ctx.shadowColor = "#008FFF";
-          ctx.shadowBlur = 18 * tip.scale;
-          ctx.globalAlpha = 0.95;
+          ctx.arc(head.x, head.y, r, 0, Math.PI * 2);
+          ctx.fillStyle = fiber.glowColor;
+          ctx.shadowColor = fiber.glowColor;
+          ctx.shadowBlur = 18 * head.scale;
+          ctx.globalAlpha = 0.92 * alphaMul;
           ctx.fill();
 
           ctx.beginPath();
-          ctx.arc(tip.x, tip.y, r * 0.42, 0, Math.PI * 2);
+          ctx.arc(head.x, head.y, r * 0.48, 0, Math.PI * 2);
           ctx.fillStyle = "#FFFFFF";
+          ctx.globalAlpha = alphaMul;
           ctx.fill();
           ctx.restore();
+
+          // Occasional micro photonic glint drifting off the laser head
+          if (Math.random() < 0.08 && sparkles.length < 36) {
+            sparkles.push({
+              x: headPt3.x + (Math.random() - 0.5) * 14,
+              y: headPt3.y + (Math.random() - 0.5) * 14,
+              z: headPt3.z,
+              vy: -14 - Math.random() * 18,
+              age: 0,
+              life: 0.7 + Math.random() * 0.5,
+              size: 1.5 + Math.random() * 1.8,
+            });
+          }
+        };
+
+        // Leading laser comet while cable is extending toward the EARTHLINK logo
+        if (prog > 0.02 && prog < 0.99) {
+          drawLaserComet(eased, 0.14, 1);
         }
 
-        // Continuous high-speed 3D optical data photons streaming into the EARTHLINK logo
+        // Continuous tapered optical laser comets streaming into the logo once connected
         if (prog >= 0.98 && fadeReset > 0.05) {
           for (let p = 0; p < 2; p++) {
             const pu = (elapsed * fiber.speed + p * 0.5 + idx * 0.13) % 1;
-            const pt3 = cubicBezier3D(pu, fiber.p0, p1Anim, p2Anim, fiber.p3);
-            const pr = project(pt3);
             const edgeFade = Math.sin(pu * Math.PI) * fadeReset;
-            const radius = 4.4 * pr.scale;
-
-            ctx.save();
-            ctx.beginPath();
-            ctx.arc(pr.x, pr.y, radius, 0, Math.PI * 2);
-            ctx.fillStyle = p === 0 ? "#008FFF" : "#06B6D4";
-            ctx.shadowColor = "#008FFF";
-            ctx.shadowBlur = 14 * pr.scale;
-            ctx.globalAlpha = 0.92 * edgeFade;
-            ctx.fill();
-
-            ctx.beginPath();
-            ctx.arc(pr.x, pr.y, radius * 0.45, 0, Math.PI * 2);
-            ctx.fillStyle = "#FFFFFF";
-            ctx.globalAlpha = edgeFade;
-            ctx.fill();
-            ctx.restore();
+            drawLaserComet(pu, 0.11, edgeFade);
           }
         }
       });
 
+      // Draw micro photonic sparkles
+      for (let i = sparkles.length - 1; i >= 0; i--) {
+        const sp = sparkles[i];
+        sp.age += dt;
+        if (sp.age >= sp.life) {
+          sparkles.splice(i, 1);
+          continue;
+        }
+        sp.y += sp.vy * dt;
+        const pr = project(sp);
+        const a = Math.sin((sp.age / sp.life) * Math.PI) * 0.85 * fadeReset;
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(pr.x, pr.y, sp.size * pr.scale, 0, Math.PI * 2);
+        ctx.fillStyle = "#38BDF8";
+        ctx.shadowColor = "#008FFF";
+        ctx.shadowBlur = 8;
+        ctx.globalAlpha = a;
+        ctx.fill();
+        ctx.restore();
+      }
+
       // ------------------------------------------------------------------
-      // STAGE 2: Core Ignition + Real 3D WiFi Logos Radiating Outward
+      // STAGE 2: Holographic Aurora Pulse + 3D Crystal WiFi Medallions
       // ------------------------------------------------------------------
       const wifiStart = 1.6;
       const wifiActive = cycleT >= wifiStart && cycleT < CYCLE_DURATION - 0.6;
 
       if (wifiActive && burstTriggeredCycle !== cycleIndex) {
         burstTriggeredCycle = cycleIndex;
-        for (let b = 0; b < 9; b++) {
-          spawn3DWifiLogo(b);
+        for (let b = 0; b < 8; b++) {
+          spawnCrystalWifi(b);
         }
         lastSpawn = elapsed;
       }
 
-      if (wifiActive && elapsed - lastSpawn > 0.32) {
-        spawn3DWifiLogo();
+      if (wifiActive && elapsed - lastSpawn > 0.38) {
+        spawnCrystalWifi();
         lastSpawn = elapsed;
       }
 
-      // 3D Connection Flash Ring behind the EARTHLINK logo
-      const flashProg = (cycleT - (wifiStart - 0.05)) / 0.85;
+      // Holographic Cyan-Aqua Shockwave Bloom Behind the EARTHLINK Logo
+      const flashProg = (cycleT - (wifiStart - 0.05)) / 0.95;
       if (flashProg > 0 && flashProg < 1) {
-        const rx = logoRadius * (0.85 + flashProg * 1.15);
-        const ry = rx * 0.88; // subtle 3D tilt
+        const r = logoRadius * (0.85 + flashProg * 1.25);
+        const bloom = ctx.createRadialGradient(
+          logoX,
+          logoY,
+          logoRadius * 0.5,
+          logoX,
+          logoY,
+          r
+        );
+        bloom.addColorStop(0, "rgba(0, 143, 255, 0.32)");
+        bloom.addColorStop(0.65, "rgba(6, 182, 212, 0.16)");
+        bloom.addColorStop(1, "rgba(56, 189, 248, 0)");
+
         ctx.save();
+        ctx.globalAlpha = Math.sin(flashProg * Math.PI);
+        ctx.fillStyle = bloom;
         ctx.beginPath();
-        ctx.ellipse(logoX, logoY, rx, ry, -0.18, 0, Math.PI * 2);
+        ctx.arc(logoX, logoY, r, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.ellipse(logoX, logoY, r, r * 0.86, -0.2, 0, Math.PI * 2);
         ctx.strokeStyle = "#008FFF";
-        ctx.lineWidth = 4.2 * (1 - flashProg);
+        ctx.lineWidth = 3.6 * (1 - flashProg);
         ctx.shadowColor = "#008FFF";
-        ctx.shadowBlur = 20;
-        ctx.globalAlpha = Math.sin(flashProg * Math.PI) * 0.78;
+        ctx.shadowBlur = 22;
         ctx.stroke();
         ctx.restore();
       }
 
-      // Tilted 3D Perspective Expanding Signal Rings radiating from behind the logo
+      // Dual Tilted 3D Iridescent Orbital Signal Rings radiating behind the logo
       if (cycleT >= wifiStart) {
         const wElapsed = cycleT - wifiStart;
         const env = Math.min(1, wElapsed / 0.5) * fadeReset;
         for (let rIdx = 0; rIdx < 3; rIdx++) {
-          const p = (wElapsed * 0.42 + rIdx * 0.333) % 1;
-          const rx = logoRadius * 0.85 + p * (logoRadius * 1.5);
-          const ry = rx * (0.76 + (rIdx % 2) * 0.14);
+          const p = (wElapsed * 0.4 + rIdx * 0.333) % 1;
+          const rx = logoRadius * 0.88 + p * (logoRadius * 1.55);
+          const ry = rx * (0.74 + (rIdx % 2) * 0.16);
           ctx.save();
           ctx.beginPath();
           ctx.ellipse(
@@ -544,52 +660,53 @@ export default function HeroFiberToWifiBackdrop({
             logoY,
             rx,
             ry,
-            rIdx % 2 === 0 ? -0.22 : 0.22,
+            rIdx % 2 === 0 ? -0.24 : 0.24,
             0,
             Math.PI * 2
           );
+          ctx.setLineDash(rIdx === 1 ? [10, 8] : []);
           ctx.strokeStyle = rIdx % 2 === 0 ? "#008FFF" : "#06B6D4";
-          ctx.lineWidth = 2.4 * (1 - p * 0.45);
-          ctx.globalAlpha = Math.sin(p * Math.PI) * 0.36 * env;
+          ctx.lineWidth = 2.2 * (1 - p * 0.4);
+          ctx.globalAlpha = Math.sin(p * Math.PI) * 0.34 * env;
           ctx.stroke();
           ctx.restore();
         }
       }
 
-      // Update & depth-sort all 3D WiFi Logos emerging from behind the EARTHLINK logo
-      for (let i = wifiParticles.length - 1; i >= 0; i--) {
-        const wp = wifiParticles[i];
-        wp.age += dt;
-        if (wp.age >= wp.life) {
-          wifiParticles.splice(i, 1);
+      // Update & depth-sort all 3D Crystal WiFi Medallions
+      for (let i = wifiMedallions.length - 1; i >= 0; i--) {
+        const wm = wifiMedallions[i];
+        wm.age += dt;
+        if (wm.age >= wm.life) {
+          wifiMedallions.splice(i, 1);
           continue;
         }
-        wp.x += wp.vx * dt;
-        wp.y += wp.vy * dt;
-        wp.z += wp.vz * dt;
+        wm.x += wm.vx * dt;
+        wm.y += wm.vy * dt;
+        wm.z += wm.vz * dt;
       }
 
-      // Sort back-to-front by Z for true 3D occlusion ordering
-      wifiParticles.sort((a, b) => b.z - a.z);
+      wifiMedallions.sort((a, b) => b.z - a.z);
 
-      wifiParticles.forEach((wp) => {
-        const prog = wp.age / wp.life;
-        const pr = project({ x: wp.x, y: wp.y, z: wp.z });
+      wifiMedallions.forEach((wm) => {
+        const prog = wm.age / wm.life;
+        const pr = project({ x: wm.x, y: wm.y, z: wm.z });
         const alpha =
           Math.sin(Math.min(1, prog) * Math.PI) *
-          Math.min(1, pr.scale * 0.92) *
+          Math.min(1, pr.scale * 0.95) *
           fadeReset;
-        const currentSize = wp.baseSize * pr.scale * (0.78 + prog * 0.52);
+        const radius = wm.baseSize * pr.scale * (0.72 + prog * 0.5);
         const perspectiveSquash =
-          0.86 + Math.cos(elapsed * 2.2 + wp.tiltY) * 0.14;
+          0.88 + Math.cos(elapsed * 2.1 + wm.spinPhase) * 0.12;
 
-        draw3DWifiLogo(
+        drawCrystalWifiMedallion(
           ctx,
           pr.x,
           pr.y,
-          currentSize,
+          radius,
           alpha,
-          wp.color,
+          wm.accent,
+          wm.accentLight,
           perspectiveSquash,
           pr.scale
         );
