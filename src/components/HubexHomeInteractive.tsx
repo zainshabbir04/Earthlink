@@ -107,28 +107,37 @@ export default function HubexHomeInteractive() {
               </div>
             </div>
 
-            {/* Right Column: Hero Video Visual with Centered EARTHLINK Logo & Orbiting Service Headings */}
+            {/* Right Column: Seamless Blended Video Visual Merged Directly Into Banner + Center EARTHLINK Logo & Orbiting Headings */}
             <div className="relative flex items-center justify-center w-full pt-0 pb-2">
-              <div className="relative flex items-center justify-center w-full max-w-[540px] h-[360px] sm:h-[410px] md:h-[440px]">
-                {/* Sleek Website-Themed Video Showcase Frame */}
-                <div className="relative w-full h-full rounded-[28px] overflow-hidden border-2 border-[#008FFF]/45 bg-[#F0F9FF] shadow-[0_24px_65px_rgba(0,143,255,0.22)]">
+              <div className="relative flex items-center justify-center w-full max-w-[580px] h-[380px] sm:h-[430px] md:h-[470px]">
+                {/* Seamless Background-Merged Video (Zero Box, Zero Border — Inverted + Hue-Matched + Multiply-Blended Into Light Sky Banner) */}
+                <div
+                  className="pointer-events-none absolute -inset-4 sm:-inset-8 z-0 flex items-center justify-center"
+                  style={{
+                    WebkitMaskImage:
+                      "radial-gradient(ellipse 68% 68% at 50% 50%, #000 52%, transparent 95%)",
+                    maskImage:
+                      "radial-gradient(ellipse 68% 68% at 50% 50%, #000 52%, transparent 95%)",
+                  }}
+                >
                   <video
                     src="/hero-banner.mp4"
                     autoPlay
                     loop
                     muted
                     playsInline
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover mix-blend-multiply opacity-90"
+                    style={{
+                      filter:
+                        "invert(1) hue-rotate(180deg) brightness(1.08) contrast(1.16) saturate(1.4)",
+                    }}
                   />
-                  {/* Subtle Sky-Cyan Website Theme Overlay Tint */}
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-[#008FFF]/20 via-transparent to-[#2EC1D9]/20" />
-                  <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/40 rounded-[28px]" />
                 </div>
 
                 {/* Rotating Subtle Cyan HUD Ring Centered Over Video */}
                 <svg
                   viewBox="0 0 400 400"
-                  className="absolute w-[230px] sm:w-[270px] md:w-[300px] h-[230px] sm:h-[270px] md:h-[300px] animate-rotateImage pointer-events-none z-10"
+                  className="absolute w-[250px] sm:w-[295px] md:w-[330px] h-[250px] sm:h-[295px] md:h-[330px] animate-rotateImage pointer-events-none z-10"
                 >
                   <defs>
                     <linearGradient
@@ -157,7 +166,7 @@ export default function HubexHomeInteractive() {
                     r="182"
                     fill="none"
                     stroke="url(#hubexRingGrad)"
-                    strokeWidth="2.5"
+                    strokeWidth="2.4"
                     strokeDasharray="28 14 8 14"
                   />
                   <circle
@@ -165,16 +174,16 @@ export default function HubexHomeInteractive() {
                     cy="200"
                     r="154"
                     fill="none"
-                    stroke="#FFFFFF"
-                    strokeWidth="1.6"
+                    stroke="#0FA4E8"
+                    strokeWidth="1.5"
                     strokeDasharray="6 12"
-                    strokeOpacity="0.7"
+                    strokeOpacity="0.6"
                   />
                 </svg>
 
-                {/* Official EARTHLINK Logo Right in the Center of the Video */}
+                {/* Official EARTHLINK Logo Right in the Center */}
                 <div className="absolute z-20 flex items-center justify-center">
-                  <div className="w-[138px] sm:w-[162px] md:w-[178px] h-[138px] sm:h-[162px] md:h-[178px] rounded-full bg-white/95 border-2 border-[#008FFF]/70 shadow-[0_14px_45px_rgba(0,143,255,0.35)] animate-breathe flex items-center justify-center p-5 backdrop-blur-md">
+                  <div className="w-[146px] sm:w-[172px] md:w-[190px] h-[146px] sm:h-[172px] md:h-[190px] rounded-full bg-white/95 border-2 border-[#008FFF]/65 shadow-[0_14px_45px_rgba(0,143,255,0.28)] animate-breathe flex items-center justify-center p-5 backdrop-blur-md">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src="/logo-color.png"
@@ -185,7 +194,7 @@ export default function HubexHomeInteractive() {
                 </div>
 
                 {/* 5 Service Headings Revolving Smoothly in a 360° Circle Around the Center Logo */}
-                <div className="absolute w-[255px] sm:w-[310px] md:w-[345px] h-[255px] sm:h-[310px] md:h-[345px] rounded-full animate-[spin_24s_linear_infinite] z-20 pointer-events-none">
+                <div className="absolute w-[270px] sm:w-[330px] md:w-[365px] h-[270px] sm:h-[330px] md:h-[365px] rounded-full animate-[spin_24s_linear_infinite] z-20 pointer-events-none">
                   {[
                     {
                       label: "Dedicated Internet (1:1 DIA)",
