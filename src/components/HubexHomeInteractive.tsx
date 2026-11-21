@@ -54,9 +54,49 @@ export default function HubexHomeInteractive() {
           SECTION 2: HERO SECTION (Moved Higher Up Closer to Navbar)
          ===================================================================== */}
       <section className="relative flex items-start justify-center overflow-hidden">
+        {/* Precision SVG Color-Grading Filter: Maps Dark Video Background -> Transparent & Glowing Rings -> Exact EARTHLINK #008FFF Sky-Cyan */}
+        <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
+          <defs>
+            <filter id="earthlinkCyanGrade" colorInterpolationFilters="sRGB">
+              <feColorMatrix
+                type="matrix"
+                values="
+                  -0.255 -0.858 -0.087 0 1.06
+                  -0.108 -0.365 -0.037 0 1.06
+                  -0.011 -0.036 -0.004 0 1.06
+                   0      0      0     1 0
+                "
+              />
+            </filter>
+          </defs>
+        </svg>
+
+        {/* Full-Width Seamless Hero Video Effect Across Entire Hero Section */}
+        <div
+          className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+          style={{
+            WebkitMaskImage:
+              "linear-gradient(to bottom, #000 0%, #000 82%, transparent 100%)",
+            maskImage:
+              "linear-gradient(to bottom, #000 0%, #000 82%, transparent 100%)",
+          }}
+        >
+          <video
+            src="/hero-banner.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover object-center mix-blend-multiply opacity-90"
+            style={{
+              filter: "url(#earthlinkCyanGrade) contrast(1.08)",
+            }}
+          />
+        </div>
+
         {/* Subtle Background Tech Grid & Cyan Glow */}
-        <div className="absolute inset-0 bg-tech-grid opacity-50 pointer-events-none" />
-        <div className="absolute top-1/4 right-1/4 w-[480px] h-[480px] rounded-full bg-[#008FFF]/15 blur-[130px] pointer-events-none" />
+        <div className="absolute inset-0 bg-tech-grid opacity-35 pointer-events-none z-0" />
+        <div className="absolute top-1/4 right-1/4 w-[480px] h-[480px] rounded-full bg-[#008FFF]/12 blur-[130px] pointer-events-none z-0" />
 
         <div className="relative flex items-start justify-center w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-3 pb-10 lg:pt-4 lg:pb-14">
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 w-full items-center">
@@ -107,49 +147,9 @@ export default function HubexHomeInteractive() {
               </div>
             </div>
 
-            {/* Right Column: Seamless Blended Video Visual Merged Directly Into Banner + Center EARTHLINK Logo & Orbiting Headings */}
+            {/* Right Column: Center EARTHLINK Logo + Rotating HUD Ring & 5 Orbiting Headings Over Full-Hero Video */}
             <div className="relative flex items-center justify-center w-full pt-0 pb-2">
-              <div className="relative flex items-center justify-center w-full max-w-[580px] h-[380px] sm:h-[430px] md:h-[470px]">
-                {/* Precision SVG Color-Grading Filter: Maps Dark Video Background -> Transparent & Glowing Rings -> Exact EARTHLINK #008FFF Sky-Cyan */}
-                <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
-                  <defs>
-                    <filter id="earthlinkCyanGrade" colorInterpolationFilters="sRGB">
-                      <feColorMatrix
-                        type="matrix"
-                        values="
-                          -0.255 -0.858 -0.087 0 1.06
-                          -0.108 -0.365 -0.037 0 1.06
-                          -0.011 -0.036 -0.004 0 1.06
-                           0      0      0     1 0
-                        "
-                      />
-                    </filter>
-                  </defs>
-                </svg>
-
-                {/* Seamless Background-Merged Video (Zero Box, Pure Brand #008FFF / #0FA4E8 Color Grading) */}
-                <div
-                  className="pointer-events-none absolute -inset-6 sm:-inset-10 z-0 flex items-center justify-center"
-                  style={{
-                    WebkitMaskImage:
-                      "radial-gradient(ellipse 68% 68% at 50% 50%, #000 54%, transparent 95%)",
-                    maskImage:
-                      "radial-gradient(ellipse 68% 68% at 50% 50%, #000 54%, transparent 95%)",
-                  }}
-                >
-                  <video
-                    src="/hero-banner.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover mix-blend-multiply opacity-95"
-                    style={{
-                      filter: "url(#earthlinkCyanGrade) contrast(1.08)",
-                    }}
-                  />
-                </div>
-
+              <div className="relative flex items-center justify-center w-full max-w-[540px] h-[380px] sm:h-[430px] md:h-[470px]">
                 {/* Rotating Subtle Cyan HUD Ring Centered Over Video */}
                 <svg
                   viewBox="0 0 400 400"
