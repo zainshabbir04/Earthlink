@@ -76,7 +76,7 @@ export default function HubexHomeInteractive() {
             </h1>
 
             {/* Tagline Strip */}
-            <p className="text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.1em] !text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] pt-0.5">
+            <p className="text-[10.5px] sm:text-[11.5px] font-extrabold uppercase tracking-[0.06em] !text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] pt-0.5 sm:whitespace-nowrap">
               INTERNET CONNECTIVITY | ENTERPRISE NETWORKING | IT INFRASTRUCTURE
             </p>
 
@@ -119,11 +119,11 @@ export default function HubexHomeInteractive() {
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#008FFF]" />
               </span>
               <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-[#0284C7]">
-                Regional Optical Fiber Backbone
+                Regional Optical Connectivity
               </span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-extrabold tracking-tight text-slate-900 leading-tight max-w-3xl">
+            <h2 className="text-2xl sm:text-3xl lg:text-[38px] font-extrabold tracking-normal text-slate-900 leading-snug max-w-3xl">
               Illuminating{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#0284C7]">
                 The Digital Horizon
