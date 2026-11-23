@@ -36,13 +36,13 @@ export default function AboutPage() {
   return (
     <div className="bg-black-gradient text-white overflow-hidden">
       {/* Full-Width About Us Hero Image Banner */}
-      <section className="relative w-full overflow-hidden min-h-[520px] sm:min-h-[560px] lg:min-h-[640px] flex items-center">
-        {/* Background Hero Image (Sharp Original Image) */}
+      <section className="relative w-full overflow-hidden min-h-[430px] sm:min-h-[470px] lg:min-h-[510px] flex items-center">
+        {/* Background Hero Image (Subtle Blur + Slight Scale to Prevent Edge Bleed) */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/about-hero-banner.jpg"
           alt="EARTHLINK Broadband Optical Fiber & Telecom Infrastructure"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-center blur-[2px] scale-[1.03]"
         />
 
         {/* Balanced Dark-Navy Gradient Scrims for Crisp Transparent Navbar Logo & High-Contrast Text */}
@@ -50,7 +50,7 @@ export default function AboutPage() {
         <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#030B16]/80 to-transparent" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#030B16]/45 to-transparent" />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-28 pb-24 lg:pt-32 lg:pb-28">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-28 pb-12 lg:pt-32 lg:pb-16">
           <div className="max-w-2xl space-y-4">
             <div className="inline-flex items-center gap-2.5 bg-white/10 border border-sky-300/35 backdrop-blur-md shadow-[0_6px_20px_rgba(0,143,255,0.2)] rounded-full px-4 py-1.5">
               <span className="relative flex h-2 w-2">
