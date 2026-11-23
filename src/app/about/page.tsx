@@ -176,6 +176,93 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Mission, Vision & Core Values */}
+      <section className="py-12 lg:py-16 border-t border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] space-y-10">
+          {/* Redesigned Larger Interactive Mission & Vision Cards (Smooth Background & Text Color Transition on Hover) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 lg:gap-8">
+            {/* Our Mission Card */}
+            <div className="group relative overflow-hidden p-9 sm:p-11 rounded-3xl bg-white border-2 border-sky-100 hover:border-[#008FFF]/60 shadow-[0_14px_38px_rgba(15,23,42,0.07)] hover:shadow-[0_24px_60px_rgba(0,143,255,0.3)] transition-all duration-500 hover:-translate-y-1.5 min-h-[260px] flex flex-col justify-between cursor-pointer">
+              {/* Smooth Crossfade Gradient Background on Hover */}
+              <div className="pointer-events-none absolute inset-0 bg-hubex-banner opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="pointer-events-none absolute -top-16 -right-16 w-48 h-48 rounded-full border border-[#008FFF]/15 group-hover:border-white/20 transition-colors duration-500" />
+
+              <div className="relative z-10 space-y-5">
+                <div className="flex items-center justify-between">
+                  <div className="w-14 h-14 rounded-2xl bg-[#008FFF]/10 group-hover:bg-white/20 border border-[#008FFF]/25 group-hover:border-white/40 text-[#008FFF] group-hover:text-white flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-sm">
+                    <Network className="w-7 h-7" />
+                  </div>
+                  <span className="text-xs font-mono font-extrabold uppercase tracking-[0.18em] text-[#0284C7] group-hover:!text-cyan-200 transition-colors duration-300">
+                    01 · Mission
+                  </span>
+                </div>
+
+                <h3 className="text-2xl sm:text-[28px] font-extrabold tracking-tight text-slate-900 group-hover:!text-white transition-colors duration-300">
+                  Our Mission
+                </h3>
+
+                <p className="text-slate-600 group-hover:!text-sky-100/95 text-base sm:text-[17px] leading-relaxed font-medium transition-colors duration-300">
+                  {BRAND_INFO.mission} We engineer every dedicated fiber link with strict 1:1 symmetrical throughput, dual-path self-healing ring protection, and proactive 24/7/365 NOC monitoring so organizations never face downtime.
+                </p>
+              </div>
+
+              <div className="relative z-10 pt-6">
+                <div className="h-1 w-14 group-hover:w-28 rounded-full bg-gradient-to-r from-[#008FFF] to-[#06B6D4] group-hover:from-cyan-300 group-hover:to-white transition-all duration-500" />
+              </div>
+            </div>
+
+            {/* Our Vision Card */}
+            <div className="group relative overflow-hidden p-9 sm:p-11 rounded-3xl bg-white border-2 border-sky-100 hover:border-[#008FFF]/60 shadow-[0_14px_38px_rgba(15,23,42,0.07)] hover:shadow-[0_24px_60px_rgba(0,143,255,0.3)] transition-all duration-500 hover:-translate-y-1.5 min-h-[260px] flex flex-col justify-between cursor-pointer">
+              {/* Smooth Crossfade Gradient Background on Hover */}
+              <div className="pointer-events-none absolute inset-0 bg-hubex-banner opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="pointer-events-none absolute -top-16 -right-16 w-48 h-48 rounded-full border border-[#008FFF]/15 group-hover:border-white/20 transition-colors duration-500" />
+
+              <div className="relative z-10 space-y-5">
+                <div className="flex items-center justify-between">
+                  <div className="w-14 h-14 rounded-2xl bg-[#008FFF]/10 group-hover:bg-white/20 border border-[#008FFF]/25 group-hover:border-white/40 text-[#008FFF] group-hover:text-white flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-sm">
+                    <Cpu className="w-7 h-7" />
+                  </div>
+                  <span className="text-xs font-mono font-extrabold uppercase tracking-[0.18em] text-[#0284C7] group-hover:!text-cyan-200 transition-colors duration-300">
+                    02 · Vision
+                  </span>
+                </div>
+
+                <h3 className="text-2xl sm:text-[28px] font-extrabold tracking-tight text-slate-900 group-hover:!text-white transition-colors duration-300">
+                  Our Vision
+                </h3>
+
+                <p className="text-slate-600 group-hover:!text-sky-100/95 text-base sm:text-[17px] leading-relaxed font-medium transition-colors duration-300">
+                  {BRAND_INFO.vision} By expanding our subterranean 100G optical backbone across commercial hubs, campuses, and industrial zones, we aim to set the regional benchmark for enterprise reliability and speed.
+                </p>
+              </div>
+
+              <div className="relative z-10 pt-6">
+                <div className="h-1 w-14 group-hover:w-28 rounded-full bg-gradient-to-r from-[#008FFF] to-[#06B6D4] group-hover:from-cyan-300 group-hover:to-white transition-all duration-500" />
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {CORE_VALUES.map((val, idx) => (
+              <div
+                key={val.title}
+                className="p-5 rounded-2xl bg-[#000000] border border-[#272727] space-y-2"
+              >
+                <span className="text-xs font-mono font-bold text-brand_cyan">
+                  0{idx + 1}
+                </span>
+                <h3 className="text-base font-semibold text-white">
+                  {val.title}
+                </h3>
+                <p className="text-xs text-[#9C9C9C] leading-relaxed">
+                  {val.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Unique "Visionary Leadership Driving Innovation" Executive Section */}
       <section className="relative py-16 lg:py-24 border-t border-slate-200/80 overflow-hidden">
         <div className="pointer-events-none absolute top-0 right-1/4 w-[480px] h-[480px] rounded-full bg-[#008FFF]/10 blur-[140px]" />
@@ -371,93 +458,6 @@ export default function AboutPage() {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* Mission, Vision & Core Values */}
-      <section className="py-12 lg:py-16 border-t border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] space-y-10">
-          {/* Redesigned Larger Interactive Mission & Vision Cards (Smooth Background & Text Color Transition on Hover) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 lg:gap-8">
-            {/* Our Mission Card */}
-            <div className="group relative overflow-hidden p-9 sm:p-11 rounded-3xl bg-white border-2 border-sky-100 hover:border-[#008FFF]/60 shadow-[0_14px_38px_rgba(15,23,42,0.07)] hover:shadow-[0_24px_60px_rgba(0,143,255,0.3)] transition-all duration-500 hover:-translate-y-1.5 min-h-[260px] flex flex-col justify-between cursor-pointer">
-              {/* Smooth Crossfade Gradient Background on Hover */}
-              <div className="pointer-events-none absolute inset-0 bg-hubex-banner opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="pointer-events-none absolute -top-16 -right-16 w-48 h-48 rounded-full border border-[#008FFF]/15 group-hover:border-white/20 transition-colors duration-500" />
-
-              <div className="relative z-10 space-y-5">
-                <div className="flex items-center justify-between">
-                  <div className="w-14 h-14 rounded-2xl bg-[#008FFF]/10 group-hover:bg-white/20 border border-[#008FFF]/25 group-hover:border-white/40 text-[#008FFF] group-hover:text-white flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-sm">
-                    <Network className="w-7 h-7" />
-                  </div>
-                  <span className="text-xs font-mono font-extrabold uppercase tracking-[0.18em] text-[#0284C7] group-hover:!text-cyan-200 transition-colors duration-300">
-                    01 · Mission
-                  </span>
-                </div>
-
-                <h3 className="text-2xl sm:text-[28px] font-extrabold tracking-tight text-slate-900 group-hover:!text-white transition-colors duration-300">
-                  Our Mission
-                </h3>
-
-                <p className="text-slate-600 group-hover:!text-sky-100/95 text-base sm:text-[17px] leading-relaxed font-medium transition-colors duration-300">
-                  {BRAND_INFO.mission} We engineer every dedicated fiber link with strict 1:1 symmetrical throughput, dual-path self-healing ring protection, and proactive 24/7/365 NOC monitoring so organizations never face downtime.
-                </p>
-              </div>
-
-              <div className="relative z-10 pt-6">
-                <div className="h-1 w-14 group-hover:w-28 rounded-full bg-gradient-to-r from-[#008FFF] to-[#06B6D4] group-hover:from-cyan-300 group-hover:to-white transition-all duration-500" />
-              </div>
-            </div>
-
-            {/* Our Vision Card */}
-            <div className="group relative overflow-hidden p-9 sm:p-11 rounded-3xl bg-white border-2 border-sky-100 hover:border-[#008FFF]/60 shadow-[0_14px_38px_rgba(15,23,42,0.07)] hover:shadow-[0_24px_60px_rgba(0,143,255,0.3)] transition-all duration-500 hover:-translate-y-1.5 min-h-[260px] flex flex-col justify-between cursor-pointer">
-              {/* Smooth Crossfade Gradient Background on Hover */}
-              <div className="pointer-events-none absolute inset-0 bg-hubex-banner opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="pointer-events-none absolute -top-16 -right-16 w-48 h-48 rounded-full border border-[#008FFF]/15 group-hover:border-white/20 transition-colors duration-500" />
-
-              <div className="relative z-10 space-y-5">
-                <div className="flex items-center justify-between">
-                  <div className="w-14 h-14 rounded-2xl bg-[#008FFF]/10 group-hover:bg-white/20 border border-[#008FFF]/25 group-hover:border-white/40 text-[#008FFF] group-hover:text-white flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-sm">
-                    <Cpu className="w-7 h-7" />
-                  </div>
-                  <span className="text-xs font-mono font-extrabold uppercase tracking-[0.18em] text-[#0284C7] group-hover:!text-cyan-200 transition-colors duration-300">
-                    02 · Vision
-                  </span>
-                </div>
-
-                <h3 className="text-2xl sm:text-[28px] font-extrabold tracking-tight text-slate-900 group-hover:!text-white transition-colors duration-300">
-                  Our Vision
-                </h3>
-
-                <p className="text-slate-600 group-hover:!text-sky-100/95 text-base sm:text-[17px] leading-relaxed font-medium transition-colors duration-300">
-                  {BRAND_INFO.vision} By expanding our subterranean 100G optical backbone across commercial hubs, campuses, and industrial zones, we aim to set the regional benchmark for enterprise reliability and speed.
-                </p>
-              </div>
-
-              <div className="relative z-10 pt-6">
-                <div className="h-1 w-14 group-hover:w-28 rounded-full bg-gradient-to-r from-[#008FFF] to-[#06B6D4] group-hover:from-cyan-300 group-hover:to-white transition-all duration-500" />
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {CORE_VALUES.map((val, idx) => (
-              <div
-                key={val.title}
-                className="p-5 rounded-2xl bg-[#000000] border border-[#272727] space-y-2"
-              >
-                <span className="text-xs font-mono font-bold text-brand_cyan">
-                  0{idx + 1}
-                </span>
-                <h3 className="text-base font-semibold text-white">
-                  {val.title}
-                </h3>
-                <p className="text-xs text-[#9C9C9C] leading-relaxed">
-                  {val.description}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
       </section>
