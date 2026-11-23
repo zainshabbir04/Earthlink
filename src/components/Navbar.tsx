@@ -50,7 +50,7 @@ export default function Navbar() {
             : "bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(11,31,58,0.08)]"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-5 lg:px-10 flex items-center justify-between h-[78px]">
+        <div className="max-w-7xl mx-auto px-5 lg:px-10 flex items-center justify-between h-[86px]">
           {/* Left: Official EARTHLINK Logo (Auto-switches Light/Dark for Crisp Contrast) */}
           <Link
             href="/"
@@ -61,7 +61,7 @@ export default function Navbar() {
             <img
               src={isTransparent ? "/logo-dark.png" : "/logo-color.png"}
               alt="EARTHLINK Broadband (Pvt.) Ltd."
-              className="h-12 sm:h-14 lg:h-[60px] w-auto object-contain transition-all duration-300"
+              className="h-14 sm:h-16 lg:h-[74px] w-auto object-contain transition-all duration-300"
             />
           </Link>
 
@@ -159,7 +159,7 @@ export default function Navbar() {
       </header>
 
       {/* Spacer for Inner Pages so Fixed Navbar Never Overlaps Page Headings */}
-      {!isHome && <div className="h-[78px]" aria-hidden="true" />}
+      {!isHome && <div className="h-[86px]" aria-hidden="true" />}
 
       {/* Mobile Full-Height Navy Slide-Over Drawer */}
       <div
