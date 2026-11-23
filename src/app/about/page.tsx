@@ -43,18 +43,18 @@ export default function AboutPage() {
     <div className="bg-black-gradient text-white overflow-hidden">
       {/* Full-Width About Us Hero Image Banner */}
       <section className="relative w-full overflow-hidden min-h-[460px] sm:min-h-[500px] lg:min-h-[560px] flex items-center">
-        {/* Background Hero Image */}
+        {/* Background Hero Image (Soft Blur + Slight Scale to Prevent Edge Bleed so Logo & Text Pop Clearly) */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/about-hero-banner.jpg"
           alt="EARTHLINK Broadband Optical Fiber & Telecom Infrastructure"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-center blur-[3px] scale-105"
         />
 
-        {/* Balanced Dark-Navy Gradient Scrims for Crisp Transparent Navbar & High-Contrast Text */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#030B16]/88 via-[#030B16]/62 to-[#030B16]/25" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#030B16]/70 to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#030B16]/45 to-transparent" />
+        {/* Balanced Dark-Navy Gradient Scrims for Crisp Transparent Navbar Logo & High-Contrast Text */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#030B16]/90 via-[#030B16]/68 to-[#030B16]/40" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#030B16]/80 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#030B16]/50 to-transparent" />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-28 pb-16 lg:pt-32 lg:pb-20">
           <div className="max-w-2xl space-y-4">
