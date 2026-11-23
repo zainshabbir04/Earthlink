@@ -63,10 +63,21 @@ export default function HubexHomeInteractive() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#030B16]/40 to-transparent" />
 
         {/* Exact Hero Text & Buttons Overlay on Left */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-28 pb-16 lg:pt-32 lg:pb-20">
-          <div className="max-w-[520px] space-y-4">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-24 pb-12 lg:pt-28 lg:pb-16">
+          <div className="max-w-[520px] space-y-3.5">
+            {/* Full Company Name Hero Badge */}
+            <div className="inline-flex items-center gap-2.5 bg-white/10 border border-sky-300/35 backdrop-blur-md shadow-[0_6px_20px_rgba(0,143,255,0.2)] rounded-full px-4 py-1.5">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-300 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-300" />
+              </span>
+              <span className="!text-sky-100 text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.14em]">
+                {BRAND_INFO.companyName}
+              </span>
+            </div>
+
             {/* Bold Hero Heading */}
-            <h1 className="text-3xl sm:text-5xl lg:text-[3.1rem] xl:text-[3.35rem] leading-[1.06] font-black tracking-tight uppercase !text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]">
+            <h1 className="text-3xl sm:text-4xl lg:text-[2.85rem] xl:text-[3.1rem] leading-[1.06] font-black tracking-normal uppercase !text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]">
               CONNECTING <br />
               BUSINESSES. <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] via-[#00A8FF] to-[#67E8F9]">
@@ -81,7 +92,7 @@ export default function HubexHomeInteractive() {
             </p>
 
             {/* Description Paragraph */}
-            <p className="text-sm sm:text-[15px] lg:text-[15.5px] !text-sky-100/90 font-medium leading-relaxed max-w-[460px] drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+            <p className="text-sm sm:text-[14.5px] lg:text-[15px] !text-sky-100/90 font-medium leading-relaxed max-w-[460px] drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
               Earthlink delivers reliable internet connectivity, advanced networking and comprehensive IT infrastructure solutions designed to keep businesses connected, productive and secure.
             </p>
 
