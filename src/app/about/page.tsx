@@ -43,12 +43,12 @@ export default function AboutPage() {
     <div className="bg-black-gradient text-white overflow-hidden">
       {/* Full-Width About Us Hero Image Banner */}
       <section className="relative w-full overflow-hidden min-h-[520px] sm:min-h-[560px] lg:min-h-[640px] flex items-center">
-        {/* Background Hero Image (Very Subtle Blur + Slight Scale to Prevent Edge Bleed) */}
+        {/* Background Hero Image (Sharp Original Image) */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/about-hero-banner.jpg"
           alt="EARTHLINK Broadband Optical Fiber & Telecom Infrastructure"
-          className="absolute inset-0 w-full h-full object-cover object-center blur-[1.5px] scale-[1.03]"
+          className="absolute inset-0 w-full h-full object-cover object-center"
         />
 
         {/* Balanced Dark-Navy Gradient Scrims for Crisp Transparent Navbar Logo & High-Contrast Text */}
