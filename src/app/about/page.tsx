@@ -36,7 +36,7 @@ export default function AboutPage() {
   return (
     <div className="bg-black-gradient text-white overflow-hidden">
       {/* Full-Width About Us Hero Image Banner */}
-      <section className="relative w-full overflow-hidden min-h-[430px] sm:min-h-[470px] lg:min-h-[510px] flex items-center">
+      <section className="relative w-full overflow-hidden min-h-[460px] sm:min-h-[500px] lg:min-h-[550px] flex items-center">
         {/* Background Hero Image (Subtle Blur + Slight Scale to Prevent Edge Bleed) */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -45,12 +45,12 @@ export default function AboutPage() {
           className="absolute inset-0 w-full h-full object-cover object-center blur-[2px] scale-[1.03]"
         />
 
-        {/* Balanced Dark-Navy Gradient Scrims for Crisp Transparent Navbar Logo & High-Contrast Text */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#030B16]/88 via-[#030B16]/62 to-[#030B16]/35" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#030B16]/80 to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#030B16]/45 to-transparent" />
+        {/* Stronger Top & Left Dark-Navy Scrims so Navbar Logo, Links & Hero Text Pop Clearly */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#030B16]/92 via-[#030B16]/72 to-[#030B16]/45" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-[#030B16]/90 via-[#030B16]/55 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#030B16]/50 to-transparent" />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-28 pb-12 lg:pt-32 lg:pb-16">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-28 pb-16 lg:pt-32 lg:pb-20">
           <div className="max-w-2xl space-y-4">
             <div className="inline-flex items-center gap-2.5 bg-white/10 border border-sky-300/35 backdrop-blur-md shadow-[0_6px_20px_rgba(0,143,255,0.2)] rounded-full px-4 py-1.5">
               <span className="relative flex h-2 w-2">
