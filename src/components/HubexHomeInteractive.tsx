@@ -247,18 +247,18 @@ export default function HubexHomeInteractive() {
           SECTION 4: OUR SERVICES (ISP Optical Fiber Background Image + Animated Optical Fiber Pulses + Interactive Nodes)
          ===================================================================== */}
       <section className="pt-[50px] pb-10 lg:pt-[80px] lg:pb-12 relative overflow-hidden">
-        {/* Full-Section Light-Mode ISP Fiber Network Background Image */}
+        {/* Full-Section ISP Fiber Network Background Image (Slightly Darker & Richer Contrast) */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/services-isp-bg.jpg"
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 w-full h-full object-cover object-center opacity-70"
+          className="pointer-events-none absolute inset-0 w-full h-full object-cover object-center opacity-95 brightness-[0.84] contrast-[1.1] saturate-[1.18]"
         />
-        {/* Soft Readability Veil + Seamless Top/Bottom Edge Fades so Heading & Service Nodes Stay 100% Crisp */}
-        <div className="pointer-events-none absolute inset-0 bg-white/40" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#F4F9FF] to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#F4F9FF] to-transparent" />
+        {/* Subtle Deep-Slate Tint + Seamless Top/Bottom Edge Fades */}
+        <div className="pointer-events-none absolute inset-0 bg-[#0B1F3A]/22" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#F4F9FF] to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F4F9FF] to-transparent" />
 
         <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] relative z-10">
           {/* Eye-Catching Centered Header */}
