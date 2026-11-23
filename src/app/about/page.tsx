@@ -241,25 +241,6 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {CORE_VALUES.map((val, idx) => (
-              <div
-                key={val.title}
-                className="p-5 rounded-2xl bg-[#000000] border border-[#272727] space-y-2"
-              >
-                <span className="text-xs font-mono font-bold text-brand_cyan">
-                  0{idx + 1}
-                </span>
-                <h3 className="text-base font-semibold text-white">
-                  {val.title}
-                </h3>
-                <p className="text-xs text-[#9C9C9C] leading-relaxed">
-                  {val.description}
-                </p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -458,6 +439,45 @@ export default function AboutPage() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Dedicated Core Values Section (Below Visionary Leadership) */}
+      <section className="py-12 lg:py-16 border-t border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
+          <div className="flex flex-col items-center text-center mb-10 space-y-2.5">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#008FFF]/10 border border-[#008FFF]/30">
+              <span className="w-2 h-2 rounded-full bg-[#008FFF]" />
+              <span className="text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.18em] text-[#0284C7]">
+                Our Foundation
+              </span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-normal text-slate-900">
+              Our Core{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#06B6D4]">
+                Values
+              </span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {CORE_VALUES.map((val, idx) => (
+              <div
+                key={val.title}
+                className="group p-6 rounded-2xl bg-white border border-sky-100 hover:border-[#008FFF]/50 shadow-sm hover:shadow-[0_14px_34px_rgba(0,143,255,0.14)] hover:-translate-y-1 transition-all duration-300 space-y-2.5"
+              >
+                <span className="inline-block text-xs font-mono font-extrabold text-[#008FFF] bg-[#008FFF]/10 px-2.5 py-1 rounded-lg">
+                  0{idx + 1}
+                </span>
+                <h3 className="text-base font-extrabold text-slate-900 group-hover:text-[#008FFF] transition-colors">
+                  {val.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {val.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
