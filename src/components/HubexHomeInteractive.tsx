@@ -49,12 +49,12 @@ export default function HubexHomeInteractive() {
           SECTION 2: HERO IMAGE BANNER (Crystal-Clear Light-Theme Pakistan Optical Fiber Globe — Zero Fog/Blur, Crisp Eye-Catching Typography)
          ===================================================================== */}
       <section className="relative w-full overflow-hidden min-h-[560px] sm:min-h-[600px] lg:min-h-[660px] flex items-center bg-[#F4F9FF]">
-        {/* Full-Width Sharp, Unblurred Light-Theme Hero Banner Image */}
+        {/* Full-Width Lightened Sharp Hero Banner Image (Airy Light Tone So Text & Navbar Headings Read 100% Clearly) */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/hero-banner.jpg"
           alt="EARTHLINK Broadband Pakistan Optical Fiber Network"
-          className="absolute inset-0 w-full h-full object-cover object-right md:object-center brightness-[1.03] contrast-[1.06] saturate-[1.12]"
+          className="absolute inset-0 w-full h-full object-cover object-right md:object-center opacity-55 brightness-[1.12] saturate-[1.08]"
         />
 
         {/* Minimal Seamless Bottom Edge Transition Only (No Foggy/Blurry Scrims Over the Image) */}

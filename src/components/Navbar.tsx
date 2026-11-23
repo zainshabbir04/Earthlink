@@ -28,7 +28,7 @@ export default function Navbar() {
     setMobileOpen(false);
   }, [pathname]);
 
-  const linkColorClass = "text-[#0B1F3A] hover:text-[#008FFF]";
+  const linkColorClass = "text-[#0A192F] font-semibold hover:text-[#008FFF]";
 
   return (
     <>
