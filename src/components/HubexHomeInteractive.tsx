@@ -128,7 +128,7 @@ export default function HubexHomeInteractive() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#0284C7]">
                 The Digital Horizon
               </span>{" "}
-              With Pure Optical Fiber
+              With Pure Optical Connectivity
             </h2>
 
             <p className="text-sm sm:text-base text-[#D3D3D3] mt-2.5 max-w-2xl">
