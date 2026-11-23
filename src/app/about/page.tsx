@@ -89,7 +89,7 @@ export default function AboutPage() {
 
         <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-            {/* Left Column: Layered Architectural Image Frame with Floating Glass Telemetry Badges */}
+            {/* Left Column: Clean Layered Architectural Image Frame (No Overlays or Headings on Image) */}
             <div className="lg:col-span-6 relative group">
               {/* Decorative Offset Dashed Optical Frame */}
               <div className="pointer-events-none absolute -inset-3 rounded-[30px] border-2 border-dashed border-[#008FFF]/30 transition-transform duration-500 group-hover:scale-[1.01]" />
@@ -103,36 +103,6 @@ export default function AboutPage() {
                   alt="EARTHLINK Broadband Enterprise Optical Fiber & Data Center Operations"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#030B16]/55 via-transparent to-transparent" />
-
-                {/* Top-Left Live NOC Status Pill */}
-                <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#030B16]/75 border border-cyan-300/40 backdrop-blur-md">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-300 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-300" />
-                  </span>
-                  <span
-                    style={{ color: "#FFFFFF" }}
-                    className="text-[11px] font-bold uppercase tracking-wider"
-                  >
-                    24/7/365 NOC Operations
-                  </span>
-                </div>
-              </div>
-
-              {/* Bottom-Right Overlapping Floating 3D Glass Highlight Card */}
-              <div className="absolute -bottom-5 right-4 sm:right-6 bg-white/95 backdrop-blur-xl border border-sky-200 rounded-2xl px-5 py-3.5 shadow-[0_18px_40px_rgba(15,23,42,0.16)] flex items-center gap-3.5">
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#008FFF] to-[#06B6D4] flex items-center justify-center shadow-md shrink-0">
-                  <Network className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <div className="text-xl font-black text-slate-900 font-mono leading-none">
-                    99.99% SLA
-                  </div>
-                  <div className="text-[11px] font-bold uppercase tracking-wider text-[#0284C7] mt-1">
-                    100G Optical Core
-                  </div>
-                </div>
               </div>
             </div>
 
