@@ -1,17 +1,11 @@
 import React from "react";
 import type { Metadata } from "next";
 import {
-  CheckCircle2,
   Cpu,
   Network,
-  MapPin,
 } from "lucide-react";
-import {
-  BRAND_INFO,
-  VERIFIED_INFRASTRUCTURE_STATS,
-} from "@/data/siteData";
+import { BRAND_INFO } from "@/data/siteData";
 import CTASection from "@/components/CTASection";
-import AnimatedCounter from "@/components/AnimatedCounter";
 
 export const metadata: Metadata = {
   title: "About Us — Corporate Profile & Optical Infrastructure",
@@ -81,76 +75,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Background & 4 Verified Stats */}
-      <section className="py-12 lg:py-16">
-        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-6 space-y-4">
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-brand_cyan">
-                01 // Our Infrastructure
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight">
-                Pure Optical Fiber —{" "}
-                <span className="text-brand_cyan">Zero Legacy Copper</span>
-              </h2>
-              <p className="text-[#D3D3D3] text-sm sm:text-base leading-relaxed">
-                {BRAND_INFO.companyBackground}
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
-                {[
-                  "1,200+ km armored metro fiber",
-                  "100G core ring (<50ms failover)",
-                  "1:1 symmetrical DIA bandwidth",
-                  "Cisco, Juniper & Huawei core",
-                ].map((point) => (
-                  <div
-                    key={point}
-                    className="flex items-center gap-2.5 text-xs sm:text-sm text-[#D3D3D3]"
-                  >
-                    <CheckCircle2 className="w-4 h-4 text-brand_cyan shrink-0" />
-                    <span>{point}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="pt-3 flex flex-wrap gap-1.5">
-                {BRAND_INFO.contactDetails.coverageCorridors.map((c) => (
-                  <span
-                    key={c}
-                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#0D0D0D] border border-[#272727] text-xs text-[#D3D3D3]"
-                  >
-                    <MapPin className="w-3 h-3 text-brand_cyan" />
-                    {c}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="lg:col-span-6 grid grid-cols-2 gap-4">
-              {VERIFIED_INFRASTRUCTURE_STATS.map((stat) => (
-                <div
-                  key={stat.id}
-                  className="p-5 rounded-2xl bg-[#000000] border border-[#272727]"
-                >
-                  <div className="text-3xl font-bold text-brand_cyan mb-1">
-                    <AnimatedCounter value={stat.value} />
-                  </div>
-                  <div className="text-sm font-semibold text-white">
-                    {stat.label}
-                  </div>
-                  <p className="text-xs text-[#9C9C9C] mt-1">
-                    {stat.detail}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Mission, Vision & Core Values */}
-      <section className="py-12 border-t border-[#1a1a1a]">
+      <section className="py-12 lg:py-16">
         <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] space-y-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-7 rounded-2xl bg-[#000000] border border-[#272727] space-y-3">
