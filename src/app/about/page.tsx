@@ -45,30 +45,37 @@ export default function AboutPage() {
           className="absolute inset-0 w-full h-full object-cover object-center blur-[2px] scale-[1.03]"
         />
 
-        {/* Stronger Top & Left Dark-Navy Scrims so Navbar Logo, Links & Hero Text Pop Clearly */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#030B16]/92 via-[#030B16]/72 to-[#030B16]/45" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-[#030B16]/90 via-[#030B16]/55 to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#030B16]/50 to-transparent" />
+        {/* Deep Dark-Navy Scrims so Navbar Logo, Links & Hero Text Are 100% Razor-Sharp */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#020812]/95 via-[#020812]/82 to-[#020812]/45" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-[#020812]/92 via-[#020812]/60 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#020812]/55 to-transparent" />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-28 pb-16 lg:pt-32 lg:pb-20">
-          <div className="max-w-2xl space-y-4">
-            <div className="inline-flex items-center gap-2.5 bg-white/10 border border-sky-300/35 backdrop-blur-md shadow-[0_6px_20px_rgba(0,143,255,0.2)] rounded-full px-4 py-1.5">
-              <span className="relative flex h-2 w-2">
+          <div className="max-w-2xl space-y-5">
+            <div className="inline-flex items-center gap-2.5 bg-[#031226]/80 border border-cyan-300/50 backdrop-blur-md shadow-[0_6px_24px_rgba(0,143,255,0.28)] rounded-full px-4 py-1.5">
+              <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-300 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-300" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-300" />
               </span>
-              <span className="!text-sky-100 text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.14em]">
+              <span
+                style={{ color: "#FFFFFF" }}
+                className="text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.14em]"
+              >
                 Corporate Profile · {BRAND_INFO.companyName}
               </span>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-normal leading-tight !text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]">
+            <h1
+              style={{ color: "#FFFFFF" }}
+              className="text-3xl sm:text-4xl lg:text-[3.25rem] font-black tracking-normal leading-[1.12] drop-shadow-[0_4px_24px_rgba(0,0,0,0.75)]"
+            >
               Engineering the{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] via-[#00A8FF] to-[#67E8F9]">
-                Subterranean Optical
-              </span>{" "}
+              <span style={{ color: "#38BDF8" }}>Subterranean Optical</span>{" "}
               Backbone
             </h1>
-            <p className="text-sm sm:text-base lg:text-[16.5px] !text-sky-100/90 font-medium leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+            <p
+              style={{ color: "#F0F9FF" }}
+              className="text-base sm:text-[17px] font-medium leading-relaxed max-w-xl drop-shadow-[0_2px_14px_rgba(0,0,0,0.8)]"
+            >
               {BRAND_INFO.companyIntroduction}
             </p>
           </div>
