@@ -46,10 +46,10 @@ export default function HubexHomeInteractive() {
   return (
     <div className="bg-black-gradient text-white">
       {/* =====================================================================
-          SECTION 2: HERO IMAGE BANNER (Full-Bleed Pakistan Optical Fiber Globe Banner + Exact Text & Buttons Overlay)
+          SECTION 2: HERO IMAGE BANNER (Full-Bleed Light-Theme Pakistan Optical Fiber Globe Banner + Exact Text & Buttons Overlay)
          ===================================================================== */}
       <section className="relative w-full overflow-hidden min-h-[560px] sm:min-h-[600px] lg:min-h-[660px] flex items-center">
-        {/* Full-Width Hero Banner Image */}
+        {/* Full-Width Light-Theme Hero Banner Image */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/hero-banner.jpg"
@@ -57,31 +57,31 @@ export default function HubexHomeInteractive() {
           className="absolute inset-0 w-full h-full object-cover object-right md:object-center"
         />
 
-        {/* Subtle Top & Left Gradient Scrim for Crisp Transparent Navbar & Text Contrast */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#030B16]/85 via-[#030B16]/48 to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#030B16]/65 to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#030B16]/40 to-transparent" />
+        {/* Soft Ice-White Left & Top Scrim for Crisp Dark-Slate Text Contrast While Keeping Glowing Blue Fiber Globe 100% Vivid */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#F0F9FF]/90 via-[#F0F9FF]/55 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-white/70 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#F4F9FF] to-transparent" />
 
         {/* Exact Hero Text & Buttons Overlay on Left */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-28 pb-16 lg:pt-32 lg:pb-20">
           <div className="max-w-[520px] space-y-4">
             {/* Bold Hero Heading */}
-            <h1 className="text-3xl sm:text-5xl lg:text-[3.1rem] xl:text-[3.35rem] leading-[1.06] font-black tracking-tight uppercase !text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]">
+            <h1 className="text-3xl sm:text-5xl lg:text-[3.1rem] xl:text-[3.35rem] leading-[1.06] font-black tracking-tight uppercase !text-[#0B1F3A] drop-shadow-[0_2px_10px_rgba(255,255,255,0.85)]">
               CONNECTING <br />
               BUSINESSES. <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] via-[#00A8FF] to-[#67E8F9]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0284C7] to-[#0FA4E8]">
                 POWERING <br />
                 DIGITAL GROWTH.
               </span>
             </h1>
 
             {/* Tagline Strip */}
-            <p className="text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.1em] !text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] pt-0.5">
+            <p className="text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.1em] !text-[#0B1F3A] pt-0.5">
               INTERNET CONNECTIVITY | ENTERPRISE NETWORKING | IT INFRASTRUCTURE
             </p>
 
             {/* Description Paragraph */}
-            <p className="text-sm sm:text-[15px] lg:text-[15.5px] !text-sky-100/90 font-medium leading-relaxed max-w-[460px] drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+            <p className="text-sm sm:text-[15px] lg:text-[15.5px] !text-slate-700 font-semibold leading-relaxed max-w-[460px]">
               Earthlink delivers reliable internet connectivity, advanced networking and comprehensive IT infrastructure solutions designed to keep businesses connected, productive and secure.
             </p>
 
@@ -89,7 +89,7 @@ export default function HubexHomeInteractive() {
             <div className="pt-2 flex flex-wrap items-center gap-3.5">
               <Link
                 href="/services"
-                className="bg-gradient-to-r from-[#008FFF] to-[#0FA4E8] hover:from-[#0284C7] hover:to-[#008FFF] !text-white text-xs sm:text-[13px] font-bold uppercase tracking-wider rounded-full h-[46px] px-7 inline-flex items-center justify-center gap-2 shadow-[0_10px_28px_rgba(0,143,255,0.42)] transition-all whitespace-nowrap"
+                className="bg-gradient-to-r from-[#008FFF] to-[#0FA4E8] hover:from-[#0284C7] hover:to-[#008FFF] !text-white text-xs sm:text-[13px] font-bold uppercase tracking-wider rounded-full h-[46px] px-7 inline-flex items-center justify-center gap-2 shadow-[0_10px_28px_rgba(0,143,255,0.36)] transition-all whitespace-nowrap"
               >
                 <span>EXPLORE OUR SOLUTIONS</span>
                 <span>→</span>
@@ -97,7 +97,7 @@ export default function HubexHomeInteractive() {
 
               <Link
                 href="/contact"
-                className="bg-white/10 hover:bg-white !text-white hover:!text-slate-900 text-xs sm:text-[13px] uppercase tracking-wider border border-white/50 hover:border-white backdrop-blur-md rounded-full font-bold transition-all h-[46px] px-7 inline-flex items-center justify-center gap-2 shadow-sm whitespace-nowrap"
+                className="bg-white/90 hover:bg-[#0B1F3A] !text-[#0B1F3A] hover:!text-white text-xs sm:text-[13px] uppercase tracking-wider border-2 border-[#0B1F3A]/25 hover:border-[#0B1F3A] backdrop-blur-md rounded-full font-bold transition-all h-[46px] px-7 inline-flex items-center justify-center gap-2 shadow-sm whitespace-nowrap"
               >
                 <span>TALK TO OUR EXPERTS</span>
                 <span>→</span>

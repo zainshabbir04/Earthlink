@@ -28,13 +28,11 @@ export default function Navbar() {
     setMobileOpen(false);
   }, [pathname]);
 
-  const linkColorClass = isTransparent
-    ? "text-white/90 hover:text-white"
-    : "text-[#0B1F3A] hover:text-[#008FFF]";
+  const linkColorClass = "text-[#0B1F3A] hover:text-[#008FFF]";
 
   return (
     <>
-      {/* Anchored Top Header (Stays Fixed in One Place at Top of Page — Transparent Over Home Hero, Solid White on Inner Pages) */}
+      {/* Anchored Top Header (Stays Fixed in One Place at Top of Page — Transparent Over Light Hero, Solid White on Inner Pages) */}
       <header
         className={`z-50 w-full transition-all duration-300 ${
           isTransparent
@@ -43,7 +41,7 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-5 lg:px-10 flex items-center justify-between h-[86px]">
-          {/* Left: Official EARTHLINK Logo (Auto-switches Light/Dark for Crisp Contrast) */}
+          {/* Left: Official EARTHLINK Color Logo (Crisp on Light Hero Banner & White Inner Pages) */}
           <Link
             href="/"
             className="inline-flex items-center hover:opacity-95 transition-opacity shrink-0"
@@ -51,7 +49,7 @@ export default function Navbar() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={isTransparent ? "/logo-dark.png" : "/logo-color.png"}
+              src="/logo-color.png"
               alt="EARTHLINK Broadband (Pvt.) Ltd."
               className="h-14 sm:h-16 lg:h-[74px] w-auto object-contain transition-all duration-300"
             />
@@ -71,11 +69,7 @@ export default function Navbar() {
                     <Link
                       href={item.href}
                       className={`text-sm font-medium flex items-center gap-1 py-2 transition-colors ${
-                        isActive
-                          ? isTransparent
-                            ? "text-[#38BDF8] font-semibold"
-                            : "text-[#008FFF] font-semibold"
-                          : linkColorClass
+                        isActive ? "text-[#008FFF] font-semibold" : linkColorClass
                       }`}
                     >
                       <span>{item.label}</span>
@@ -113,11 +107,7 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   className={`text-sm font-medium transition-colors ${
-                    isActive
-                      ? isTransparent
-                        ? "text-[#38BDF8] font-semibold"
-                        : "text-[#008FFF] font-semibold"
-                      : linkColorClass
+                    isActive ? "text-[#008FFF] font-semibold" : linkColorClass
                   }`}
                 >
                   {item.label}
@@ -140,9 +130,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setMobileOpen(true)}
-            className={`lg:hidden p-2 rounded-lg transition-colors ${
-              isTransparent ? "text-white" : "text-[#0B1F3A]"
-            }`}
+            className="lg:hidden p-2 rounded-lg text-[#0B1F3A] hover:text-[#008FFF] transition-colors"
             aria-label="Open menu"
           >
             <Menu className="w-6 h-6" />
