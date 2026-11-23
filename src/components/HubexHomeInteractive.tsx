@@ -244,40 +244,42 @@ export default function HubexHomeInteractive() {
       </section>
 
       {/* =====================================================================
-          SECTION 4: OUR SERVICES (Telecom City & Fiber Background Image + Animated Optical Fiber Pulses + Interactive Nodes)
+          SECTION 4: OUR SERVICES (Light-Blended ISP Telecom Skyline Background + Animated Optical Fiber Pulses + Interactive Nodes)
          ===================================================================== */}
-      <section className="pt-[55px] pb-12 lg:pt-[80px] lg:pb-16 relative overflow-hidden">
-        {/* Full-Section User ISP Telecom City & Fiber Background Image */}
+      <section className="pt-[50px] pb-10 lg:pt-[80px] lg:pb-12 relative overflow-hidden">
+        {/* Full-Section User ISP Telecom Skyline Background Image (Light-Blended Like Previous Style) */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/services-isp-bg.jpg"
           alt=""
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 w-full h-full object-cover object-center"
+          className="pointer-events-none absolute inset-0 w-full h-full object-cover object-center opacity-55"
         />
-        {/* Balanced Deep-Ocean Overlay for Crisp High-Contrast Text & Glowing Service Nodes */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#061529]/72 via-[#061529]/55 to-[#061529]/75" />
+        {/* Soft White-Sky Veil + Seamless Top/Bottom Fades for Crisp Text Visibility */}
+        <div className="pointer-events-none absolute inset-0 bg-white/45" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#F4F9FF] to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#F4F9FF] to-transparent" />
 
         <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] relative z-10">
           {/* Eye-Catching Centered Header */}
           <div className="flex flex-col items-center text-center mb-6 lg:mb-8">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 border border-sky-300/40 shadow-sm mb-2.5 backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95 border border-[#008FFF]/35 shadow-sm mb-2.5 backdrop-blur-sm">
               <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-300 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-300" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#008FFF]" />
               </span>
-              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] !text-sky-100">
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-[#0284C7]">
                 Optical Service Ecosystem
               </span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight !text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.45)]">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-slate-900 drop-shadow-[0_2px_12px_rgba(255,255,255,0.95)]">
               Our{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] via-[#67E8F9] to-white">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#0284C7]">
                 Enterprise Services
               </span>
             </h2>
-            <p className="!text-sky-100/95 font-medium text-sm sm:text-base max-w-xl mt-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+            <p className="text-slate-800 font-semibold text-sm sm:text-base max-w-xl mt-2 bg-white/70 backdrop-blur-sm px-4 py-1.5 rounded-full shadow-sm">
               Carrier-grade optical connectivity, cloud, and cybersecurity engineered for zero-downtime enterprise operations.
             </p>
           </div>
