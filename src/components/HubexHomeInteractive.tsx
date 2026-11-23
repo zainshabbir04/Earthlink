@@ -69,46 +69,43 @@ export default function HubexHomeInteractive() {
 
         {/* Exact Hero Text & Buttons Overlay on Left */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-28 pb-16 lg:pt-32 lg:pb-24">
-          <div className="max-w-xl space-y-5">
-            {/* Live Network Badge */}
-            <div className="inline-flex items-center gap-2.5 bg-white/10 border border-sky-300/35 backdrop-blur-md shadow-[0_6px_20px_rgba(0,143,255,0.2)] rounded-full px-4 py-1.5">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-300 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-300" />
-              </span>
-              <span className="!text-sky-100 text-xs font-extrabold uppercase tracking-wider">
-                {BRAND_INFO.companyName}
-              </span>
-            </div>
-
+          <div className="max-w-2xl space-y-5">
             {/* Bold Hero Heading */}
-            <h1 className="text-4xl sm:text-6xl xl:text-[4.25rem] leading-[1.06] font-black tracking-tight uppercase !text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]">
-              GET THE SPEED, <br />
+            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[3.85rem] leading-[1.06] font-black tracking-tight uppercase !text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]">
+              CONNECTING <br />
+              BUSINESSES. <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] via-[#00A8FF] to-[#67E8F9]">
-                YOU NEED!
+                POWERING <br />
+                DIGITAL GROWTH.
               </span>
             </h1>
 
-            {/* Subtitle */}
-            <p className="text-[15px] lg:text-[17px] !text-sky-100/90 font-medium leading-relaxed max-w-md drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
-              Pure 1:1 symmetrical optical fiber with 99.99% uptime SLA &amp; 24/7 NOC support.
+            {/* Tagline Strip */}
+            <p className="text-xs sm:text-[13px] font-extrabold uppercase tracking-[0.12em] !text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]">
+              INTERNET CONNECTIVITY | ENTERPRISE NETWORKING | IT INFRASTRUCTURE
+            </p>
+
+            {/* Description Paragraph */}
+            <p className="text-[15px] lg:text-[16.5px] !text-sky-100/90 font-medium leading-relaxed max-w-lg drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+              Earthlink delivers reliable internet connectivity, advanced networking and comprehensive IT infrastructure solutions designed to keep businesses connected, productive and secure.
             </p>
 
             {/* Dual CTA Buttons */}
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <Link
-                href="/contact"
-                className="bg-gradient-to-r from-[#008FFF] to-[#0FA4E8] hover:from-[#0284C7] hover:to-[#008FFF] !text-white text-[15px] font-bold rounded-full h-[48px] px-8 inline-flex items-center justify-center gap-2 shadow-[0_10px_28px_rgba(0,143,255,0.42)] transition-all whitespace-nowrap"
+                href="/services"
+                className="bg-gradient-to-r from-[#008FFF] to-[#0FA4E8] hover:from-[#0284C7] hover:to-[#008FFF] !text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full h-[48px] px-7 inline-flex items-center justify-center gap-2 shadow-[0_10px_28px_rgba(0,143,255,0.42)] transition-all whitespace-nowrap"
               >
-                <span>Get Connected</span>
+                <span>EXPLORE OUR SOLUTIONS</span>
                 <span>→</span>
               </Link>
 
               <Link
-                href="/services"
-                className="bg-white/10 hover:bg-white !text-white hover:!text-slate-900 text-[15px] border-2 border-white/45 hover:border-white backdrop-blur-md rounded-full font-bold transition-all h-[48px] px-7 inline-flex items-center justify-center shadow-sm whitespace-nowrap"
+                href="/contact"
+                className="bg-white/10 hover:bg-white !text-white hover:!text-slate-900 text-xs sm:text-sm uppercase tracking-wider border-2 border-white/45 hover:border-white backdrop-blur-md rounded-full font-bold transition-all h-[48px] px-7 inline-flex items-center justify-center gap-2 shadow-sm whitespace-nowrap"
               >
-                Explore Services
+                <span>TALK TO OUR EXPERTS</span>
+                <span>→</span>
               </Link>
             </div>
           </div>
