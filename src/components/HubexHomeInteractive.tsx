@@ -487,44 +487,48 @@ export default function HubexHomeInteractive() {
       </section>
 
       {/* =====================================================================
-          SECTION 6: ENTERPRISE CTA BANNER (Clean Minimalist Layout Matching Reference — Keeping Exact bg-hubex-banner Theme)
+          SECTION 6: ENTERPRISE CTA CARD (Original Card Size & bg-hubex-banner Theme + Clean Reference Text & Buttons)
          ===================================================================== */}
-      <section className="relative w-full bg-hubex-banner overflow-hidden py-20 md:py-28">
-        {/* Subtle Architectural Grid Overlay on Existing Brand Gradient Theme */}
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.1]"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, rgba(255,255,255,0.35) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.35) 1px, transparent 1px)",
-            backgroundSize: "52px 52px",
-          }}
-        />
-        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] rounded-full bg-sky-400/15 blur-[130px]" />
+      <section className="pt-14 pb-12 lg:pt-20 lg:pb-16">
+        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] relative">
+          <div className="mx-auto w-full max-w-[74rem] py-16 md:py-24 px-6 sm:px-10 lg:px-14 rounded-3xl border border-sky-300/35 bg-hubex-banner relative overflow-hidden flex flex-col justify-center items-center text-center shadow-[0_24px_60px_rgba(2,132,199,0.28)]">
+            {/* Subtle Architectural Grid Overlay & Soft Glow on Existing Brand Gradient Theme */}
+            <div
+              className="pointer-events-none absolute inset-0 opacity-[0.1]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, rgba(255,255,255,0.35) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.35) 1px, transparent 1px)",
+                backgroundSize: "52px 52px",
+              }}
+            />
+            <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] rounded-full bg-sky-400/15 blur-[110px]" />
 
-        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center space-y-5">
-          <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold tracking-tight !text-white leading-[1.12]">
-            Ready to build resilient <br />
-            optical connectivity?
-          </h2>
+            <div className="relative z-10 max-w-2xl mx-auto space-y-5">
+              <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold tracking-tight !text-white leading-[1.12]">
+                Ready to build resilient <br />
+                optical connectivity?
+              </h2>
 
-          <p className="text-sm sm:text-base lg:text-[17px] !text-sky-100/90 max-w-xl mx-auto leading-relaxed font-medium">
-            Talk to our experts about your enterprise fiber internet, MPLS networking, or IT infrastructure project.
-          </p>
+              <p className="text-sm sm:text-base lg:text-[17px] !text-sky-100/90 max-w-xl mx-auto leading-relaxed font-medium">
+                Talk to our experts about your enterprise fiber internet, MPLS networking, or IT infrastructure project.
+              </p>
 
-          <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-[#00B4D8] hover:bg-[#0096C7] !text-white text-sm sm:text-[15px] font-bold px-7 h-[48px] rounded-xl shadow-[0_12px_28px_rgba(0,180,216,0.38)] hover:-translate-y-0.5 transition-all duration-300"
-            >
-              <span>Request a Consultation</span>
-              <span>→</span>
-            </Link>
-            <Link
-              href="/services"
-              className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/40 hover:border-white !text-white text-sm sm:text-[15px] font-bold px-7 h-[48px] rounded-xl backdrop-blur-md transition-all duration-300"
-            >
-              View Services
-            </Link>
+              <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 bg-[#00B4D8] hover:bg-[#0096C7] !text-white text-sm sm:text-[15px] font-bold px-7 h-[48px] rounded-xl shadow-[0_12px_28px_rgba(0,180,216,0.38)] hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  <span>Request a Consultation</span>
+                  <span>→</span>
+                </Link>
+                <Link
+                  href="/services"
+                  className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/40 hover:border-white !text-white text-sm sm:text-[15px] font-bold px-7 h-[48px] rounded-xl backdrop-blur-md transition-all duration-300"
+                >
+                  View Services
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
