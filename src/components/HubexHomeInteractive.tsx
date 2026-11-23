@@ -51,207 +51,64 @@ export default function HubexHomeInteractive() {
   return (
     <div className="bg-black-gradient text-white">
       {/* =====================================================================
-          SECTION 2: HERO SECTION (Balanced Layout + Seamlessly Blended Brand-Cyan Video + Centered Logo & Orbiting Headings)
+          SECTION 2: HERO IMAGE BANNER (Full-Bleed Pakistan Optical Fiber Globe Banner + Exact Text & Buttons Overlay)
          ===================================================================== */}
-      <section className="relative flex items-center justify-center overflow-hidden min-h-[540px] lg:min-h-[600px]">
-        {/* Subtle Background Tech Grid & Soft Cyan Glow */}
-        <div className="absolute inset-0 bg-tech-grid opacity-45 pointer-events-none" />
-        <div className="absolute top-1/4 right-1/4 w-[480px] h-[480px] rounded-full bg-[#008FFF]/12 blur-[130px] pointer-events-none" />
+      <section className="relative w-full overflow-hidden min-h-[500px] sm:min-h-[540px] lg:min-h-[600px] flex items-center mt-2">
+        {/* Full-Width Hero Banner Image */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/hero-banner.jpg"
+          alt="EARTHLINK Broadband Pakistan Optical Fiber Network"
+          className="absolute inset-0 w-full h-full object-cover object-right md:object-center"
+        />
 
-        {/* Precision SVG Color-Grading Filter: Dark Video BG -> Pure White (Transparent in Multiply) & Glowing Rings -> Exact #008FFF Sky-Cyan */}
-        <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true">
-          <defs>
-            <filter id="earthlinkCyanGrade" colorInterpolationFilters="sRGB">
-              <feColorMatrix
-                type="matrix"
-                values="
-                  -0.28 -0.92 -0.10 0 1.12
-                  -0.12 -0.40 -0.04 0 1.10
-                  -0.01 -0.04 -0.01 0 1.08
-                   0     0     0    1 0
-                "
-              />
-            </filter>
-          </defs>
-        </svg>
+        {/* Subtle Left-Side Gradient Scrim for Crisp Text Contrast While Keeping Right Fiber Globe 100% Vivid */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#030B16]/85 via-[#030B16]/50 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#030B16]/40 to-transparent" />
 
-        <div className="relative flex items-center justify-center w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] py-8 lg:py-12">
-          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 w-full items-center">
-            {/* Left Column: Crisp Enterprise Hero Copy */}
-            <div className="relative flex flex-col justify-center items-start w-full">
-              <div className="relative space-y-5">
-                {/* Live Network Badge */}
-                <div className="inline-flex items-center gap-2.5 bg-white/95 border border-[#008FFF]/35 shadow-[0_6px_20px_rgba(0,143,255,0.12)] rounded-full px-4 py-1.5">
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#008FFF]" />
-                  </span>
-                  <span className="text-[#0284C7] text-xs font-extrabold uppercase tracking-wider">
-                    {BRAND_INFO.companyName}
-                  </span>
-                </div>
-
-                {/* Bold Hero Heading */}
-                <h1 className="text-4xl sm:text-6xl xl:text-[4.25rem] leading-[1.06] font-black tracking-tight uppercase text-slate-900">
-                  GET THE SPEED, <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#0284C7] drop-shadow-sm">
-                    YOU NEED!
-                  </span>
-                </h1>
-
-                {/* Crisp Readable Subtitle */}
-                <p className="text-[15px] lg:text-[17px] text-slate-600 font-medium leading-relaxed max-w-md">
-                  Pure 1:1 symmetrical optical fiber with 99.99% uptime SLA &amp; 24/7 NOC support.
-                </p>
-
-                {/* Dual CTA Buttons */}
-                <div className="pt-2 flex flex-wrap items-center gap-4">
-                  <Link
-                    href="/contact"
-                    className="bg-gradient-to-r from-[#008FFF] to-[#0FA4E8] hover:from-[#0284C7] hover:to-[#008FFF] text-white text-[15px] font-bold rounded-full h-[48px] px-8 inline-flex items-center justify-center gap-2 shadow-[0_10px_25px_rgba(0,143,255,0.32)] transition-all whitespace-nowrap"
-                  >
-                    <span>Get Connected</span>
-                    <span>→</span>
-                  </Link>
-
-                  <Link
-                    href="/services"
-                    className="bg-white/95 text-slate-900 text-[15px] border-2 border-[#008FFF]/40 hover:border-[#008FFF] rounded-full font-bold hover:bg-[#008FFF] hover:text-white transition-all h-[48px] px-7 inline-flex items-center justify-center shadow-sm whitespace-nowrap"
-                  >
-                    Explore Services
-                  </Link>
-                </div>
-              </div>
+        {/* Exact Hero Text & Buttons Overlay on Left */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] py-14 lg:py-20">
+          <div className="max-w-xl space-y-5">
+            {/* Live Network Badge */}
+            <div className="inline-flex items-center gap-2.5 bg-white/10 border border-sky-300/35 backdrop-blur-md shadow-[0_6px_20px_rgba(0,143,255,0.2)] rounded-full px-4 py-1.5">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-300 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-300" />
+              </span>
+              <span className="!text-sky-100 text-xs font-extrabold uppercase tracking-wider">
+                {BRAND_INFO.companyName}
+              </span>
             </div>
 
-            {/* Right Column: Seamless Blended Video Visual + Centered EARTHLINK Logo & Orbiting Service Headings */}
-            <div className="relative flex items-center justify-center w-full">
-              <div className="relative flex items-center justify-center w-[340px] sm:w-[440px] md:w-[500px] h-[360px] sm:h-[440px] md:h-[480px]">
-                {/* Seamlessly Blended Video (Direct mix-blend-multiply with NO isolated stacking wrapper so background merges 100% invisibly!) */}
-                <video
-                  src="/hero-banner.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="pointer-events-none absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-95"
-                  style={{
-                    filter: "url(#earthlinkCyanGrade) contrast(1.12)",
-                    WebkitMaskImage:
-                      "radial-gradient(circle at 50% 50%, #000 48%, transparent 74%)",
-                    maskImage:
-                      "radial-gradient(circle at 50% 50%, #000 48%, transparent 74%)",
-                  }}
-                />
+            {/* Bold Hero Heading */}
+            <h1 className="text-4xl sm:text-6xl xl:text-[4.25rem] leading-[1.06] font-black tracking-tight uppercase !text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]">
+              GET THE SPEED, <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] via-[#00A8FF] to-[#67E8F9]">
+                YOU NEED!
+              </span>
+            </h1>
 
-                {/* Rotating Subtle Cyan HUD Ring Centered Over Video */}
-                <svg
-                  viewBox="0 0 400 400"
-                  className="absolute w-[250px] sm:w-[300px] md:w-[335px] h-[250px] sm:h-[300px] md:h-[335px] animate-rotateImage pointer-events-none"
-                >
-                  <defs>
-                    <linearGradient
-                      id="hubexRingGrad"
-                      x1="0%"
-                      y1="0%"
-                      x2="100%"
-                      y2="100%"
-                    >
-                      <stop offset="0%" stopColor="#008FFF" stopOpacity="0.9" />
-                      <stop
-                        offset="50%"
-                        stopColor="#2EC1D9"
-                        stopOpacity="0.45"
-                      />
-                      <stop
-                        offset="100%"
-                        stopColor="#008FFF"
-                        stopOpacity="0.85"
-                      />
-                    </linearGradient>
-                  </defs>
-                  <circle
-                    cx="200"
-                    cy="200"
-                    r="182"
-                    fill="none"
-                    stroke="url(#hubexRingGrad)"
-                    strokeWidth="2.2"
-                    strokeDasharray="28 14 8 14"
-                  />
-                  <circle
-                    cx="200"
-                    cy="200"
-                    r="154"
-                    fill="none"
-                    stroke="#0FA4E8"
-                    strokeWidth="1.5"
-                    strokeDasharray="6 12"
-                    strokeOpacity="0.6"
-                  />
-                </svg>
+            {/* Subtitle */}
+            <p className="text-[15px] lg:text-[17px] !text-sky-100/90 font-medium leading-relaxed max-w-md drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+              Pure 1:1 symmetrical optical fiber with 99.99% uptime SLA &amp; 24/7 NOC support.
+            </p>
 
-                {/* Official EARTHLINK Logo Right in the Center */}
-                <div className="relative z-10 flex items-center justify-center">
-                  <div className="w-[144px] sm:w-[172px] md:w-[192px] h-[144px] sm:h-[172px] md:h-[192px] rounded-full bg-white/95 border-2 border-[#008FFF]/65 shadow-[0_14px_45px_rgba(0,143,255,0.28)] animate-breathe flex items-center justify-center p-5 backdrop-blur-md">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="/logo-color.png"
-                      alt="EARTHLINK Broadband (Pvt.) Ltd."
-                      className="w-full h-auto object-contain"
-                    />
-                  </div>
-                </div>
+            {/* Dual CTA Buttons */}
+            <div className="pt-2 flex flex-wrap items-center gap-4">
+              <Link
+                href="/contact"
+                className="bg-gradient-to-r from-[#008FFF] to-[#0FA4E8] hover:from-[#0284C7] hover:to-[#008FFF] !text-white text-[15px] font-bold rounded-full h-[48px] px-8 inline-flex items-center justify-center gap-2 shadow-[0_10px_28px_rgba(0,143,255,0.42)] transition-all whitespace-nowrap"
+              >
+                <span>Get Connected</span>
+                <span>→</span>
+              </Link>
 
-                {/* 5 Service Headings Revolving Smoothly in a 360° Circle Around the Center Logo */}
-                <div className="absolute w-[275px] sm:w-[340px] md:w-[375px] h-[275px] sm:h-[340px] md:h-[375px] rounded-full animate-[spin_24s_linear_infinite] z-20 pointer-events-none">
-                  {[
-                    {
-                      label: "Dedicated Internet (1:1 DIA)",
-                      top: "0%",
-                      left: "50%",
-                      dotColor: "bg-brand_cyan shadow-[0_0_8px_#2EC1D9]",
-                    },
-                    {
-                      label: "Cloud & Managed IT",
-                      top: "34.5%",
-                      left: "97.5%",
-                      dotColor: "bg-[#008FFF] shadow-[0_0_8px_#008FFF]",
-                    },
-                    {
-                      label: "Cybersecurity & 24/7 NOC",
-                      top: "90.5%",
-                      left: "79.4%",
-                      dotColor: "bg-brand_cyan shadow-[0_0_8px_#2EC1D9]",
-                    },
-                    {
-                      label: "Point-to-Point Optical (<1ms)",
-                      top: "90.5%",
-                      left: "20.6%",
-                      dotColor: "bg-[#008FFF] shadow-[0_0_8px_#008FFF]",
-                    },
-                    {
-                      label: "MPLS & Multi-Branch VPN",
-                      top: "34.5%",
-                      left: "2.5%",
-                      dotColor: "bg-brand_cyan shadow-[0_0_8px_#2EC1D9]",
-                    },
-                  ].map((item) => (
-                    <div
-                      key={item.label}
-                      style={{ top: item.top, left: item.left }}
-                      className="absolute -translate-x-1/2 -translate-y-1/2"
-                    >
-                      <div className="animate-[spin_24s_linear_infinite_reverse] bg-white/95 backdrop-blur-md border border-[#008FFF]/55 shadow-[0_8px_24px_rgba(14,165,233,0.28)] text-[10px] xl:text-[12px] px-3 py-1.5 rounded-full whitespace-nowrap">
-                        <span className="flex items-center gap-1.5 text-slate-900 font-bold">
-                          <span className={`w-2 h-2 rounded-full ${item.dotColor}`} />
-                          {item.label}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <Link
+                href="/services"
+                className="bg-white/10 hover:bg-white !text-white hover:!text-slate-900 text-[15px] border-2 border-white/45 hover:border-white backdrop-blur-md rounded-full font-bold transition-all h-[48px] px-7 inline-flex items-center justify-center shadow-sm whitespace-nowrap"
+              >
+                Explore Services
+              </Link>
             </div>
           </div>
         </div>
