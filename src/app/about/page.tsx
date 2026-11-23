@@ -273,10 +273,11 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* 2-Column Clean Minimalist White Executive Editorial Cards (No Heavy Color Fills) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+          {/* Unique Alternating Full-Width Editorial Magazine Leadership Rows (Clean White & Slate, Distinct Zig-Zag Layout) */}
+          <div className="space-y-12 lg:space-y-14">
             {[
               {
+                index: "01",
                 name: "Mudassar Riaz",
                 role: "Chief Executive Officer (CEO) & Founder",
                 badge: "CHIEF EXECUTIVE OFFICER",
@@ -289,7 +290,7 @@ export default function AboutPage() {
                 bio1: `As Chief Executive Officer and visionary founder of ${BRAND_INFO.companyName}, Mudassar Riaz has spearheaded the company's transformation into one of the region's most trusted carrier-grade optical ISPs.`,
                 bio2: "With an extensive background in optical telecommunications engineering, transmission systems, and telecom regulatory governance, Mudassar champions a culture of uncompromising SLA delivery — overseeing more than 1,200+ kilometers of subterranean armored conduits across regional business corridors along M-0, M-1, and the GT Road.",
                 quote: `“Our foundational promise at ${BRAND_INFO.companyName} has never wavered: to build a transmission network so resilient and fast that modern enterprises never have to compromise on bandwidth. Every kilometer of network infrastructure we lay is engineered for future generations.”`,
-                attribution: "— Mudassar Riaz, CEO",
+                attribution: "Mudassar Riaz — CEO & Founder",
                 domains: [
                   "Optical Network Architecture",
                   "DWDM Core Strategy",
@@ -298,6 +299,7 @@ export default function AboutPage() {
                 ],
               },
               {
+                index: "02",
                 name: "Mubashir Riaz",
                 role: "Chief Financial Officer (CFO) & Co-Founder",
                 badge: "CHIEF FINANCIAL OFFICER",
@@ -310,7 +312,7 @@ export default function AboutPage() {
                 bio1: `As Chief Financial Officer and co-founder, Mubashir Riaz oversees financial strategy, capital investments in next-generation optical infrastructure, asset stewardship, and commercial risk management at ${BRAND_INFO.companyName}`,
                 bio2: `Mubashir has been instrumental in structuring strategic capital allocations that enabled ${BRAND_INFO.shortName} to acquire Tier-1 routing assets from Cisco and Juniper, deploy cutting-edge subscriber distribution, and maintain a robust, debt-efficient balance sheet with transparent enterprise pricing.`,
                 quote: `“Sustainable telecommunications infrastructure demands disciplined capital allocation and long-term vision. At ${BRAND_INFO.shortName}, our financial strategy is directly aligned with engineering excellence — ensuring continuous reinvestment into network resilience and local customer support.”`,
-                attribution: "— Mubashir Riaz, CFO",
+                attribution: "Mubashir Riaz — CFO & Co-Founder",
                 domains: [
                   "Capital Infrastructure Investment",
                   "Fiscal Governance & Sustainability",
@@ -318,98 +320,122 @@ export default function AboutPage() {
                   "Transparent Enterprise Pricing",
                 ],
               },
-            ].map((leader) => {
+            ].map((leader, idx) => {
               const RoleIcon = leader.icon;
+              const isReversed = idx % 2 === 1;
               return (
                 <div
                   key={leader.name}
-                  className="group relative rounded-[28px] bg-white border border-slate-200/90 hover:border-slate-300 shadow-[0_14px_40px_rgba(15,23,42,0.06)] hover:shadow-[0_24px_60px_rgba(15,23,42,0.12)] p-7 sm:p-9 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between space-y-6"
+                  className="group relative rounded-[32px] bg-white border border-slate-200/90 hover:border-slate-300 shadow-[0_18px_50px_rgba(15,23,42,0.06)] hover:shadow-[0_26px_65px_rgba(15,23,42,0.11)] p-6 sm:p-9 lg:p-11 transition-all duration-300"
                 >
-                  {/* Top Editorial Header: Portrait + Name + Minimal Metrics (Pure White, Zero Blue Fill) */}
-                  <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-                    {/* Clean Minimalist Portrait Frame */}
-                    <div className="relative w-40 sm:w-44 shrink-0">
-                      <div className="relative rounded-2xl overflow-hidden bg-slate-50 p-1.5 border border-slate-200 shadow-sm">
-                        <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden bg-white">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={leader.photo}
-                            alt={`${leader.name} - ${leader.role} at ${BRAND_INFO.companyName}`}
-                            className="w-full h-full object-contain object-bottom transition-transform duration-500 group-hover:scale-105"
-                          />
+                  <div
+                    className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center`}
+                  >
+                    {/* Portrait Column (Alternates Left / Right on Desktop) */}
+                    <div
+                      className={`lg:col-span-4 flex justify-center ${
+                        isReversed ? "lg:order-2" : "lg:order-1"
+                      }`}
+                    >
+                      <div className="relative w-full max-w-[290px]">
+                        {/* Architectural Offset Dashed Frame */}
+                        <div className="pointer-events-none absolute -inset-3 rounded-[30px] border-2 border-dashed border-slate-200 group-hover:border-slate-300 transition-colors" />
+
+                        <div className="relative rounded-[24px] overflow-hidden bg-slate-50 border border-slate-200 p-2 shadow-md">
+                          <div className="relative aspect-[3/4] w-full rounded-[18px] overflow-hidden bg-white">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={leader.photo}
+                              alt={`${leader.name} - ${leader.role} at ${BRAND_INFO.companyName}`}
+                              className="w-full h-full object-contain object-bottom transition-transform duration-500 group-hover:scale-105"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Floating Minimalist Executive Board Tag */}
+                        <div className="absolute -bottom-3.5 left-1/2 -translate-x-1/2 bg-white px-4 py-1.5 rounded-full border border-slate-200 shadow-md flex items-center gap-2 whitespace-nowrap text-[11px] font-bold text-slate-800">
+                          <span className="w-2 h-2 rounded-full bg-slate-900" />
+                          <span>Executive Board</span>
                         </div>
                       </div>
-                      <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm flex items-center gap-1.5 whitespace-nowrap text-[10px] font-bold text-slate-700">
-                        <span className="w-1.5 h-1.5 rounded-full bg-slate-800" />
-                        <span>Executive Board</span>
-                      </div>
                     </div>
 
-                    {/* Role Pill, Name, Title & Crisp Monochrome Metric Chips */}
-                    <div className="flex-1 text-center sm:text-left space-y-2.5 pt-1">
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200/90 text-slate-700">
-                        <RoleIcon className="w-3.5 h-3.5 text-slate-600" />
-                        <span className="text-[10.5px] font-bold uppercase tracking-[0.14em]">
-                          {leader.badge}
-                        </span>
+                    {/* Editorial Bio, Metrics & Pull-Quote Column */}
+                    <div
+                      className={`lg:col-span-8 space-y-6 ${
+                        isReversed ? "lg:order-1" : "lg:order-2"
+                      }`}
+                    >
+                      {/* Top Row: Role Badge + Subtle Editorial Index + Inline KPI Strip */}
+                      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-5 border-b border-slate-100">
+                        <div className="space-y-2">
+                          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200/90 text-slate-700">
+                            <RoleIcon className="w-3.5 h-3.5 text-slate-600" />
+                            <span className="text-[10.5px] font-bold uppercase tracking-[0.15em]">
+                              {leader.badge}
+                            </span>
+                          </div>
+                          <h3 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900">
+                            {leader.name}
+                          </h3>
+                          <p className="text-sm font-semibold text-slate-500">
+                            {leader.role}
+                          </p>
+                        </div>
+
+                        {/* Crisp Inline Horizontal Metrics */}
+                        <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+                          {leader.metrics.map((m) => (
+                            <div
+                              key={m.label}
+                              className="px-4 py-2.5 rounded-2xl bg-slate-50 border border-slate-200/80 text-left"
+                            >
+                              <div className="text-sm sm:text-base font-black font-mono text-slate-900">
+                                {m.value}
+                              </div>
+                              <div className="text-[10.5px] font-medium text-slate-500 mt-0.5">
+                                {m.label}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
                       </div>
 
-                      <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900">
-                        {leader.name}
-                      </h3>
-                      <p className="text-xs sm:text-sm font-semibold text-slate-600">
-                        {leader.role}
-                      </p>
+                      {/* Executive Biography */}
+                      <div className="space-y-3 text-sm sm:text-[15px] text-slate-700 leading-relaxed">
+                        <p className="font-medium text-slate-800">
+                          {leader.bio1}
+                        </p>
+                        <p className="text-slate-600">{leader.bio2}</p>
+                      </div>
 
-                      <div className="grid grid-cols-2 gap-2.5 pt-2">
-                        {leader.metrics.map((m) => (
-                          <div
-                            key={m.label}
-                            className="px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200/80"
+                      {/* Minimalist Architectural Pull-Quote */}
+                      <div className="relative rounded-2xl bg-slate-50/80 border border-slate-200/80 border-l-4 border-l-slate-900 px-6 py-4 space-y-2">
+                        <div className="flex items-start gap-3">
+                          <Quote className="w-5 h-5 text-slate-400 shrink-0 mt-0.5" />
+                          <p className="text-xs sm:text-sm italic font-medium text-slate-800 leading-relaxed">
+                            {leader.quote}
+                          </p>
+                        </div>
+                        <div className="text-xs font-extrabold text-slate-900 pl-8">
+                          — {leader.attribution}
+                        </div>
+                      </div>
+
+                      {/* Strategic Domain Focus Row */}
+                      <div className="flex flex-wrap items-center gap-2 pt-1">
+                        <span className="text-[11px] font-extrabold text-slate-400 uppercase tracking-[0.14em] mr-2">
+                          Domain Focus:
+                        </span>
+                        {leader.domains.map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:border-slate-900 hover:text-slate-900 transition-colors shadow-xs"
                           >
-                            <div className="text-xs sm:text-sm font-extrabold font-mono text-slate-900">
-                              {m.value}
-                            </div>
-                            <div className="text-[10px] font-medium text-slate-500 mt-0.5">
-                              {m.label}
-                            </div>
-                          </div>
+                            {tag}
+                          </span>
                         ))}
                       </div>
-                    </div>
-                  </div>
-
-                  {/* Bio Paragraphs */}
-                  <div className="space-y-3 text-sm text-slate-700 leading-relaxed font-medium border-t border-slate-100 pt-5">
-                    <p>{leader.bio1}</p>
-                    <p className="text-slate-600 font-normal">{leader.bio2}</p>
-                  </div>
-
-                  {/* Minimalist Monochrome Quote Block */}
-                  <div className="relative rounded-2xl bg-slate-50/90 border border-slate-200/80 border-l-4 border-l-slate-800 p-5 space-y-2.5">
-                    <Quote className="w-5 h-5 text-slate-400" />
-                    <p className="text-xs sm:text-sm italic font-medium text-slate-800 leading-relaxed">
-                      {leader.quote}
-                    </p>
-                    <div className="text-xs font-extrabold text-slate-900">
-                      {leader.attribution}
-                    </div>
-                  </div>
-
-                  {/* Strategic Domain Focus Tags */}
-                  <div className="space-y-2.5 pt-1">
-                    <span className="text-[11px] font-extrabold text-slate-500 uppercase tracking-[0.14em] block">
-                      Strategic Domain Focus
-                    </span>
-                    <div className="flex flex-wrap gap-2">
-                      {leader.domains.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-50 text-slate-700 border border-slate-200 hover:border-slate-400 hover:text-slate-900 transition-colors"
-                        >
-                          {tag}
-                        </span>
-                      ))}
                     </div>
                   </div>
                 </div>
