@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import {
   BRAND_INFO,
   SERVICES_DATA,
@@ -10,10 +9,6 @@ import {
 } from "@/data/siteData";
 import ServiceIcon from "./ServiceIcon";
 import AnimatedCounter from "./AnimatedCounter";
-
-const Services3DCanvas = dynamic(() => import("./Services3DCanvas"), {
-  ssr: false,
-});
 
 const HOME_FAQS = [
   {
@@ -249,22 +244,32 @@ export default function HubexHomeInteractive() {
       </section>
 
       {/* =====================================================================
-          SECTION 4: OUR SERVICES (3D Gyroscopic Effect + Animated Optical Fiber Pulses + Eye-Catching Interactive Nodes)
+          SECTION 4: OUR SERVICES (ISP Optical Fiber Background Image + Animated Optical Fiber Pulses + Interactive Nodes)
          ===================================================================== */}
-      <section className="pt-[50px] pb-6 lg:pt-[80px] lg:pb-8 relative overflow-hidden">
-        {/* Soft Ambient 3D Stage Glow */}
-        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-full bg-[#008FFF]/10 blur-[130px]" />
+      <section className="pt-[50px] pb-10 lg:pt-[80px] lg:pb-12 relative overflow-hidden">
+        {/* Full-Section Light-Mode ISP Fiber Network Background Image */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/services-isp-bg.jpg"
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 w-full h-full object-cover object-center opacity-70"
+        />
+        {/* Soft Readability Veil + Seamless Top/Bottom Edge Fades so Heading & Service Nodes Stay 100% Crisp */}
+        <div className="pointer-events-none absolute inset-0 bg-white/40" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#F4F9FF] to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#F4F9FF] to-transparent" />
 
         <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] relative z-10">
           {/* Eye-Catching Centered Header */}
           <div className="flex flex-col items-center text-center mb-6 lg:mb-8">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#008FFF]/10 border border-[#008FFF]/30 mb-2.5">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 border border-[#008FFF]/35 shadow-sm mb-2.5 backdrop-blur-sm">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#008FFF]" />
               </span>
               <span className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.18em] text-[#0284C7]">
-                3D Optical Service Ecosystem
+                Optical Service Ecosystem
               </span>
             </div>
 
@@ -274,19 +279,14 @@ export default function HubexHomeInteractive() {
                 Enterprise Services
               </span>
             </h2>
-            <p className="text-slate-600 font-medium text-sm sm:text-base max-w-xl mt-2">
+            <p className="text-slate-700 font-semibold text-sm sm:text-base max-w-xl mt-2">
               Carrier-grade optical connectivity, cloud, and cybersecurity engineered for zero-downtime enterprise operations.
             </p>
           </div>
 
-          {/* Desktop 3D Animated Radial Hub-and-Spoke Diagram */}
+          {/* Desktop Animated Radial Hub-and-Spoke Diagram */}
           <div className="hidden lg:block relative pt-2 pb-2">
             <div className="relative max-w-5xl mx-auto h-[500px] flex items-center justify-center">
-              {/* Live 3D WiFi Signal Waves Canvas */}
-              <div className="absolute inset-0 z-0 opacity-95 pointer-events-none">
-                <Services3DCanvas />
-              </div>
-
               {/* Animated SVG Optical Fiber Connector Lines + Traveling Signal Light Dots */}
               <svg
                 viewBox="0 0 1000 500"
