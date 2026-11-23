@@ -96,7 +96,7 @@ export default function AboutPage() {
               <div className="pointer-events-none absolute -bottom-5 -left-5 w-32 h-32 rounded-3xl bg-gradient-to-tr from-[#008FFF]/25 to-[#06B6D4]/15 blur-xl" />
 
               {/* Main Rounded Showcase Image */}
-              <div className="relative rounded-[26px] overflow-hidden border-2 border-white shadow-[0_24px_60px_rgba(2,132,199,0.22)] aspect-[4/3] bg-slate-900">
+              <div className="relative rounded-[26px] overflow-hidden border-2 border-white shadow-[0_24px_60px_rgba(2,132,199,0.22)] h-[360px] sm:h-[440px] lg:h-[530px] bg-slate-900">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/about-who-we-are.jpg"
