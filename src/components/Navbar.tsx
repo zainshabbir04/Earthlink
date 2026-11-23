@@ -18,19 +18,11 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [quoteDrawerOpen, setQuoteDrawerOpen] = useState(false);
 
   const isHome = pathname === "/";
-  const isTransparent = isHome && !scrolled;
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const isTransparent = isHome;
 
   useEffect(() => {
     setMobileOpen(false);
@@ -42,12 +34,12 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Fixed Full-Width Header matching atpinfratech.com (Transparent over Hero Banner -> White on Scroll) */}
+      {/* Anchored Top Header (Stays Fixed in One Place at Top of Page — Transparent Over Home Hero, Solid White on Inner Pages) */}
       <header
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        className={`z-50 w-full transition-all duration-300 ${
           isTransparent
-            ? "bg-transparent"
-            : "bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(11,31,58,0.08)]"
+            ? "absolute top-0 inset-x-0 bg-transparent"
+            : "relative bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(11,31,58,0.08)]"
         }`}
       >
         <div className="max-w-7xl mx-auto px-5 lg:px-10 flex items-center justify-between h-[86px]">
@@ -157,9 +149,6 @@ export default function Navbar() {
           </button>
         </div>
       </header>
-
-      {/* Spacer for Inner Pages so Fixed Navbar Never Overlaps Page Headings */}
-      {!isHome && <div className="h-[86px]" aria-hidden="true" />}
 
       {/* Mobile Full-Height Navy Slide-Over Drawer */}
       <div
