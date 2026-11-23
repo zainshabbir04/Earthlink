@@ -53,7 +53,7 @@ export default function HubexHomeInteractive() {
       {/* =====================================================================
           SECTION 2: HERO IMAGE BANNER (Full-Bleed Pakistan Optical Fiber Globe Banner + Exact Text & Buttons Overlay)
          ===================================================================== */}
-      <section className="relative w-full overflow-hidden min-h-[500px] sm:min-h-[540px] lg:min-h-[600px] flex items-center mt-2">
+      <section className="relative w-full overflow-hidden min-h-[560px] sm:min-h-[600px] lg:min-h-[660px] flex items-center">
         {/* Full-Width Hero Banner Image */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -62,12 +62,13 @@ export default function HubexHomeInteractive() {
           className="absolute inset-0 w-full h-full object-cover object-right md:object-center"
         />
 
-        {/* Subtle Left-Side Gradient Scrim for Crisp Text Contrast While Keeping Right Fiber Globe 100% Vivid */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#030B16]/85 via-[#030B16]/50 to-transparent" />
+        {/* Subtle Top & Left Gradient Scrim for Crisp Transparent Navbar & Text Contrast */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#030B16]/85 via-[#030B16]/48 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#030B16]/65 to-transparent" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#030B16]/40 to-transparent" />
 
         {/* Exact Hero Text & Buttons Overlay on Left */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] py-14 lg:py-20">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-28 pb-16 lg:pt-32 lg:pb-24">
           <div className="max-w-xl space-y-5">
             {/* Live Network Badge */}
             <div className="inline-flex items-center gap-2.5 bg-white/10 border border-sky-300/35 backdrop-blur-md shadow-[0_6px_20px_rgba(0,143,255,0.2)] rounded-full px-4 py-1.5">

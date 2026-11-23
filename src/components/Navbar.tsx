@@ -3,19 +3,14 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  Menu,
-  X,
-  ChevronDown,
-  Calendar,
-  Cpu,
-} from "lucide-react";
-import { BRAND_INFO, SERVICES_DATA } from "@/data/siteData";
+import { Menu, X, ChevronDown, Calendar, Cpu } from "lucide-react";
+import { SERVICES_DATA } from "@/data/siteData";
+import ServiceIcon from "./ServiceIcon";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
-  { label: "Services", href: "/services", hasMegaMenu: true },
+  { label: "Services", href: "/services", hasDropdown: true },
   { label: "Why Choose Us", href: "/why-choose-us" },
   { label: "Careers", href: "/careers" },
   { label: "Contact Us", href: "/contact" },
@@ -23,279 +18,222 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [servicesHover, setServicesHover] = useState(false);
   const [quoteDrawerOpen, setQuoteDrawerOpen] = useState(false);
+
+  const isHome = pathname === "/";
+  const isTransparent = isHome && !scrolled;
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     setMobileOpen(false);
-    setServicesHover(false);
   }, [pathname]);
 
-  const corporateServices = SERVICES_DATA.filter(
-    (s) =>
-      s.category === "Corporate Connectivity" ||
-      s.category === "Optical Infrastructure"
-  );
-  const cloudSecurityServices = SERVICES_DATA.filter(
-    (s) =>
-      s.category === "Cloud & Managed IT" ||
-      s.category === "Security & Digital"
-  );
+  const linkColorClass = isTransparent
+    ? "text-white/90 hover:text-white"
+    : "text-[#0B1F3A] hover:text-[#008FFF]";
 
   return (
     <>
-      {/* Oval / Pill-Shaped Navbar Fixed in One Place at Top of Page */}
-      <header className="relative z-[998] pt-2 lg:pt-4 px-3 sm:px-6 lg:px-[3.25rem] xl:px-[6.25rem]">
-        <nav
-          id="topnav"
-          className={`bg-[#050505]/95 backdrop-blur-md ${
-            mobileOpen ? "rounded-3xl" : "rounded-full"
-          } border border-[#2A2A2A] text-white shadow-[0_10px_35px_rgba(0,0,0,0.85)] relative transition-all duration-300`}
-        >
-          <div className="px-6 sm:px-8 lg:px-10 py-2 lg:py-2.5 flex items-center justify-between">
-            {/* Logo Container (Transparent & Clearly Visible on Light Oval Navbar, Increased Size) */}
-            <div className="flex items-center">
-              <Link
-                href="/"
-                className="inline-flex items-center py-0.5 hover:opacity-95 transition-opacity"
-                aria-label="EARTHLINK Broadband (Pvt.) Ltd. Home"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/logo-color.png"
-                  alt="EARTHLINK Broadband (Pvt.) Ltd."
-                  className="h-14 sm:h-16 lg:h-[72px] w-auto object-contain"
-                />
-              </Link>
-            </div>
+      {/* Fixed Full-Width Header matching atpinfratech.com (Transparent over Hero Banner -> White on Scroll) */}
+      <header
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+          isTransparent
+            ? "bg-transparent"
+            : "bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(11,31,58,0.08)]"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-5 lg:px-10 flex items-center justify-between h-[78px]">
+          {/* Left: Official EARTHLINK Logo (Auto-switches Light/Dark for Crisp Contrast) */}
+          <Link
+            href="/"
+            className="inline-flex items-center hover:opacity-95 transition-opacity shrink-0"
+            aria-label="EARTHLINK Broadband (Pvt.) Ltd. Home"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={isTransparent ? "/logo-dark.png" : "/logo-color.png"}
+              alt="EARTHLINK Broadband (Pvt.) Ltd."
+              className="h-12 sm:h-14 lg:h-[60px] w-auto object-contain transition-all duration-300"
+            />
+          </Link>
 
-            {/* Desktop Navigation Menu (Exact HubexTech animated #008FFF underline) */}
-            <div className="hidden lg:flex items-center">
-              <ul className="flex items-center space-x-1 xl:space-x-2">
-                {NAV_LINKS.map((item) => {
-                  const isActive =
-                    item.href === "/"
-                      ? pathname === "/"
-                      : pathname.startsWith(item.href);
+          {/* Center: Clean Horizontal Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-8">
+            {NAV_LINKS.map((item) => {
+              const isActive =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(item.href);
 
-                  if (item.hasMegaMenu) {
-                    return (
-                      <li
-                        key={item.href}
-                        className="relative"
-                        onMouseEnter={() => setServicesHover(true)}
-                        onMouseLeave={() => setServicesHover(false)}
-                      >
-                        <Link
-                          href={item.href}
-                          className="relative inline-flex items-center gap-1 text-white px-[12px] py-2 text-[15px] font-medium group"
-                        >
-                          <span
-                            className={`relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-[#008FFF] after:transition-all after:duration-500 ${
-                              isActive
-                                ? "after:w-full text-[#2EC1D9]"
-                                : "after:w-0 group-hover:after:w-full"
-                            }`}
-                          >
-                            {item.label}
-                          </span>
-                          <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#008FFF] transition-transform duration-300 group-hover:rotate-180" />
-                        </Link>
-
-                        {/* HubexTech Mega Menu Dropdown */}
-                        {servicesHover && (
-                          <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 w-[760px] z-[999]">
-                            <div className="bg-[#050505] border border-[#2A2A2A] rounded-xl p-8 shadow-2xl grid grid-cols-3 gap-8">
-                              {/* Col 1 */}
-                              <div>
-                                <p className="text-left mb-6 font-bold text-[15px] text-[#2EC1D9B2]">
-                                  Optical & Corporate
-                                </p>
-                                <ul className="flex flex-col gap-5">
-                                  {corporateServices.map((srv) => (
-                                    <li
-                                      key={srv.id}
-                                      className="flex items-center gap-3 group/item"
-                                    >
-                                      <svg
-                                        width="8"
-                                        height="2"
-                                        viewBox="0 0 8 2"
-                                        fill="none"
-                                        className="shrink-0"
-                                      >
-                                        <line
-                                          y1="1.25"
-                                          x2="8"
-                                          y2="1.25"
-                                          stroke="white"
-                                          strokeOpacity="0.5"
-                                          strokeWidth="1.5"
-                                          className="group-hover/item:stroke-[#008FFF]"
-                                        />
-                                      </svg>
-                                      <Link
-                                        href={`/services#${srv.id}`}
-                                        className="text-sm text-white group-hover/item:text-[#008FFF] transition-colors"
-                                      >
-                                        {srv.shortTitle}
-                                      </Link>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-
-                              {/* Col 2 */}
-                              <div>
-                                <p className="text-left mb-6 font-bold text-[15px] text-[#2EC1D9B2]">
-                                  Cloud, IT & Security
-                                </p>
-                                <ul className="flex flex-col gap-5">
-                                  {cloudSecurityServices.map((srv) => (
-                                    <li
-                                      key={srv.id}
-                                      className="flex items-center gap-3 group/item"
-                                    >
-                                      <svg
-                                        width="8"
-                                        height="2"
-                                        viewBox="0 0 8 2"
-                                        fill="none"
-                                        className="shrink-0"
-                                      >
-                                        <line
-                                          y1="1.25"
-                                          x2="8"
-                                          y2="1.25"
-                                          stroke="white"
-                                          strokeOpacity="0.5"
-                                          strokeWidth="1.5"
-                                          className="group-hover/item:stroke-[#008FFF]"
-                                        />
-                                      </svg>
-                                      <Link
-                                        href={`/services#${srv.id}`}
-                                        className="text-sm text-white group-hover/item:text-[#008FFF] transition-colors"
-                                      >
-                                        {srv.shortTitle}
-                                      </Link>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-
-                              {/* Col 3 */}
-                              <div className="border-l border-[#272727] pl-6 flex flex-col justify-between">
-                                <div>
-                                  <p className="text-left mb-3 font-bold text-[15px] text-[#2EC1D9B2]">
-                                    1,200+ km Metro Core
-                                  </p>
-                                  <p className="text-xs text-[#9C9C9C] leading-relaxed">
-                                    Subterranean armored optical fiber across
-                                    Gulberg, DHA, Mall Road, Canal Road &
-                                    industrial corridors with 99.99% SLA.
-                                  </p>
-                                </div>
-                                <Link
-                                  href="/contact#site-survey"
-                                  className="mt-4 inline-flex items-center justify-center bg-[#008FFF] hover:bg-brand_cyan text-white text-xs font-bold py-2.5 px-4 rounded-lg transition-colors"
-                                >
-                                  Request Site Survey →
-                                </Link>
-                              </div>
-                            </div>
-                          </div>
-                        )}
-                      </li>
-                    );
-                  }
-
-                  return (
-                    <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        className="relative inline-block text-white px-[12px] py-2 text-[15px] font-medium group"
-                      >
-                        <span
-                          className={`relative inline-block after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:bg-[#008FFF] after:transition-all after:duration-500 ${
-                            isActive
-                              ? "after:w-full text-[#2EC1D9]"
-                              : "after:w-0 group-hover:after:w-full"
-                          }`}
-                        >
-                          {item.label}
-                        </span>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-
-            {/* Right: "Get in Touch" Button (Matching Primary Gradient & Previous Dark Text Color) */}
-            <div className="hidden lg:flex items-center">
-              <Link href="/contact">
-                <span className="bg-gradient-to-r from-[#008FFF] to-[#0FA4E8] hover:from-[#0284C7] hover:to-[#008FFF] text-[15px] font-bold text-white px-7 rounded-full w-[10.563rem] h-[2.75rem] inline-flex items-center justify-center transition-all shadow-[0_10px_25px_rgba(0,143,255,0.32)]">
-                  Get in Touch
-                </span>
-              </Link>
-            </div>
-
-            {/* Mobile Hamburger Toggle */}
-            <div className="lg:hidden">
-              <button
-                type="button"
-                onClick={() => setMobileOpen(!mobileOpen)}
-                className="p-2 rounded-lg text-white hover:text-brand_cyan focus:outline-none"
-                aria-label="Toggle Menu"
-              >
-                {mobileOpen ? (
-                  <X className="w-6 h-6" />
-                ) : (
-                  <Menu className="w-6 h-6" />
-                )}
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Drawer */}
-          {mobileOpen && (
-            <div className="lg:hidden bg-[#050505] border-t border-[#2A2A2A] px-5 py-6 space-y-4 rounded-b-lg">
-              <ul className="space-y-3">
-                {NAV_LINKS.map((item) => (
-                  <li key={item.href}>
+              if (item.hasDropdown) {
+                return (
+                  <div key={item.href} className="relative group">
                     <Link
                       href={item.href}
-                      onClick={() => setMobileOpen(false)}
-                      className={`block py-2 text-base font-bold uppercase tracking-[1px] ${
-                        pathname === item.href
-                          ? "text-brand_cyan"
-                          : "text-white hover:text-[#008FFF]"
+                      className={`text-sm font-medium flex items-center gap-1 py-2 transition-colors ${
+                        isActive
+                          ? isTransparent
+                            ? "text-[#38BDF8] font-semibold"
+                            : "text-[#008FFF] font-semibold"
+                          : linkColorClass
                       }`}
                     >
-                      {item.label}
+                      <span>{item.label}</span>
+                      <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
                     </Link>
-                  </li>
-                ))}
-              </ul>
 
-              <div className="pt-4 border-t border-[#272727] flex flex-col items-center gap-4">
+                    {/* Clean White Floating Services Dropdown Card */}
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                      <div className="bg-white rounded-xl shadow-[0_12px_40px_rgba(11,31,58,0.14)] border border-[#E4E9F0] p-2.5 w-72 grid grid-cols-1 gap-0.5">
+                        {SERVICES_DATA.slice(0, 8).map((srv) => (
+                          <Link
+                            key={srv.id}
+                            href={`/services#${srv.id}`}
+                            className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#F0F9FF] text-[#0B1F3A] transition-colors group/item"
+                          >
+                            <span className="w-8 h-8 rounded-lg bg-[#008FFF]/10 text-[#0284C7] group-hover/item:bg-[#008FFF] group-hover/item:text-white flex items-center justify-center shrink-0 transition-colors">
+                              <ServiceIcon
+                                name={srv.iconName}
+                                className="w-4 h-4"
+                              />
+                            </span>
+                            <span className="text-sm font-medium group-hover/item:text-[#008FFF] transition-colors">
+                              {srv.shortTitle}
+                            </span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
+              return (
                 <Link
-                  href="/contact"
-                  onClick={() => setMobileOpen(false)}
-                  className="bg-gradient-to-r from-[#008FFF] to-[#0FA4E8] hover:from-[#0284C7] hover:to-[#008FFF] text-[16px] font-bold text-white px-6 rounded-full w-full h-[2.75rem] flex items-center justify-center shadow-[0_10px_25px_rgba(0,143,255,0.32)]"
+                  key={item.href}
+                  href={item.href}
+                  className={`text-sm font-medium transition-colors ${
+                    isActive
+                      ? isTransparent
+                        ? "text-[#38BDF8] font-semibold"
+                        : "text-[#008FFF] font-semibold"
+                      : linkColorClass
+                  }`}
                 >
-                  Get in Touch
+                  {item.label}
                 </Link>
-              </div>
-            </div>
-          )}
-        </nav>
+              );
+            })}
+          </nav>
+
+          {/* Right: Clean Rounded-Rectangle CTA Button */}
+          <div className="hidden lg:block">
+            <Link
+              href="/contact"
+              className="inline-flex items-center px-5 py-2.5 rounded-lg bg-[#008FFF] hover:bg-[#0284C7] text-white text-sm font-semibold shadow-[0_6px_18px_rgba(0,143,255,0.3)] hover:shadow-[0_10px_24px_rgba(0,143,255,0.4)] transition-all"
+            >
+              Get in Touch
+            </Link>
+          </div>
+
+          {/* Mobile Hamburger Button */}
+          <button
+            type="button"
+            onClick={() => setMobileOpen(true)}
+            className={`lg:hidden p-2 rounded-lg transition-colors ${
+              isTransparent ? "text-white" : "text-[#0B1F3A]"
+            }`}
+            aria-label="Open menu"
+          >
+            <Menu className="w-6 h-6" />
+          </button>
+        </div>
       </header>
 
-      {/* HubexTech-Exact Right-Side "Get a free quote" Rotated Button & Slide-Out Drawer */}
-      <div className="fixed top-[45%] right-0 z-50 flex items-center">
+      {/* Spacer for Inner Pages so Fixed Navbar Never Overlaps Page Headings */}
+      {!isHome && <div className="h-[78px]" aria-hidden="true" />}
+
+      {/* Mobile Full-Height Navy Slide-Over Drawer */}
+      <div
+        className={`lg:hidden fixed inset-0 z-[60] transition-all duration-300 ${
+          mobileOpen ? "visible" : "invisible pointer-events-none"
+        }`}
+      >
+        <div
+          className={`absolute inset-0 bg-[#0B1F3A]/80 backdrop-blur-sm transition-opacity duration-300 ${
+            mobileOpen ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={() => setMobileOpen(false)}
+        />
+        <div
+          className={`absolute top-0 right-0 h-full w-full max-w-sm bg-[#0B1F3A] p-7 shadow-2xl transition-transform duration-300 flex flex-col justify-between ${
+            mobileOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <div>
+            <div className="flex items-center justify-between mb-10 pb-4 border-b border-white/10">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo-dark.png"
+                alt="EARTHLINK Broadband"
+                className="h-12 w-auto object-contain"
+              />
+              <button
+                type="button"
+                onClick={() => setMobileOpen(false)}
+                className="p-2 rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+                aria-label="Close menu"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            <nav className="flex flex-col space-y-2">
+              {NAV_LINKS.map((item) => {
+                const isActive =
+                  item.href === "/"
+                    ? pathname === "/"
+                    : pathname.startsWith(item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className={`px-4 py-3 rounded-lg text-base font-semibold transition-colors ${
+                      isActive
+                        ? "bg-[#008FFF]/20 text-[#38BDF8]"
+                        : "text-white/90 hover:bg-white/10 hover:text-white"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>
+
+          <div className="pt-6 border-t border-white/10">
+            <Link
+              href="/contact"
+              onClick={() => setMobileOpen(false)}
+              className="w-full inline-flex items-center justify-center px-5 py-3 rounded-lg bg-[#008FFF] hover:bg-[#0284C7] text-white text-sm font-semibold shadow-lg transition-all"
+            >
+              Get in Touch
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Right-Side "Get a free quote" Rotated Quick-Action Drawer */}
+      <div className="fixed top-[45%] right-0 z-40 flex items-center">
         <button
           type="button"
           onClick={() => setQuoteDrawerOpen(!quoteDrawerOpen)}
@@ -305,15 +243,15 @@ export default function Navbar() {
         </button>
 
         {quoteDrawerOpen && (
-          <div className="fixed right-0 top-1/2 -translate-y-1/2 w-64 rounded-l-xl bg-[#141414] border border-[#272727] shadow-2xl p-5 z-[999]">
-            <div className="flex items-center justify-between pb-3 border-b border-[#272727]">
-              <span className="text-lg font-semibold text-white">
+          <div className="fixed right-0 top-1/2 -translate-y-1/2 w-64 rounded-l-xl bg-white border border-slate-200 shadow-2xl p-5 z-[999]">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200">
+              <span className="text-lg font-semibold text-slate-900">
                 Get a Free Quote
               </span>
               <button
                 type="button"
                 onClick={() => setQuoteDrawerOpen(false)}
-                className="bg-[#1591ee] hover:bg-brand_cyan text-white rounded p-1"
+                className="bg-[#008FFF] hover:bg-[#0284C7] text-white rounded p-1"
                 aria-label="Close quote drawer"
               >
                 <X className="w-4 h-4" />
@@ -326,24 +264,24 @@ export default function Navbar() {
                 onClick={() => setQuoteDrawerOpen(false)}
                 className="flex flex-col items-center group"
               >
-                <div className="bg-[#141414] shadow-md border border-[#272727] p-4 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:bg-[#2EC1D9] text-[#2EC1D9] group-hover:text-black">
+                <div className="bg-slate-50 shadow-sm border border-slate-200 p-4 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:bg-[#008FFF] text-[#008FFF] group-hover:text-white">
                   <Calendar className="w-6 h-6" />
                 </div>
-                <span className="my-2 text-sm font-semibold text-white group-hover:text-brand_cyan">
+                <span className="my-2 text-sm font-semibold text-slate-800 group-hover:text-[#008FFF]">
                   Request Site Survey
                 </span>
               </Link>
 
               <Link
-                href="/#bandwidth-estimator"
+                href="/services"
                 onClick={() => setQuoteDrawerOpen(false)}
                 className="flex flex-col items-center group"
               >
-                <div className="bg-[#141414] shadow-md border border-[#272727] p-4 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:bg-[#2EC1D9] text-[#2EC1D9] group-hover:text-black">
+                <div className="bg-slate-50 shadow-sm border border-slate-200 p-4 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:bg-[#008FFF] text-[#008FFF] group-hover:text-white">
                   <Cpu className="w-6 h-6" />
                 </div>
-                <span className="my-2 text-sm font-semibold text-white group-hover:text-brand_cyan">
-                  Configure Bandwidth
+                <span className="my-2 text-sm font-semibold text-slate-800 group-hover:text-[#008FFF]">
+                  Explore Services
                 </span>
               </Link>
             </div>
