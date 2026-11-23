@@ -487,70 +487,44 @@ export default function HubexHomeInteractive() {
       </section>
 
       {/* =====================================================================
-          SECTION 6: "WHERE OPTICAL TECHNOLOGY CONNECTS" (Redesigned Eye-Catching Gradient Card matching Bottom SLA Banner)
+          SECTION 6: ENTERPRISE CTA BANNER (Clean Minimalist Layout Matching Reference — Keeping Exact bg-hubex-banner Theme)
          ===================================================================== */}
-      <section className="pt-14 pb-12 lg:pt-20 lg:pb-16">
-        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] relative">
-          <div className="mx-auto w-full max-w-[74rem] py-14 md:py-20 px-6 sm:px-10 lg:px-14 rounded-3xl border border-sky-300/35 bg-hubex-banner relative overflow-hidden flex flex-col justify-between items-center text-center shadow-[0_24px_60px_rgba(2,132,199,0.28)]">
-            {/* Animated Optical Rings & Ambient Glows */}
-            <div className="pointer-events-none absolute -top-28 -left-24 w-80 h-80 rounded-full border border-white/15 animate-rotateImage" />
-            <div className="pointer-events-none absolute -bottom-32 -right-24 w-96 h-96 rounded-full border-2 border-dashed border-sky-300/30 animate-rotateImage" />
-            <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] rounded-full bg-sky-400/15 blur-[110px]" />
+      <section className="relative w-full bg-hubex-banner overflow-hidden py-20 md:py-28">
+        {/* Subtle Architectural Grid Overlay on Existing Brand Gradient Theme */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.1]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(255,255,255,0.35) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.35) 1px, transparent 1px)",
+            backgroundSize: "52px 52px",
+          }}
+        />
+        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] rounded-full bg-sky-400/15 blur-[130px]" />
 
-            {/* Top Live Badge & Headline */}
-            <div className="relative z-10 max-w-2xl space-y-4">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-md">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-300 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-300" />
-                </span>
-                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-sky-100">
-                  Carrier-Grade Fiber Infrastructure
-                </span>
-              </div>
+        <div className="relative z-10 max-w-3xl mx-auto px-6 text-center space-y-5">
+          <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold tracking-tight !text-white leading-[1.12]">
+            Ready to build resilient <br />
+            optical connectivity?
+          </h2>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-white leading-tight">
-                Where Optical Technology Connects
-              </h2>
+          <p className="text-sm sm:text-base lg:text-[17px] !text-sky-100/90 max-w-xl mx-auto leading-relaxed font-medium">
+            Talk to our experts about your enterprise fiber internet, MPLS networking, or IT infrastructure project.
+          </p>
 
-              <p className="text-sm sm:text-base text-sky-100/90 max-w-xl mx-auto leading-relaxed">
-                Uncontended 1:1 optical connectivity — uniting Dedicated Internet Access (DIA), MPLS rings, Cloud, and Cybersecurity under one 24/7 NOC.
-              </p>
-            </div>
-
-            {/* Redesigned 4-Column Frosted Glass Animated Counter Cards */}
-            <div className="relative z-10 w-full max-w-4xl grid grid-cols-2 lg:grid-cols-4 gap-4 my-10">
-              {VERIFIED_INFRASTRUCTURE_STATS.map((st) => (
-                <div
-                  key={st.id}
-                  className="group p-5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/25 hover:border-sky-200/70 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 shadow-lg"
-                >
-                  <div className="text-2xl sm:text-3xl font-black text-white font-mono tracking-tight">
-                    <AnimatedCounter value={st.value} />
-                  </div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-sky-200 mt-1.5">
-                    {st.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Bottom Action Bar */}
-            <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-[#0F172A] text-[#0F172A] hover:text-white text-[15px] font-bold px-8 h-[48px] rounded-full shadow-[0_12px_28px_rgba(0,0,0,0.22)] transition-all duration-300"
-              >
-                <span>Start Your Optical Upgrade</span>
-                <span>→</span>
-              </Link>
-              <Link
-                href="/contact#site-survey"
-                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/35 text-white text-[15px] font-bold px-7 h-[48px] rounded-full backdrop-blur-md transition-all duration-300"
-              >
-                <span>Request Site Survey</span>
-              </Link>
-            </div>
+          <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 bg-[#00B4D8] hover:bg-[#0096C7] !text-white text-sm sm:text-[15px] font-bold px-7 h-[48px] rounded-xl shadow-[0_12px_28px_rgba(0,180,216,0.38)] hover:-translate-y-0.5 transition-all duration-300"
+            >
+              <span>Request a Consultation</span>
+              <span>→</span>
+            </Link>
+            <Link
+              href="/services"
+              className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/40 hover:border-white !text-white text-sm sm:text-[15px] font-bold px-7 h-[48px] rounded-xl backdrop-blur-md transition-all duration-300"
+            >
+              View Services
+            </Link>
           </div>
         </div>
       </section>
