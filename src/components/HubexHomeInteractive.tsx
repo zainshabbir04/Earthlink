@@ -487,53 +487,6 @@ export default function HubexHomeInteractive() {
       </section>
 
       {/* =====================================================================
-          SECTION 6: ENTERPRISE CTA CARD (Original Card Size & bg-hubex-banner Theme + Clean Reference Text & Buttons)
-         ===================================================================== */}
-      <section className="pt-14 pb-12 lg:pt-20 lg:pb-16">
-        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] relative">
-          <div className="mx-auto w-full max-w-[74rem] py-16 md:py-24 px-6 sm:px-10 lg:px-14 rounded-3xl border border-sky-300/35 bg-hubex-banner relative overflow-hidden flex flex-col justify-center items-center text-center shadow-[0_24px_60px_rgba(2,132,199,0.28)]">
-            {/* Subtle Architectural Grid Overlay & Soft Glow on Existing Brand Gradient Theme */}
-            <div
-              className="pointer-events-none absolute inset-0 opacity-[0.1]"
-              style={{
-                backgroundImage:
-                  "linear-gradient(to right, rgba(255,255,255,0.35) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.35) 1px, transparent 1px)",
-                backgroundSize: "52px 52px",
-              }}
-            />
-            <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] rounded-full bg-sky-400/15 blur-[110px]" />
-
-            <div className="relative z-10 max-w-2xl mx-auto space-y-5">
-              <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold tracking-tight !text-white leading-[1.12]">
-                Ready to build resilient <br />
-                optical connectivity?
-              </h2>
-
-              <p className="text-sm sm:text-base lg:text-[17px] !text-sky-100/90 max-w-xl mx-auto leading-relaxed font-medium">
-                Talk to our experts about your enterprise fiber internet, MPLS networking, or IT infrastructure project.
-              </p>
-
-              <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center gap-2 bg-[#00B4D8] hover:bg-[#0096C7] !text-white text-sm sm:text-[15px] font-bold px-7 h-[48px] rounded-xl shadow-[0_12px_28px_rgba(0,180,216,0.38)] hover:-translate-y-0.5 transition-all duration-300"
-                >
-                  <span>Request a Consultation</span>
-                  <span>→</span>
-                </Link>
-                <Link
-                  href="/services"
-                  className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/40 hover:border-white !text-white text-sm sm:text-[15px] font-bold px-7 h-[48px] rounded-xl backdrop-blur-md transition-all duration-300"
-                >
-                  View Services
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================================
           SECTION 7A: HARDWARE & TECHNOLOGY PARTNERS (Eye-Catching Frosted Logo Slider)
          ===================================================================== */}
       <section className="py-[45px] lg:py-[65px] relative overflow-hidden">
@@ -734,6 +687,122 @@ export default function HubexHomeInteractive() {
                   />
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================================
+          SECTION 9: REDESIGNED ENTERPRISE CTA CARD (Directly Above FAQs — Same bg-hubex-banner Color & Card Size)
+         ===================================================================== */}
+      <section className="pt-8 pb-12 lg:pt-12 lg:pb-16">
+        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] relative">
+          <div className="mx-auto w-full max-w-[74rem] py-12 md:py-16 px-6 sm:px-10 lg:px-14 rounded-3xl border border-sky-300/35 bg-hubex-banner relative overflow-hidden shadow-[0_24px_60px_rgba(2,132,199,0.28)]">
+            {/* Subtle Architectural Grid + Animated Orbital Rings + Soft Glow */}
+            <div
+              className="pointer-events-none absolute inset-0 opacity-[0.1]"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, rgba(255,255,255,0.35) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.35) 1px, transparent 1px)",
+                backgroundSize: "52px 52px",
+              }}
+            />
+            <div className="pointer-events-none absolute -top-24 -right-20 w-80 h-80 rounded-full border border-white/15 animate-rotateImage" />
+            <div className="pointer-events-none absolute -bottom-28 -left-20 w-72 h-72 rounded-full border-2 border-dashed border-sky-300/25 animate-rotateImage" />
+            <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] rounded-full bg-sky-400/15 blur-[120px]" />
+
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+              {/* Left Column: Bold Editorial Heading, Subtitle & Dual CTA Buttons */}
+              <div className="lg:col-span-7 text-left space-y-5">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 border border-white/25 backdrop-blur-md">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-300 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-300" />
+                  </span>
+                  <span className="text-[11px] font-bold uppercase tracking-[0.16em] !text-sky-100">
+                    Enterprise Optical Consultation • 24/7 NOC
+                  </span>
+                </div>
+
+                <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight !text-white leading-[1.1]">
+                  Ready to build resilient{" "}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#67E8F9] via-[#BAE6FD] to-white">
+                    optical connectivity?
+                  </span>
+                </h2>
+
+                <p className="text-sm sm:text-base !text-sky-100/90 max-w-xl leading-relaxed font-medium">
+                  Talk to our experts about your enterprise fiber internet, MPLS networking, or IT infrastructure project.
+                </p>
+
+                <div className="pt-2 flex flex-wrap items-center gap-3.5">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center gap-2 bg-white hover:bg-[#00B4D8] !text-[#0A192F] hover:!text-white text-sm sm:text-[15px] font-extrabold px-7 h-[48px] rounded-xl shadow-[0_12px_28px_rgba(0,0,0,0.22)] hover:-translate-y-0.5 transition-all duration-300"
+                  >
+                    <span>Request a Consultation</span>
+                    <span>→</span>
+                  </Link>
+                  <Link
+                    href="/services"
+                    className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/40 hover:border-white !text-white text-sm sm:text-[15px] font-bold px-7 h-[48px] rounded-xl backdrop-blur-md transition-all duration-300"
+                  >
+                    View Services
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right Column: Unique Frosted-Glass Live Carrier Assurance Panel */}
+              <div className="lg:col-span-5">
+                <div className="rounded-2xl bg-white/10 border border-white/25 backdrop-blur-xl p-6 shadow-[0_16px_40px_rgba(0,0,0,0.22)] space-y-4">
+                  <div className="flex items-center justify-between border-b border-white/15 pb-3.5">
+                    <span className="text-xs font-extrabold uppercase tracking-[0.15em] !text-sky-100">
+                      Carrier-Grade Guarantees
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 text-[11px] font-bold !text-cyan-200 bg-cyan-400/15 border border-cyan-300/30 px-2.5 py-0.5 rounded-full">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-300 animate-pulse" />
+                      100G LIVE
+                    </span>
+                  </div>
+
+                  <div className="space-y-3">
+                    {[
+                      {
+                        metric: "99.99%",
+                        title: "Contractual Uptime SLA",
+                        sub: "Zero peak-hour throttling or FUP",
+                      },
+                      {
+                        metric: "< 50ms",
+                        title: "Self-Healing Ring Failover",
+                        sub: "Dual-path armored subterranean fiber",
+                      },
+                      {
+                        metric: "1:1 DIA",
+                        title: "Symmetrical Optical Speed",
+                        sub: "Dedicated uncontended bandwidth",
+                      },
+                    ].map((row) => (
+                      <div
+                        key={row.title}
+                        className="flex items-center gap-3.5 p-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/15 transition-colors"
+                      >
+                        <div className="min-w-[68px] text-center py-1.5 px-2 rounded-lg bg-[#00B4D8]/25 border border-cyan-300/35 font-mono text-xs font-black !text-white">
+                          {row.metric}
+                        </div>
+                        <div className="text-left">
+                          <div className="text-sm font-bold !text-white leading-tight">
+                            {row.title}
+                          </div>
+                          <div className="text-[11px] !text-sky-100/80 mt-0.5">
+                            {row.sub}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
