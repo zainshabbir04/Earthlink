@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import {
+  CheckCircle2,
   Cpu,
   Network,
 } from "lucide-react";
@@ -82,8 +83,127 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Unique "Our Company — Who We Are" Editorial Showcase Section */}
+      <section className="relative py-16 lg:py-24 overflow-hidden">
+        <div className="pointer-events-none absolute top-1/2 left-0 -translate-y-1/2 w-[420px] h-[420px] rounded-full bg-[#008FFF]/10 blur-[130px]" />
+
+        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+            {/* Left Column: Layered Architectural Image Frame with Floating Glass Telemetry Badges */}
+            <div className="lg:col-span-6 relative group">
+              {/* Decorative Offset Dashed Optical Frame */}
+              <div className="pointer-events-none absolute -inset-3 rounded-[30px] border-2 border-dashed border-[#008FFF]/30 transition-transform duration-500 group-hover:scale-[1.01]" />
+              <div className="pointer-events-none absolute -bottom-5 -left-5 w-32 h-32 rounded-3xl bg-gradient-to-tr from-[#008FFF]/25 to-[#06B6D4]/15 blur-xl" />
+
+              {/* Main Rounded Showcase Image */}
+              <div className="relative rounded-[26px] overflow-hidden border-2 border-white shadow-[0_24px_60px_rgba(2,132,199,0.22)] aspect-[4/3] bg-slate-900">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/about-who-we-are.jpg"
+                  alt="EARTHLINK Broadband Enterprise Optical Fiber & Data Center Operations"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#030B16]/55 via-transparent to-transparent" />
+
+                {/* Top-Left Live NOC Status Pill */}
+                <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#030B16]/75 border border-cyan-300/40 backdrop-blur-md">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-300 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-300" />
+                  </span>
+                  <span
+                    style={{ color: "#FFFFFF" }}
+                    className="text-[11px] font-bold uppercase tracking-wider"
+                  >
+                    24/7/365 NOC Operations
+                  </span>
+                </div>
+              </div>
+
+              {/* Bottom-Right Overlapping Floating 3D Glass Highlight Card */}
+              <div className="absolute -bottom-5 right-4 sm:right-6 bg-white/95 backdrop-blur-xl border border-sky-200 rounded-2xl px-5 py-3.5 shadow-[0_18px_40px_rgba(15,23,42,0.16)] flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-[#008FFF] to-[#06B6D4] flex items-center justify-center shadow-md shrink-0">
+                  <Network className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <div className="text-xl font-black text-slate-900 font-mono leading-none">
+                    99.99% SLA
+                  </div>
+                  <div className="text-[11px] font-bold uppercase tracking-wider text-[#0284C7] mt-1">
+                    100G Optical Core
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: "Our Company / Who We Are" Editorial Content */}
+            <div className="lg:col-span-6 space-y-5 pt-4 lg:pt-0">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#008FFF]/10 border border-[#008FFF]/30">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#008FFF]" />
+                </span>
+                <span className="text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.18em] text-[#0284C7]">
+                  Our Company
+                </span>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-normal text-slate-900 leading-tight">
+                Who{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#06B6D4]">
+                  We Are
+                </span>
+              </h2>
+
+              <p className="text-slate-700 text-sm sm:text-base leading-relaxed font-medium">
+                {BRAND_INFO.companyIntroduction}
+              </p>
+
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                {BRAND_INFO.companyBackground}
+              </p>
+
+              {/* 3 Crisp Enterprise Highlights */}
+              <div className="pt-2 space-y-3">
+                {[
+                  {
+                    title: "100% Subterranean Armored Optical Fiber",
+                    desc: "Over 1,200+ km of deep-trench metro fiber connecting commercial and industrial corridors.",
+                  },
+                  {
+                    title: "Uncontended 1:1 Symmetrical Connectivity",
+                    desc: "Dedicated Internet Access (DIA) and private MPLS rings with <50ms self-healing failover.",
+                  },
+                  {
+                    title: "Proactive 24/7/365 NOC Engineering",
+                    desc: "Live OTDR telemetry monitoring and <15m incident response backed by a 99.99% uptime SLA.",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.title}
+                    className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-white/90 border border-sky-100 hover:border-[#008FFF]/45 shadow-sm transition-all"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-[#008FFF]/10 text-[#008FFF] flex items-center justify-center shrink-0 mt-0.5">
+                      <CheckCircle2 className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-bold text-slate-900 leading-snug">
+                        {item.title}
+                      </h3>
+                      <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Mission, Vision & Core Values */}
-      <section className="py-12 lg:py-16">
+      <section className="py-12 lg:py-16 border-t border-slate-200/80">
         <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] space-y-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-7 rounded-2xl bg-[#000000] border border-[#272727] space-y-3">
