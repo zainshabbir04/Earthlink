@@ -41,21 +41,40 @@ const CORE_VALUES = [
 export default function AboutPage() {
   return (
     <div className="bg-black-gradient text-white overflow-hidden">
-      {/* Compact Page Hero */}
-      <section className="relative py-12 lg:py-16 border-b border-[#1a1a1a]">
-        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
+      {/* Full-Width About Us Hero Image Banner */}
+      <section className="relative w-full overflow-hidden min-h-[460px] sm:min-h-[500px] lg:min-h-[560px] flex items-center">
+        {/* Background Hero Image */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/about-hero-banner.jpg"
+          alt="EARTHLINK Broadband Optical Fiber & Telecom Infrastructure"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+
+        {/* Balanced Dark-Navy Gradient Scrims for Crisp Transparent Navbar & High-Contrast Text */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#030B16]/88 via-[#030B16]/62 to-[#030B16]/25" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#030B16]/70 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#030B16]/45 to-transparent" />
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-28 pb-16 lg:pt-32 lg:pb-20">
           <div className="max-w-2xl space-y-4">
-            <div className="inline-flex items-center gap-2 bg-[#1591EE15] border border-[#1591EE33] rounded-full px-3.5 py-1">
-              <span className="text-brand_cyan text-xs font-semibold uppercase tracking-wide">
+            <div className="inline-flex items-center gap-2.5 bg-white/10 border border-sky-300/35 backdrop-blur-md shadow-[0_6px_20px_rgba(0,143,255,0.2)] rounded-full px-4 py-1.5">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-300 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-300" />
+              </span>
+              <span className="!text-sky-100 text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.14em]">
                 Corporate Profile · {BRAND_INFO.companyName}
               </span>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-snug">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-normal leading-tight !text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]">
               Engineering the{" "}
-              <span className="text-brand_cyan">Subterranean Optical</span>{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] via-[#00A8FF] to-[#67E8F9]">
+                Subterranean Optical
+              </span>{" "}
               Backbone
             </h1>
-            <p className="text-base text-[#D3D3D3] leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-[16.5px] !text-sky-100/90 font-medium leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
               {BRAND_INFO.companyIntroduction}
             </p>
           </div>
