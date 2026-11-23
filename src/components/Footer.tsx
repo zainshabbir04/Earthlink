@@ -286,16 +286,6 @@ export default function Footer() {
           </div>
         </div>
       </footer>
-
-      {/* Floating Scroll-to-Top Button */}
-      <button
-        type="button"
-        onClick={scrollToTop}
-        aria-label="Scroll to top"
-        className="fixed bottom-6 left-5 z-50 w-10 h-10 rounded-full bg-[#008FFF] hover:bg-[#0284C7] text-white flex items-center justify-center shadow-[0_8px_20px_rgba(0,143,255,0.35)] transition-all hover:-translate-y-0.5"
-      >
-        <ArrowUp className="w-4 h-4" />
-      </button>
     </>
   );
 }

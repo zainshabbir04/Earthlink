@@ -68,10 +68,10 @@ export default function HubexHomeInteractive() {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#030B16]/40 to-transparent" />
 
         {/* Exact Hero Text & Buttons Overlay on Left */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-28 pb-16 lg:pt-32 lg:pb-24">
-          <div className="max-w-2xl space-y-5">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-[20px] lg:px-[50px] pt-28 pb-16 lg:pt-32 lg:pb-20">
+          <div className="max-w-[520px] space-y-4">
             {/* Bold Hero Heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-[3.85rem] leading-[1.06] font-black tracking-tight uppercase !text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]">
+            <h1 className="text-3xl sm:text-5xl lg:text-[3.1rem] xl:text-[3.35rem] leading-[1.06] font-black tracking-tight uppercase !text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]">
               CONNECTING <br />
               BUSINESSES. <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#38BDF8] via-[#00A8FF] to-[#67E8F9]">
@@ -81,20 +81,20 @@ export default function HubexHomeInteractive() {
             </h1>
 
             {/* Tagline Strip */}
-            <p className="text-xs sm:text-[13px] font-extrabold uppercase tracking-[0.12em] !text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)]">
+            <p className="text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.1em] !text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] pt-0.5">
               INTERNET CONNECTIVITY | ENTERPRISE NETWORKING | IT INFRASTRUCTURE
             </p>
 
             {/* Description Paragraph */}
-            <p className="text-[15px] lg:text-[16.5px] !text-sky-100/90 font-medium leading-relaxed max-w-lg drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+            <p className="text-sm sm:text-[15px] lg:text-[15.5px] !text-sky-100/90 font-medium leading-relaxed max-w-[460px] drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
               Earthlink delivers reliable internet connectivity, advanced networking and comprehensive IT infrastructure solutions designed to keep businesses connected, productive and secure.
             </p>
 
             {/* Dual CTA Buttons */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
+            <div className="pt-2 flex flex-wrap items-center gap-3.5">
               <Link
                 href="/services"
-                className="bg-gradient-to-r from-[#008FFF] to-[#0FA4E8] hover:from-[#0284C7] hover:to-[#008FFF] !text-white text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full h-[48px] px-7 inline-flex items-center justify-center gap-2 shadow-[0_10px_28px_rgba(0,143,255,0.42)] transition-all whitespace-nowrap"
+                className="bg-gradient-to-r from-[#008FFF] to-[#0FA4E8] hover:from-[#0284C7] hover:to-[#008FFF] !text-white text-xs sm:text-[13px] font-bold uppercase tracking-wider rounded-full h-[46px] px-7 inline-flex items-center justify-center gap-2 shadow-[0_10px_28px_rgba(0,143,255,0.42)] transition-all whitespace-nowrap"
               >
                 <span>EXPLORE OUR SOLUTIONS</span>
                 <span>→</span>
@@ -102,7 +102,7 @@ export default function HubexHomeInteractive() {
 
               <Link
                 href="/contact"
-                className="bg-white/10 hover:bg-white !text-white hover:!text-slate-900 text-xs sm:text-sm uppercase tracking-wider border-2 border-white/45 hover:border-white backdrop-blur-md rounded-full font-bold transition-all h-[48px] px-7 inline-flex items-center justify-center gap-2 shadow-sm whitespace-nowrap"
+                className="bg-white/10 hover:bg-white !text-white hover:!text-slate-900 text-xs sm:text-[13px] uppercase tracking-wider border border-white/50 hover:border-white backdrop-blur-md rounded-full font-bold transition-all h-[46px] px-7 inline-flex items-center justify-center gap-2 shadow-sm whitespace-nowrap"
               >
                 <span>TALK TO OUR EXPERTS</span>
                 <span>→</span>
