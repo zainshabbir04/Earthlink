@@ -197,8 +197,8 @@ export default function AboutPage() {
                   Our Mission
                 </h3>
 
-                <p className="text-slate-600 group-hover:!text-sky-100/95 text-base leading-relaxed font-medium transition-colors duration-300">
-                  {BRAND_INFO.mission}
+                <p className="text-slate-600 group-hover:!text-sky-100/95 text-base sm:text-[17px] leading-relaxed font-medium transition-colors duration-300">
+                  {BRAND_INFO.mission} We engineer every dedicated fiber link with strict 1:1 symmetrical throughput, dual-path self-healing ring protection, and proactive 24/7/365 NOC monitoring so organizations never face downtime.
                 </p>
               </div>
 
@@ -227,8 +227,8 @@ export default function AboutPage() {
                   Our Vision
                 </h3>
 
-                <p className="text-slate-600 group-hover:!text-sky-100/95 text-base leading-relaxed font-medium transition-colors duration-300">
-                  {BRAND_INFO.vision}
+                <p className="text-slate-600 group-hover:!text-sky-100/95 text-base sm:text-[17px] leading-relaxed font-medium transition-colors duration-300">
+                  {BRAND_INFO.vision} By expanding our subterranean 100G optical backbone across commercial hubs, campuses, and industrial zones, we aim to set the regional benchmark for enterprise reliability and speed.
                 </p>
               </div>
 
