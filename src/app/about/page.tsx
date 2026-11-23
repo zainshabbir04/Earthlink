@@ -1,10 +1,13 @@
 import React from "react";
 import type { Metadata } from "next";
 import {
+  Activity,
+  Award,
   CheckCircle2,
   Cpu,
   Network,
   Quote,
+  ShieldCheck,
   Sparkles,
   TrendingUp,
   Users,
@@ -416,41 +419,82 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Dedicated Core Values Section (Below Visionary Leadership) */}
-      <section className="py-12 lg:py-16 border-t border-slate-200/80">
-        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
-          <div className="flex flex-col items-center text-center mb-10 space-y-2.5">
+      {/* Dedicated "Four Uncompromised Pillars of Infrastructure" Section (Redesigned Architectural Pillar Cards) */}
+      <section className="relative py-16 lg:py-22 border-t border-slate-200/80 overflow-hidden">
+        <div className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 w-[520px] h-[280px] rounded-full bg-[#008FFF]/10 blur-[130px]" />
+
+        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] relative z-10">
+          <div className="flex flex-col items-center text-center mb-12 lg:mb-14 space-y-3">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#008FFF]/10 border border-[#008FFF]/30">
-              <span className="w-2 h-2 rounded-full bg-[#008FFF]" />
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#008FFF]" />
+              </span>
               <span className="text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.18em] text-[#0284C7]">
                 Our Foundation
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-normal text-slate-900">
-              Our Core{" "}
+
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-normal text-slate-900 leading-tight max-w-3xl">
+              Four Uncompromised Pillars{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#06B6D4]">
-                Values
+                of Infrastructure
               </span>
             </h2>
+
+            <p className="text-slate-600 text-sm sm:text-base max-w-xl font-medium">
+              Engineered from the ground up for resilient, zero-downtime enterprise optical connectivity.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {CORE_VALUES.map((val, idx) => (
-              <div
-                key={val.title}
-                className="group p-6 rounded-2xl bg-white border border-sky-100 hover:border-[#008FFF]/50 shadow-sm hover:shadow-[0_14px_34px_rgba(0,143,255,0.14)] hover:-translate-y-1 transition-all duration-300 space-y-2.5"
-              >
-                <span className="inline-block text-xs font-mono font-extrabold text-[#008FFF] bg-[#008FFF]/10 px-2.5 py-1 rounded-lg">
-                  0{idx + 1}
-                </span>
-                <h3 className="text-base font-extrabold text-slate-900 group-hover:text-[#008FFF] transition-colors">
-                  {val.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  {val.description}
-                </p>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {CORE_VALUES.map((val, idx) => {
+              const pillarIcons = [ShieldCheck, Cpu, Activity, Award];
+              const pillarTags = [
+                "Dual-Path Ring",
+                "Armored Conduits",
+                "<15m Response",
+                "99.99% Uptime",
+              ];
+              const PillarIcon = pillarIcons[idx % pillarIcons.length];
+              return (
+                <div
+                  key={val.title}
+                  className="group relative overflow-hidden rounded-3xl bg-white border-2 border-sky-100 hover:border-[#008FFF]/60 p-7 shadow-[0_14px_36px_rgba(15,23,42,0.06)] hover:shadow-[0_24px_55px_rgba(0,143,255,0.2)] hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between min-h-[250px]"
+                >
+                  {/* Top Gradient Accent Ribbon */}
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#06B6D4] opacity-75 group-hover:opacity-100 transition-opacity" />
+
+                  {/* Large Subtle Pillar Number Watermark */}
+                  <span className="pointer-events-none absolute top-4 right-5 text-5xl font-black font-mono text-sky-100/90 group-hover:text-sky-200/80 transition-colors select-none">
+                    0{idx + 1}
+                  </span>
+
+                  <div className="relative z-10 space-y-4 pt-1">
+                    <div className="w-12 h-12 rounded-2xl bg-[#008FFF]/10 group-hover:bg-gradient-to-br group-hover:from-[#008FFF] group-hover:to-[#06B6D4] border border-[#008FFF]/20 group-hover:border-transparent text-[#008FFF] group-hover:text-white flex items-center justify-center shadow-sm transition-all duration-300 group-hover:scale-110">
+                      <PillarIcon className="w-6 h-6" />
+                    </div>
+
+                    <h3 className="text-lg font-extrabold text-slate-900 group-hover:text-[#008FFF] transition-colors leading-snug">
+                      {val.title}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+                      {val.description}
+                    </p>
+                  </div>
+
+                  <div className="relative z-10 pt-5 mt-4 border-t border-slate-100 flex items-center justify-between">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#0284C7] bg-[#F0F9FF] border border-sky-200/80 px-2.5 py-1 rounded-full">
+                      {pillarTags[idx]}
+                    </span>
+                    <span className="text-xs font-mono font-bold text-slate-400 group-hover:text-[#008FFF] transition-colors">
+                      Pillar 0{idx + 1}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
