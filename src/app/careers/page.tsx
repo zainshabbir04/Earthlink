@@ -4,6 +4,7 @@ import { MapPin } from "lucide-react";
 import { BRAND_INFO, CAREERS_CULTURE } from "@/data/siteData";
 import ServiceIcon from "@/components/ServiceIcon";
 import CareersInteractive from "@/components/CareersInteractive";
+import CTASection from "@/components/CTASection";
 
 export const metadata: Metadata = {
   title: "Careers — Join Our NOC, Optical Engineering & Enterprise Teams",
@@ -63,6 +64,8 @@ export default function CareersPage() {
           <CareersInteractive />
         </div>
       </section>
+
+      <CTASection />
     </div>
   );
 }
