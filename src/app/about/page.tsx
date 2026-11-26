@@ -100,8 +100,8 @@ export default function AboutPage() {
                 <div className="pointer-events-none absolute -inset-3 rounded-[30px] border-2 border-dashed border-[#008FFF]/30 transition-transform duration-500 group-hover:scale-[1.01]" />
                 <div className="pointer-events-none absolute -bottom-5 -left-5 w-32 h-32 rounded-3xl bg-gradient-to-tr from-[#008FFF]/25 to-[#06B6D4]/15 blur-xl" />
 
-                {/* Balanced Vertical Video Showcase (Wider Width, Compact Height, Perfectly Centered Edge-to-Edge) */}
-                <div className="relative rounded-[26px] overflow-hidden border-2 border-white shadow-[0_24px_60px_rgba(2,132,199,0.22)] h-[440px] sm:h-[490px] lg:h-[520px] w-full bg-[#040D1A]">
+                {/* Balanced Vertical Video Showcase (Exact Same Width, Slightly Taller Height for Clear Video Framing) */}
+                <div className="relative rounded-[26px] overflow-hidden border-2 border-white shadow-[0_24px_60px_rgba(2,132,199,0.22)] h-[500px] sm:h-[560px] lg:h-[600px] w-full bg-[#040D1A]">
                   <video
                     src="/about-who-we-are.mp4"
                     autoPlay
