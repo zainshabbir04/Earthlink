@@ -82,10 +82,10 @@ export default function Navbar() {
                       <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
                     </Link>
 
-                    {/* Clean White Floating Services Dropdown Card */}
+                    {/* Clean White Floating Services Dropdown Card (All 9 Exact Service Headings) */}
                     <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                      <div className="bg-white rounded-xl shadow-[0_12px_40px_rgba(11,31,58,0.14)] border border-[#E4E9F0] p-2.5 w-72 grid grid-cols-1 gap-0.5">
-                        {SERVICES_DATA.slice(0, 8).map((srv) => (
+                      <div className="bg-white rounded-xl shadow-[0_12px_40px_rgba(11,31,58,0.14)] border border-[#E4E9F0] p-2.5 w-80 grid grid-cols-1 gap-0.5">
+                        {SERVICES_DATA.map((srv) => (
                           <Link
                             key={srv.id}
                             href={`/services#${srv.id}`}
@@ -97,8 +97,8 @@ export default function Navbar() {
                                 className="w-4 h-4"
                               />
                             </span>
-                            <span className="text-sm font-medium group-hover/item:text-[#008FFF] transition-colors">
-                              {srv.shortTitle}
+                            <span className="text-[13px] font-medium group-hover/item:text-[#008FFF] transition-colors leading-snug">
+                              {srv.title}
                             </span>
                           </Link>
                         ))}

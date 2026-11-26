@@ -184,15 +184,15 @@ export default function Footer() {
               <h3 className="text-sm font-extrabold uppercase tracking-wider text-slate-900 relative pb-2 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-8 after:h-0.5 after:bg-[#008FFF] after:rounded-full">
                 Core Services
               </h3>
-              <ul className="space-y-2.5 text-sm">
-                {SERVICES_DATA.slice(0, 6).map((srv) => (
+              <ul className="space-y-2 text-[13px]">
+                {SERVICES_DATA.map((srv) => (
                   <li key={srv.id}>
                     <Link
                       href={`/services#${srv.id}`}
-                      className="text-slate-600 hover:text-[#008FFF] font-medium inline-flex items-center gap-1.5 group transition-colors"
+                      className="text-slate-600 hover:text-[#008FFF] font-medium inline-flex items-center gap-1.5 group transition-colors leading-snug"
                     >
-                      <ChevronRight className="w-3.5 h-3.5 text-[#008FFF]/70 group-hover:translate-x-1 transition-transform" />
-                      <span>{srv.shortTitle}</span>
+                      <ChevronRight className="w-3.5 h-3.5 text-[#008FFF]/70 group-hover:translate-x-1 transition-transform shrink-0" />
+                      <span>{srv.title}</span>
                     </Link>
                   </li>
                 ))}
