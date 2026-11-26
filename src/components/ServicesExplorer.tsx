@@ -171,12 +171,28 @@ function AnimatedServiceRow({
   );
 }
 
+const SERVICE_CATEGORIES = [
+  "All Solutions",
+  "Corporate Connectivity",
+  "Optical Infrastructure",
+  "Cloud & Managed IT",
+  "Security & Digital",
+] as const;
+
 export default function ServicesExplorer() {
+  const [selectedCategory, setSelectedCategory] =
+    useState<string>("All Solutions");
+
+  const filteredServices: ServiceItem[] =
+    selectedCategory === "All Solutions"
+      ? SERVICES_DATA
+      : SERVICES_DATA.filter((s) => s.category === selectedCategory);
+
   return (
     <section className="py-14 lg:py-20">
       <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
-        {/* Clean Centered Hero Badge & Main Heading (Filter Bar Removed) */}
-        <div className="flex flex-col items-center text-center mb-12 lg:mb-14 space-y-3">
+        {/* Centered Hero Badge, Unique Main Heading & Interactive Category Filter Pills */}
+        <div className="flex flex-col items-center text-center mb-12 lg:mb-14 space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#008FFF]/10 border border-[#008FFF]/30">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
@@ -187,17 +203,45 @@ export default function ServicesExplorer() {
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-normal text-slate-900 leading-tight">
-            Our Enterprise{" "}
+          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-normal text-slate-900 leading-tight max-w-3xl">
+            Next-Gen{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#06B6D4]">
-              Services
+              Optical &amp; Digital Solutions
             </span>
           </h2>
+
+          {/* Centered Interactive Category Filter Buttons */}
+          <div
+            className="pt-2 flex flex-wrap items-center justify-center gap-2.5"
+            role="tablist"
+            aria-label="Filter services by category"
+          >
+            {SERVICE_CATEGORIES.map((category) => {
+              const active = selectedCategory === category;
+              return (
+                <button
+                  key={category}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  onClick={() => setSelectedCategory(category)}
+                  style={active ? { color: "#FFFFFF" } : undefined}
+                  className={`px-5 py-2.5 rounded-full text-xs sm:text-[13px] font-bold transition-all duration-200 ${
+                    active
+                      ? "bg-gradient-to-r from-[#008FFF] to-[#0284C7] shadow-[0_8px_22px_rgba(0,143,255,0.34)]"
+                      : "bg-white text-slate-800 border border-slate-200/90 hover:border-[#008FFF] hover:text-[#008FFF] shadow-xs"
+                  }`}
+                >
+                  {category}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Alternating Vertical Zig-Zag Service Rows (Image Left / Text Right -> Text Left / Image Right) */}
         <div className="space-y-10 lg:space-y-12">
-          {SERVICES_DATA.map((service, idx) => (
+          {filteredServices.map((service, idx) => (
             <AnimatedServiceRow
               key={service.id}
               service={service}
