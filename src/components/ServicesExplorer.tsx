@@ -6,14 +6,6 @@ import { CheckCircle2, ArrowUpRight } from "lucide-react";
 import { SERVICES_DATA, ServiceItem } from "@/data/siteData";
 import ServiceIcon from "./ServiceIcon";
 
-const SERVICE_CATEGORIES = [
-  "All Solutions",
-  "Corporate Connectivity",
-  "Optical Infrastructure",
-  "Cloud & Managed IT",
-  "Security & Digital",
-] as const;
-
 const SERVICE_IMAGES: Record<string, string> = {
   "corporate-internet-solutions": "/services/corporate-internet.jpg",
   "dedicated-internet-access": "/services/dedicated-internet.jpg",
@@ -60,9 +52,7 @@ function AnimatedServiceRow({
       ref={rowRef}
       id={service.id}
       className={`scroll-mt-28 group relative rounded-[30px] bg-white border border-sky-100 hover:border-[#008FFF]/45 shadow-[0_14px_42px_rgba(15,23,42,0.06)] hover:shadow-[0_24px_65px_rgba(0,143,255,0.16)] p-6 sm:p-8 lg:p-10 overflow-hidden transition-all duration-700 ${
-        visible
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 translate-y-10"
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
     >
       {/* Animated Top Cyan Accent Line on Hover */}
@@ -97,7 +87,7 @@ function AnimatedServiceRow({
           </div>
         </div>
 
-        {/* Service Heading & Details Column (Row 1: Right | Row 2: Left | Alternates Vertically) */}
+        {/* Service Heading & Detailed Info Column (Row 1: Right | Row 2: Left | Alternates Vertically) */}
         <div
           className={`lg:col-span-6 space-y-5 transition-all duration-700 delay-100 ${
             isReversed ? "lg:order-1" : "lg:order-2"
@@ -125,18 +115,21 @@ function AnimatedServiceRow({
             </span>
           </div>
 
-          {/* Service Title & Description */}
-          <div className="space-y-2">
+          {/* Service Title, Tagline & Rich Enterprise Description */}
+          <div className="space-y-2.5">
             <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 group-hover:text-[#008FFF] transition-colors leading-snug">
               {service.title}
             </h3>
+            <p className="text-xs sm:text-sm font-bold text-[#0284C7]">
+              {service.tagline}
+            </p>
             <p className="text-sm sm:text-[15px] text-slate-600 leading-relaxed font-medium">
-              {service.shortDescription}
+              {service.detailedDescription}
             </p>
           </div>
 
-          {/* Technical Specs List */}
-          <ul className="space-y-2.5 pt-3 border-t border-slate-100">
+          {/* Technical Specs & Key Benefits */}
+          <ul className="space-y-2 pt-3 border-t border-slate-100">
             {service.specs.map((spec, i) => (
               <li
                 key={i}
@@ -179,60 +172,32 @@ function AnimatedServiceRow({
 }
 
 export default function ServicesExplorer() {
-  const [selectedCategory, setSelectedCategory] =
-    useState<string>("All Solutions");
-
-  const filteredServices: ServiceItem[] =
-    selectedCategory === "All Solutions"
-      ? SERVICES_DATA
-      : SERVICES_DATA.filter((s) => s.category === selectedCategory);
-
   return (
     <section className="py-14 lg:py-20">
       <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
-        {/* Category Filter Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-4 pb-7 mb-10 border-b border-slate-200">
-          <div>
-            <span className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#0284C7] block mb-1">
+        {/* Clean Centered Hero Badge & Main Heading (Filter Bar Removed) */}
+        <div className="flex flex-col items-center text-center mb-12 lg:mb-14 space-y-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#008FFF]/10 border border-[#008FFF]/30">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#008FFF]" />
+            </span>
+            <span className="text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.18em] text-[#0284C7]">
               Enterprise Solutions
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-              Service Catalog{" "}
-              <span className="text-[#008FFF]">({filteredServices.length})</span>
-            </h2>
           </div>
 
-          <div
-            className="flex flex-wrap gap-2"
-            role="tablist"
-            aria-label="Filter services by category"
-          >
-            {SERVICE_CATEGORIES.map((category) => {
-              const active = selectedCategory === category;
-              return (
-                <button
-                  key={category}
-                  type="button"
-                  role="tab"
-                  aria-selected={active}
-                  onClick={() => setSelectedCategory(category)}
-                  style={active ? { color: "#FFFFFF" } : undefined}
-                  className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 ${
-                    active
-                      ? "bg-gradient-to-r from-[#008FFF] to-[#0284C7] shadow-[0_6px_18px_rgba(0,143,255,0.32)]"
-                      : "bg-white text-slate-700 border border-slate-200 hover:border-[#008FFF] hover:text-[#008FFF] shadow-xs"
-                  }`}
-                >
-                  {category}
-                </button>
-              );
-            })}
-          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-normal text-slate-900 leading-tight">
+            Our Enterprise{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#06B6D4]">
+              Services
+            </span>
+          </h2>
         </div>
 
         {/* Alternating Vertical Zig-Zag Service Rows (Image Left / Text Right -> Text Left / Image Right) */}
         <div className="space-y-10 lg:space-y-12">
-          {filteredServices.map((service, idx) => (
+          {SERVICES_DATA.map((service, idx) => (
             <AnimatedServiceRow
               key={service.id}
               service={service}
