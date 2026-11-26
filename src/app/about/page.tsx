@@ -93,22 +93,22 @@ export default function AboutPage() {
 
         <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-            {/* Left Column: Sleek 9:16 Vertical Portrait Video Frame (Full Video Edge-to-Edge, Zero Side Bars) */}
+            {/* Left Column: Balanced Wider & Slightly Shorter Vertical Video Frame (Matches Right Column Height) */}
             <div className="lg:col-span-5 flex justify-center">
-              <div className="relative group w-full max-w-[330px] sm:max-w-[350px]">
+              <div className="relative group w-full max-w-[440px] sm:max-w-[470px]">
                 {/* Decorative Offset Dashed Optical Frame */}
                 <div className="pointer-events-none absolute -inset-3 rounded-[30px] border-2 border-dashed border-[#008FFF]/30 transition-transform duration-500 group-hover:scale-[1.01]" />
                 <div className="pointer-events-none absolute -bottom-5 -left-5 w-32 h-32 rounded-3xl bg-gradient-to-tr from-[#008FFF]/25 to-[#06B6D4]/15 blur-xl" />
 
-                {/* Exact 9:16 Vertical Video Showcase (100% Full Video Visible, Zero Side Bars) */}
-                <div className="relative rounded-[26px] overflow-hidden border-2 border-white shadow-[0_24px_60px_rgba(2,132,199,0.22)] aspect-[9/16] w-full bg-[#040D1A]">
+                {/* Balanced Vertical Video Showcase (Wider Width, Compact Height, Perfectly Centered Edge-to-Edge) */}
+                <div className="relative rounded-[26px] overflow-hidden border-2 border-white shadow-[0_24px_60px_rgba(2,132,199,0.22)] h-[440px] sm:h-[490px] lg:h-[520px] w-full bg-[#040D1A]">
                   <video
                     src="/about-who-we-are.mp4"
                     autoPlay
                     loop
                     muted
                     playsInline
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-[center_52%]"
                   />
                 </div>
               </div>
