@@ -440,9 +440,10 @@ export default function HubexHomeInteractive() {
                   style={{ left, top }}
                   className="absolute -translate-x-1/2 -translate-y-1/2 group cursor-pointer z-20 hover:z-50"
                 >
-                  {/* Service Heading Pill */}
+                  {/* Service Heading Pill (High-Contrast Brand Blue Background for Crisp Visibility) */}
                   <span
-                    className={`absolute ${labelPos} whitespace-nowrap font-bold text-sm xl:text-[15px] text-slate-900 bg-white px-4 py-1.5 rounded-full border border-slate-200/90 shadow-[0_6px_18px_rgba(15,23,42,0.08)] group-hover:border-[#008FFF] group-hover:text-[#008FFF] group-hover:shadow-[0_10px_24px_rgba(0,143,255,0.18)] transition-all duration-300`}
+                    style={{ color: "#FFFFFF" }}
+                    className={`absolute ${labelPos} whitespace-nowrap font-bold text-sm xl:text-[15px] bg-gradient-to-r from-[#008FFF] to-[#0284C7] group-hover:from-[#0284C7] group-hover:to-[#0A192F] px-4 py-1.5 rounded-full border border-sky-300/60 shadow-[0_8px_22px_rgba(0,143,255,0.38)] group-hover:shadow-[0_12px_28px_rgba(2,132,199,0.5)] transition-all duration-300`}
                   >
                     {srv.shortTitle}
                   </span>
