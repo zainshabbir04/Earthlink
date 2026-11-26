@@ -13,26 +13,38 @@ import CTASection from "./CTASection";
 
 const HOME_FAQS = [
   {
+    tag: "Optical Fiber",
+    highlight: "1:1 Symmetrical • Zero FUP • Zero Throttling",
     q: "What makes EARTHLINK Broadband different from conventional broadband?",
     a: "We deliver 100% subterranean armored optical fiber with strict 1:1 symmetrical upload and download speeds, zero Fair Usage Policy (FUP) caps, and zero peak-hour throttling.",
   },
   {
+    tag: "Uptime & SLA",
+    highlight: "99.9%–99.99% SLA • Sub-50ms Auto-Failover",
     q: "What uptime SLA and automatic failover protection do you provide?",
     a: "Our enterprise links carry a contractual 99.9% to 99.99% uptime SLA backed by dual-path self-healing 100G metro optical rings with automated sub-50ms protection switching.",
   },
   {
+    tag: "24/7 NOC",
+    highlight: "Live OTDR Telemetry • <15m Incident Response",
     q: "How does your 24/7/365 NOC support handle network faults?",
     a: "Our live Network Operations Center monitors optical light levels continuously using automated OTDR telemetry, delivering under-15-minute incident response and rapid field dispatch.",
   },
   {
+    tag: "Enterprise Routing",
+    highlight: "Dual-Stack IPv4/IPv6 • BGP & Private MPLS",
     q: "Do you support static IPv4/IPv6, BGP peering, and multi-branch MPLS?",
     a: "Yes. Our Dedicated Internet Access (DIA) and MPLS circuits support native Dual-Stack IPv4/IPv6, enterprise ASN BGP multi-homing, and isolated Layer-2/Layer-3 private branch interconnectivity.",
   },
   {
+    tag: "Regional Reach",
+    highlight: "15+ Commercial & Industrial Corridors",
     q: "Which cities and commercial corridors are covered?",
     a: "Our optical network serves major business and industrial hubs including Lahore, Sheikhupura, Kala Shah Kaku, Gujrat, Kasur, Narowal, Faisalabad, Rawalpindi, Multan, Gujranwala, Sialkot, and surrounding corridors.",
   },
   {
+    tag: "Feasibility Survey",
+    highlight: "OSP Engineering Site Survey & Fiber Drop",
     q: "How do I request an optical fiber feasibility survey for my office?",
     a: "Click 'Get in Touch' or 'Request Site Survey' on our Contact page with your building address and target bandwidth tier; our OSP engineering team will verify underground splice proximity promptly.",
   },
@@ -719,14 +731,18 @@ export default function HubexHomeInteractive() {
       <CTASection />
 
       {/* =====================================================================
-          SECTION 10: FREQUENTLY ASKED QUESTIONS (Interactive Eye-Catching FAQs Accordion)
+          SECTION 10: FREQUENTLY ASKED QUESTIONS (Unique Split-Stage Interactive FAQ Desk)
          ===================================================================== */}
       <section
         id="faqs"
-        className="relative py-14 lg:py-20 border-t border-[#1a1a1a]"
+        className="relative py-16 lg:py-24 border-t border-sky-100/80 overflow-hidden"
       >
-        <div className="max-w-5xl mx-auto px-[20px] lg:px-[50px]">
-          <div className="flex flex-col items-center text-center mb-10 lg:mb-12">
+        {/* Soft Ambient Optical Glow */}
+        <div className="pointer-events-none absolute -top-24 right-0 w-[420px] h-[420px] rounded-full bg-[#008FFF]/10 blur-[110px]" />
+        <div className="pointer-events-none absolute -bottom-24 left-0 w-[360px] h-[360px] rounded-full bg-[#06B6D4]/10 blur-[100px]" />
+
+        <div className="relative z-10 max-w-6xl mx-auto px-[20px] lg:px-[50px]">
+          <div className="flex flex-col items-center text-center mb-12 lg:mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#008FFF]/10 border border-[#008FFF]/30 mb-3">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
@@ -737,81 +753,226 @@ export default function HubexHomeInteractive() {
               </span>
             </div>
 
-            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-slate-900">
               Frequently Asked{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#0284C7]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#06B6D4]">
                 Questions
               </span>
             </h2>
-            <p className="text-sm sm:text-base text-[#D3D3D3] mt-2 max-w-xl">
+            <p className="text-sm sm:text-base text-slate-600 mt-2.5 max-w-xl font-medium">
               Everything you need to know about our subterranean optical fiber, 1:1 DIA speeds, SLAs, and 24/7 NOC support.
             </p>
           </div>
 
-          <div className="space-y-3.5">
-            {HOME_FAQS.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <div
-                  key={idx}
-                  className={`rounded-2xl bg-white border transition-all duration-300 overflow-hidden ${
-                    isOpen
-                      ? "border-[#008FFF] shadow-[0_14px_34px_rgba(0,143,255,0.14)]"
-                      : "border-slate-200/90 hover:border-[#008FFF]/50 shadow-sm"
-                  }`}
-                >
-                  <button
-                    type="button"
-                    onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    aria-expanded={isOpen}
-                    className="w-full px-6 py-5 text-left flex items-center justify-between gap-4"
-                  >
-                    <div className="flex items-center gap-3.5">
-                      <span
-                        className={`w-7 h-7 rounded-full text-xs font-mono font-bold flex items-center justify-center shrink-0 transition-colors ${
-                          isOpen
-                            ? "bg-[#008FFF] text-white"
-                            : "bg-[#008FFF]/10 text-[#0284C7]"
-                        }`}
-                      >
-                        0{idx + 1}
-                      </span>
-                      <span className="text-sm sm:text-base font-bold text-slate-900">
-                        {faq.q}
-                      </span>
-                    </div>
+          {(() => {
+            const activeIdx = openFaq ?? 0;
+            const activeFaq = HOME_FAQS[activeIdx];
+            const prevIdx = (activeIdx - 1 + HOME_FAQS.length) % HOME_FAQS.length;
+            const nextIdx = (activeIdx + 1) % HOME_FAQS.length;
 
-                    <span
-                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
-                        isOpen
-                          ? "bg-[#008FFF] text-white rotate-180"
-                          : "bg-slate-100 text-slate-600"
-                      }`}
-                    >
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M6 9l6 6 6-6" />
-                      </svg>
-                    </span>
-                  </button>
+            return (
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 lg:gap-9 items-start">
+                {/* LEFT COLUMN: Interactive Question Selector Rail */}
+                <div className="lg:col-span-5 space-y-3">
+                  {HOME_FAQS.map((faq, idx) => {
+                    const isSelected = activeIdx === idx;
+                    return (
+                      <div key={idx}>
+                        <button
+                          type="button"
+                          onClick={() => setOpenFaq(idx)}
+                          aria-expanded={isSelected}
+                          className={`group relative w-full text-left rounded-2xl p-4 sm:p-5 border transition-all duration-300 overflow-hidden ${
+                            isSelected
+                              ? "bg-white border-[#008FFF] shadow-[0_14px_34px_rgba(0,143,255,0.16)] lg:translate-x-2"
+                              : "bg-white/80 hover:bg-white border-slate-200/80 hover:border-[#008FFF]/50 shadow-xs"
+                          }`}
+                        >
+                          {/* Active Left Optical Accent Bar */}
+                          <span
+                            className={`absolute left-0 top-0 bottom-0 w-1.5 rounded-l-2xl bg-gradient-to-b from-[#008FFF] via-[#0FA4E8] to-[#06B6D4] transition-opacity duration-300 ${
+                              isSelected ? "opacity-100" : "opacity-0 group-hover:opacity-40"
+                            }`}
+                          />
 
-                  {isOpen && (
-                    <div className="px-6 pb-5 pt-0 pl-[4.125rem] text-xs sm:text-sm text-slate-600 leading-relaxed">
-                      {faq.a}
-                    </div>
-                  )}
+                          <div className="flex items-start gap-3.5 pl-1">
+                            <span
+                              style={isSelected ? { color: "#FFFFFF" } : undefined}
+                              className={`w-8 h-8 rounded-xl text-xs font-mono font-extrabold flex items-center justify-center shrink-0 mt-0.5 transition-all duration-300 ${
+                                isSelected
+                                  ? "bg-gradient-to-br from-[#008FFF] to-[#0284C7] shadow-[0_6px_16px_rgba(0,143,255,0.35)]"
+                                  : "bg-[#008FFF]/10 text-[#0284C7] group-hover:bg-[#008FFF]/20"
+                              }`}
+                            >
+                              0{idx + 1}
+                            </span>
+
+                            <div className="flex-1 min-w-0">
+                              <span
+                                className={`inline-block text-[10px] font-mono font-bold uppercase tracking-[0.14em] mb-1 ${
+                                  isSelected ? "text-[#008FFF]" : "text-slate-400"
+                                }`}
+                              >
+                                {faq.tag}
+                              </span>
+                              <p
+                                className={`text-sm font-bold leading-snug transition-colors ${
+                                  isSelected
+                                    ? "text-slate-900"
+                                    : "text-slate-700 group-hover:text-slate-900"
+                                }`}
+                              >
+                                {faq.q}
+                              </p>
+                            </div>
+
+                            <span
+                              className={`hidden lg:flex w-7 h-7 rounded-full items-center justify-center shrink-0 mt-1 transition-all duration-300 ${
+                                isSelected
+                                  ? "bg-[#008FFF]/10 text-[#008FFF] translate-x-0.5"
+                                  : "text-slate-300 group-hover:text-[#008FFF]"
+                              }`}
+                            >
+                              <svg
+                                width="15"
+                                height="15"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              >
+                                <path d="M9 18l6-6-6-6" />
+                              </svg>
+                            </span>
+                          </div>
+                        </button>
+
+                        {/* Mobile Inline Expanded Answer */}
+                        {isSelected && (
+                          <div className="lg:hidden mt-2 rounded-2xl bg-white border border-sky-200 p-4 shadow-sm">
+                            <span className="inline-block text-[10px] font-mono font-bold uppercase tracking-wider text-[#0284C7] bg-[#008FFF]/10 px-2.5 py-1 rounded-full mb-2">
+                              {faq.highlight}
+                            </span>
+                            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                              {faq.a}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
-              );
-            })}
-          </div>
+
+                {/* RIGHT COLUMN (Desktop): Sticky Glowing Answer Spotlight Stage */}
+                <div className="hidden lg:block lg:col-span-7 lg:sticky lg:top-10">
+                  <div className="relative rounded-[28px] bg-white border border-sky-200/80 shadow-[0_24px_65px_rgba(15,23,42,0.09)] overflow-hidden">
+                    {/* Deep Optical Navy Header Band */}
+                    <div className="relative bg-hubex-banner px-8 pt-8 pb-7 overflow-hidden">
+                      {/* Decorative Giant Watermark Index */}
+                      <span
+                        aria-hidden="true"
+                        className="pointer-events-none select-none absolute -right-2 -top-4 text-[128px] font-black leading-none text-white/[0.08] font-mono"
+                      >
+                        0{activeIdx + 1}
+                      </span>
+
+                      <div className="relative z-10 flex items-center justify-between gap-4 mb-4">
+                        <span
+                          style={{ color: "#E0F2FE" }}
+                          className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/15 border border-white/25 backdrop-blur-sm text-[11px] font-mono font-bold uppercase tracking-[0.16em]"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-300" />
+                          {activeFaq.tag}
+                        </span>
+                        <span
+                          style={{ color: "#BAE6FD" }}
+                          className="text-xs font-mono font-semibold"
+                        >
+                          0{activeIdx + 1} / 0{HOME_FAQS.length}
+                        </span>
+                      </div>
+
+                      <h3
+                        style={{ color: "#FFFFFF" }}
+                        className="relative z-10 text-2xl font-extrabold leading-snug pr-12"
+                      >
+                        {activeFaq.q}
+                      </h3>
+                    </div>
+
+                    {/* Crisp Answer Body */}
+                    <div className="p-8 space-y-6">
+                      {/* Verified Key Spec Pill */}
+                      <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#F0F9FF] border border-sky-200/80 text-xs font-bold text-[#0284C7]">
+                        <span className="w-2 h-2 rounded-full bg-[#008FFF]" />
+                        {activeFaq.highlight}
+                      </div>
+
+                      {/* Detailed Answer with Left Optical Border */}
+                      <div className="border-l-[3px] border-[#008FFF] pl-5 py-0.5">
+                        <p className="text-[15.5px] text-slate-700 leading-[1.8] font-medium">
+                          {activeFaq.a}
+                        </p>
+                      </div>
+
+                      {/* Interactive Prev / Dots / Next Deck Controls */}
+                      <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-4">
+                        <div className="flex items-center gap-1.5">
+                          {HOME_FAQS.map((_, dotIdx) => (
+                            <button
+                              key={dotIdx}
+                              type="button"
+                              aria-label={`View question ${dotIdx + 1}`}
+                              onClick={() => setOpenFaq(dotIdx)}
+                              className={`h-2 rounded-full transition-all duration-300 ${
+                                dotIdx === activeIdx
+                                  ? "w-7 bg-[#008FFF]"
+                                  : "w-2 bg-slate-200 hover:bg-[#008FFF]/50"
+                              }`}
+                            />
+                          ))}
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          <button
+                            type="button"
+                            onClick={() => setOpenFaq(prevIdx)}
+                            className="px-3.5 py-2 rounded-xl border border-slate-200 hover:border-[#008FFF] text-xs font-bold text-slate-700 hover:text-[#008FFF] transition-colors"
+                          >
+                            ← Prev
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setOpenFaq(nextIdx)}
+                            style={{ color: "#FFFFFF" }}
+                            className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#008FFF] to-[#0284C7] hover:from-[#0284C7] hover:to-[#0A192F] text-xs font-bold shadow-[0_6px_16px_rgba(0,143,255,0.28)] transition-all"
+                          >
+                            Next →
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Subtle Direct Support Footer Strip */}
+                    <div className="px-8 py-4 bg-slate-50/90 border-t border-slate-100 flex items-center justify-between gap-4">
+                      <span className="text-xs font-semibold text-slate-600">
+                        Need custom SLA or site feasibility details?
+                      </span>
+                      <Link
+                        href="/contact"
+                        className="text-xs font-extrabold text-[#008FFF] hover:text-[#0284C7] inline-flex items-center gap-1 transition-colors whitespace-nowrap"
+                      >
+                        <span>Talk to Our Engineers</span>
+                        <span>→</span>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
         </div>
       </section>
     </div>
