@@ -99,15 +99,26 @@ export default function AboutPage() {
               <div className="pointer-events-none absolute -inset-3 rounded-[30px] border-2 border-dashed border-[#008FFF]/30 transition-transform duration-500 group-hover:scale-[1.01]" />
               <div className="pointer-events-none absolute -bottom-5 -left-5 w-32 h-32 rounded-3xl bg-gradient-to-tr from-[#008FFF]/25 to-[#06B6D4]/15 blur-xl" />
 
-              {/* Main Rounded Looping Video Showcase (Exact 16:9 Aspect Ratio — 100% Full Video Visible, Zero Cropping) */}
-              <div className="relative rounded-[26px] overflow-hidden border-2 border-white shadow-[0_24px_60px_rgba(2,132,199,0.22)] aspect-video w-full bg-slate-900">
+              {/* Main Tall Vertical Video Frame (Matches Right Column Height + Full Uncropped Video Centered Over Soft Ambient Fill) */}
+              <div className="relative rounded-[26px] overflow-hidden border-2 border-white shadow-[0_24px_60px_rgba(2,132,199,0.22)] h-[360px] sm:h-[440px] lg:h-[530px] bg-[#040D1A] flex items-center justify-center">
+                {/* Ambient Live-Color Background Fill so Tall Vertical Frame Has Zero Harsh Black Bars */}
                 <video
                   src="/about-who-we-are.mp4"
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="w-full h-full object-contain"
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 w-full h-full object-cover blur-2xl scale-110 opacity-65"
+                />
+                {/* Sharp Full Uncropped Video Centered Inside the Tall Vertical Frame */}
+                <video
+                  src="/about-who-we-are.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="relative z-10 w-full h-full object-contain"
                 />
               </div>
             </div>
