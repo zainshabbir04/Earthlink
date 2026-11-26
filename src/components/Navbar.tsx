@@ -21,7 +21,8 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [quoteDrawerOpen, setQuoteDrawerOpen] = useState(false);
 
-  const isTransparent = pathname === "/" || pathname === "/about";
+  const isTransparent =
+    pathname === "/" || pathname === "/about" || pathname === "/services";
 
   useEffect(() => {
     setMobileOpen(false);
