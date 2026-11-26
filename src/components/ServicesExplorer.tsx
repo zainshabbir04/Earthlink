@@ -203,12 +203,14 @@ export default function ServicesExplorer() {
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-normal text-slate-900 leading-tight max-w-3xl">
-            Next-Gen{" "}
+          <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold tracking-tight text-slate-900 leading-[1.15] max-w-4xl">
+            Powering Business{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#06B6D4]">
-              Optical &amp; Digital Solutions
+              at the Speed of Light
             </span>
           </h2>
+
+          <div className="w-24 h-1 rounded-full bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#06B6D4]" />
 
           {/* Centered Interactive Category Filter Buttons */}
           <div
