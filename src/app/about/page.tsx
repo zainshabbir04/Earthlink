@@ -92,39 +92,30 @@ export default function AboutPage() {
         <div className="pointer-events-none absolute top-1/2 left-0 -translate-y-1/2 w-[420px] h-[420px] rounded-full bg-[#008FFF]/10 blur-[130px]" />
 
         <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px] relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-            {/* Left Column: Clean Layered Architectural Image Frame (No Overlays or Headings on Image) */}
-            <div className="lg:col-span-6 relative group">
-              {/* Decorative Offset Dashed Optical Frame */}
-              <div className="pointer-events-none absolute -inset-3 rounded-[30px] border-2 border-dashed border-[#008FFF]/30 transition-transform duration-500 group-hover:scale-[1.01]" />
-              <div className="pointer-events-none absolute -bottom-5 -left-5 w-32 h-32 rounded-3xl bg-gradient-to-tr from-[#008FFF]/25 to-[#06B6D4]/15 blur-xl" />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            {/* Left Column: Sleek 9:16 Vertical Portrait Video Frame (Full Video Edge-to-Edge, Zero Side Bars) */}
+            <div className="lg:col-span-5 flex justify-center">
+              <div className="relative group w-full max-w-[330px] sm:max-w-[350px]">
+                {/* Decorative Offset Dashed Optical Frame */}
+                <div className="pointer-events-none absolute -inset-3 rounded-[30px] border-2 border-dashed border-[#008FFF]/30 transition-transform duration-500 group-hover:scale-[1.01]" />
+                <div className="pointer-events-none absolute -bottom-5 -left-5 w-32 h-32 rounded-3xl bg-gradient-to-tr from-[#008FFF]/25 to-[#06B6D4]/15 blur-xl" />
 
-              {/* Main Tall Vertical Video Frame (Matches Right Column Height + Full Uncropped Video Centered Over Soft Ambient Fill) */}
-              <div className="relative rounded-[26px] overflow-hidden border-2 border-white shadow-[0_24px_60px_rgba(2,132,199,0.22)] h-[360px] sm:h-[440px] lg:h-[530px] bg-[#040D1A] flex items-center justify-center">
-                {/* Ambient Live-Color Background Fill so Tall Vertical Frame Has Zero Harsh Black Bars */}
-                <video
-                  src="/about-who-we-are.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 w-full h-full object-cover blur-2xl scale-110 opacity-65"
-                />
-                {/* Sharp Full Uncropped Video Centered Inside the Tall Vertical Frame */}
-                <video
-                  src="/about-who-we-are.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="relative z-10 w-full h-full object-contain"
-                />
+                {/* Exact 9:16 Vertical Video Showcase (100% Full Video Visible, Zero Side Bars) */}
+                <div className="relative rounded-[26px] overflow-hidden border-2 border-white shadow-[0_24px_60px_rgba(2,132,199,0.22)] aspect-[9/16] w-full bg-[#040D1A]">
+                  <video
+                    src="/about-who-we-are.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
             </div>
 
             {/* Right Column: "Our Company / Who We Are" Editorial Content */}
-            <div className="lg:col-span-6 space-y-5 pt-4 lg:pt-0">
+            <div className="lg:col-span-7 space-y-5 pt-4 lg:pt-0">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#008FFF]/10 border border-[#008FFF]/30">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
