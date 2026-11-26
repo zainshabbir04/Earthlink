@@ -41,8 +41,8 @@ const HOME_FAQS = [
 export default function HubexHomeInteractive() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
-  // Radial hub-and-spoke nodes (8 nodes around the center hub, matching HubexTech)
-  const hubServices = SERVICES_DATA.slice(0, 8);
+  // All 9 radial hub-and-spoke service nodes around the center hub
+  const hubServices = SERVICES_DATA;
 
   return (
     <div className="bg-black-gradient text-white">
@@ -296,12 +296,12 @@ export default function HubexHomeInteractive() {
             </p>
           </div>
 
-          {/* Desktop Animated Radial Hub-and-Spoke Diagram */}
+          {/* Desktop Animated Radial Hub-and-Spoke Diagram (All 9 Services: 1 Top + 4 Left + 4 Right) */}
           <div className="hidden lg:block relative pt-2 pb-2">
-            <div className="relative max-w-5xl mx-auto h-[500px] flex items-center justify-center">
+            <div className="relative max-w-5xl mx-auto h-[540px] flex items-center justify-center">
               {/* Animated SVG Optical Fiber Connector Lines + Traveling Signal Light Dots */}
               <svg
-                viewBox="0 0 1000 500"
+                viewBox="0 0 1000 540"
                 preserveAspectRatio="none"
                 className="absolute inset-0 w-full h-full pointer-events-none z-10"
               >
@@ -321,14 +321,15 @@ export default function HubexHomeInteractive() {
                 </defs>
 
                 {[
-                  "M500 250 L500 92",
-                  "M500 250 L500 408",
-                  "M500 250 L370 120 L270 120",
-                  "M500 250 L235 250",
-                  "M500 250 L370 380 L270 380",
-                  "M500 250 L630 120 L730 120",
-                  "M500 250 L765 250",
-                  "M500 250 L630 380 L730 380",
+                  "M500 270 L500 82",
+                  "M500 270 L390 118 L285 118",
+                  "M500 270 L345 218 L240 218",
+                  "M500 270 L345 322 L240 322",
+                  "M500 270 L390 422 L285 422",
+                  "M500 270 L610 118 L715 118",
+                  "M500 270 L655 218 L760 218",
+                  "M500 270 L655 322 L760 322",
+                  "M500 270 L610 422 L715 422",
                 ].map((pathD, i) => (
                   <g key={i}>
                     {/* Base Track */}
@@ -375,61 +376,68 @@ export default function HubexHomeInteractive() {
                 </div>
               </div>
 
-              {/* 8 Pixel-Aligned Service Nodes Anchored Exactly on SVG Line Endpoints */}
+              {/* 9 Pixel-Aligned Service Nodes Anchored Exactly on SVG Line Endpoints */}
               {[
                 {
                   srv: hubServices[0],
                   left: "50%",
-                  top: "18.4%",
+                  top: "15.19%",
                   labelPos: "bottom-full mb-2.5 left-1/2 -translate-x-1/2",
                   tooltipPos: "top-full mt-3 left-1/2 -translate-x-1/2",
                 },
                 {
                   srv: hubServices[1],
-                  left: "27%",
-                  top: "24%",
+                  left: "28.5%",
+                  top: "21.85%",
                   labelPos: "right-full mr-3.5 top-1/2 -translate-y-1/2",
                   tooltipPos: "bottom-full mb-3 left-1/2 -translate-x-1/2",
                 },
                 {
                   srv: hubServices[2],
-                  left: "23.5%",
-                  top: "50%",
+                  left: "24%",
+                  top: "40.37%",
                   labelPos: "right-full mr-3.5 top-1/2 -translate-y-1/2",
                   tooltipPos: "bottom-full mb-3 left-1/2 -translate-x-1/2",
                 },
                 {
                   srv: hubServices[3],
-                  left: "27%",
-                  top: "76%",
+                  left: "24%",
+                  top: "59.63%",
                   labelPos: "right-full mr-3.5 top-1/2 -translate-y-1/2",
                   tooltipPos: "bottom-full mb-3 left-1/2 -translate-x-1/2",
                 },
                 {
                   srv: hubServices[4],
-                  left: "50%",
-                  top: "81.6%",
-                  labelPos: "top-full mt-2.5 left-1/2 -translate-x-1/2",
+                  left: "28.5%",
+                  top: "78.15%",
+                  labelPos: "right-full mr-3.5 top-1/2 -translate-y-1/2",
                   tooltipPos: "bottom-full mb-3 left-1/2 -translate-x-1/2",
                 },
                 {
                   srv: hubServices[5],
-                  left: "73%",
-                  top: "24%",
+                  left: "71.5%",
+                  top: "21.85%",
                   labelPos: "left-full ml-3.5 top-1/2 -translate-y-1/2",
                   tooltipPos: "bottom-full mb-3 left-1/2 -translate-x-1/2",
                 },
                 {
                   srv: hubServices[6],
-                  left: "76.5%",
-                  top: "50%",
+                  left: "76%",
+                  top: "40.37%",
                   labelPos: "left-full ml-3.5 top-1/2 -translate-y-1/2",
                   tooltipPos: "bottom-full mb-3 left-1/2 -translate-x-1/2",
                 },
                 {
                   srv: hubServices[7],
-                  left: "73%",
-                  top: "76%",
+                  left: "76%",
+                  top: "59.63%",
+                  labelPos: "left-full ml-3.5 top-1/2 -translate-y-1/2",
+                  tooltipPos: "bottom-full mb-3 left-1/2 -translate-x-1/2",
+                },
+                {
+                  srv: hubServices[8],
+                  left: "71.5%",
+                  top: "78.15%",
                   labelPos: "left-full ml-3.5 top-1/2 -translate-y-1/2",
                   tooltipPos: "bottom-full mb-3 left-1/2 -translate-x-1/2",
                 },
