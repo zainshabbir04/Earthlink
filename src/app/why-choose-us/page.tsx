@@ -1,6 +1,6 @@
 import React from "react";
 import type { Metadata } from "next";
-import { CheckCircle2, XCircle } from "lucide-react";
+import { CheckCircle2, XCircle, MapPin } from "lucide-react";
 import {
   BRAND_INFO,
   WHY_CHOOSE_US_ADVANTAGES,
@@ -55,6 +55,66 @@ export default function WhyChooseUsPage() {
               Carrier-Grade{" "}
               <span style={{ color: "#38BDF8" }}>Optical Engineering</span>
             </h1>
+          </div>
+        </div>
+      </section>
+
+      {/* Optical Footprint & Transmission Grid Section (Directly Below Banner) */}
+      <section className="relative py-16 lg:py-24 overflow-hidden border-b border-sky-100/80">
+        <div className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[560px] h-[260px] rounded-full bg-[#008FFF]/10 blur-[110px]" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-[20px] lg:px-[50px]">
+          {/* Centered Badge, Unique Main Heading & Description */}
+          <div className="flex flex-col items-center text-center mb-10 lg:mb-12 space-y-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#008FFF]/10 border border-[#008FFF]/30">
+              <MapPin className="w-3.5 h-3.5 text-[#008FFF]" />
+              <span className="text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.18em] text-[#0284C7]">
+                Optical Footprint &amp; Transmission Grid
+              </span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold tracking-tight text-slate-900 leading-[1.15] max-w-4xl">
+              Nationwide Optical Backbone{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#06B6D4]">
+                Across Major Cities
+              </span>
+            </h2>
+
+            <p className="text-sm sm:text-base text-slate-600 max-w-2xl leading-relaxed font-medium">
+              Explore {BRAND_INFO.shortName}&apos;s optical fiber transmission grid
+              spanning major metropolises and dense metro fiber rings connecting
+              commercial, industrial, and enterprise corridors.
+            </p>
+          </div>
+
+          {/* Full-Width 3D Pakistan Optical Fiber Map Showcase */}
+          <div className="max-w-6xl mx-auto relative">
+            {/* Subtle Dashed Offset Optical Frame */}
+            <div className="pointer-events-none absolute -inset-2.5 rounded-[34px] border-2 border-dashed border-[#008FFF]/25" />
+
+            <div className="relative rounded-[28px] overflow-hidden border-2 border-white bg-[#050D1A] shadow-[0_24px_70px_rgba(2,132,199,0.22)]">
+              {/* Top-Left Live Optical Grid Status Pill */}
+              <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-20 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#031226]/80 border border-cyan-300/40 backdrop-blur-md">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-300 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-300" />
+                </span>
+                <span
+                  style={{ color: "#E0F2FE" }}
+                  className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-[0.16em]"
+                >
+                  100G Optical Transmission Grid
+                </span>
+              </div>
+
+              {/* 3D Pakistan Optical Fiber Map Visual */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/pakistan-optical-grid.jpg"
+                alt="EARTHLINK Broadband Nationwide Optical Fiber Transmission Grid Across Pakistan Cities"
+                className="w-full h-auto block object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
