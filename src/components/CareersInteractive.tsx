@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import {
   Briefcase,
   MapPin,
@@ -18,18 +18,6 @@ import {
 const HR_EMAIL = "hr@earthlinkbroadband.com.pk";
 
 export default function CareersInteractive() {
-  const [selectedDepartment, setSelectedDepartment] = useState<string>("All");
-
-  const departments = [
-    "All",
-    ...Array.from(new Set(CAREER_OPENINGS.map((j) => j.department))),
-  ];
-
-  const filteredJobs =
-    selectedDepartment === "All"
-      ? CAREER_OPENINGS
-      : CAREER_OPENINGS.filter((j) => j.department === selectedDepartment);
-
   const buildDirectApplyMailto = (job: JobOpening) => {
     const subject = encodeURIComponent(
       `Application for ${job.title} — ${BRAND_INFO.companyName}`
@@ -63,44 +51,38 @@ export default function CareersInteractive() {
 
         <div className="w-24 h-1 rounded-full bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#06B6D4]" />
 
-        {/* Interactive Department Count Buttons */}
-        <div className="pt-3 flex flex-wrap items-center justify-center gap-2.5">
-          {departments.map((dept) => {
-            const count =
-              dept === "All"
-                ? CAREER_OPENINGS.length
-                : CAREER_OPENINGS.filter((j) => j.department === dept).length;
-            const active = selectedDepartment === dept;
-            return (
-              <button
-                key={dept}
-                type="button"
-                onClick={() => setSelectedDepartment(dept)}
-                style={active ? { color: "#FFFFFF" } : undefined}
-                className={`inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-[13px] font-bold transition-all duration-200 ${
-                  active
-                    ? "bg-gradient-to-r from-[#008FFF] to-[#0284C7] shadow-[0_8px_22px_rgba(0,143,255,0.34)]"
-                    : "bg-white text-slate-800 border border-slate-200/90 hover:border-[#008FFF] hover:text-[#008FFF] shadow-xs"
-                }`}
+        {/* Unique Single All Positions Capsule Button */}
+        <div className="pt-3 flex justify-center">
+          <div className="relative inline-flex group">
+            <div className="pointer-events-none absolute -inset-1 rounded-full bg-gradient-to-r from-[#008FFF] via-[#38BDF8] to-[#06B6D4] opacity-40 blur-md group-hover:opacity-65 transition-opacity duration-300" />
+            <div className="relative inline-flex items-center gap-3 px-6 py-3 rounded-full bg-hubex-banner border border-cyan-300/45 shadow-[0_12px_30px_rgba(0,143,255,0.32)]">
+              <span className="w-7 h-7 rounded-full bg-white/15 border border-white/25 flex items-center justify-center shrink-0">
+                <Briefcase
+                  className="w-3.5 h-3.5"
+                  style={{ color: "#38BDF8" }}
+                />
+              </span>
+              <span
+                style={{ color: "#FFFFFF" }}
+                className="text-xs sm:text-sm font-extrabold tracking-wide uppercase"
               >
-                <span>{dept === "All" ? "All Positions" : dept}</span>
-                <span
-                  style={active ? { color: "#FFFFFF" } : undefined}
-                  className={`px-2 py-0.5 rounded-full text-[11px] font-mono font-extrabold ${
-                    active ? "bg-white/20" : "bg-[#008FFF]/10 text-[#0284C7]"
-                  }`}
-                >
-                  {count}
-                </span>
-              </button>
-            );
-          })}
+                All Positions
+              </span>
+              <span
+                style={{ color: "#E0F2FE" }}
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 border border-cyan-300/40 text-xs font-mono font-extrabold"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-300 animate-pulse" />
+                0{CAREER_OPENINGS.length} Open
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Vertical Stacked Full-Width Job Cards */}
       <div className="space-y-6">
-        {filteredJobs.map((job, idx) => (
+        {CAREER_OPENINGS.map((job, idx) => (
           <article
             key={job.id}
             className="group relative rounded-[26px] bg-white border border-sky-100 hover:border-[#008FFF]/60 shadow-[0_14px_40px_rgba(15,23,42,0.06)] hover:shadow-[0_24px_60px_rgba(0,143,255,0.16)] overflow-hidden transition-all duration-300"
