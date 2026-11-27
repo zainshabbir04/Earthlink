@@ -52,8 +52,8 @@ export default function WhyChooseUsPage() {
               style={{ color: "#FFFFFF" }}
               className="text-3xl sm:text-5xl lg:text-[3.5rem] font-black tracking-normal leading-[1.1] drop-shadow-[0_4px_24px_rgba(0,0,0,0.75)]"
             >
-              Carrier-Grade{" "}
-              <span style={{ color: "#38BDF8" }}>Optical Engineering</span>
+              Unmatched Reliability.{" "}
+              <span style={{ color: "#38BDF8" }}>Unstoppable Speed.</span>
             </h1>
           </div>
         </div>
