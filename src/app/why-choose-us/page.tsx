@@ -107,11 +107,16 @@ export default function WhyChooseUsPage() {
                 </span>
               </div>
 
-              {/* 3D Pakistan Optical Fiber Map Visual */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/pakistan-optical-grid.jpg"
-                alt="EARTHLINK Broadband Nationwide Optical Fiber Transmission Grid Across Pakistan Cities"
+              {/* 3D Pakistan Optical Fiber Map Video */}
+              <video
+                src="/pakistan-optical-grid.mp4"
+                poster="/pakistan-optical-grid.jpg"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                aria-label="EARTHLINK Broadband Nationwide Optical Fiber Transmission Grid Across Pakistan Cities"
                 className="w-full h-auto block object-cover"
               />
             </div>
