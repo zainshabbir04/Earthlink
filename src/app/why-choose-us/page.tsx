@@ -189,10 +189,15 @@ export default function WhyChooseUsPage() {
 
           {/* Desktop Column Header Row */}
           <div className="hidden lg:grid lg:grid-cols-12 gap-4 items-stretch mb-4">
-            <div className="lg:col-span-3 rounded-2xl bg-white/90 border border-slate-200/80 px-6 py-4 flex items-center shadow-xs">
-              <span className="text-[11px] font-mono font-extrabold uppercase tracking-[0.18em] text-slate-500">
-                Benchmark Parameter
-              </span>
+            <div className="lg:col-span-3 rounded-2xl bg-white/95 border border-sky-200/80 px-6 py-4 flex items-center shadow-xs">
+              <div>
+                <span className="block text-[10px] font-mono font-bold uppercase tracking-[0.16em] text-[#0284C7]">
+                  Core Metrics
+                </span>
+                <span className="text-sm font-extrabold text-slate-900">
+                  Benchmark Parameter
+                </span>
+              </div>
             </div>
 
             <div className="lg:col-span-4 rounded-2xl bg-white/90 border border-rose-200/70 px-6 py-4 flex items-center justify-between gap-3 shadow-xs">
