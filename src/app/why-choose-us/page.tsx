@@ -178,7 +178,7 @@ export default function WhyChooseUsPage() {
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-slate-900 leading-[1.15] max-w-4xl">
-              Enterprise Optical Fiber{" "}
+              Enterprise Optical Connectivity{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#06B6D4]">
                 vs. Conventional Broadband
               </span>
