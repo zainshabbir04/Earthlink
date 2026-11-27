@@ -59,29 +59,100 @@ export default function WhyChooseUsPage() {
         </div>
       </section>
 
-      {/* Six Technical Differentiators */}
-      <section className="py-12 lg:py-16">
-        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {WHY_CHOOSE_US_ADVANTAGES.map((adv) => (
+      {/* Six Technical Differentiators (Redesigned Dual-Tone Optical Telemetry Cards) */}
+      <section className="relative py-16 lg:py-24 overflow-hidden">
+        {/* Soft Ambient Optical Glows */}
+        <div className="pointer-events-none absolute -top-24 left-1/4 w-[420px] h-[420px] rounded-full bg-[#008FFF]/10 blur-[110px]" />
+        <div className="pointer-events-none absolute -bottom-24 right-1/4 w-[380px] h-[380px] rounded-full bg-[#06B6D4]/10 blur-[110px]" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-[20px] lg:px-[50px]">
+          {/* Centered Hero Badge + Eye-Catching Main Heading */}
+          <div className="flex flex-col items-center text-center mb-12 lg:mb-16 space-y-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#008FFF]/10 border border-[#008FFF]/30">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#008FFF]" />
+              </span>
+              <span className="text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.18em] text-[#0284C7]">
+                Why {BRAND_INFO.shortName}
+              </span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-[46px] font-extrabold tracking-tight text-slate-900 leading-[1.15] max-w-4xl">
+              Engineered Beyond{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#06B6D4]">
+                Ordinary Broadband
+              </span>
+            </h2>
+
+            <div className="w-24 h-1 rounded-full bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#06B6D4]" />
+          </div>
+
+          {/* 6 Dual-Tone Optical Engineering Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
+            {WHY_CHOOSE_US_ADVANTAGES.map((adv, idx) => (
               <div
                 key={adv.id}
-                className="p-6 rounded-2xl bg-[#000000] border border-[#272727] hover:border-[#1A545E] transition-all"
+                className="group relative flex flex-col rounded-[26px] bg-white border border-sky-100 hover:border-[#008FFF]/60 shadow-[0_14px_38px_rgba(15,23,42,0.07)] hover:shadow-[0_24px_60px_rgba(0,143,255,0.2)] hover:-translate-y-2 transition-all duration-300 overflow-hidden"
               >
-                <div className="flex items-center justify-between gap-3 mb-4">
-                  <div className="w-11 h-11 rounded-xl bg-[#0D0D0D] border border-[#1A545E] text-brand_cyan flex items-center justify-center">
-                    <ServiceIcon name={adv.iconName} className="w-5 h-5" />
-                  </div>
-                  <span className="px-2.5 py-1 rounded-full bg-[#1591EE15] border border-[#1591EE33] text-brand_cyan text-xs font-mono font-bold">
-                    {adv.highlightMetric}
+                {/* Top Deep-Navy Optical Telemetry Header Strip */}
+                <div className="relative bg-hubex-banner px-6 py-5 overflow-hidden">
+                  {/* Subtle Watermark Index */}
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none select-none absolute -right-1 -bottom-3 text-[78px] font-black leading-none text-white/[0.08] font-mono"
+                  >
+                    0{idx + 1}
                   </span>
+
+                  <div className="relative z-10 flex items-center justify-between gap-3">
+                    <div
+                      style={{ color: "#FFFFFF" }}
+                      className="w-12 h-12 rounded-2xl bg-white/15 border border-white/25 backdrop-blur-md flex items-center justify-center shadow-[0_8px_20px_rgba(0,143,255,0.3)] group-hover:scale-110 group-hover:bg-[#008FFF] group-hover:border-cyan-300/60 transition-all duration-300"
+                    >
+                      <ServiceIcon name={adv.iconName} className="w-5 h-5" />
+                    </div>
+
+                    <div className="text-right">
+                      <span
+                        style={{ color: "#BAE6FD" }}
+                        className="block text-[10px] font-mono font-bold uppercase tracking-[0.16em]"
+                      >
+                        Pillar 0{idx + 1}
+                      </span>
+                      <span
+                        style={{ color: "#FFFFFF" }}
+                        className="inline-flex items-center gap-1.5 mt-1 px-3 py-1 rounded-full bg-white/15 border border-cyan-300/40 backdrop-blur-sm text-xs font-mono font-extrabold shadow-xs"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-cyan-300" />
+                        {adv.highlightMetric}
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-1">
-                  {adv.title}
-                </h3>
-                <p className="text-xs text-[#9C9C9C] leading-relaxed">
-                  {adv.description}
-                </p>
+
+                {/* Crisp White Card Body */}
+                <div className="flex-1 flex flex-col justify-between p-6 sm:p-7">
+                  <div>
+                    <span className="inline-block text-[11px] font-mono font-bold uppercase tracking-[0.14em] text-[#0284C7] mb-2">
+                      {adv.subtitle}
+                    </span>
+                    <h3 className="text-lg sm:text-[19px] font-extrabold text-slate-900 group-hover:text-[#008FFF] transition-colors leading-snug mb-2.5">
+                      {adv.title}
+                    </h3>
+                    <p className="text-xs sm:text-[13.5px] text-slate-600 leading-relaxed font-medium">
+                      {adv.description}
+                    </p>
+                  </div>
+
+                  {/* Animated Bottom Optical Signal Bar */}
+                  <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
+                    <div className="h-1.5 w-14 group-hover:w-full rounded-full bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#06B6D4] transition-all duration-500" />
+                    <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-slate-400 group-hover:text-[#008FFF] shrink-0 transition-colors">
+                      Verified SLA
+                    </span>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
