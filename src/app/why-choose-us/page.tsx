@@ -93,18 +93,14 @@ export default function WhyChooseUsPage() {
             <div className="pointer-events-none absolute -inset-2.5 rounded-[34px] border-2 border-dashed border-[#008FFF]/25" />
 
             <div className="relative rounded-[28px] overflow-hidden border-2 border-white bg-[#050D1A] shadow-[0_24px_70px_rgba(2,132,199,0.22)]">
-              {/* Top-Left Live Optical Grid Status Pill */}
-              <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-20 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#031226]/80 border border-cyan-300/40 backdrop-blur-md">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-300 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-300" />
-                </span>
-                <span
-                  style={{ color: "#E0F2FE" }}
-                  className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-[0.16em]"
-                >
-                  100G Optical Transmission Grid
-                </span>
+              {/* Top-Left EARTHLINK Logo Badge (Footer Color Logo) */}
+              <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-20 inline-flex items-center px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl bg-white/95 border border-sky-200/80 backdrop-blur-md shadow-[0_12px_32px_rgba(2,132,199,0.28)]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/logo-color.png"
+                  alt="EARTHLINK Broadband (Pvt.) Ltd."
+                  className="h-9 sm:h-11 w-auto object-contain"
+                />
               </div>
 
               {/* 3D Pakistan Optical Fiber Map Video */}
