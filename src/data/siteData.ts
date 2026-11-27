@@ -596,24 +596,46 @@ export const CAREERS_CULTURE = {
     "At EARTHLINK Broadband (Pvt.) Ltd., our engineers and specialists design, splice, route, and safeguard mission-critical 100G optical networks.",
   verifiedGrowthHighlights: [
     {
-      title: "Certification Sponsorship",
-      description: "Support for CCNA, CCNP, JNCIA, and optical engineering certifications.",
-      iconName: "Award",
+      title: "Accelerated Career Growth",
+      tag: "Career Track",
+      description:
+        "Clear progression ladders with hands-on exposure to carrier-grade core routers and enterprise fiber loops.",
+      iconName: "Zap",
     },
     {
-      title: "Technical Career Tracks",
-      description: "Clear progression across NOC Tier-1–3, OSP fiber, and B2B consulting.",
-      iconName: "TrendingUp",
+      title: "Tier-1 Infrastructure Access",
+      tag: "Core Hardware",
+      description:
+        "Work directly on cutting-edge hardware from Cisco, Juniper, Huawei, and high-precision Fujikura splicing rigs.",
+      iconName: "Cpu",
     },
     {
-      title: "Health & Wellness",
-      description: "Comprehensive health coverage for engineering, field, and corporate staff.",
+      title: "Health & Wellness Coverage",
+      tag: "Well-Being",
+      description:
+        "Comprehensive health insurance support for our full-time staff and their families.",
       iconName: "HeartHandshake",
     },
     {
-      title: "100G Core Exposure",
-      description: "Hands-on work with Cisco, Juniper, Huawei core routers and OTDR telemetry.",
-      iconName: "Cpu",
+      title: "Certification Sponsorships",
+      tag: "Accreditation",
+      description:
+        "We sponsor CCNA, CCNP, JNCIA, and optical fiber engineering accreditations for dedicated team members.",
+      iconName: "Award",
+    },
+    {
+      title: "Collaborative NOC Culture",
+      tag: "Team Spirit",
+      description:
+        "A high-support, collaborative team atmosphere where knowledge-sharing is celebrated every single day.",
+      iconName: "Users",
+    },
+    {
+      title: "Central Corporate Headquarters",
+      tag: "Lahore HQ",
+      description:
+        "Modern office located on Main Boulevard, Gulberg-III, Lahore, with convenient transport and dining access.",
+      iconName: "ShieldCheck",
     },
   ],
 };

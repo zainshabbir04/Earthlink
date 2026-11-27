@@ -25,6 +25,8 @@ import {
   TrendingUp,
   HeartHandshake,
   Globe,
+  Zap,
+  Users,
 } from "lucide-react";
 
 interface ServiceIconProps {
@@ -62,6 +64,8 @@ export default function ServiceIcon({
     TrendingUp,
     HeartHandshake,
     Globe,
+    Zap,
+    Users,
   };
 
   const IconComponent = icons[name] || Globe;
