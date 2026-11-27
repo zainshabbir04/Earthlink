@@ -7,7 +7,6 @@ import {
   Clock,
   CheckCircle2,
   ArrowUpRight,
-  Mail,
 } from "lucide-react";
 import {
   BRAND_INFO,
@@ -147,35 +146,92 @@ export default function CareersInteractive() {
                 </div>
               </div>
 
-              {/* Action & Direct Email Panel (Right) */}
-              <div className="lg:col-span-4 bg-gradient-to-br from-[#F4F9FF] via-[#EAF5FF] to-[#E0F2FE]/70 border-t lg:border-t-0 lg:border-l border-sky-100 p-6 sm:p-8 flex flex-col justify-between gap-6">
-                <div className="space-y-3">
-                  <span className="inline-flex items-center gap-1.5 text-[10px] font-mono font-extrabold uppercase tracking-[0.16em] text-[#0284C7]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#008FFF]" />
-                    Direct HR Application
-                  </span>
-                  <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed font-medium">
-                    Send your updated CV directly to our Talent Acquisition desk
-                    for immediate review:
-                  </p>
-                  <a
-                    href={buildDirectApplyMailto(job)}
-                    className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white border border-sky-200 hover:border-[#008FFF] text-xs font-mono font-bold text-[#0284C7] hover:text-[#008FFF] transition-colors break-all shadow-xs"
-                  >
-                    <Mail className="w-3.5 h-3.5 shrink-0 text-[#008FFF]" />
-                    <span>{HR_EMAIL}</span>
-                  </a>
+              {/* Unique Deep-Navy Optical Spotlight Action Panel (Right) */}
+              <div className="relative lg:col-span-4 bg-hubex-banner p-6 sm:p-8 flex flex-col justify-between gap-6 overflow-hidden">
+                {/* Ambient Cyan Corner Glow & Giant Watermark Index */}
+                <div className="pointer-events-none absolute -top-12 -right-12 w-40 h-40 rounded-full bg-cyan-400/20 blur-2xl" />
+                <span
+                  aria-hidden="true"
+                  className="pointer-events-none select-none absolute -right-2 bottom-10 text-[112px] font-black font-mono leading-none text-white/[0.07]"
+                >
+                  0{idx + 1}
+                </span>
+
+                <div className="relative z-10 space-y-4">
+                  {/* Live Hiring Status Pill */}
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/12 border border-cyan-300/40 backdrop-blur-sm">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-300 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-300" />
+                    </span>
+                    <span
+                      style={{ color: "#E0F2FE" }}
+                      className="text-[10px] font-mono font-extrabold uppercase tracking-[0.16em]"
+                    >
+                      Actively Hiring
+                    </span>
+                  </div>
+
+                  {/* Frosted Glass Role Snapshot Card */}
+                  <div className="rounded-2xl bg-white/[0.09] border border-white/15 backdrop-blur-md p-4 space-y-3">
+                    <div className="flex items-center justify-between gap-3 text-xs">
+                      <span
+                        style={{ color: "#BAE6FD" }}
+                        className="font-mono uppercase tracking-wider text-[10px]"
+                      >
+                        Work Mode
+                      </span>
+                      <span
+                        style={{ color: "#FFFFFF" }}
+                        className="font-bold text-right"
+                      >
+                        {job.type}
+                      </span>
+                    </div>
+                    <div className="h-px bg-white/10" />
+                    <div className="flex items-center justify-between gap-3 text-xs">
+                      <span
+                        style={{ color: "#BAE6FD" }}
+                        className="font-mono uppercase tracking-wider text-[10px]"
+                      >
+                        Division
+                      </span>
+                      <span
+                        style={{ color: "#FFFFFF" }}
+                        className="font-bold text-right"
+                      >
+                        {job.department}
+                      </span>
+                    </div>
+                    <div className="h-px bg-white/10" />
+                    <div className="flex items-center justify-between gap-3 text-xs">
+                      <span
+                        style={{ color: "#BAE6FD" }}
+                        className="font-mono uppercase tracking-wider text-[10px]"
+                      >
+                        Location
+                      </span>
+                      <span
+                        style={{ color: "#FFFFFF" }}
+                        className="font-bold text-right"
+                      >
+                        {job.location}
+                      </span>
+                    </div>
+                  </div>
                 </div>
 
-                <a
-                  href={buildDirectApplyMailto(job)}
-                  style={{ color: "#FFFFFF" }}
-                  className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-gradient-to-r from-[#008FFF] to-[#0284C7] hover:from-[#0284C7] hover:to-[#0A192F] font-bold text-xs sm:text-sm shadow-[0_10px_24px_rgba(0,143,255,0.3)] transition-all"
-                >
-                  <Mail className="w-4 h-4 shrink-0" />
-                  <span>Apply Now</span>
-                  <ArrowUpRight className="w-4 h-4 shrink-0" />
-                </a>
+                {/* Glowing Apply Now CTA Button */}
+                <div className="relative z-10">
+                  <a
+                    href={buildDirectApplyMailto(job)}
+                    style={{ color: "#FFFFFF" }}
+                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#06B6D4] hover:from-[#38BDF8] hover:to-[#008FFF] font-extrabold text-xs sm:text-sm tracking-wide shadow-[0_12px_28px_rgba(0,143,255,0.45)] hover:shadow-[0_16px_36px_rgba(56,189,248,0.55)] hover:-translate-y-0.5 transition-all"
+                  >
+                    <span>Apply Now</span>
+                    <ArrowUpRight className="w-4 h-4 shrink-0" />
+                  </a>
+                </div>
               </div>
             </div>
           </article>
