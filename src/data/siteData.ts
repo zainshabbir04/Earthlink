@@ -86,7 +86,7 @@ export const BRAND_INFO = {
       "Flagged: Confirm official corporate helpline for EARTHLINK Broadband (Pvt.) Ltd.",
     generalEmail: "info@earthibroadband.com.pk",
     sourceGeneralEmail: "info@zcomnetworks.com.pk",
-    careersEmail: "hr@earthibroadband.com.pk",
+    careersEmail: "hr@earthlinkbroadband.com.pk",
     sourceCareersEmail: "hr@zcomnetworks.com.pk",
     emailConfirmationFlag:
       "Flagged: Confirm official domain email routing for EARTHLINK Broadband.",
