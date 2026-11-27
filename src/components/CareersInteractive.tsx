@@ -63,7 +63,7 @@ export default function CareersInteractive() {
 
         <div className="w-24 h-1 rounded-full bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#06B6D4]" />
 
-        {/* Interactive Department Count Buttons + Direct HR Mail Button */}
+        {/* Interactive Department Count Buttons */}
         <div className="pt-3 flex flex-wrap items-center justify-center gap-2.5">
           {departments.map((dept) => {
             const count =
@@ -95,17 +95,6 @@ export default function CareersInteractive() {
               </button>
             );
           })}
-
-          <a
-            href={`mailto:${HR_EMAIL}?subject=${encodeURIComponent(
-              `Career Inquiry — ${BRAND_INFO.companyName}`
-            )}`}
-            className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-[13px] font-bold bg-[#0B1F3A] hover:bg-[#008FFF] transition-all shadow-[0_8px_20px_rgba(11,31,58,0.2)]"
-            style={{ color: "#FFFFFF" }}
-          >
-            <Mail className="w-3.5 h-3.5 shrink-0" />
-            <span>{HR_EMAIL}</span>
-          </a>
         </div>
       </div>
 
