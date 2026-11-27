@@ -159,55 +159,135 @@ export default function WhyChooseUsPage() {
         </div>
       </section>
 
-      {/* Compact Comparison Matrix */}
-      <section className="py-12 border-t border-[#1a1a1a]">
-        <div className="max-w-7xl mx-auto px-[20px] lg:px-[50px]">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-brand_cyan mb-6">
-            Enterprise Optical Fiber vs. Conventional Broadband
-          </h2>
+      {/* Redesigned Head-to-Head Optical Benchmark Comparison */}
+      <section className="relative py-16 lg:py-24 border-t border-sky-100/80 overflow-hidden">
+        {/* Subtle Ambient Glow */}
+        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[620px] h-[340px] rounded-full bg-[#008FFF]/8 blur-[120px]" />
 
-          <div className="bg-[#000000] rounded-2xl border border-[#272727] overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="bg-[#0D0D0D] border-b border-[#272727] text-white">
-                    <th className="py-3.5 px-5 text-xs font-mono uppercase tracking-wider text-[#9C9C9C]">
-                      Parameter
-                    </th>
-                    <th className="py-3.5 px-5 text-xs font-mono uppercase tracking-wider text-[#9C9C9C]">
-                      Conventional Broadband
-                    </th>
-                    <th className="py-3.5 px-5 text-xs font-mono uppercase tracking-wider text-brand_cyan bg-[#1591EE15]">
-                      {BRAND_INFO.shortName} (Enterprise Fiber)
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-[#1a1a1a] text-xs sm:text-sm">
-                  {COMPARISON_TABLE_DATA.map((row) => (
-                    <tr
-                      key={row.feature}
-                      className="hover:bg-[#0A0A0A] transition-colors"
-                    >
-                      <td className="py-3.5 px-5 font-semibold text-white">
-                        {row.feature}
-                      </td>
-                      <td className="py-3.5 px-5 text-[#9C9C9C]">
-                        <div className="flex items-center gap-2">
-                          <XCircle className="w-4 h-4 text-rose-400 shrink-0" />
-                          <span>{row.conventional}</span>
-                        </div>
-                      </td>
-                      <td className="py-3.5 px-5 bg-[#1591EE08] font-medium text-white">
-                        <div className="flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-brand_cyan shrink-0" />
-                          <span>{row.earthIBroadband}</span>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+        <div className="relative z-10 max-w-7xl mx-auto px-[20px] lg:px-[50px]">
+          {/* Centered Hero Badge + Eye-Catching Main Heading */}
+          <div className="flex flex-col items-center text-center mb-12 lg:mb-14 space-y-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#008FFF]/10 border border-[#008FFF]/30">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#008FFF] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#008FFF]" />
+              </span>
+              <span className="text-[11px] sm:text-xs font-extrabold uppercase tracking-[0.18em] text-[#0284C7]">
+                Performance Benchmark
+              </span>
             </div>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-extrabold tracking-tight text-slate-900 leading-[1.15] max-w-4xl">
+              Enterprise Optical Fiber{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#06B6D4]">
+                vs. Conventional Broadband
+              </span>
+            </h2>
+
+            <div className="w-24 h-1 rounded-full bg-gradient-to-r from-[#008FFF] via-[#0FA4E8] to-[#06B6D4]" />
+          </div>
+
+          {/* Desktop Column Header Row */}
+          <div className="hidden lg:grid lg:grid-cols-12 gap-4 items-stretch mb-4">
+            <div className="lg:col-span-3 rounded-2xl bg-white/90 border border-slate-200/80 px-6 py-4 flex items-center shadow-xs">
+              <span className="text-[11px] font-mono font-extrabold uppercase tracking-[0.18em] text-slate-500">
+                Benchmark Parameter
+              </span>
+            </div>
+
+            <div className="lg:col-span-4 rounded-2xl bg-white/90 border border-rose-200/70 px-6 py-4 flex items-center justify-between gap-3 shadow-xs">
+              <div>
+                <span className="block text-[10px] font-mono font-bold uppercase tracking-[0.16em] text-rose-500">
+                  Legacy / Shared
+                </span>
+                <span className="text-sm font-extrabold text-slate-800">
+                  Conventional Broadband
+                </span>
+              </div>
+              <span className="w-8 h-8 rounded-full bg-rose-50 border border-rose-200 text-rose-500 flex items-center justify-center shrink-0">
+                <XCircle className="w-4 h-4" />
+              </span>
+            </div>
+
+            <div className="lg:col-span-5 relative rounded-2xl bg-hubex-banner px-6 py-4 flex items-center justify-between gap-3 shadow-[0_14px_34px_rgba(0,143,255,0.28)] overflow-hidden">
+              <div className="relative z-10">
+                <span
+                  style={{ color: "#38BDF8" }}
+                  className="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-[0.16em]"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-300" />
+                  Carrier-Grade Advantage
+                </span>
+                <span
+                  style={{ color: "#FFFFFF" }}
+                  className="block text-sm font-extrabold mt-0.5"
+                >
+                  {BRAND_INFO.shortName} (Enterprise Fiber)
+                </span>
+              </div>
+              <span
+                style={{ color: "#FFFFFF" }}
+                className="relative z-10 w-8 h-8 rounded-full bg-white/15 border border-cyan-300/50 flex items-center justify-center shrink-0"
+              >
+                <CheckCircle2 className="w-4 h-4" />
+              </span>
+            </div>
+          </div>
+
+          {/* Row-by-Row Interactive Comparison Cards */}
+          <div className="space-y-3.5">
+            {COMPARISON_TABLE_DATA.map((row, idx) => (
+              <div
+                key={row.feature}
+                className="group grid grid-cols-1 lg:grid-cols-12 rounded-2xl bg-white border border-sky-100 hover:border-[#008FFF]/60 shadow-[0_10px_30px_rgba(15,23,42,0.05)] hover:shadow-[0_18px_45px_rgba(0,143,255,0.16)] hover:-translate-y-0.5 transition-all duration-300 overflow-hidden"
+              >
+                {/* Parameter Cell */}
+                <div className="lg:col-span-3 px-6 py-4 sm:py-5 flex items-center gap-3.5 border-b lg:border-b-0 lg:border-r border-slate-100">
+                  <span
+                    style={{ color: "#FFFFFF" }}
+                    className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#008FFF] to-[#0284C7] font-mono text-xs font-extrabold flex items-center justify-center shrink-0 shadow-[0_4px_12px_rgba(0,143,255,0.28)]"
+                  >
+                    0{idx + 1}
+                  </span>
+                  <span className="text-sm sm:text-[15px] font-extrabold text-slate-900">
+                    {row.feature}
+                  </span>
+                </div>
+
+                {/* Conventional Broadband Cell */}
+                <div className="lg:col-span-4 px-6 py-4 sm:py-5 flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-3 border-b lg:border-b-0 border-slate-100 bg-slate-50/40">
+                  <span className="lg:hidden text-[10px] font-mono font-bold uppercase tracking-wider text-rose-500">
+                    Conventional Broadband
+                  </span>
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-6 h-6 rounded-full bg-rose-50 border border-rose-200/80 text-rose-500 flex items-center justify-center shrink-0">
+                      <XCircle className="w-3.5 h-3.5" />
+                    </span>
+                    <span className="text-xs sm:text-sm text-slate-600 font-medium leading-snug">
+                      {row.conventional}
+                    </span>
+                  </div>
+                </div>
+
+                {/* EARTHLINK Broadband Highlighted Advantage Cell */}
+                <div className="lg:col-span-5 px-6 py-4 sm:py-5 flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-3 bg-gradient-to-r from-[#F0F9FF] via-[#E0F2FE]/65 to-[#F0F9FF] lg:border-l-2 lg:border-[#008FFF]">
+                  <span className="lg:hidden text-[10px] font-mono font-bold uppercase tracking-wider text-[#0284C7]">
+                    {BRAND_INFO.shortName} (Enterprise Fiber)
+                  </span>
+                  <div className="flex items-center gap-3">
+                    <span
+                      style={{ color: "#FFFFFF" }}
+                      className="w-6 h-6 rounded-full bg-gradient-to-br from-[#008FFF] to-[#0284C7] shadow-[0_4px_12px_rgba(0,143,255,0.35)] flex items-center justify-center shrink-0"
+                    >
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                    </span>
+                    <span className="text-xs sm:text-sm font-bold text-slate-900 leading-snug">
+                      {row.earthIBroadband}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
