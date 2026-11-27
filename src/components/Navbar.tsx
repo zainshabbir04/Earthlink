@@ -22,7 +22,10 @@ export default function Navbar() {
   const [quoteDrawerOpen, setQuoteDrawerOpen] = useState(false);
 
   const isTransparent =
-    pathname === "/" || pathname === "/about" || pathname === "/services";
+    pathname === "/" ||
+    pathname === "/about" ||
+    pathname === "/services" ||
+    pathname === "/why-choose-us";
 
   useEffect(() => {
     setMobileOpen(false);
