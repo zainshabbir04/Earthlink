@@ -25,7 +25,8 @@ export default function Navbar() {
     pathname === "/" ||
     pathname === "/about" ||
     pathname === "/services" ||
-    pathname === "/why-choose-us";
+    pathname === "/why-choose-us" ||
+    pathname === "/careers";
 
   useEffect(() => {
     setMobileOpen(false);
