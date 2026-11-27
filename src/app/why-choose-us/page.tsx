@@ -93,13 +93,13 @@ export default function WhyChooseUsPage() {
             <div className="pointer-events-none absolute -inset-2.5 rounded-[34px] border-2 border-dashed border-[#008FFF]/25" />
 
             <div className="relative rounded-[28px] overflow-hidden border-2 border-white bg-[#050D1A] shadow-[0_24px_70px_rgba(2,132,199,0.22)]">
-              {/* Top-Left Transparent EARTHLINK Logo (Footer Color Logo) */}
+              {/* Top-Left Transparent High-Contrast EARTHLINK Logo */}
               <div className="pointer-events-none absolute top-4 left-4 sm:top-6 sm:left-6 z-20">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/logo-color.png"
+                  src="/logo-dark.png"
                   alt="EARTHLINK Broadband (Pvt.) Ltd."
-                  className="h-12 sm:h-16 lg:h-[72px] w-auto object-contain drop-shadow-[0_2px_12px_rgba(255,255,255,0.45)]"
+                  className="h-12 sm:h-16 lg:h-[74px] w-auto object-contain drop-shadow-[0_4px_16px_rgba(0,143,255,0.45)]"
                 />
               </div>
 
