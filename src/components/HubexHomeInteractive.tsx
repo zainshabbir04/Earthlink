@@ -374,7 +374,6 @@ export default function HubexHomeInteractive() {
 
               {/* Center 3D Glowing Core Hub Emblem */}
               <div className="relative z-20 flex items-center justify-center">
-                <div className="absolute w-48 h-48 rounded-full border-2 border-dashed border-[#0FA4E8]/45 animate-rotateImage pointer-events-none" />
                 <div className="w-40 h-40 rounded-3xl bg-white/95 border-2 border-[#008FFF] shadow-[0_20px_50px_rgba(0,143,255,0.28)] animate-breathe flex flex-col items-center justify-center text-center p-4 backdrop-blur-xl">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
